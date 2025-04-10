@@ -37,6 +37,7 @@ dependencies:
   cloud_functions_platform_interface: 5.5.39
   cloud_functions_web: 4.10.4
   collection: 1.19.0
+  dropdown_button2: 2.3.9
   firebase_core: 3.8.0
   firebase_core_platform_interface: 5.3.0
   firebase_core_web: 2.18.1
@@ -55,7 +56,6 @@ dependencies:
   hive: 2.2.3
   intl: 0.19.0
   json_path: 0.7.2
-  lottie: 2.7.0
   page_transition: 2.1.0
   path_provider: 2.1.4
   path_provider_android: 2.2.10
@@ -67,6 +67,7 @@ dependencies:
   postgrest: 2.1.4
   provider: 6.1.2
   realtime_client: 2.2.1
+  rxdart: 0.27.7
   shared_preferences: 2.3.2
   shared_preferences_android: 2.3.2
   shared_preferences_foundation: 2.5.2
@@ -77,7 +78,6 @@ dependencies:
   sign_in_with_apple: 6.1.2
   sign_in_with_apple_platform_interface: 1.1.0
   sign_in_with_apple_web: 2.1.0
-  smooth_page_indicator: 1.1.0
   sqflite: 2.3.3+1
   sqflite_common: 2.5.4+3
   storage_client: 2.0.3

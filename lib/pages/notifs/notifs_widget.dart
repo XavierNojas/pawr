@@ -514,6 +514,47 @@ class _NotifsWidgetState extends State<NotifsWidget> {
                 ),
               ),
             ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'Create Reminder',
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 50.0,
+                          padding: EdgeInsets.all(8.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Manrope',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    fontSize: 17.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 0.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ].divide(SizedBox(height: 8.0)),
         ),
       ),

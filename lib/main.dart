@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+
+import 'auth/supabase_auth/supabase_user_provider.dart';
+import 'auth/supabase_auth/auth_util.dart';
+
+import 'backend/push_notifications/push_notifications_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -56,7 +61,9 @@ class _MyAppState extends State<MyApp> {
           .map((e) => getRoute(e))
           .toList();
 
-  bool displaySplashImage = true;
+  late Stream<BaseAuthUser> userStream;
+
+  final fcmTokenSub = fcmTokenUserStream.listen((_) {});
 
   @override
   void initState() {
@@ -64,9 +71,21 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
+    userStream = pawRAppSupabaseUserStream()
+      ..listen((user) {
+        _appStateNotifier.update(user);
+      });
+    jwtTokenStream.listen((_) {});
+    Future.delayed(
+      Duration(milliseconds: 1000),
+      () => _appStateNotifier.stopShowingSplashImage(),
+    );
+  }
 
-    Future.delayed(Duration(milliseconds: 1000),
-        () => safeSetState(() => _appStateNotifier.stopShowingSplashImage()));
+  @override
+  void dispose() {
+    fcmTokenSub.cancel();
+    super.dispose();
   }
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
@@ -106,7 +125,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'HomePage';
+  String _currentPageName = 'Home';
   late Widget? _currentPage;
 
   @override
@@ -119,9 +138,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': HomePageWidget(),
+      'Home': HomeWidget(),
       'PetProfile': PetProfileWidget(),
-      'Manage': ManageWidget(),
+      'PetManage': PetManageWidget(),
       'Notifs': NotifsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -142,9 +161,8 @@ class _NavBarPageState extends State<NavBarPage> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 24.0,
+            icon: FaIcon(
+              FontAwesomeIcons.home,
             ),
             label: 'Home',
             tooltip: '',

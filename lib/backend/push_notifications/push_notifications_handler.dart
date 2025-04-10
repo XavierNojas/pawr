@@ -115,17 +115,16 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
-  'HomePage': ParameterData.none(),
   'Splash': ParameterData.none(),
-  'Welcome': ParameterData.none(),
-  'GettingStarted': ParameterData.none(),
-  'ChooseDevice': ParameterData.none(),
-  'PairDevice': ParameterData.none(),
-  'ChartFull': ParameterData.none(),
   'LogFood': ParameterData.none(),
   'PetProfile': ParameterData.none(),
-  'Manage': ParameterData.none(),
+  'PetManage': ParameterData.none(),
   'Notifs': ParameterData.none(),
+  'NewReminder': ParameterData.none(),
+  'Home': ParameterData.none(),
+  'PetTransact': ParameterData.none(),
+  'SignIn': ParameterData.none(),
+  'SignUp': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

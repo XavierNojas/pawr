@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'backend/supabase/supabase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 

@@ -182,8 +182,8 @@ class _PetListWidgetState extends State<PetListWidget> {
                                   0.0, 0.0, 8.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(40.0),
-                                child: Image.network(
-                                  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=900&q=60',
+                                child: Image.asset(
+                                  'assets/images/stanley.png',
                                   width: 32.0,
                                   height: 32.0,
                                   fit: BoxFit.cover,
@@ -260,8 +260,8 @@ class _PetListWidgetState extends State<PetListWidget> {
                                   0.0, 0.0, 8.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(40.0),
-                                child: Image.network(
-                                  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60',
+                                child: Image.asset(
+                                  'assets/images/coco.png',
                                   width: 32.0,
                                   height: 32.0,
                                   fit: BoxFit.cover,

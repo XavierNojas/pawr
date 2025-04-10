@@ -3,8 +3,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 export 'database/database.dart';
 
-String _kSupabaseUrl = '';
-String _kSupabaseAnonKey = '';
+String _kSupabaseUrl = 'https://taegojmntwhwznetbdpt.supabase.co';
+String _kSupabaseAnonKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRhZWdvam1udHdod3puZXRiZHB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNDM1MDMsImV4cCI6MjA1OTgxOTUwM30.fwZo0w4NVbnScpeWsqVmAWKvRJkiQIH6n-cRgxSTog0';
 
 class SupaFlow {
   SupaFlow._();
@@ -17,6 +18,9 @@ class SupaFlow {
 
   static Future initialize() => Supabase.initialize(
         url: _kSupabaseUrl,
+        headers: {
+          'X-Client-Info': 'flutterflow',
+        },
         anonKey: _kSupabaseAnonKey,
         debug: false,
         authOptions:

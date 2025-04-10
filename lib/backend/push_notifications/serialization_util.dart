@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:from_css_color/from_css_color.dart';
 
+import '/backend/supabase/supabase.dart';
+
 import '../../flutter_flow/lat_lng.dart';
 import '../../flutter_flow/place.dart';
 import '../../flutter_flow/uploaded_file.dart';
@@ -44,6 +46,8 @@ dynamic serializeParameter(dynamic value) {
       return placeToString(value as FFPlace);
     case FFUploadedFile:
       return uploadedFileToString(value as FFUploadedFile);
+    case SupabaseDataRow:
+      return json.encode((value as SupabaseDataRow).data);
   }
 
   if (value is DocumentReference) {
@@ -142,6 +146,17 @@ T? getParameter<T>(Map<String, dynamic> data, String paramName) {
         return placeFromString(param) as T;
       case FFUploadedFile:
         return uploadedFileFromString(param) as T;
+      case HealthRecordsRow:
+        return HealthRecordsRow(json.decode(param) as Map<String, dynamic>)
+            as T;
+      case ActivityLogsRow:
+        return ActivityLogsRow(json.decode(param) as Map<String, dynamic>) as T;
+      case RemindersRow:
+        return RemindersRow(json.decode(param) as Map<String, dynamic>) as T;
+      case PetsRow:
+        return PetsRow(json.decode(param) as Map<String, dynamic>) as T;
+      case UsersRow:
+        return UsersRow(json.decode(param) as Map<String, dynamic>) as T;
     }
     if (param is String) {
       return FirebaseFirestore.instance.doc(param) as T;

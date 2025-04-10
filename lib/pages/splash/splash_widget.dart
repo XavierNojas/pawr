@@ -63,7 +63,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           context.goNamed(
-                            WelcomeWidget.routeName,
+                            SignUpWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,

@@ -84,26 +84,6 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
       'textOnPageLoadAnimation2': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 175.ms),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 175.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 175.0.ms,
-            duration: 200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'textOnPageLoadAnimation3': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
           VisibilityEffect(duration: 100.ms),
           MoveEffect(
             curve: Curves.easeInOut,
@@ -298,7 +278,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
-                            hintText: 'Find a snack or meal',
+                            hintText: 'Enter food name.',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -368,17 +348,38 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
-                        child: Text(
-                          'Please note that the Glycemic Load (GL) values provided are approximate and can vary depending on the specific ingredients and their source.',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: FFButtonWidget(
+                            onPressed: () {
+                              print('Button pressed ...');
+                            },
+                            text: 'Log Food',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 50.0,
+                              padding: EdgeInsets.all(8.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
                                     fontFamily: 'Manrope',
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                    fontSize: 12.0,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    fontSize: 17.0,
                                     letterSpacing: 0.0,
                                   ),
-                        ).animateOnPageLoad(
-                            animationsMap['textOnPageLoadAnimation2']!),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -398,7 +399,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                               letterSpacing: 0.0,
                             ),
                       ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation3']!),
+                          animationsMap['textOnPageLoadAnimation2']!),
                     ],
                   ),
                 ),
@@ -412,7 +413,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                         model: _model.foodCardModel1,
                         updateCallback: () => safeSetState(() {}),
                         child: FoodCardWidget(
-                          title: 'Berry Protein Smoothie',
+                          title: 'Beef & Upo',
                           portion: '350g',
                           calories: '280 cal',
                           label: 'GL 6',
@@ -429,7 +430,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                         model: _model.foodCardModel2,
                         updateCallback: () => safeSetState(() {}),
                         child: FoodCardWidget(
-                          title: 'Veggie Omelette',
+                          title: 'Boiled Egg',
                           portion: '200g',
                           calories: '270 cal',
                           label: 'GL 7',
@@ -446,7 +447,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                         model: _model.foodCardModel3,
                         updateCallback: () => safeSetState(() {}),
                         child: FoodCardWidget(
-                          title: 'Mediterranean Hummus Plate',
+                          title: 'Liver & Carrots',
                           portion: '230g',
                           calories: '250 cal',
                           label: 'GL 9',
