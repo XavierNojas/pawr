@@ -62,16 +62,16 @@ class _SplashWidgetState extends State<SplashWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.goNamed(
-                            SignUpWidget.routeName,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.fade,
-                                duration: Duration(milliseconds: 400),
-                              ),
-                            },
-                          );
+                          // context.goNamed(
+                          //   SignUpWidget.routeName,
+                          //   extra: <String, dynamic>{
+                          //     kTransitionInfoKey: TransitionInfo(
+                          //       hasTransition: true,
+                          //       transitionType: PageTransitionType.fade,
+                          //       duration: Duration(milliseconds: 400),
+                          //     ),
+                          //   },
+                          // );
                         },
                         text: 'Begin',
                         options: FFButtonOptions(

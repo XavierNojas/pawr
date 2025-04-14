@@ -89,7 +89,7 @@ class _PetListWidgetState extends State<PetListWidget> {
                       curve: Curves.easeInOut,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: _model.iuserHovered1!
+                        color: _model.iuserHovered1
                             ? FlutterFlowTheme.of(context).primaryBackground
                             : FlutterFlowTheme.of(context).secondaryBackground,
                       ),
@@ -167,7 +167,7 @@ class _PetListWidgetState extends State<PetListWidget> {
                       curve: Curves.easeInOut,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: _model.iuserHovered2!
+                        color: _model.iuserHovered2
                             ? FlutterFlowTheme.of(context).primaryBackground
                             : FlutterFlowTheme.of(context).secondaryBackground,
                       ),
@@ -245,7 +245,7 @@ class _PetListWidgetState extends State<PetListWidget> {
                       curve: Curves.easeInOut,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: _model.iuserHovered3!
+                        color: _model.iuserHovered3
                             ? FlutterFlowTheme.of(context).primaryBackground
                             : FlutterFlowTheme.of(context).secondaryBackground,
                       ),
@@ -323,7 +323,7 @@ class _PetListWidgetState extends State<PetListWidget> {
                       curve: Curves.easeInOut,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: _model.iuserHovered4!
+                        color: _model.iuserHovered4
                             ? FlutterFlowTheme.of(context).primaryBackground
                             : FlutterFlowTheme.of(context).secondaryBackground,
                       ),
@@ -349,7 +349,7 @@ class _PetListWidgetState extends State<PetListWidget> {
                   curve: Curves.easeInOut,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: _model.mouseRegionHovered!
+                    color: _model.mouseRegionHovered
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryBackground,
                   ),
