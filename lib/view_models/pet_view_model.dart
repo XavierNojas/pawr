@@ -8,9 +8,11 @@ class PetViewModel extends ChangeNotifier {
   List<Contact> contacts = [];
   List<Pet> pets = [];
   final supabase = Supabase.instance.client;
+  bool isLoading = false;
 
   // Fetch all contacts from the "contacts" table
   Future<void> fetchContacts() async {
+    
     try {
       final data = await supabase.from('contacts').select();
       contacts = (data as List)
@@ -24,13 +26,18 @@ class PetViewModel extends ChangeNotifier {
 
   // Fetch all pets from the "pets" table
   Future<void> fetchPets() async {
+    final user_id = supabase.auth.currentUser?.id ?? -1;
+
+    isLoading = true;
+
     try {
-      final data = await supabase.from('pets').select().eq('user_id', supabase.auth.currentUser?.id ?? -1);
+      final data = await supabase.from('pets').select().eq('user_id', user_id);
       pets = (data as List)
           .map((petMap) => Pet.fromMap(petMap))
           .toList();
       notifyListeners();
-      print('pets fetched succesfully');
+
+      isLoading = false;
     } catch (error) {
       print('Error fetching pets: $error');
     }
@@ -79,7 +86,7 @@ class PetViewModel extends ChangeNotifier {
   Future<void> updatePet(Pet pet) async {
     try {
       await supabase
-          .from('contacts')
+          .from('pets')
           .update(pet.toMap())
           .eq('id', pet.id!);
       await fetchPets();

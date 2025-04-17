@@ -22,7 +22,7 @@ class _AddPetScreenState extends State<AddPetScreen> {
 
   bool loading = false;
 
-  bool isDecimal(double? value) { 
+  bool isDecimal(double? value) {
     if (value != null) {
       return value % 1 == 0;
     }
@@ -41,10 +41,8 @@ class _AddPetScreenState extends State<AddPetScreen> {
       // verify if weight has decimal
       if (isDecimal(double.tryParse(_weightController.text.trim()))) {
         _weightString = _weightString + '.0009';
-        print('age has decimal');
       } else {
         _weightString = _weightString;
-        print('age does not have decimal');
       }
 
       double? age = double.tryParse(_ageController.text.trim());
@@ -54,15 +52,15 @@ class _AddPetScreenState extends State<AddPetScreen> {
       // age converts from double to int
       final newPet = Pet(
         name: _nameController.text.trim(),
-        user_id: Supabase.instance.client.auth.currentUser?.id ?? 'failed_user_authentication',
+        user_id: Supabase.instance.client.auth.currentUser?.id ??
+            'failed_user_authentication',
         breed: _breedController.text.trim(),
         age: age?.toInt() ?? -1,
         weight: weight,
       );
 
       try {
-        await Provider.of<PetViewModel>(context, listen: false)
-            .addPet(newPet);
+        await Provider.of<PetViewModel>(context, listen: false).addPet(newPet);
         Navigator.pop(context);
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(

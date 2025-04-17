@@ -182,9 +182,7 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
           userType: userTypeValue ?? 'null',
           userId: user_id,
         );
-
-        print('$username and $userTypeValue and $user_id');
-
+        
         try {
           await Provider.of<PetViewModel>(context, listen: false)
               .addUser(newUser);

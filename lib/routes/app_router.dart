@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:paw_r_app/views/pet_profile_edit/pet_edit_widget.dart';
+import 'package:paw_r_app/views/view_pet_screen.dart';
 import '../views/auth_screen.dart';
 import '../views/contact_list_screen.dart';
 import '../views/add_pet_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
 import '../views/pet_list_screen.dart';
 import '../views/sign_in/sign_in_widget.dart';
 import '../views/sign_up/sign_up_widget.dart';
 import '../views/home/home_widget.dart';
+import '../views/pet_manage/pet_manage_widget.dart';
+import '../views/pet_profile/pet_profile_widget.dart';
+import '../views/screen_navigator.dart';
+
+
 
 class AppRouter extends StatelessWidget {
   const AppRouter({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Phonebook App',
       debugShowCheckedModeBanner: false,
@@ -23,6 +32,8 @@ class AppRouter extends StatelessWidget {
         '/signIn': (context) => const SignInWidget(),
         '/signUp' : (context) => const SignUpWidget(),
         '/home' : (context) => const HomeWidget(),
+        '/petManage' : (context) => const PetManageWidget(),
+        '/homeNav' : (context) => ScreenNavigator(),
         '/phonebook': (context) => const ContactListScreen(),
         '/petList': (context) => const PetListScreen(),
         '/addPet': (context) => const AddPetScreen(),
@@ -44,7 +55,7 @@ class AuthChecker extends StatelessWidget {
     final user = Supabase.instance.client.auth.currentUser;
 
     if (user != null) {
-      return const HomeWidget();
+      return ScreenNavigator();
     } else {
       return const SignInWidget();
     }

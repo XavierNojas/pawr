@@ -7,5 +7,5 @@ export '/pages/splash/splash_widget.dart' show SplashWidget;
 // export '/pages/new_reminder/new_reminder_widget.dart' show NewReminderWidget;
 // export '/pages/home/home_widget.dart' show HomeWidget;
 // export '/pages/pet_transact/pet_transact_widget.dart' show PetTransactWidget;
-export '/pages/sign_in/sign_in_widget.dart' show SignInWidget;
-export '/pages/sign_up/sign_up_widget.dart' show SignUpWidget;
+// export '/pages/sign_in/sign_in_widget.dart' show SignInWidget;
+// export '/pages/sign_up/sign_up_widget.dart' show SignUpWidget;

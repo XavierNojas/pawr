@@ -8,6 +8,7 @@
 
 import 'package:app_links_web/app_links_web.dart';
 import 'package:cloud_functions_web/cloud_functions_web.dart';
+import 'package:connectivity_plus/src/connectivity_plus_web.dart';
 import 'package:firebase_core_web/firebase_core_web.dart';
 import 'package:firebase_messaging_web/firebase_messaging_web.dart';
 import 'package:shared_preferences_web/shared_preferences_web.dart';
@@ -19,6 +20,7 @@ void registerPlugins([final Registrar? pluginRegistrar]) {
   final Registrar registrar = pluginRegistrar ?? webPluginRegistrar;
   AppLinksPluginWeb.registerWith(registrar);
   FirebaseFunctionsWeb.registerWith(registrar);
+  ConnectivityPlusWebPlugin.registerWith(registrar);
   FirebaseCoreWeb.registerWith(registrar);
   FirebaseMessagingWeb.registerWith(registrar);
   SharedPreferencesPlugin.registerWith(registrar);

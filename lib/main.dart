@@ -5,6 +5,8 @@ import '../view_models/contact_view_model.dart';
 import '../view_models/pet_view_model.dart';
 import '../routes/app_router.dart'; // Assume you have a simple routing setup
 
+import '../view_models/navigation_view_model.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -19,6 +21,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => ContactViewModel()),
         ChangeNotifierProvider(create: (_) => PetViewModel()),
+        ChangeNotifierProvider(create: (_) => NavigationProvider()),
         // You can add additional providers (e.g., for auth) here
       ],
       child: const MyApp(),

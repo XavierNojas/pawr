@@ -64,7 +64,7 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
         );
         if (response.session != null) {
           // Sign in successful, navigate to the phonebook screen.
-          Navigator.pushReplacementNamed(context, '/home');
+          Navigator.pushReplacementNamed(context, '/homeNav');
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Sign in failed. Please try again.')),
