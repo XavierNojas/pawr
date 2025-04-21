@@ -46,6 +46,7 @@ class _PetListWidgetState extends State<PetListWidget> {
   Future<void> deleteMyPet(BuildContext context, int? pet_id) async {
     final vmPet = Provider.of<PetViewModel>(context, listen: false);
     await vmPet.deletePet(pet_id!);
+    Navigator.pushReplacementNamed(context, '/homeNav');
   }
 
   Widget itemTemplate(
@@ -62,7 +63,7 @@ class _PetListWidgetState extends State<PetListWidget> {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            Navigator.push(
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                     builder: (context) => PetProfileWidget(pet: item)));
@@ -140,7 +141,7 @@ class _PetListWidgetState extends State<PetListWidget> {
       // Consumer listens to changes in PetViewModel
       builder: (context, petVM, child) {
         if (petVM.isLoading) {
-          return Center(child:CircularProgressIndicator()); // Show loading indicator while fetching
+          return Center(child:LinearProgressIndicator()); // Show loading indicator while fetching
         }
         return Padding(
           padding: EdgeInsets.all(16.0),

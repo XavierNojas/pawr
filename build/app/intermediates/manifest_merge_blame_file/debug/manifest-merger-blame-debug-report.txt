@@ -14,12 +14,12 @@
 14    <uses-permission android:name="android.permission.INTERNET" />
 14-->C:\Users\ACER\Documents\GitHub\pawr\android\app\src\main\AndroidManifest.xml:4:5-66
 14-->C:\Users\ACER\Documents\GitHub\pawr\android\app\src\main\AndroidManifest.xml:4:22-64
-15    <uses-permission android:name="android.permission.WAKE_LOCK" />
-15-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-68
-15-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-65
-16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permissions options for the `notification` group -->
-16-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
-16-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
+15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+15-->[:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-79
+15-->[:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-76
+16    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Permissions options for the `notification` group -->
+16-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-68
+16-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-65
 17    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Required by older versions of Google Play services to create IID tokens -->
 17-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-77
 17-->[:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-74

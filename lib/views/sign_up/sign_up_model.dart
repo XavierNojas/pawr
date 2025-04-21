@@ -193,7 +193,7 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
               ),
             ),
           );
-          Navigator.pushReplacementNamed(context, '/signIn');
+          Navigator.pop(context);
         } catch (error) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Error adding contact: $error")),

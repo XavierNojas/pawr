@@ -13,7 +13,7 @@ export 'sign_in_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:paw_r_app/views/sign_up/sign_up_widget.dart';
 
-import 'dart:async'; 
+import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -101,6 +101,26 @@ class _SignInWidgetState extends State<SignInWidget>
           ),
         ],
       ),
+      'textOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 100.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
   }
 
@@ -111,7 +131,6 @@ class _SignInWidgetState extends State<SignInWidget>
     super.dispose();
   }
 
-
   Future<bool> attemptConnection() async {
     var connectivityResult = await Connectivity().checkConnectivity();
     return connectivityResult != ConnectivityResult.none;
@@ -120,37 +139,58 @@ class _SignInWidgetState extends State<SignInWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        body: FutureBuilder<bool>(
-          future: _connectionFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError || (snapshot.hasData && !snapshot.data!)) {
-            return connectionFailed(context);
-          } else {
-            return signInForm(context);
-          }
-          },
-        ),
-      )
-    );
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          body: FutureBuilder<bool>(
+            future: _connectionFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Column(children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          'Connecting...',
+                          style: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: 'Manrope',
+                                color: FlutterFlowTheme.of(context).secondary,
+                                fontSize: 16.0,
+                                letterSpacing: 0.0,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Center(
+                    heightFactor: 10.0,
+                    child: LinearProgressIndicator(),
+                  ),
+                ]);
+              } else if (snapshot.hasError ||
+                  (snapshot.hasData && !snapshot.data!)) {
+                return connectionFailed(context);
+              } else {
+                return signInForm(context);
+              }
+            },
+          ),
+        ));
   }
 
   Widget connectionFailed(BuildContext context) {
     return Form(
-      key: formKey,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
+        key: formKey,
+        child: Column(mainAxisSize: MainAxisSize.max, children: [
           Container(
             width: double.infinity,
             height: 300.0,
@@ -181,11 +221,33 @@ class _SignInWidgetState extends State<SignInWidget>
               ),
             ),
           ),
-          Center(child: CircularProgressIndicator()),
-        ]
-      )
-    );
+          Column(children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    'Connecting...',
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Manrope',
+                          color: FlutterFlowTheme.of(context).secondary,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ).animateOnPageLoad(
+                      animationsMap['textOnPageLoadAnimation2']!),
+                ],
+              ),
+            ),
+            const Center(
+              heightFactor: 10.0,
+              child: LinearProgressIndicator(),
+            ),
+          ]),
+        ]));
   }
+
   Widget signInForm(BuildContext context) {
     return Form(
       key: formKey,

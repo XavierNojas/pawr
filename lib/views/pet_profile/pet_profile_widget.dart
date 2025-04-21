@@ -1,3 +1,6 @@
+import 'package:paw_r_app/views/log_food/log_food_widget.dart';
+import 'package:paw_r_app/views/screen_navigator.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -11,6 +14,7 @@ export 'pet_profile_model.dart';
 import 'package:paw_r_app/models/pet.dart';
 
 import 'package:paw_r_app/views/pet_profile_edit/pet_edit_widget.dart';
+
 
 
 
@@ -52,7 +56,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
     super.dispose();
   }
 
-  // determines if parameter is double
+  // determaxes if parameter is double
   bool isDecimal(double? value) {
     if (value != null) {
       return value % 1 != 0;
@@ -61,7 +65,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
     return false;
   }
 
-  // determines if value is close to whole number
+  // determaxes if value is close to whole number
   bool isFirstDecimalDigitZero(double? value) {
     if (isDecimal(value)) {
       final stringValue = value.toString();
@@ -97,10 +101,21 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Pet Profile'),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+  title: const Text('Pet Profile'),
+  backgroundColor: Colors.transparent,
+  elevation: 0,
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ScreenNavigator(), // replace with your widget
         ),
+      );
+    },
+  ),
+),
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).accent1,
         body: SafeArea(
@@ -265,7 +280,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: 100.0,
+                                    width: 90.0,
                                     height: 40.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
@@ -358,53 +373,53 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ],
                                     ),
                                   ),
-                                  Container(
-                                    width: 100.0,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: Text(
-                                              'Height',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 1.0),
-                                          child: Text(
-                                            '54 cm',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   width: 100.0,
+                                  //   height: 40.0,
+                                  //   decoration: BoxDecoration(
+                                  //     color: FlutterFlowTheme.of(context)
+                                  //         .secondaryBackground,
+                                  //   ),
+                                  //   child: Stack(
+                                  //     children: [
+                                  //       Align(
+                                  //         alignment:
+                                  //             AlignmentDirectional(0.0, -1.0),
+                                  //         child: Padding(
+                                  //           padding:
+                                  //               EdgeInsetsDirectional.fromSTEB(
+                                  //                   5.0, 0.0, 5.0, 0.0),
+                                  //           child: Text(
+                                  //             'Height',
+                                  //             textAlign: TextAlign.center,
+                                  //             style:
+                                  //                 FlutterFlowTheme.of(context)
+                                  //                     .bodyMedium
+                                  //                     .override(
+                                  //                       fontFamily: 'Manrope',
+                                  //                       letterSpacing: 0.0,
+                                  //                       fontWeight:
+                                  //                           FontWeight.w600,
+                                  //                     ),
+                                  //           ),
+                                  //         ),
+                                  //       ),
+                                  //       Align(
+                                  //         alignment:
+                                  //             AlignmentDirectional(0.0, 1.0),
+                                  //         child: Text(
+                                  //           '54 cm',
+                                  //           style: FlutterFlowTheme.of(context)
+                                  //               .bodyMedium
+                                  //               .override(
+                                  //                 fontFamily: 'Manrope',
+                                  //                 letterSpacing: 0.0,
+                                  //               ),
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
@@ -528,8 +543,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                     
                                     iconSize: 24.0,
                                     onPressed: () {
-                                      print('icon pressed ...');
-                                      Navigator.push(
+                                      Navigator.pushReplacement(
                                         context, 
                                         MaterialPageRoute(
                                           builder: (context) => PetProfileEditWidget(pet: widget.pet),
@@ -555,504 +569,508 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                       ],
                     ),
                   ),
-                  //     // Flexible(
-                  //     //   child: Padding(
-                  //     //     padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
-                  //     //     child: Container(
-                  //     //       width: double.infinity,
-                  //     //       height: 330.0,
-                  //     //       decoration: BoxDecoration(
-                  //     //         color: FlutterFlowTheme.of(context).secondaryBackground,
-                  //     //         boxShadow: [
-                  //     //           BoxShadow(
-                  //     //             blurRadius: 3.0,
-                  //     //             color: Color(0x33000000),
-                  //     //             offset: Offset(
-                  //     //               0.0,
-                  //     //               -1.0,
-                  //     //             ),
-                  //     //           )
-                  //     //         ],
-                  //     //         borderRadius: BorderRadius.circular(16.0),
-                  //     //       ),
-                  //     //       // child: Column(
-                  //     //       //   mainAxisSize: MainAxisSize.max,
-                  //     //       //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //     //       //   children: [
-                  //     //       //     Padding(
-                  //     //       //       padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //           16.0, 16.0, 16.0, 0.0),
-                  //     //       //       child: Column(
-                  //     //       //         mainAxisSize: MainAxisSize.max,
-                  //     //       //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //     //       //         children: [
-                  //     //       //           Padding(
-                  //     //       //             padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                 0.0, 0.0, 0.0, 12.0),
-                  //     //       //             child: Text(
-                  //     //       //               'Status',
-                  //     //       //               style: FlutterFlowTheme.of(context)
-                  //     //       //                   .titleMedium
-                  //     //       //                   .override(
-                  //     //       //                     fontFamily: 'Manrope',
-                  //     //       //                     letterSpacing: 0.0,
-                  //     //       //                   ),
-                  //     //       //             ),
-                  //     //       //           ),
-                  //     //       //           Padding(
-                  //     //       //             padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                 0.0, 0.0, 0.0, 8.0),
-                  //     //       //             child: Row(
-                  //     //       //               mainAxisSize: MainAxisSize.max,
-                  //     //       //               mainAxisAlignment: MainAxisAlignment.start,
-                  //     //       //               children: [
-                  //     //       //                 Padding(
-                  //     //       //                   padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                       0.0, 8.0, 16.0, 8.0),
-                  //     //       //                   child: FaIcon(
-                  //     //       //                     FontAwesomeIcons.solidHeart,
-                  //     //       //                     color: Color(0xFFFF6BC3),
-                  //     //       //                     size: 24.0,
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Health',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Last vaccinated (2 mon. ago)',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             fontSize: 10.0,
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                             fontWeight: FontWeight.w800,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 FFButtonWidget(
-                  //     //       //                   onPressed: () {
-                  //     //       //                     print('CheckHealth pressed ...');
-                  //     //       //                   },
-                  //     //       //                   text: 'Log Health',
-                  //     //       //                   options: FFButtonOptions(
-                  //     //       //                     height: 40.0,
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             16.0, 0.0, 16.0, 0.0),
-                  //     //       //                     iconPadding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 0.0, 0.0),
-                  //     //       //                     color: FlutterFlowTheme.of(context)
-                  //     //       //                         .primary,
-                  //     //       //                     textStyle:
-                  //     //       //                         FlutterFlowTheme.of(context)
-                  //     //       //                             .titleSmall
-                  //     //       //                             .override(
-                  //     //       //                               fontFamily: 'Manrope',
-                  //     //       //                               color: Colors.white,
-                  //     //       //                               letterSpacing: 0.0,
-                  //     //       //                             ),
-                  //     //       //                     elevation: 0.0,
-                  //     //       //                     borderRadius:
-                  //     //       //                         BorderRadius.circular(8.0),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //               ],
-                  //     //       //             ),
-                  //     //       //           ),
-                  //     //       //           Padding(
-                  //     //       //             padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                 0.0, 0.0, 0.0, 8.0),
-                  //     //       //             child: Row(
-                  //     //       //               mainAxisSize: MainAxisSize.max,
-                  //     //       //               mainAxisAlignment: MainAxisAlignment.start,
-                  //     //       //               children: [
-                  //     //       //                 Align(
-                  //     //       //                   alignment:
-                  //     //       //                       AlignmentDirectional(0.0, 0.0),
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             5.0, 8.0, 16.0, 8.0),
-                  //     //       //                     child: FaIcon(
-                  //     //       //                       FontAwesomeIcons.walking,
-                  //     //       //                       color: Color(0xFF10A2FF),
-                  //     //       //                       size: 24.0,
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Activity',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Last walked (2d ago)',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             fontSize: 10.0,
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                             fontWeight: FontWeight.w800,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 FFButtonWidget(
-                  //     //       //                   onPressed: () {
-                  //     //       //                     print('CheckHealth pressed ...');
-                  //     //       //                   },
-                  //     //       //                   text: 'Log Activity',
-                  //     //       //                   options: FFButtonOptions(
-                  //     //       //                     height: 40.0,
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             16.0, 0.0, 16.0, 0.0),
-                  //     //       //                     iconPadding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 0.0, 0.0),
-                  //     //       //                     color: FlutterFlowTheme.of(context)
-                  //     //       //                         .primary,
-                  //     //       //                     textStyle:
-                  //     //       //                         FlutterFlowTheme.of(context)
-                  //     //       //                             .titleSmall
-                  //     //       //                             .override(
-                  //     //       //                               fontFamily: 'Manrope',
-                  //     //       //                               color: Colors.white,
-                  //     //       //                               letterSpacing: 0.0,
-                  //     //       //                             ),
-                  //     //       //                     elevation: 0.0,
-                  //     //       //                     borderRadius:
-                  //     //       //                         BorderRadius.circular(8.0),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //               ],
-                  //     //       //             ),
-                  //     //       //           ),
-                  //     //       //           Padding(
-                  //     //       //             padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                 0.0, 0.0, 0.0, 8.0),
-                  //     //       //             child: Row(
-                  //     //       //               mainAxisSize: MainAxisSize.max,
-                  //     //       //               mainAxisAlignment: MainAxisAlignment.start,
-                  //     //       //               children: [
-                  //     //       //                 Padding(
-                  //     //       //                   padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                       0.0, 8.0, 16.0, 8.0),
-                  //     //       //                   child: FaIcon(
-                  //     //       //                     FontAwesomeIcons.bone,
-                  //     //       //                     color: Color(0xFF45F31F),
-                  //     //       //                     size: 24.0,
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Food',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Last fed (4h ago)',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             fontSize: 10.0,
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                             fontWeight: FontWeight.w800,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 FFButtonWidget(
-                  //     //       //                   onPressed: () {
-                  //     //       //                     print('CheckFood pressed ...');
-                  //     //       //                   },
-                  //     //       //                   text: 'Log Food',
-                  //     //       //                   options: FFButtonOptions(
-                  //     //       //                     height: 40.0,
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             16.0, 0.0, 16.0, 0.0),
-                  //     //       //                     iconPadding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 0.0, 0.0),
-                  //     //       //                     color: FlutterFlowTheme.of(context)
-                  //     //       //                         .primary,
-                  //     //       //                     textStyle:
-                  //     //       //                         FlutterFlowTheme.of(context)
-                  //     //       //                             .titleSmall
-                  //     //       //                             .override(
-                  //     //       //                               fontFamily: 'Manrope',
-                  //     //       //                               color: Colors.white,
-                  //     //       //                               letterSpacing: 0.0,
-                  //     //       //                             ),
-                  //     //       //                     elevation: 0.0,
-                  //     //       //                     borderRadius:
-                  //     //       //                         BorderRadius.circular(8.0),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //               ],
-                  //     //       //             ),
-                  //     //       //           ),
-                  //     //       //           Padding(
-                  //     //       //             padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                 0.0, 0.0, 0.0, 8.0),
-                  //     //       //             child: Row(
-                  //     //       //               mainAxisSize: MainAxisSize.max,
-                  //     //       //               mainAxisAlignment: MainAxisAlignment.start,
-                  //     //       //               children: [
-                  //     //       //                 Padding(
-                  //     //       //                   padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                       0.0, 8.0, 16.0, 8.0),
-                  //     //       //                   child: FaIcon(
-                  //     //       //                     FontAwesomeIcons.solidSmileBeam,
-                  //     //       //                     color: Color(0xFF6D6FFF),
-                  //     //       //                     size: 24.0,
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Mood',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Flexible(
-                  //     //       //                   child: Padding(
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 12.0, 0.0),
-                  //     //       //                     child: Text(
-                  //     //       //                       'Felt sad (2d ago)',
-                  //     //       //                       textAlign: TextAlign.start,
-                  //     //       //                       style: FlutterFlowTheme.of(context)
-                  //     //       //                           .bodyMedium
-                  //     //       //                           .override(
-                  //     //       //                             fontFamily: 'Manrope',
-                  //     //       //                             fontSize: 10.0,
-                  //     //       //                             letterSpacing: 0.0,
-                  //     //       //                             fontWeight: FontWeight.w800,
-                  //     //       //                           ),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 FFButtonWidget(
-                  //     //       //                   onPressed: () {
-                  //     //       //                     print('CheckFood pressed ...');
-                  //     //       //                   },
-                  //     //       //                   text: 'Log Mood',
-                  //     //       //                   options: FFButtonOptions(
-                  //     //       //                     height: 40.0,
-                  //     //       //                     padding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             16.0, 0.0, 16.0, 0.0),
-                  //     //       //                     iconPadding:
-                  //     //       //                         EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                             0.0, 0.0, 0.0, 0.0),
-                  //     //       //                     color: FlutterFlowTheme.of(context)
-                  //     //       //                         .primary,
-                  //     //       //                     textStyle:
-                  //     //       //                         FlutterFlowTheme.of(context)
-                  //     //       //                             .titleSmall
-                  //     //       //                             .override(
-                  //     //       //                               fontFamily: 'Manrope',
-                  //     //       //                               color: Colors.white,
-                  //     //       //                               letterSpacing: 0.0,
-                  //     //       //                             ),
-                  //     //       //                     elevation: 0.0,
-                  //     //       //                     borderRadius:
-                  //     //       //                         BorderRadius.circular(8.0),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //               ],
-                  //     //       //             ),
-                  //     //       //           ),
-                  //     //       //           Padding(
-                  //     //       //             padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                 0.0, 0.0, 0.0, 8.0),
-                  //     //       //             child: Row(
-                  //     //       //               mainAxisSize: MainAxisSize.max,
-                  //     //       //               mainAxisAlignment: MainAxisAlignment.center,
-                  //     //       //               children: [
-                  //     //       //                 Padding(
-                  //     //       //                   padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                       5.0, 5.0, 5.0, 5.0),
-                  //     //       //                   child: FFButtonWidget(
-                  //     //       //                     onPressed: () {
-                  //     //       //                       print('Button pressed ...');
-                  //     //       //                     },
-                  //     //       //                     text: 'Check Activity',
-                  //     //       //                     options: FFButtonOptions(
-                  //     //       //                       height: 60.0,
-                  //     //       //                       padding:
-                  //     //       //                           EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                               16.0, 0.0, 16.0, 0.0),
-                  //     //       //                       iconPadding:
-                  //     //       //                           EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                               0.0, 0.0, 0.0, 0.0),
-                  //     //       //                       color: FlutterFlowTheme.of(context)
-                  //     //       //                           .tertiary,
-                  //     //       //                       textStyle:
-                  //     //       //                           FlutterFlowTheme.of(context)
-                  //     //       //                               .titleSmall
-                  //     //       //                               .override(
-                  //     //       //                                 fontFamily: 'Manrope',
-                  //     //       //                                 color: Colors.white,
-                  //     //       //                                 fontSize: 8.0,
-                  //     //       //                                 letterSpacing: 0.0,
-                  //     //       //                               ),
-                  //     //       //                       elevation: 0.0,
-                  //     //       //                       borderRadius:
-                  //     //       //                           BorderRadius.circular(8.0),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Padding(
-                  //     //       //                   padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                       5.0, 5.0, 5.0, 5.0),
-                  //     //       //                   child: FFButtonWidget(
-                  //     //       //                     onPressed: () {
-                  //     //       //                       print('Button pressed ...');
-                  //     //       //                     },
-                  //     //       //                     text: 'Check Food',
-                  //     //       //                     options: FFButtonOptions(
-                  //     //       //                       height: 60.0,
-                  //     //       //                       padding:
-                  //     //       //                           EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                               16.0, 0.0, 16.0, 0.0),
-                  //     //       //                       iconPadding:
-                  //     //       //                           EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                               0.0, 0.0, 0.0, 0.0),
-                  //     //       //                       color: FlutterFlowTheme.of(context)
-                  //     //       //                           .primary,
-                  //     //       //                       textStyle:
-                  //     //       //                           FlutterFlowTheme.of(context)
-                  //     //       //                               .titleSmall
-                  //     //       //                               .override(
-                  //     //       //                                 fontFamily: 'Manrope',
-                  //     //       //                                 color: Colors.white,
-                  //     //       //                                 fontSize: 8.0,
-                  //     //       //                                 letterSpacing: 0.0,
-                  //     //       //                               ),
-                  //     //       //                       elevation: 0.0,
-                  //     //       //                       borderRadius:
-                  //     //       //                           BorderRadius.circular(8.0),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //                 Padding(
-                  //     //       //                   padding: EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                       5.0, 5.0, 5.0, 5.0),
-                  //     //       //                   child: FFButtonWidget(
-                  //     //       //                     onPressed: () {
-                  //     //       //                       print('Button pressed ...');
-                  //     //       //                     },
-                  //     //       //                     text: 'Check Mood',
-                  //     //       //                     options: FFButtonOptions(
-                  //     //       //                       height: 60.0,
-                  //     //       //                       padding:
-                  //     //       //                           EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                               16.0, 0.0, 16.0, 0.0),
-                  //     //       //                       iconPadding:
-                  //     //       //                           EdgeInsetsDirectional.fromSTEB(
-                  //     //       //                               0.0, 0.0, 0.0, 0.0),
-                  //     //       //                       color: FlutterFlowTheme.of(context)
-                  //     //       //                           .info,
-                  //     //       //                       textStyle:
-                  //     //       //                           FlutterFlowTheme.of(context)
-                  //     //       //                               .titleSmall
-                  //     //       //                               .override(
-                  //     //       //                                 fontFamily: 'Manrope',
-                  //     //       //                                 color: Colors.white,
-                  //     //       //                                 fontSize: 8.0,
-                  //     //       //                                 letterSpacing: 0.0,
-                  //     //       //                               ),
-                  //     //       //                       elevation: 0.0,
-                  //     //       //                       borderRadius:
-                  //     //       //                           BorderRadius.circular(8.0),
-                  //     //       //                     ),
-                  //     //       //                   ),
-                  //     //       //                 ),
-                  //     //       //               ],
-                  //     //       //             ),
-                  //     //       //           ),
-                  //     //       //         ],
-                  //     //       //       ),
-                  //     //       //     ),
-                  //     //       //   ],
-                  //     //       // ),
-                  //     //     ),
-                  //     //   ),
-                  //     // ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 330.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 3.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(
+                                    0.0,
+                                    -1.0,
+                                  ),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 16.0, 16.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 12.0),
+                                        child: Text(
+                                          'Status',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium
+                                              .override(
+                                                fontFamily: 'Manrope',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 16.0, 8.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.solidHeart,
+                                                color: Color(0xFFFF6BC3),
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Health',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Last vaccinated (2 mon. ago)',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        fontSize: 10.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight: FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () {
+                                                print('CheckHealth pressed ...');
+                                              },
+                                              text: 'Log Health',
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                color: FlutterFlowTheme.of(context)
+                                                    .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Manrope',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Align(
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0),
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        5.0, 8.0, 16.0, 8.0),
+                                                child: FaIcon(
+                                                  FontAwesomeIcons.walking,
+                                                  color: Color(0xFF10A2FF),
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Activity',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Last walked (2d ago)',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        fontSize: 10.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight: FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () {
+                                                print('CheckHealth pressed ...');
+                                              },
+                                              text: 'Log Activity',
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                color: FlutterFlowTheme.of(context)
+                                                    .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Manrope',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 16.0, 8.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.bone,
+                                                color: Color(0xFF45F31F),
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Food',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Last fed (4h ago)',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        fontSize: 10.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight: FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () {
+                                                print('CheckFood pressed ...');
+                                                Navigator.push(
+                                                  context, 
+                                                  MaterialPageRoute(
+                                                    builder: (context) => LogFoodWidget(pet: widget.pet),
+                                                    )
+                                                  );
+                                              },
+                                              text: 'Log Food',
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                color: FlutterFlowTheme.of(context)
+                                                    .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Manrope',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 16.0, 8.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.solidSmileBeam,
+                                                color: Color(0xFF6D6FFF),
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Mood',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'Felt sad (2d ago)',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        fontSize: 10.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight: FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () {
+                                                print('CheckFood pressed ...');
+                                              },
+                                              text: 'Log Mood',
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional.fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                color: FlutterFlowTheme.of(context)
+                                                    .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Manrope',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      // Padding(
+                                      //   padding: EdgeInsetsDirectional.fromSTEB(
+                                      //       0.0, 0.0, 0.0, 8.0),
+                                      //   child: Row(
+                                      //     mainAxisSize: MainAxisSize.max,
+                                      //     mainAxisAlignment: MainAxisAlignment.center,
+                                      //     children: [
+                                      //       Padding(
+                                      //         padding: EdgeInsetsDirectional.fromSTEB(
+                                      //             5.0, 5.0, 5.0, 5.0),
+                                      //         child: FFButtonWidget(
+                                      //           onPressed: () {
+                                      //             print('Button pressed ...');
+                                      //           },
+                                      //           text: 'Check Activity',
+                                      //           options: FFButtonOptions(
+                                      //             height: 60.0,
+                                      //             padding:
+                                      //                 EdgeInsetsDirectional.fromSTEB(
+                                      //                     16.0, 0.0, 16.0, 0.0),
+                                      //             iconPadding:
+                                      //                 EdgeInsetsDirectional.fromSTEB(
+                                      //                     0.0, 0.0, 0.0, 0.0),
+                                      //             color: FlutterFlowTheme.of(context)
+                                      //                 .tertiary,
+                                      //             textStyle:
+                                      //                 FlutterFlowTheme.of(context)
+                                      //                     .titleSmall
+                                      //                     .override(
+                                      //                       fontFamily: 'Manrope',
+                                      //                       color: Colors.white,
+                                      //                       fontSize: 8.0,
+                                      //                       letterSpacing: 0.0,
+                                      //                     ),
+                                      //             elevation: 0.0,
+                                      //             borderRadius:
+                                      //                 BorderRadius.circular(8.0),
+                                      //           ),
+                                      //         ),
+                                      //       ),
+                                      //       Padding(
+                                      //         padding: EdgeInsetsDirectional.fromSTEB(
+                                      //             5.0, 5.0, 5.0, 5.0),
+                                      //         child: FFButtonWidget(
+                                      //           onPressed: () {
+                                      //             print('Button pressed ...');
+                                      //           },
+                                      //           text: 'Check Food',
+                                      //           options: FFButtonOptions(
+                                      //             height: 60.0,
+                                      //             padding:
+                                      //                 EdgeInsetsDirectional.fromSTEB(
+                                      //                     16.0, 0.0, 16.0, 0.0),
+                                      //             iconPadding:
+                                      //                 EdgeInsetsDirectional.fromSTEB(
+                                      //                     0.0, 0.0, 0.0, 0.0),
+                                      //             color: FlutterFlowTheme.of(context)
+                                      //                 .primary,
+                                      //             textStyle:
+                                      //                 FlutterFlowTheme.of(context)
+                                      //                     .titleSmall
+                                      //                     .override(
+                                      //                       fontFamily: 'Manrope',
+                                      //                       color: Colors.white,
+                                      //                       fontSize: 8.0,
+                                      //                       letterSpacing: 0.0,
+                                      //                     ),
+                                      //             elevation: 0.0,
+                                      //             borderRadius:
+                                      //                 BorderRadius.circular(8.0),
+                                      //           ),
+                                      //         ),
+                                      //       ),
+                                      //       Padding(
+                                      //         padding: EdgeInsetsDirectional.fromSTEB(
+                                      //             5.0, 5.0, 5.0, 5.0),
+                                      //         child: FFButtonWidget(
+                                      //           onPressed: () {
+                                      //             print('Button pressed ...');
+                                      //           },
+                                      //           text: 'Check Mood',
+                                      //           options: FFButtonOptions(
+                                      //             height: 60.0,
+                                      //             padding:
+                                      //                 EdgeInsetsDirectional.fromSTEB(
+                                      //                     16.0, 0.0, 16.0, 0.0),
+                                      //             iconPadding:
+                                      //                 EdgeInsetsDirectional.fromSTEB(
+                                      //                     0.0, 0.0, 0.0, 0.0),
+                                      //             color: FlutterFlowTheme.of(context)
+                                      //                 .info,
+                                      //             textStyle:
+                                      //                 FlutterFlowTheme.of(context)
+                                      //                     .titleSmall
+                                      //                     .override(
+                                      //                       fontFamily: 'Manrope',
+                                      //                       color: Colors.white,
+                                      //                       fontSize: 8.0,
+                                      //                       letterSpacing: 0.0,
+                                      //                     ),
+                                      //             elevation: 0.0,
+                                      //             borderRadius:
+                                      //                 BorderRadius.circular(8.0),
+                                      //           ),
+                                      //         ),
+                                      //       ),
+                                      //     ],
+                                      //   ),
+                                      // ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                 ]),
           ),
         ),

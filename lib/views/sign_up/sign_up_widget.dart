@@ -137,10 +137,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          title: const Text(
-            'Back', 
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.transparent,
           elevation: 0
         ),

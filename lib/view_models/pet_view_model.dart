@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:paw_r_app/models/user.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../models/contact.dart';
 import '../models/pet.dart';
+import '../models/food.dart';
+
+import '../models/foodLog.dart';
 
 class PetViewModel extends ChangeNotifier {
-  List<Contact> contacts = [];
   List<Pet> pets = [];
+  List<Food> snacks = [];
+  List<FoodLog> snackLogs = [];
   final supabase = Supabase.instance.client;
   bool isLoading = false;
 
-  // Fetch all contacts from the "contacts" table
-  Future<void> fetchContacts() async {
-    
-    try {
-      final data = await supabase.from('contacts').select();
-      contacts = (data as List)
-          .map((contactMap) => Contact.fromMap(contactMap))
-          .toList();
-      notifyListeners();
-    } catch (error) {
-      print('Error fetching contacts: $error');
-    }
-  }
+  int? recentPet = -1;
 
   // Fetch all pets from the "pets" table
   Future<void> fetchPets() async {
@@ -32,24 +23,11 @@ class PetViewModel extends ChangeNotifier {
 
     try {
       final data = await supabase.from('pets').select().eq('user_id', user_id);
-      pets = (data as List)
-          .map((petMap) => Pet.fromMap(petMap))
-          .toList();
+      pets = (data as List).map((petMap) => Pet.fromMap(petMap)).toList();
       notifyListeners();
-
       isLoading = false;
     } catch (error) {
-      print('Error fetching pets: $error');
-    }
-  }
-
-  // Create a new contact
-  Future<void> addContact(Contact contact) async {
-    try {
-      await supabase.from('contacts').insert(contact.toMap());
-      await fetchContacts();
-    } catch (error) {
-      print('Error adding contact: $error');
+      print('Error fetching snacks: $error');
     }
   }
 
@@ -70,38 +48,12 @@ class PetViewModel extends ChangeNotifier {
     }
   }
 
-  // Update an existing contact
-  Future<void> updateContact(Contact contact) async {
-    try {
-      await supabase
-          .from('contacts')
-          .update(contact.toMap())
-          .eq('id', contact.id!);
-      await fetchContacts();
-    } catch (error) {
-      print('Error updating contact: $error');
-    }
-  }
-
   Future<void> updatePet(Pet pet) async {
     try {
-      await supabase
-          .from('pets')
-          .update(pet.toMap())
-          .eq('id', pet.id!);
+      await supabase.from('pets').update(pet.toMap()).eq('id', pet.id!);
       await fetchPets();
     } catch (error) {
       print('Error updating contact: $error');
-    }
-  }
-
-  // Delete a contact
-  Future<void> deleteContact(int id) async {
-    try {
-      await supabase.from('contacts').delete().eq('id', id);
-      await fetchContacts();
-    } catch (error) {
-      print('Error deleting contact: $error');
     }
   }
 
@@ -115,8 +67,90 @@ class PetViewModel extends ChangeNotifier {
     }
   }
 
+  fetchRecentPet() {
+    return recentPet;
+  }
+
+  setRecentPet(int? new_pet_id) {
+    recentPet = new_pet_id;
+  }
+
+  Future<void> fetchSnacks(int? petId) async {
+    setRecentPet(petId);
+    isLoading = true;
+
+    try {
+      final data =
+          await supabase.from('foods').select().eq('pet_id', fetchRecentPet());
+      snacks = (data as List).map((foodMap) => Food.fromMap(foodMap)).toList();
+      notifyListeners();
+      isLoading = false;
+    } catch (error) {
+      print('Error fetching pets: $error');
+    }
+  }
+
+  Future<void> addFood(Food food) async {
+    try {
+      await supabase.from('foods').insert(food.toMap());
+      await fetchSnacks(fetchRecentPet());
+      await fetchSnacks(fetchRecentPet());
+    } catch (error) {
+      print('Error adding food: $error');
+    }
+  }
+
+  Future<void> deleteFood(int? snackId) async {
+    if (snackId == null) {
+      print('deleteFood: snackId is null. Skipping delete.');
+      return;
+    }
+    try {
+      await supabase.from('foods').delete().eq('id', snackId as Object);
+      // await fetchSnacks(fetchRecentPet());
+      print('deleteSnack: $snackId');
+    } catch (error) {
+      print('Error deleting pets: $error');
+    }
+  }
+
+  Future<void> deleteMultipleFoods(List<int> snackIds) async {
+    if (snackIds.isEmpty) {
+      print('No snackIds to delete.');
+      return;
+    }
+    try {
+      await supabase.from('foods').delete().inFilter('id', snackIds);
+      print('Deleted multiple food entries: $snackIds');
+    } catch (error) {
+      print('Error deleting multiple foods: $error');
+    }
+  }
+
+  Future<void> addFoodLog(FoodLog snack) async {
+    try {
+      await supabase.from('foodLogs').insert(snack.toMap());
+    } catch (error) {
+      print('Error adding food: $error');
+    }
+  }
+
+  Future<void> fetchFoodLogs(int? petId) async {
+    setRecentPet(petId);
+    isLoading = true;
+
+    try {        
+      final data = await supabase
+        .from('foodLogs')
+        .select()
+        .eq('pet_id', fetchRecentPet())
+        .order('id', ascending: false)
+        .limit(20);
+      snackLogs = (data as List).map((snackLogMap) => FoodLog.fromMap(snackLogMap)).toList();
+      notifyListeners();
+      isLoading = false;
+    } catch (error) {
+      print('Error fetching pets: $error');
+    }
+  }
 }
-
-
-
-

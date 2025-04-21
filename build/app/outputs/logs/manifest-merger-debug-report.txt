@@ -7,6 +7,7 @@ INJECTED from C:\Users\ACER\Documents\GitHub\pawr\android\app\src\debug\AndroidM
 INJECTED from C:\Users\ACER\Documents\GitHub\pawr\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 MERGED from [:app_links] C:\Users\ACER\Documents\GitHub\pawr\build\app_links\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_functions] C:\Users\ACER\Documents\GitHub\pawr\build\cloud_functions\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-48:12
 MERGED from [:firebase_core] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:path_provider_android] C:\Users\ACER\Documents\GitHub\pawr\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -251,6 +252,8 @@ MERGED from [:app_links] C:\Users\ACER\Documents\GitHub\pawr\build\app_links\int
 MERGED from [:app_links] C:\Users\ACER\Documents\GitHub\pawr\build\app_links\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_functions] C:\Users\ACER\Documents\GitHub\pawr\build\cloud_functions\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_functions] C:\Users\ACER\Documents\GitHub\pawr\build\cloud_functions\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
@@ -419,6 +422,24 @@ ADDED from [:cloud_functions] C:\Users\ACER\Documents\GitHub\pawr\build\cloud_fu
 		ADDED from [:cloud_functions] C:\Users\ACER\Documents\GitHub\pawr\build\cloud_functions\intermediates\merged_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:cloud_functions] C:\Users\ACER\Documents\GitHub\pawr\build\cloud_functions\intermediates\merged_manifest\debug\AndroidManifest.xml:10:17-128
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-79
+MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+MERGED from [com.google.firebase:firebase-messaging:24.0.3] C:\Users\ACER\.gradle\caches\transforms-3\cc79d431ee8d6efca9eda052c3fe7862\transformed\jetified-firebase-messaging-24.0.3\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-messaging:24.0.3] C:\Users\ACER\.gradle\caches\transforms-3\cc79d431ee8d6efca9eda052c3fe7862\transformed\jetified-firebase-messaging-24.0.3\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\ACER\.gradle\caches\transforms-3\83140b8de15d8fc149e3ae295851d78c\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\ACER\.gradle\caches\transforms-3\83140b8de15d8fc149e3ae295851d78c\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-installations:18.0.0] C:\Users\ACER\.gradle\caches\transforms-3\8c53563d5b60db5d2ef15a94fe1bf618\transformed\jetified-firebase-installations-18.0.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.firebase:firebase-installations:18.0.0] C:\Users\ACER\.gradle\caches\transforms-3\8c53563d5b60db5d2ef15a94fe1bf618\transformed\jetified-firebase-installations-18.0.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Users\ACER\.gradle\caches\transforms-3\0bfdfba566b6dcd87bf3b80b00117f67\transformed\jetified-play-services-cloud-messaging-17.2.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Users\ACER\.gradle\caches\transforms-3\0bfdfba566b6dcd87bf3b80b00117f67\transformed\jetified-play-services-cloud-messaging-17.2.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\9b5217a981fc2bb058a39e8ae96a2714\transformed\jetified-transport-backend-cct-3.1.9\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\9b5217a981fc2bb058a39e8ae96a2714\transformed\jetified-transport-backend-cct-3.1.9\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\e62eb7ee4431715854695d2c30818384\transformed\jetified-transport-runtime-3.1.9\AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\e62eb7ee4431715854695d2c30818384\transformed\jetified-transport-runtime-3.1.9\AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from [:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-76
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-68
 MERGED from [com.google.firebase:firebase-messaging:24.0.3] C:\Users\ACER\.gradle\caches\transforms-3\cc79d431ee8d6efca9eda052c3fe7862\transformed\jetified-firebase-messaging-24.0.3\AndroidManifest.xml:24:5-68
@@ -429,22 +450,6 @@ MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Use
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Users\ACER\.gradle\caches\transforms-3\0bfdfba566b6dcd87bf3b80b00117f67\transformed\jetified-play-services-cloud-messaging-17.2.0\AndroidManifest.xml:9:5-68
 	android:name
 		ADDED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-65
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
-MERGED from [com.google.firebase:firebase-messaging:24.0.3] C:\Users\ACER\.gradle\caches\transforms-3\cc79d431ee8d6efca9eda052c3fe7862\transformed\jetified-firebase-messaging-24.0.3\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-messaging:24.0.3] C:\Users\ACER\.gradle\caches\transforms-3\cc79d431ee8d6efca9eda052c3fe7862\transformed\jetified-firebase-messaging-24.0.3\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\ACER\.gradle\caches\transforms-3\83140b8de15d8fc149e3ae295851d78c\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\ACER\.gradle\caches\transforms-3\83140b8de15d8fc149e3ae295851d78c\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-installations:18.0.0] C:\Users\ACER\.gradle\caches\transforms-3\8c53563d5b60db5d2ef15a94fe1bf618\transformed\jetified-firebase-installations-18.0.0\AndroidManifest.xml:7:5-79
-MERGED from [com.google.firebase:firebase-installations:18.0.0] C:\Users\ACER\.gradle\caches\transforms-3\8c53563d5b60db5d2ef15a94fe1bf618\transformed\jetified-firebase-installations-18.0.0\AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Users\ACER\.gradle\caches\transforms-3\0bfdfba566b6dcd87bf3b80b00117f67\transformed\jetified-play-services-cloud-messaging-17.2.0\AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] C:\Users\ACER\.gradle\caches\transforms-3\0bfdfba566b6dcd87bf3b80b00117f67\transformed\jetified-play-services-cloud-messaging-17.2.0\AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\9b5217a981fc2bb058a39e8ae96a2714\transformed\jetified-transport-backend-cct-3.1.9\AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\9b5217a981fc2bb058a39e8ae96a2714\transformed\jetified-transport-backend-cct-3.1.9\AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\e62eb7ee4431715854695d2c30818384\transformed\jetified-transport-runtime-3.1.9\AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\ACER\.gradle\caches\transforms-3\e62eb7ee4431715854695d2c30818384\transformed\jetified-transport-runtime-3.1.9\AndroidManifest.xml:22:5-79
-	android:name
-		ADDED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
 uses-permission#android.permission.POST_NOTIFICATIONS
 ADDED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-77
 MERGED from [com.google.firebase:firebase-messaging:24.0.3] C:\Users\ACER\.gradle\caches\transforms-3\cc79d431ee8d6efca9eda052c3fe7862\transformed\jetified-firebase-messaging-24.0.3\AndroidManifest.xml:23:5-77

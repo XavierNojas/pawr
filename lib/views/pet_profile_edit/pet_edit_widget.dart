@@ -17,6 +17,8 @@ export 'pet_edit_model.dart';
 
 import 'package:paw_r_app/models/pet.dart';
 
+import 'package:paw_r_app/views/pet_profile/pet_profile_widget.dart';
+
 class PetProfileEditWidget extends StatefulWidget {
   final Pet pet;
 
@@ -221,12 +223,23 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
       child: Scaffold(
           extendBodyBehindAppBar: true,
           appBar: AppBar(
-            title: const Text('Pet Edit'),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
+  title: const Text('Pet Profile'),
+  backgroundColor: Colors.transparent,
+  elevation: 0,
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PetProfileWidget(pet: widget.pet), // replace with your widget
+        ),
+      );
+    },
+  ),
+),
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: FlutterFlowTheme.of(context).accent1,
           body: Form(
             key: formKey,
             child: SafeArea(
@@ -599,7 +612,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await _model.addNewPet(context, formKey);
+                          await _model.addNewPet(context, formKey, widget.pet);
                           // context.goNamed(
                           //   PetProfileWidget.routeName,
                           //   extra: <String, dynamic>{

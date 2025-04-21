@@ -162,6 +162,7 @@ class PetManageModel extends FlutterFlowModel<PetManageWidget> {
 
       try {
         await Provider.of<PetViewModel>(context, listen: false).addPet(newPet);
+        Navigator.pushReplacementNamed(context, '/homeNav');
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Error adding contact: $error")),

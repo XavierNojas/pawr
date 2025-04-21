@@ -18,6 +18,8 @@ import 'package:paw_r_app/view_models/pet_view_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:paw_r_app/models/pet.dart';
 
+import 'package:paw_r_app/views/pet_profile/pet_profile_widget.dart';
+
 class PetProfileEditModel extends FlutterFlowModel<PetProfileEditWidget> {
   ///  State fields for stateful widgets in this page.
 
@@ -143,7 +145,7 @@ class PetProfileEditModel extends FlutterFlowModel<PetProfileEditWidget> {
   }
 
   Future<void> addNewPet(
-      BuildContext context, GlobalKey<FormState> _formKey) async {
+      BuildContext context, GlobalKey<FormState> _formKey, Pet pet) async {
     final petName = petNameTextController.text.trim();
     final petBreed = nameFieldTextController1.text.trim();
     final age = nameFieldTextController5.text.trim();
@@ -173,7 +175,11 @@ class PetProfileEditModel extends FlutterFlowModel<PetProfileEditWidget> {
       try {
         await Provider.of<PetViewModel>(context, listen: false)
             .updatePet(updatePet);
-        Navigator.pushReplacementNamed(context, '/homeNav');
+        // Navigator.popUntil(context, ModalRoute.withName('/homeNav'));
+        Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PetProfileWidget(pet: updatePet)));
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Error updating contact: $error")),

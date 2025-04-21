@@ -14,6 +14,9 @@ import '../views/pet_manage/pet_manage_widget.dart';
 import '../views/pet_profile/pet_profile_widget.dart';
 import '../views/screen_navigator.dart';
 
+import '../views/log_food/log_food_widget.dart';
+import 'package:paw_r_app/views/log_food_add/log_food_add_widget.dart';
+
 
 
 class AppRouter extends StatelessWidget {
@@ -23,7 +26,7 @@ class AppRouter extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      title: 'Phonebook App',
+      title: 'Pawr!',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       initialRoute: '/',
