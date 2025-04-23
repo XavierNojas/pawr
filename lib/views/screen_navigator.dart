@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
+import '../pages/notifs/notifs_widget.dart';
 import '../view_models/contact_view_model.dart';
 import '../view_models/pet_view_model.dart';
 import '../routes/app_router.dart'; // Assume you have a simple routing setup
@@ -12,7 +13,7 @@ import '../view_models/navigation_view_model.dart';
 class ScreenNavigator extends StatelessWidget {
   final List<Widget> _pages = [
     const HomeWidget(),
-    const PetManageWidget(),
+    const NotifsWidget(),
     const PetManageWidget(),
   ];
 
@@ -29,11 +30,10 @@ class ScreenNavigator extends StatelessWidget {
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Reminders'),
           BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Pets'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );
   }
 }
-
