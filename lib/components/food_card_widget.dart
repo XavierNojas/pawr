@@ -19,13 +19,18 @@ class FoodCardWidget extends StatefulWidget {
     this.calories,
     this.label,
     this.image,
+    this.cardId,
   });
 
   final String? title;
-  final String? portion;
-  final String? calories;
-  final String? label;
+  final double? portion;
+  final double? calories;
+  final int? label;
   final String? image;
+  final int? cardId;
+
+  get amount => null;
+
 
   @override
   State<FoodCardWidget> createState() => _FoodCardWidgetState();
@@ -96,9 +101,11 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
         }
         if (_model.selected!) {
           _model.selected = false;
+          _model.isSelected = false;
           safeSetState(() {});
         } else {
           _model.selected = true;
+          _model.isSelected = true;
           safeSetState(() {});
         }
       },
@@ -209,7 +216,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 8.0, 0.0),
                               child: Text(
-                                widget!.portion!,
+                                'Amount: ${widget.portion!}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -221,7 +228,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                               ),
                             ),
                             Text(
-                              widget!.calories!,
+                              'Calories: ${widget.calories!}',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -245,7 +252,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: Text(
-                                widget!.label!,
+                                (widget!.label!).toString(),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

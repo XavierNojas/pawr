@@ -25,7 +25,6 @@ export 'dart:typed_data' show Uint8List;
 export 'dart:convert' show jsonEncode, jsonDecode;
 export 'package:intl/intl.dart';
 export 'package:page_transition/page_transition.dart';
-export 'nav/nav.dart';
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
     (value is String && value.isEmpty) || value == null ? defaultValue : value;
@@ -266,8 +265,8 @@ extension IterableExt<T> on Iterable<T> {
       .toList();
 }
 
-void setDarkModeSetting(BuildContext context, ThemeMode themeMode) =>
-    MyApp.of(context).setThemeMode(themeMode);
+// void setDarkModeSetting(BuildContext context, ThemeMode themeMode) =>
+//     MyApp.of(context).setThemeMode(themeMode);
 
 void showSnackbar(
   BuildContext context,
@@ -431,7 +430,7 @@ extension ListUniqueExt<T> on Iterable<T> {
   }
 }
 
-String getCurrentRoute(BuildContext context) =>
-    context.mounted ? MyApp.of(context).getRoute() : '';
-List<String> getCurrentRouteStack(BuildContext context) =>
-    context.mounted ? MyApp.of(context).getRouteStack() : [];
+// String getCurrentRoute(BuildContext context) =>
+//     context.mounted ? MyApp.of(context).getRoute() : '';
+// List<String> getCurrentRouteStack(BuildContext context) =>
+//     context.mounted ? MyApp.of(context).getRouteStack() : [];

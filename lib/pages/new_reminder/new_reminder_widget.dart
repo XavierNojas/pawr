@@ -766,7 +766,7 @@ class _NewReminderWidgetState extends State<NewReminderWidget> {
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed(NotifsWidget.routeName);
+                        // context.pushNamed(NotifsWidget.routeName);
                       },
                       text: 'Create Reminder',
                       options: FFButtonOptions(

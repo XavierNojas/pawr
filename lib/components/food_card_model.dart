@@ -15,9 +15,12 @@ class FoodCardModel extends FlutterFlowModel<FoodCardWidget> {
 
   bool? selected = false;
 
+  bool isSelected = false;
+
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {}
+  
 }
