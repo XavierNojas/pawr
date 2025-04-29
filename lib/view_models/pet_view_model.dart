@@ -86,7 +86,7 @@ class PetViewModel extends ChangeNotifier {
       notifyListeners();
       isLoading = false;
     } catch (error) {
-      print('Error fetching pets: $error');
+      print('Error fetching snacks: $error');
     }
   }
 
@@ -110,7 +110,7 @@ class PetViewModel extends ChangeNotifier {
       // await fetchSnacks(fetchRecentPet());
       print('deleteSnack: $snackId');
     } catch (error) {
-      print('Error deleting pets: $error');
+      print('Error deleting foods: $error');
     }
   }
 
@@ -139,18 +139,82 @@ class PetViewModel extends ChangeNotifier {
     setRecentPet(petId);
     isLoading = true;
 
-    try {        
+    try {
       final data = await supabase
-        .from('foodLogs')
-        .select()
-        .eq('pet_id', fetchRecentPet())
-        .order('id', ascending: false)
-        .limit(20);
-      snackLogs = (data as List).map((snackLogMap) => FoodLog.fromMap(snackLogMap)).toList();
+          .from('foodLogs')
+          .select()
+          .eq('pet_id', fetchRecentPet())
+          .order('id', ascending: false)
+          .limit(20);
+      snackLogs = (data as List)
+          .map((snackLogMap) => FoodLog.fromMap(snackLogMap))
+          .toList();
       notifyListeners();
       isLoading = false;
     } catch (error) {
-      print('Error fetching pets: $error');
+      print('Error fetching foodLogs: $error');
     }
   }
+
+  bool isDecimal(double? value) {
+    if (value != null) {
+      return value % 1 != 0;
+    }
+    return false;
+  }
+
+  double? modifyNum(String val) {
+    final parsed = double.tryParse(val);
+    if (parsed == null) return null;
+
+    return isDecimal(parsed) ? parsed : parsed + 0.009;
+  }
+
+  // determaxes if value is close to whole number
+  bool isCloseToInteger(double? value) {
+    if (isDecimal(value)) {
+      final stringValue = value.toString();
+      final decimalIndex = stringValue.indexOf('.');
+      final valAfterDot = int.tryParse(stringValue[decimalIndex + 1]);
+
+      return valAfterDot == 0;
+    }
+    return true;
+  }
+
+  String? doubleToInteger(double? value) {
+    if (isCloseToInteger(value)) {
+      return (value?.toInt()).toString();
+    }
+    return value.toString();
+  }
+
+  Future<void> addRequest(Pet pet) async {
+    try {
+      await supabase.from('pets').insert(pet.toMap());
+      await fetchPets();
+    } catch (error) {
+      print('Error adding contact: $error');
+    }
+  }
+
+  Future<Pet?> fetchPetDetails(int petId) async {
+  try {
+    final data = await supabase
+        .from('pets')
+        .select()
+        .eq('id', petId)
+        .single(); // Fetch a single pet based on ID
+
+    if (data != null) {
+      return Pet.fromMap(data);
+    } else {
+      return null; // No pet found with that ID
+    }
+  } catch (error) {
+    print('Error fetching pet details: $error');
+    return null;
+  }
+}
+
 }

@@ -70,6 +70,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
     _model.userTypeValueController ??= FormFieldController<String>(null);
     _model.userTypeValue;
 
+    _model.phoneTextController ??= TextEditingController();
+    _model.phoneFocusNode ??= FocusNode();
+
     animationsMap.addAll({
       'textOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -584,6 +587,71 @@ class _SignUpWidgetState extends State<SignUpWidget>
                       ),
                       Padding(
                         padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        child: Container(
+                          width: double.infinity,
+                          child: TextFormField(
+                            controller: _model.phoneTextController,
+                            focusNode: _model.phoneFocusNode,
+                            autofocus: true,
+                            autofillHints: [AutofillHints.email],
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Phone number',
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Manrope',
+                                    letterSpacing: 0.0,
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Manrope',
+                                  letterSpacing: 0.0,
+                                ),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: _model
+                                .phoneTextControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                         child: Container(
                           width: double.infinity,
@@ -739,73 +807,77 @@ class _SignUpWidgetState extends State<SignUpWidget>
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 25.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              FlutterFlowDropDown<String>(
-                                controller: _model.userTypeValueController,
-                                options: const ['Pet Owner', 'Care Taker'],
-                                onChanged: (val) => safeSetState(
-                                    () => _model.userTypeValue = val),
-                                width: 360.0,
-                                height: 50.0,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Manrope',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                hintText: 'Select User Type',
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  size: 24.0,
-                                ),
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                elevation: 2.0,
-                                borderColor: _model.showUserError
-                                    ? Colors.red
-                                    : FlutterFlowTheme.of(context).primary,
-                                borderWidth: 1.5,
-                                borderRadius: 8.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 12.0, 0.0),
-                                hidesUnderline: true,
-                                isOverButton: false,
-                                isSearchable: false,
-                                isMultiSelect: false,
-                              ),
 
-                              // Helper text
-                              Padding(
-                                padding: _model.showUserError 
-                                ? const EdgeInsets.only(left: 12.0, top: 4.0) 
-                                : const EdgeInsets.only(left: 0.0, top: 4.0),
-                                child: Text(
-                                  _model.showUserError 
-                                  ? 'Choose a user type'
-                                  : '',
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              ),
+                      // Align(
+                      //   alignment: const AlignmentDirectional(0.0, 0.0),
+                      //   child: Padding(
+                      //     padding: const EdgeInsetsDirectional.fromSTEB(
+                      //         0.0, 0.0, 0.0, 25.0),
+                      //     child: Column(
+                      //       crossAxisAlignment: CrossAxisAlignment.start,
+                      //       children: [
+                      //         FlutterFlowDropDown<String>(
+                      //           controller: _model.userTypeValueController,
+                      //           options: const ['Pet Owner', 'Care Taker'],
+                      //           onChanged: (val) => safeSetState(
+                      //               () => _model.userTypeValue = val),
+                      //           width: 360.0,
+                      //           height: 50.0,
+                      //           textStyle: FlutterFlowTheme.of(context)
+                      //               .bodyMedium
+                      //               .override(
+                      //                 fontFamily: 'Manrope',
+                      //                 color: FlutterFlowTheme.of(context)
+                      //                     .primaryText,
+                      //                 fontSize: 12.0,
+                      //                 letterSpacing: 0.0,
+                      //                 fontWeight: FontWeight.normal,
+                      //               ),
+                      //           hintText: 'Select User Type',
+                      //           icon: Icon(
+                      //             Icons.keyboard_arrow_down_rounded,
+                      //             color: FlutterFlowTheme.of(context).secondary,
+                      //             size: 24.0,
+                      //           ),
+                      //           fillColor: FlutterFlowTheme.of(context)
+                      //               .secondaryBackground,
+                      //           elevation: 2.0,
+                      //           borderColor: _model.showUserError
+                      //               ? Colors.red
+                      //               : FlutterFlowTheme.of(context).primary,
+                      //           borderWidth: 1.5,
+                      //           borderRadius: 8.0,
+                      //           margin: const EdgeInsetsDirectional.fromSTEB(
+                      //               12.0, 0.0, 12.0, 0.0),
+                      //           hidesUnderline: true,
+                      //           isOverButton: false,
+                      //           isSearchable: false,
+                      //           isMultiSelect: false,
+                      //         ),
+
+                      //         // Helper text
+                      //         Padding(
+                      //           padding: _model.showUserError 
+                      //           ? const EdgeInsets.only(left: 12.0, top: 4.0) 
+                      //           : const EdgeInsets.only(left: 0.0, top: 4.0),
+                      //           child: Text(
+                      //             _model.showUserError 
+                      //             ? 'Choose a user type'
+                      //             : '',
+                      //             style: const TextStyle(
+                      //               fontSize: 12,
+                      //               color: Colors.red,
+                      //             ),
+                      //           ),
+                      //         ),
                               
-                            ],
-                          ),
-                        ),
-                      ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
+
+                      SizedBox(height: 16.0),
+                      
                       Align(
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
@@ -826,7 +898,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                             text: 'Sign Up',
                             options: FFButtonOptions(
                               width: 230.0,
-                              height: 52.0,
+                              height: 42.0,
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: const EdgeInsetsDirectional.fromSTEB(

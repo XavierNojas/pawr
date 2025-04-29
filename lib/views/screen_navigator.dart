@@ -8,13 +8,21 @@ import '../routes/app_router.dart'; // Assume you have a simple routing setup
 import '../views/home/home_widget.dart';
 import '../views/pet_manage/pet_manage_widget.dart';
 
+
 import '../view_models/navigation_view_model.dart';
+
+import 'transactions_tab.dart';
 
 class ScreenNavigator extends StatelessWidget {
   final List<Widget> _pages = [
     const HomeWidget(),
+<<<<<<< HEAD
     const NotifsWidget(),
     const PetManageWidget(),
+=======
+    const PetManageWidget(),
+    TransactionsNavigator(),
+>>>>>>> Corby
   ];
 
   @override
@@ -22,6 +30,8 @@ class ScreenNavigator extends StatelessWidget {
     final navProvider = Provider.of<NavigationProvider>(context);
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.transparent,
       body: _pages[navProvider.selectedIndex], // 🟢 show page based on index
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navProvider.selectedIndex,
@@ -33,6 +43,10 @@ class ScreenNavigator extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(Icons.notifications), label: 'Reminders'),
           BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Pets'),
+<<<<<<< HEAD
+=======
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Care Requests'),
+>>>>>>> Corby
         ],
       ),
     );

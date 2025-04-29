@@ -305,13 +305,14 @@ class _LogFoodAddWidgetState extends State<LogFoodAddWidget>
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    labelText: 'Food name',
                                     hintText: 'Enter food name.',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Manrope',
                                           color: FlutterFlowTheme.of(context)
-                                              .accent3,
+                                              .accent2,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           lineHeight: 2.5,
@@ -385,13 +386,14 @@ class _LogFoodAddWidgetState extends State<LogFoodAddWidget>
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    labelText: 'Amount',
                                     hintText: 'Enter food amount in grams.',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Manrope',
                                           color: FlutterFlowTheme.of(context)
-                                              .accent3,
+                                              .accent2,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           lineHeight: 2.5,
@@ -465,13 +467,14 @@ class _LogFoodAddWidgetState extends State<LogFoodAddWidget>
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    labelText: 'Calories',
                                     hintText: 'Enter calories.',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Manrope',
                                           color: FlutterFlowTheme.of(context)
-                                              .accent3,
+                                              .accent2,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           lineHeight: 2.5,
@@ -545,13 +548,14 @@ class _LogFoodAddWidgetState extends State<LogFoodAddWidget>
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    labelText: 'Glycemic Load',
                                     hintText: 'Enter glycemic load.',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Manrope',
                                           color: FlutterFlowTheme.of(context)
-                                              .accent3,
+                                              .accent2,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           lineHeight: 2.5,
