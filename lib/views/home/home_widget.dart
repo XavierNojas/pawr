@@ -32,12 +32,15 @@ class _HomeWidgetState extends State<HomeWidget> {
   List<Map<String, dynamic>> pets = [];
   bool isLoading = true;
 
+  String username = 'User'; // Default value
+
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeModel());
     _fetchReminders();
     _fetchPets(); // Fetch pet details
+    _fetchUsername(); // Fetch username
   }
 
   Future<void> _fetchReminders() async {
@@ -101,6 +104,34 @@ class _HomeWidgetState extends State<HomeWidget> {
       setState(() {
         isLoading = false;
       });
+    }
+  }
+
+  Future<void> _fetchUsername() async {
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
+      if (user == null) {
+        throw Exception('User not logged in');
+      }
+
+      debugPrint('Logged-in user ID: ${user.id}'); // Debug user ID
+
+      final response = await Supabase.instance.client
+          .from('userDetails')
+          .select('username')
+          .eq('userId', user.id) // Ensure this matches your table structure
+          .single();
+
+      debugPrint('Fetched username response: $response'); // Debug response
+
+      setState(() {
+        username = response['username'] ?? 'User'; // Fallback to 'User' if null
+      });
+    } catch (error) {
+      debugPrint('Error fetching username: $error');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error fetching username: $error')),
+      );
     }
   }
 
@@ -245,7 +276,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Good morning, Xavier!',
+                        'Good morning, $username!', // Use the dynamic username
                         style:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: 'Manrope',
@@ -258,7 +289,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
-                          'Urie is looking healthy today.',
+                          'Your pet is looking healthy today.',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Manrope',

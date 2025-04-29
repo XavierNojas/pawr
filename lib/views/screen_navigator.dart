@@ -30,7 +30,8 @@ class ScreenNavigator extends StatelessWidget {
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Reminders'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications), label: 'Reminders'),
           BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Pets'),
         ],
       ),
