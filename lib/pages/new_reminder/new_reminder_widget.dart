@@ -1,4 +1,6 @@
 import 'package:paw_r_app/views/home/home_widget.dart';
+import '../../view_models/navigation_view_model.dart';
+import '../../views/screen_navigator.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -155,14 +157,12 @@ class _NewReminderWidgetState extends State<NewReminderWidget> {
         );
       }
 
-      // Navigate back to home
+      // Navigate back to ScreenNavigator and set the selected index to Home
       if (mounted) {
-        // Use pop to go back if this screen was pushed, or pushReplacement
-        // if you want to replace the current screen. Using push here as in original.
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeWidget()),
-        );
+        final navProvider = Provider.of<NavigationProvider>(context,
+            listen: false); // Use NavigationProvider
+        navProvider.updateIndex(0); // Set the selected index to Home
+        Navigator.pop(context); // Go back to the previous screen
       }
     } catch (error) {
       debugPrint('Error creating reminder: $error');

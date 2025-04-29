@@ -1,7 +1,4 @@
 import '/components/food_card_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
@@ -56,15 +53,14 @@ class LogFoodModel extends FlutterFlowModel<LogFoodWidget> {
 
   Future<void> addFoodLog(
       BuildContext context, FoodCardModel modelCard, int? petId) async {
-
     final petViewModel = Provider.of<PetViewModel>(context, listen: false);
 
     // Extract info from the modelCard's widget
-    final foodName = (modelCard.widget?.title ?? 'failed to fetch foodName').trim();
+    final foodName =
+        (modelCard.widget?.title ?? 'failed to fetch foodName').trim();
     final amount = (modelCard.widget?.portion ?? '-1').toString();
     final calories = (modelCard.widget?.calories ?? '-1').toString();
     final gLoad = (modelCard.widget?.label ?? '-1').toString();
-
 
     final newFoodLog = FoodLog(
       foodName: foodName,
@@ -74,9 +70,9 @@ class LogFoodModel extends FlutterFlowModel<LogFoodWidget> {
       gLoad: int.tryParse(gLoad),
     );
 
-
     try {
-      await Provider.of<PetViewModel>(context, listen: false).addFoodLog(newFoodLog);
+      await Provider.of<PetViewModel>(context, listen: false)
+          .addFoodLog(newFoodLog);
 
       print('Inserted: $foodName');
     } catch (error) {

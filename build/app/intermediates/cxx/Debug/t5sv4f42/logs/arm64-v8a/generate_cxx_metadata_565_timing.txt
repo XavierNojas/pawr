@@ -1,7 +1,0 @@
-# C/C++ build system timings
-<<<<<<<< HEAD:build/app/intermediates/cxx/Debug/t5sv4f42/logs/arm64-v8a/generate_cxx_metadata_565_timing.txt
-generate_cxx_metadata 18ms
-========
-generate_cxx_metadata 13ms
->>>>>>>> Corby:build/app/intermediates/cxx/Debug/t5sv4f42/logs/arm64-v8a/generate_cxx_metadata_600_timing.txt
-

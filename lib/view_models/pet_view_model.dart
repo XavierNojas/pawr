@@ -199,22 +199,21 @@ class PetViewModel extends ChangeNotifier {
   }
 
   Future<Pet?> fetchPetDetails(int petId) async {
-  try {
-    final data = await supabase
-        .from('pets')
-        .select()
-        .eq('id', petId)
-        .single(); // Fetch a single pet based on ID
+    try {
+      final data = await supabase
+          .from('pets')
+          .select()
+          .eq('id', petId)
+          .single(); // Fetch a single pet based on ID
 
-    if (data != null) {
-      return Pet.fromMap(data);
-    } else {
-      return null; // No pet found with that ID
+      if (data != null) {
+        return Pet.fromMap(data);
+      } else {
+        return null; // No pet found with that ID
+      }
+    } catch (error) {
+      print('Error fetching pet details: $error');
+      return null;
     }
-  } catch (error) {
-    print('Error fetching pet details: $error');
-    return null;
   }
-}
-
 }

@@ -4,12 +4,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'log_food_model.dart';
 export 'log_food_model.dart';
@@ -20,7 +17,6 @@ import 'package:paw_r_app/views/log_food_add/log_food_add_widget.dart';
 import 'package:paw_r_app/view_models/pet_view_model.dart';
 import 'package:paw_r_app/models/food.dart';
 
-import 'package:supabase_flutter/supabase_flutter.dart';
 import '../log_food_list/log_food_list_widget.dart';
 
 class LogFoodWidget extends StatefulWidget {
@@ -441,8 +437,6 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                     ],
                   ),
                 ),
-
-                
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
@@ -482,7 +476,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LogFoodListWidget(pet: widget.pet)),
+                      builder: (context) => LogFoodListWidget(pet: widget.pet)),
                 );
               },
               child: Icon(Icons.list),
@@ -494,9 +488,10 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
               onPressed: () async {
                 print('Second FAB');
                 Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => LogFoodAddWidget(pet: widget.pet),
-                  ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogFoodAddWidget(pet: widget.pet),
+                    ));
               },
               child: Icon(Icons.add),
               backgroundColor: Colors.greenAccent[200],
@@ -553,7 +548,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
     });
   }
 
-  Widget cardTemplate(BuildContext context, Food snack, FoodCardModel model, int index, PetViewModel petViewModel) { 
+  Widget cardTemplate(BuildContext context, Food snack, FoodCardModel model,
+      int index, PetViewModel petViewModel) {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
       child: Stack(
@@ -563,8 +559,10 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             updateCallback: () => safeSetState(() {}),
             child: FoodCardWidget(
               title: '${snack.foodName}',
-              portion: double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1'),
-              calories: double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1'),
+              portion: double.tryParse(
+                  petViewModel.doubleToInteger(snack.amount) ?? '-1'),
+              calories: double.tryParse(
+                  petViewModel.doubleToInteger(snack.calories) ?? '-1'),
               label: snack.gLoad,
               image: 'https://picsum.photos/200',
               cardId: snack.id,

@@ -1,14 +1,10 @@
-import '../new_reminder/new_reminder_widget.dart'; // Assuming this is correct
+// Assuming this is correct
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart'; // Keep provider if used elsewhere, not essential for this widget's state
-import 'package:supabase_flutter/supabase_flutter.dart';
+// Keep provider if used elsewhere, not essential for this widget's state
 import 'notifs_model.dart'; // Import the updated model
-import 'dart:developer'; // Import for log
+// Import for log
 
 class NotifsWidget extends StatefulWidget {
   const NotifsWidget({super.key});
