@@ -360,14 +360,14 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
               itemCount: snackLogVM.snackLogs.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, snackLogVM.snackLogs[index],
-                    _foodCardModels[index], index);
+                    _foodCardModels[index], index, snackLogVM);
               },
             );
     });
   }
 
   Widget cardTemplate(
-      BuildContext context, FoodLog snack, FoodCardModel model, int index) {
+      BuildContext context, FoodLog snack, FoodCardModel model, int index, PetViewModel petViewModel) {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 10.0),
       child: wrapWithModel(
@@ -400,9 +400,9 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Amount: ${snack.amount}',
+                      Text('Amount: ${double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1')}',
                           style: Theme.of(context).textTheme.bodySmall),
-                      Text('Calories: ${snack.calories}',
+                      Text('Calories: ${double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1')}',
                           style: Theme.of(context).textTheme.bodySmall),
                       Text('Glycemic: ${snack.gLoad}',
                           style: Theme.of(context).textTheme.bodySmall),
@@ -415,7 +415,7 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
                 ],
               ),
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
         ),
       ),
     );

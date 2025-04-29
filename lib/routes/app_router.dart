@@ -17,6 +17,11 @@ import '../views/screen_navigator.dart';
 import '../views/log_food/log_food_widget.dart';
 import 'package:paw_r_app/views/log_food_add/log_food_add_widget.dart';
 
+import '../pages/new_reminder/new_reminder_widget.dart';
+import '../views/pet_transact/pet_transact_widget.dart';
+import '../views/pet_home_list/pet_home_list_widget.dart';
+import '../views/transactions_log/transactions_log_widget.dart';
+
 
 
 class AppRouter extends StatelessWidget {
@@ -37,6 +42,7 @@ class AppRouter extends StatelessWidget {
         '/home' : (context) => const HomeWidget(),
         '/petManage' : (context) => const PetManageWidget(),
         '/homeNav' : (context) => ScreenNavigator(),
+        '/petHomeList' : (context) => const PetHomeListWidget(),
         '/phonebook': (context) => const ContactListScreen(),
         '/petList': (context) => const PetListScreen(),
         '/addPet': (context) => const AddPetScreen(),

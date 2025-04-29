@@ -975,60 +975,73 @@ class _HomeWidgetState extends State<HomeWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                              child: Container(
-                                width: 100.0,
-                                height: 110.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                              child: TextButton(
+                                onPressed: () {
+                                  // 👉 Your onClick logic here
+                                  Navigator.pushNamed(context, '/petHomeList');
+                                  print('Pet Sit button pressed');
+                                },
+                                style: TextButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                  ),
+                                  backgroundColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 4.0,
-                                      color: Color(0x0A000000),
-                                      offset: Offset(
-                                        0.0,
-                                        2.0,
-                                      ),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(16.0),
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0x15F44336),
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Icon(
-                                          Icons.pets,
-                                          color: Colors.red,
-                                          size: 24.0,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Pet Sit',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleSmall
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
+                                child: Container(
+                                  width: 100.0,
+                                  height: 110.0,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4.0,
+                                        color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                        offset: Offset(0.0, 2.0),
+                                      )
                                     ],
+                                    borderRadius: BorderRadius.circular(16.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(16.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x15F44336),
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Icon(
+                                            Icons.pets,
+                                            color: Colors.red,
+                                            size: 24.0,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Pet Sit',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleSmall
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

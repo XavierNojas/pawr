@@ -52,11 +52,17 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   FocusNode? passwordConfirmFocusNode;
   TextEditingController? passwordConfirmTextController;
   late bool passwordConfirmVisibility;
-  String? Function(BuildContext, String?)?
-      passwordConfirmTextControllerValidator;
+  String? Function(BuildContext, String?)?passwordConfirmTextControllerValidator;
   // State field(s) for UserType widget.
   String? userTypeValue;
   FormFieldController<String>? userTypeValueController;
+
+
+  FocusNode? phoneFocusNode;
+  TextEditingController? phoneTextController;
+  late bool phoneVisibility;
+  String? Function(BuildContext, String?)?phoneTextControllerValidator;
+
 
   String? Function(String?)? setPassword;
   String? Function(String?)? fetchPassword;
@@ -116,6 +122,14 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
       }
       return null;
     };
+
+    phoneTextControllerValidator = (context, value) {
+      if (value == null || value.trim().isEmpty) {
+        return 'Please enter mobile number';
+      }
+      return null;
+    };
+
   }
 
   @override
@@ -142,6 +156,9 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
     passwordConfirmTextController?.dispose();
 
     userTypeValueController?.dispose();
+
+    phoneFocusNode?.dispose();
+    phoneTextController?.dispose();
   }
 
   Future<void> registerUser(
@@ -151,6 +168,10 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
     final email = emailAddressTextController.text.trim();
     final confirmPassword = passwordTextController.text.trim();
     final username = firstNameTextController.text.trim();
+    final phone = phoneTextController.text.trim();
+
+    userTypeValue = 'Pet Owner';
+    
 
     if (!formKey.currentState!.validate()) return;
 
@@ -181,6 +202,8 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
           username: username,
           userType: userTypeValue ?? 'null',
           userId: user_id,
+          email: email,
+          phone: phone,
         );
         
         try {

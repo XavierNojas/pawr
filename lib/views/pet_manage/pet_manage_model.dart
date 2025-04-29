@@ -23,6 +23,7 @@ class PetManageModel extends FlutterFlowModel<PetManageWidget> {
 
   // Model for PetList component.
   late PetListModel petListModel;
+  
   // Model for FieldBox component.
   late FieldBoxModel fieldBoxModel;
   // State field(s) for NameField widget.
@@ -165,7 +166,7 @@ class PetManageModel extends FlutterFlowModel<PetManageWidget> {
         Navigator.pushReplacementNamed(context, '/homeNav');
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Error adding contact: $error")),
+          SnackBar(content: Text("Error adding pet: $error")),
         );
       } finally {
         // do something

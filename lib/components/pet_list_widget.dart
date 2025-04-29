@@ -12,6 +12,22 @@ export 'pet_list_model.dart';
 import '../view_models/pet_view_model.dart';
 import '../models/pet.dart';
 
+
+import 'package:flutter_animate/src/effects/move_effect.dart';
+
+import 'package:flutter_animate/src/effects/visibility_effect.dart';
+
+import 'package:flutter_animate/src/effects/fade_effect.dart';
+
+import 'package:flutter_animate/src/extensions/num_duration_extensions.dart';
+
+import 'package:flutter_animate/flutter_animate.dart';
+
+import 'package:flutter_animate/src/flutter_animate.dart';
+
+import 'package:paw_r_app/flutter_flow/flutter_flow_animations.dart';
+
+
 class PetListWidget extends StatefulWidget {
   const PetListWidget({super.key});
 
@@ -21,6 +37,8 @@ class PetListWidget extends StatefulWidget {
 
 class _PetListWidgetState extends State<PetListWidget> {
   late PetListModel _model;
+
+    final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -34,6 +52,149 @@ class _PetListWidgetState extends State<PetListWidget> {
     _model = createModel(context, () => PetListModel());
     final petVM = Provider.of<PetViewModel>(context, listen: false);
     petVM.fetchPets();
+
+    animationsMap.addAll({
+      'textOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'textFieldOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 75.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 75.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 75.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 100.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 300.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 400.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 500.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override

@@ -441,6 +441,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                     ],
                   ),
                 ),
+
+                
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
@@ -545,14 +547,13 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
               itemCount: snackVM.snacks.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, snackVM.snacks[index],
-                    _foodCardModels[index], index);
+                    _foodCardModels[index], index, snackVM);
               },
             );
     });
   }
 
-  Widget cardTemplate(
-      BuildContext context, Food snack, FoodCardModel model, int index) {
+  Widget cardTemplate(BuildContext context, Food snack, FoodCardModel model, int index, PetViewModel petViewModel) { 
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
       child: Stack(
@@ -562,8 +563,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             updateCallback: () => safeSetState(() {}),
             child: FoodCardWidget(
               title: '${snack.foodName}',
-              portion: snack.amount,
-              calories: snack.calories,
+              portion: double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1'),
+              calories: double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1'),
               label: snack.gLoad,
               image: 'https://picsum.photos/200',
               cardId: snack.id,

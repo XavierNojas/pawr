@@ -11,6 +11,9 @@ import 'package:provider/provider.dart';
 import 'food_card_model.dart';
 export 'food_card_model.dart';
 
+import 'package:paw_r_app/view_models/pet_view_model.dart';
+
+
 class FoodCardWidget extends StatefulWidget {
   const FoodCardWidget({
     super.key,
@@ -139,8 +142,8 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                     color: FlutterFlowTheme.of(context).warning,
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: Image.network(
-                        widget!.image!,
+                      image: Image.asset(
+                        'assets/images/food.png',
                       ).image,
                     ),
                     borderRadius: BorderRadius.circular(16.0),

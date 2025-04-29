@@ -63,7 +63,7 @@ class _ArticleCardWidgetState extends State<ArticleCardWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: Image.network(
+                child: Image.asset(
                   widget!.image!,
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 100.0,

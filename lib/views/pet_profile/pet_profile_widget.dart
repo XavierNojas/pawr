@@ -15,8 +15,15 @@ import 'package:paw_r_app/models/pet.dart';
 
 import 'package:paw_r_app/views/pet_profile_edit/pet_edit_widget.dart';
 
+import 'package:paw_r_app/flutter_flow/flutter_flow_animations.dart';
 
+import 'package:flutter_animate/src/effects/move_effect.dart';
 
+import 'package:flutter_animate/src/effects/visibility_effect.dart';
+
+import 'package:flutter_animate/src/effects/fade_effect.dart';
+
+import 'package:flutter_animate/src/extensions/num_duration_extensions.dart';
 
 class PetProfileWidget extends StatefulWidget {
   final Pet pet;
@@ -35,6 +42,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final animationsMap = <String, AnimationInfo>{};
+
   late String petName;
   late String petBreed;
   late String petAge;
@@ -47,6 +56,149 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
     petName = widget.pet.name;
     petBreed = widget.pet.breed;
     petAge = (widget.pet.age).toString();
+
+    animationsMap.addAll({
+      'textOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'textFieldOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 75.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 75.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 75.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 100.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 300.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 400.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'foodCardOnPageLoadAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 500.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -77,8 +229,6 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
     return true;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     // removes mantissa if decimal is close to whole number
@@ -101,21 +251,22 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
       },
       child: Scaffold(
         appBar: AppBar(
-  title: const Text('Pet Profile'),
-  backgroundColor: Colors.transparent,
-  elevation: 0,
-  leading: IconButton(
-    icon: const Icon(Icons.arrow_back, color: Colors.black),
-    onPressed: () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ScreenNavigator(), // replace with your widget
+          title: const Text('Pet Profile'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ScreenNavigator(), // replace with your widget
+                ),
+              );
+            },
+          ),
         ),
-      );
-    },
-  ),
-),
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).accent1,
         body: SafeArea(
@@ -238,14 +389,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                 Icons.pets,
                                 color: Colors.green[700],
                                 size: 24.0,
-                                
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
+                  ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -427,7 +577,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         ),
                       ),
                     ),
-                  ),
+                  ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 32.0),
@@ -452,14 +602,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                   ),
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: IconButton(
-                                    icon: Icon(Icons.work_outline),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    iconSize: 24.0,
-                                    onPressed: () {
-                                      print('icon pressed ...');
-                                    }
-                                  ),
+                                      icon: Icon(Icons.work_outline),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconSize: 24.0,
+                                      onPressed: () {
+                                        print('icon pressed ...');
+                                      }),
                                 ),
                               ),
                               Text(
@@ -503,7 +652,6 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         print('icon pressed ...');
                                       },
                                     ),
-                                    
                                   ),
                                 ),
                                 Text(
@@ -540,15 +688,15 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                     icon: const Icon(Icons.edit_note),
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    
                                     iconSize: 24.0,
                                     onPressed: () {
                                       Navigator.pushReplacement(
-                                        context, 
-                                        MaterialPageRoute(
-                                          builder: (context) => PetProfileEditWidget(pet: widget.pet),
-                                        )
-                                      );
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                PetProfileEditWidget(
+                                                    pet: widget.pet),
+                                          ));
                                     },
                                   ),
                                 ),
@@ -569,508 +717,509 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                       ],
                     ),
                   ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: 330.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 3.0,
-                                  color: Color(0x33000000),
-                                  offset: Offset(
-                                    0.0,
-                                    -1.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(16.0),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: 330.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 3.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              -1.0,
                             ),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 16.0, 16.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
-                                  child: Column(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Text(
+                                    'Status',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 8.0),
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 12.0),
-                                        child: Text(
-                                          'Status',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                              ),
+                                            0.0, 8.0, 16.0, 8.0),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.solidHeart,
+                                          color: Color(0xFFFF6BC3),
+                                          size: 24.0,
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 16.0, 8.0),
-                                              child: FaIcon(
-                                                FontAwesomeIcons.solidHeart,
-                                                color: Color(0xFFFF6BC3),
-                                                size: 24.0,
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Health',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Health',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  letterSpacing: 0.0,
                                                 ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Last vaccinated (2 mon. ago)',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight: FontWeight.w800,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            FFButtonWidget(
-                                              onPressed: () {
-                                                print('CheckHealth pressed ...');
-                                              },
-                                              text: 'Log Health',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        16.0, 0.0, 16.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                color: FlutterFlowTheme.of(context)
-                                                    .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Manrope',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 0.0,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0.0, 0.0),
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        5.0, 8.0, 16.0, 8.0),
-                                                child: FaIcon(
-                                                  FontAwesomeIcons.walking,
-                                                  color: Color(0xFF10A2FF),
-                                                  size: 24.0,
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Last vaccinated (2 mon. ago)',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  fontSize: 10.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w800,
                                                 ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Activity',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Last walked (2d ago)',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight: FontWeight.w800,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            FFButtonWidget(
-                                              onPressed: () {
-                                                print('CheckHealth pressed ...');
-                                              },
-                                              text: 'Log Activity',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        16.0, 0.0, 16.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                color: FlutterFlowTheme.of(context)
-                                                    .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Manrope',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 0.0,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 16.0, 8.0),
-                                              child: FaIcon(
-                                                FontAwesomeIcons.bone,
-                                                color: Color(0xFF45F31F),
-                                                size: 24.0,
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Food',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Last fed (4h ago)',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight: FontWeight.w800,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            FFButtonWidget(
-                                              onPressed: () {
-                                                print('CheckFood pressed ...');
-                                                Navigator.push(
-                                                  context, 
-                                                  MaterialPageRoute(
-                                                    builder: (context) => LogFoodWidget(pet: widget.pet),
-                                                    )
-                                                  );
-                                              },
-                                              text: 'Log Food',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        16.0, 0.0, 16.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                color: FlutterFlowTheme.of(context)
-                                                    .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Manrope',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 0.0,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ],
+                                      FFButtonWidget(
+                                        onPressed: () {
+                                          print('CheckHealth pressed ...');
+                                        },
+                                        text: 'Log Health',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Manrope',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 16.0, 8.0),
-                                              child: FaIcon(
-                                                FontAwesomeIcons.solidSmileBeam,
-                                                color: Color(0xFF6D6FFF),
-                                                size: 24.0,
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Mood',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Felt sad (2d ago)',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight: FontWeight.w800,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            FFButtonWidget(
-                                              onPressed: () {
-                                                print('CheckFood pressed ...');
-                                              },
-                                              text: 'Log Mood',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        16.0, 0.0, 16.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                color: FlutterFlowTheme.of(context)
-                                                    .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Manrope',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 0.0,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      // Padding(
-                                      //   padding: EdgeInsetsDirectional.fromSTEB(
-                                      //       0.0, 0.0, 0.0, 8.0),
-                                      //   child: Row(
-                                      //     mainAxisSize: MainAxisSize.max,
-                                      //     mainAxisAlignment: MainAxisAlignment.center,
-                                      //     children: [
-                                      //       Padding(
-                                      //         padding: EdgeInsetsDirectional.fromSTEB(
-                                      //             5.0, 5.0, 5.0, 5.0),
-                                      //         child: FFButtonWidget(
-                                      //           onPressed: () {
-                                      //             print('Button pressed ...');
-                                      //           },
-                                      //           text: 'Check Activity',
-                                      //           options: FFButtonOptions(
-                                      //             height: 60.0,
-                                      //             padding:
-                                      //                 EdgeInsetsDirectional.fromSTEB(
-                                      //                     16.0, 0.0, 16.0, 0.0),
-                                      //             iconPadding:
-                                      //                 EdgeInsetsDirectional.fromSTEB(
-                                      //                     0.0, 0.0, 0.0, 0.0),
-                                      //             color: FlutterFlowTheme.of(context)
-                                      //                 .tertiary,
-                                      //             textStyle:
-                                      //                 FlutterFlowTheme.of(context)
-                                      //                     .titleSmall
-                                      //                     .override(
-                                      //                       fontFamily: 'Manrope',
-                                      //                       color: Colors.white,
-                                      //                       fontSize: 8.0,
-                                      //                       letterSpacing: 0.0,
-                                      //                     ),
-                                      //             elevation: 0.0,
-                                      //             borderRadius:
-                                      //                 BorderRadius.circular(8.0),
-                                      //           ),
-                                      //         ),
-                                      //       ),
-                                      //       Padding(
-                                      //         padding: EdgeInsetsDirectional.fromSTEB(
-                                      //             5.0, 5.0, 5.0, 5.0),
-                                      //         child: FFButtonWidget(
-                                      //           onPressed: () {
-                                      //             print('Button pressed ...');
-                                      //           },
-                                      //           text: 'Check Food',
-                                      //           options: FFButtonOptions(
-                                      //             height: 60.0,
-                                      //             padding:
-                                      //                 EdgeInsetsDirectional.fromSTEB(
-                                      //                     16.0, 0.0, 16.0, 0.0),
-                                      //             iconPadding:
-                                      //                 EdgeInsetsDirectional.fromSTEB(
-                                      //                     0.0, 0.0, 0.0, 0.0),
-                                      //             color: FlutterFlowTheme.of(context)
-                                      //                 .primary,
-                                      //             textStyle:
-                                      //                 FlutterFlowTheme.of(context)
-                                      //                     .titleSmall
-                                      //                     .override(
-                                      //                       fontFamily: 'Manrope',
-                                      //                       color: Colors.white,
-                                      //                       fontSize: 8.0,
-                                      //                       letterSpacing: 0.0,
-                                      //                     ),
-                                      //             elevation: 0.0,
-                                      //             borderRadius:
-                                      //                 BorderRadius.circular(8.0),
-                                      //           ),
-                                      //         ),
-                                      //       ),
-                                      //       Padding(
-                                      //         padding: EdgeInsetsDirectional.fromSTEB(
-                                      //             5.0, 5.0, 5.0, 5.0),
-                                      //         child: FFButtonWidget(
-                                      //           onPressed: () {
-                                      //             print('Button pressed ...');
-                                      //           },
-                                      //           text: 'Check Mood',
-                                      //           options: FFButtonOptions(
-                                      //             height: 60.0,
-                                      //             padding:
-                                      //                 EdgeInsetsDirectional.fromSTEB(
-                                      //                     16.0, 0.0, 16.0, 0.0),
-                                      //             iconPadding:
-                                      //                 EdgeInsetsDirectional.fromSTEB(
-                                      //                     0.0, 0.0, 0.0, 0.0),
-                                      //             color: FlutterFlowTheme.of(context)
-                                      //                 .info,
-                                      //             textStyle:
-                                      //                 FlutterFlowTheme.of(context)
-                                      //                     .titleSmall
-                                      //                     .override(
-                                      //                       fontFamily: 'Manrope',
-                                      //                       color: Colors.white,
-                                      //                       fontSize: 8.0,
-                                      //                       letterSpacing: 0.0,
-                                      //                     ),
-                                      //             elevation: 0.0,
-                                      //             borderRadius:
-                                      //                 BorderRadius.circular(8.0),
-                                      //           ),
-                                      //         ),
-                                      //       ),
-                                      //     ],
-                                      //   ),
-                                      // ),
                                     ],
                                   ),
                                 ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 8.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 8.0, 16.0, 8.0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.walking,
+                                            color: Color(0xFF10A2FF),
+                                            size: 24.0,
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Activity',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Last walked (2d ago)',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  fontSize: 10.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w800,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      FFButtonWidget(
+                                        onPressed: () {
+                                          print('CheckHealth pressed ...');
+                                        },
+                                        text: 'Log Activity',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Manrope',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 8.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 16.0, 8.0),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.bone,
+                                          color: Color(0xFF45F31F),
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Food',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Last fed (4h ago)',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  fontSize: 10.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w800,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      FFButtonWidget(
+                                        onPressed: () {
+                                          print('CheckFood pressed ...');
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LogFoodWidget(
+                                                        pet: widget.pet),
+                                              ));
+                                        },
+                                        text: 'Log Food',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Manrope',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 8.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 16.0, 8.0),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.solidSmileBeam,
+                                          color: Color(0xFF6D6FFF),
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Mood',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Text(
+                                            'Felt sad (2d ago)',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  fontSize: 10.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w800,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      FFButtonWidget(
+                                        onPressed: () {
+                                          print('CheckFood pressed ...');
+                                        },
+                                        text: 'Log Mood',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Manrope',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                // Padding(
+                                //   padding: EdgeInsetsDirectional.fromSTEB(
+                                //       0.0, 0.0, 0.0, 8.0),
+                                //   child: Row(
+                                //     mainAxisSize: MainAxisSize.max,
+                                //     mainAxisAlignment: MainAxisAlignment.center,
+                                //     children: [
+                                //       Padding(
+                                //         padding: EdgeInsetsDirectional.fromSTEB(
+                                //             5.0, 5.0, 5.0, 5.0),
+                                //         child: FFButtonWidget(
+                                //           onPressed: () {
+                                //             print('Button pressed ...');
+                                //           },
+                                //           text: 'Check Activity',
+                                //           options: FFButtonOptions(
+                                //             height: 60.0,
+                                //             padding:
+                                //                 EdgeInsetsDirectional.fromSTEB(
+                                //                     16.0, 0.0, 16.0, 0.0),
+                                //             iconPadding:
+                                //                 EdgeInsetsDirectional.fromSTEB(
+                                //                     0.0, 0.0, 0.0, 0.0),
+                                //             color: FlutterFlowTheme.of(context)
+                                //                 .tertiary,
+                                //             textStyle:
+                                //                 FlutterFlowTheme.of(context)
+                                //                     .titleSmall
+                                //                     .override(
+                                //                       fontFamily: 'Manrope',
+                                //                       color: Colors.white,
+                                //                       fontSize: 8.0,
+                                //                       letterSpacing: 0.0,
+                                //                     ),
+                                //             elevation: 0.0,
+                                //             borderRadius:
+                                //                 BorderRadius.circular(8.0),
+                                //           ),
+                                //         ),
+                                //       ),
+                                //       Padding(
+                                //         padding: EdgeInsetsDirectional.fromSTEB(
+                                //             5.0, 5.0, 5.0, 5.0),
+                                //         child: FFButtonWidget(
+                                //           onPressed: () {
+                                //             print('Button pressed ...');
+                                //           },
+                                //           text: 'Check Food',
+                                //           options: FFButtonOptions(
+                                //             height: 60.0,
+                                //             padding:
+                                //                 EdgeInsetsDirectional.fromSTEB(
+                                //                     16.0, 0.0, 16.0, 0.0),
+                                //             iconPadding:
+                                //                 EdgeInsetsDirectional.fromSTEB(
+                                //                     0.0, 0.0, 0.0, 0.0),
+                                //             color: FlutterFlowTheme.of(context)
+                                //                 .primary,
+                                //             textStyle:
+                                //                 FlutterFlowTheme.of(context)
+                                //                     .titleSmall
+                                //                     .override(
+                                //                       fontFamily: 'Manrope',
+                                //                       color: Colors.white,
+                                //                       fontSize: 8.0,
+                                //                       letterSpacing: 0.0,
+                                //                     ),
+                                //             elevation: 0.0,
+                                //             borderRadius:
+                                //                 BorderRadius.circular(8.0),
+                                //           ),
+                                //         ),
+                                //       ),
+                                //       Padding(
+                                //         padding: EdgeInsetsDirectional.fromSTEB(
+                                //             5.0, 5.0, 5.0, 5.0),
+                                //         child: FFButtonWidget(
+                                //           onPressed: () {
+                                //             print('Button pressed ...');
+                                //           },
+                                //           text: 'Check Mood',
+                                //           options: FFButtonOptions(
+                                //             height: 60.0,
+                                //             padding:
+                                //                 EdgeInsetsDirectional.fromSTEB(
+                                //                     16.0, 0.0, 16.0, 0.0),
+                                //             iconPadding:
+                                //                 EdgeInsetsDirectional.fromSTEB(
+                                //                     0.0, 0.0, 0.0, 0.0),
+                                //             color: FlutterFlowTheme.of(context)
+                                //                 .info,
+                                //             textStyle:
+                                //                 FlutterFlowTheme.of(context)
+                                //                     .titleSmall
+                                //                     .override(
+                                //                       fontFamily: 'Manrope',
+                                //                       color: Colors.white,
+                                //                       fontSize: 8.0,
+                                //                       letterSpacing: 0.0,
+                                //                     ),
+                                //             elevation: 0.0,
+                                //             borderRadius:
+                                //                 BorderRadius.circular(8.0),
+                                //           ),
+                                //         ),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
-                        ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ]),
           ),
         ),

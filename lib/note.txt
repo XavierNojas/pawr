@@ -1,0 +1,122 @@
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Pending',
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Manrope',
+                              color: FlutterFlowTheme.of(context).secondary,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation2']!),
+                    ],
+                  ),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    cardCreator(context),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+
+
+
+        floatingActionButton: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FloatingActionButton(
+              heroTag: 'fab1',
+              onPressed: () async {
+                print('First FAB');
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => LogFoodListWidget(pet: widget.pet)),
+                // );
+              },
+              child: Icon(Icons.list,
+                  color: const Color.fromARGB(255, 255, 255, 255)),
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+            ),
+
+                            // 👇 Space between the two buttons
+            SizedBox(width: 8.0),
+
+            FloatingActionButton(
+              heroTag: 'fab1',
+              onPressed: () async {
+                print('First FAB');
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => LogFoodListWidget(pet: widget.pet)),
+                // );
+              },
+              child: Icon(Icons.list,
+                  color: const Color.fromARGB(255, 255, 255, 255)),
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+            ),
+          ],
+        ),
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          title: const Text('Pawr Home'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            IconButton(
+              color: Colors.red,
+              icon: const Icon(Icons.logout),
+              onPressed: () async {
+                await _model.logout(context);
+              },
+            ),
+          ],
+        ),
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            print('FloatingActionButton pressed ...');
+
+
+label: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(
+                    Icons.delete_rounded,
+                    color: Colors.white,
+                    size: 24.0,
+                  ),
+                  Text(
+                    'Delete',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Manrope',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ].divide(SizedBox(width: 8.0)),
+              ),
+            ),

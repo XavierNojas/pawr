@@ -56,19 +56,24 @@ class LogFoodModel extends FlutterFlowModel<LogFoodWidget> {
 
   Future<void> addFoodLog(
       BuildContext context, FoodCardModel modelCard, int? petId) async {
+
+    final petViewModel = Provider.of<PetViewModel>(context, listen: false);
+
     // Extract info from the modelCard's widget
     final foodName = (modelCard.widget?.title ?? 'failed to fetch foodName').trim();
     final amount = (modelCard.widget?.portion ?? '-1').toString();
     final calories = (modelCard.widget?.calories ?? '-1').toString();
     final gLoad = (modelCard.widget?.label ?? '-1').toString();
 
+
     final newFoodLog = FoodLog(
       foodName: foodName,
-      amount: double.tryParse(amount),
-      calories: double.tryParse(calories),
+      amount: petViewModel.modifyNum(amount),
+      calories: petViewModel.modifyNum(calories),
       pet_id: petId,
       gLoad: int.tryParse(gLoad),
     );
+
 
     try {
       await Provider.of<PetViewModel>(context, listen: false).addFoodLog(newFoodLog);
