@@ -57,16 +57,17 @@ class _ValueListItemWidgetState extends State<ValueListItemWidget> {
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            widget!.icon!,
+            widget.icon!,
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Text(
-                  widget!.label!,
+                  widget.label!,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Manrope',
                         letterSpacing: 0.0,
@@ -75,20 +76,21 @@ class _ValueListItemWidgetState extends State<ValueListItemWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
               child: Container(
                 height: 30.0,
                 decoration: BoxDecoration(
-                  color: widget!.color,
+                  color: widget.color,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 4.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        12.0, 4.0, 12.0, 4.0),
                     child: Text(
-                      widget!.value!,
+                      widget.value!,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Manrope',
                             color: FlutterFlowTheme.of(context).white,

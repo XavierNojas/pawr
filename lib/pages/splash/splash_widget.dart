@@ -56,10 +56,10 @@ class _SplashWidgetState extends State<SplashWidget> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           // context.goNamed(
@@ -77,9 +77,9 @@ class _SplashWidgetState extends State<SplashWidget> {
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 70.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -89,7 +89,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                   ),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 0.0,
                           ),
@@ -101,19 +101,19 @@ class _SplashWidgetState extends State<SplashWidget> {
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: 300.0,
                   height: 300.0,
-                  decoration: BoxDecoration(),
-                  child: Container(
+                  decoration: const BoxDecoration(),
+                  child: SizedBox(
                     width: 300.0,
                     height: 30.0,
                     child: Stack(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.05),
+                          alignment: const AlignmentDirectional(0.0, 0.05),
                           child: Text(
                             'Smarter care for fubabies.',
                             textAlign: TextAlign.end,
@@ -129,7 +129,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.asset(

@@ -6,6 +6,8 @@ import '../views/transactions_log/transactions_log_widget.dart';
 import '../views/transactions_log_other/transactions_log_other_widget.dart';
 
 class TransactionsNavigator extends StatefulWidget {
+  const TransactionsNavigator({super.key});
+
   @override
   _TransactionsNavigatorState createState() => _TransactionsNavigatorState();
 }
@@ -44,12 +46,12 @@ class _TransactionsNavigatorState extends State<TransactionsNavigator>
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
       appBar: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: 'Pending'),
-            Tab(text: 'Accepted'),
-          ],
-        ),
+        controller: _tabController,
+        tabs: const [
+          Tab(text: 'Pending'),
+          Tab(text: 'Accepted'),
+        ],
+      ),
       body: TabBarView(
         controller: _tabController,
         children: const [

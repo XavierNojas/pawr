@@ -15,8 +15,6 @@ import 'package:provider/provider.dart';
 import 'pet_manage_model.dart';
 export 'pet_manage_model.dart';
 
-
-
 class PetManageWidget extends StatefulWidget {
   const PetManageWidget({super.key});
 
@@ -36,7 +34,6 @@ class _PetManageWidgetState extends State<PetManageWidget>
   final animationsMap = <String, AnimationInfo>{};
 
   final formKey = GlobalKey<FormState>();
-  
 
   @override
   void initState() {
@@ -64,7 +61,6 @@ class _PetManageWidgetState extends State<PetManageWidget>
     _model.petNameTextController ??= TextEditingController();
     _model.petNameFocusNode ??= FocusNode();
 
-
     animationsMap.addAll({
       'textFieldOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -74,8 +70,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -94,8 +90,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -114,8 +110,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -134,8 +130,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -154,8 +150,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -174,8 +170,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -213,7 +209,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(3.82, 0.89),
+                    alignment: const AlignmentDirectional(3.82, 0.89),
                     child: Image.asset(
                       'assets/images/blurred-drop.png',
                       width: 300.0,
@@ -222,13 +218,13 @@ class _PetManageWidgetState extends State<PetManageWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 30.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -246,21 +242,23 @@ class _PetManageWidgetState extends State<PetManageWidget>
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30.0, 16.0, 30.0, 10.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 16.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.petListModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: PetListWidget(),
+                            child: const PetListWidget(),
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30.0, 16.0, 30.0, 10.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 16.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                           ),
@@ -283,7 +281,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                         //   ),
                         // ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 0.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -306,7 +304,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -321,14 +319,14 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -357,7 +355,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 10.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -380,7 +378,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -395,14 +393,14 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -431,14 +429,14 @@ class _PetManageWidgetState extends State<PetManageWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 10.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.nameFieldTextController5,
@@ -457,7 +455,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                             letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -474,7 +472,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -482,7 +480,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -511,7 +509,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.nameFieldTextController6,
@@ -530,7 +528,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                             letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -547,7 +545,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -555,7 +553,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -589,10 +587,10 @@ class _PetManageWidgetState extends State<PetManageWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           await _model.addNewPet(context, formKey);
@@ -611,9 +609,9 @@ class _PetManageWidgetState extends State<PetManageWidget>
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 70.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -623,7 +621,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                   ),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 0.0,
                           ),

@@ -17,12 +17,12 @@ class PetViewModel extends ChangeNotifier {
 
   // Fetch all pets from the "pets" table
   Future<void> fetchPets() async {
-    final user_id = supabase.auth.currentUser?.id ?? -1;
+    final userId = supabase.auth.currentUser?.id ?? -1;
 
     isLoading = true;
 
     try {
-      final data = await supabase.from('pets').select().eq('user_id', user_id);
+      final data = await supabase.from('pets').select().eq('user_id', userId);
       pets = (data as List).map((petMap) => Pet.fromMap(petMap)).toList();
       notifyListeners();
       isLoading = false;
@@ -71,8 +71,8 @@ class PetViewModel extends ChangeNotifier {
     return recentPet;
   }
 
-  setRecentPet(int? new_pet_id) {
-    recentPet = new_pet_id;
+  setRecentPet(int? newPetId) {
+    recentPet = newPetId;
   }
 
   Future<void> fetchSnacks(int? petId) async {
@@ -206,11 +206,7 @@ class PetViewModel extends ChangeNotifier {
           .eq('id', petId)
           .single(); // Fetch a single pet based on ID
 
-      if (data != null) {
-        return Pet.fromMap(data);
-      } else {
-        return null; // No pet found with that ID
-      }
+      return Pet.fromMap(data);
     } catch (error) {
       print('Error fetching pet details: $error');
       return null;

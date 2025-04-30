@@ -152,7 +152,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
             },
             child: Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
-              height: 119.5,
+              height: 220,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(24.0),
@@ -228,71 +228,59 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          SizedBox(height: 8.0),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(mainAxisSize: MainAxisSize.max, children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'From: ${widget.startDate!}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            letterSpacing: 0.0,
-                                          ),
+                              Text(
+                                'From: ${widget.startDate!}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0.0,
                                     ),
-                                    Text(
-                                      'To: ${widget.finishDate!}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            letterSpacing: 0.0,
-                                          ),
+                              ),
+                              Text(
+                                'To: ${widget.finishDate!}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0.0,
                                     ),
-                                  ],
-                                ),
-                              ]),
-                              Row(mainAxisSize: MainAxisSize.max, children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${widget.duration}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                '${widget.duration}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
                                     ),
-                                    Text(
-                                      (widget.rateType == 'hourly')
-                                          ? '₱ 120 per hour'
-                                          : 'one time',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            letterSpacing: 0.0,
-                                          ),
+                              ),
+                              Text(
+                                (widget.rateType == 'hourly')
+                                    ? '₱ 120 per hour'
+                                    : 'one time',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0.0,
                                     ),
-                                  ],
-                                ),
-                              ]),
+                              ),
+                              SizedBox(height: 8.0),
                               Container(
                                 height: 28.0,
                                 decoration: BoxDecoration(
@@ -370,7 +358,8 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
     final requestVM = Provider.of<RequestViewModel>(context, listen: false);
 
     // Awaiting the result of fetchPetDetails to get the actual pet object
-    final fetchedUserDetails = await requestVM.fetchOwnerDetails(ownerId ?? '-1');
+    final fetchedUserDetails =
+        await requestVM.fetchOwnerDetails(ownerId ?? '-1');
 
     setState(() {
       if (isOwner ?? true) {
@@ -382,7 +371,6 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
       if (widget.requestObject.status == 'pending') {
         careTakerDetails = fetchedUserDetails!;
       }
-
     });
   }
 }

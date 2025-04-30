@@ -1,19 +1,8 @@
 import '/components/food_card_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'dart:ui';
 import 'log_food_list_widget.dart' show LogFoodListWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:paw_r_app/models/foodLog.dart';
 
@@ -56,14 +45,14 @@ class LogFoodListModel extends FlutterFlowModel<LogFoodListWidget> {
 
   Future<void> addFoodLog(
       BuildContext context, FoodCardModel modelCard, int? petId) async {
-        
     final petViewModel = Provider.of<PetViewModel>(context, listen: false);
     // Extract info from the modelCard's widget
-    final foodName = (modelCard.widget?.title ?? 'failed to fetch foodName').trim();
+    final foodName =
+        (modelCard.widget?.title ?? 'failed to fetch foodName').trim();
     final amount = (modelCard.widget?.portion ?? '-1').toString();
     final calories = (modelCard.widget?.calories ?? '-1').toString();
     final gLoad = (modelCard.widget?.label ?? '-1').toString();
-    
+
     final newFoodLog = FoodLog(
       foodName: foodName,
       amount: petViewModel.modifyNum(amount),
@@ -73,13 +62,12 @@ class LogFoodListModel extends FlutterFlowModel<LogFoodListWidget> {
     );
 
     try {
-      await Provider.of<PetViewModel>(context, listen: false).addFoodLog(newFoodLog);
+      await Provider.of<PetViewModel>(context, listen: false)
+          .addFoodLog(newFoodLog);
 
       print('Inserted: $foodName');
     } catch (error) {
       print('Error inserting $foodName: $error');
-    } finally {
-
-    }
+    } finally {}
   }
 }

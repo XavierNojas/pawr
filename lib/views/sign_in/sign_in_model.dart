@@ -32,12 +32,11 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
 
   bool loading = false;
   final _formKey = GlobalKey<FormState>();
-  AuthMode _authMode = AuthMode.signIn;
+  final AuthMode _authMode = AuthMode.signIn;
 
   @override
   void initState(BuildContext context) {
     passwordVisibility = false;
-
   }
 
   @override
@@ -49,10 +48,11 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
     passwordTextController?.dispose();
   }
 
-    Future<void> verifyUser(BuildContext context, GlobalKey<FormState> formKey) async {
+  Future<void> verifyUser(
+      BuildContext context, GlobalKey<FormState> formKey) async {
     final email = emailAddressTextController.text;
     final password = passwordTextController.text;
-    
+
     if (!formKey.currentState!.validate()) return;
 
     if (_authMode == AuthMode.signIn) {
@@ -74,11 +74,7 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Sign in error: $error')),
         );
-      } finally {
-
-      }
-
+      } finally {}
     }
   }
-
 }

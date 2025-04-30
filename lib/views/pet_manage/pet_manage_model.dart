@@ -23,7 +23,7 @@ class PetManageModel extends FlutterFlowModel<PetManageWidget> {
 
   // Model for PetList component.
   late PetListModel petListModel;
-  
+
   // Model for FieldBox component.
   late FieldBoxModel fieldBoxModel;
   // State field(s) for NameField widget.
@@ -135,16 +135,16 @@ class PetManageModel extends FlutterFlowModel<PetManageWidget> {
   }
 
   Future<void> addNewPet(
-      BuildContext context, GlobalKey<FormState> _formKey) async {
+      BuildContext context, GlobalKey<FormState> formKey) async {
     final petName = petNameTextController.text.trim();
     final petBreed = nameFieldTextController1.text.trim();
     final age = nameFieldTextController5.text.trim();
     var weightString = nameFieldTextController6.text.trim();
 
-    if (_formKey.currentState?.validate() ?? false) {
+    if (formKey.currentState?.validate() ?? false) {
       // verify if weight has decimal
       if (isDecimal(double.tryParse(nameFieldTextController6.text.trim()))) {
-        weightString = weightString + '.0009';
+        weightString = '$weightString.0009';
       } else {
         weightString = weightString;
       }
@@ -171,8 +171,7 @@ class PetManageModel extends FlutterFlowModel<PetManageWidget> {
       } finally {
         // do something
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('You have a new pet!')),
+          const SnackBar(content: Text('You have a new pet!')),
         );
       }
     }

@@ -14,7 +14,6 @@ export 'pet_list_model.dart';
 import '../view_models/pet_view_model.dart';
 import '../models/pet.dart';
 
-
 import 'package:flutter_animate/src/effects/move_effect.dart';
 
 import 'package:flutter_animate/src/effects/visibility_effect.dart';
@@ -29,7 +28,6 @@ import 'package:flutter_animate/src/flutter_animate.dart';
 
 import 'package:paw_r_app/flutter_flow/flutter_flow_animations.dart';
 
-
 class PetListHomeWidget extends StatefulWidget {
   const PetListHomeWidget({super.key});
 
@@ -40,7 +38,7 @@ class PetListHomeWidget extends StatefulWidget {
 class _PetListHomeWidgetState extends State<PetListHomeWidget> {
   late PetListHomeModel _model;
 
-    final animationsMap = <String, AnimationInfo>{};
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -64,8 +62,8 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -84,8 +82,8 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -104,8 +102,8 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -124,8 +122,8 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -144,8 +142,8 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -164,8 +162,8 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -184,8 +182,8 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -213,7 +211,7 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
   // }
 
   Widget itemTemplate(
-      String petName, String petBreed, int index, int? pet_id, Pet item) {
+      String petName, String petBreed, int index, int? petId, Pet item) {
     bool isHovered = _model.hoveredIndex == index;
 
     return MouseRegion(
@@ -232,7 +230,7 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
                     builder: (context) => PetTransactWidget(pet: item)));
           },
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 150),
+            duration: const Duration(milliseconds: 150),
             curve: Curves.easeInOut,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -241,11 +239,12 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
                   : FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
               child: Row(
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.only(end: 8.0),
+                    padding: const EdgeInsetsDirectional.only(end: 8.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(40.0),
                       child: Image.asset(
@@ -269,7 +268,7 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Text(
                           petBreed,
                           style:
@@ -304,15 +303,17 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
       // Consumer listens to changes in PetViewModel
       builder: (context, petVM, child) {
         if (petVM.isLoading) {
-          return Center(child:LinearProgressIndicator()); // Show loading indicator while fetching
+          return const Center(
+              child:
+                  LinearProgressIndicator()); // Show loading indicator while fetching
         }
         return Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Container(
             width: 400,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x33000000),
@@ -325,14 +326,15 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 0.0, 0.0, 8.0),
                     child: Text(
                       'Select a Pet',
                       style: FlutterFlowTheme.of(context).bodyLarge.override(
@@ -346,7 +348,7 @@ class _PetListHomeWidgetState extends State<PetListHomeWidget> {
                     color: FlutterFlowTheme.of(context).alternate,
                   ),
                   petVM.pets.isEmpty
-                      ? Center(child: Text('No pets found.'))
+                      ? const Center(child: Text('No pets found.'))
                       : ListView(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,

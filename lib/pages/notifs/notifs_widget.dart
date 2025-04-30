@@ -38,7 +38,7 @@ class _NotifsWidgetState extends State<NotifsWidget> {
       if (mounted) {
         // Show an error message on the UI if the initial fetch fails
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
               content: Text('Failed to load reminders. Please try again.')),
         );
         setState(() {}); // Still call setState to show empty list/error message
@@ -270,7 +270,7 @@ class _NotifsWidgetState extends State<NotifsWidget> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                       content: Text(
-                                          '${type.toUpperCase()} reminder for ${petName} deleted')),
+                                          '${type.toUpperCase()} reminder for $petName deleted')),
                                 );
                               }
                             } catch (e) {
@@ -284,7 +284,7 @@ class _NotifsWidgetState extends State<NotifsWidget> {
                                       .insert(removedIndex, removedReminder);
                                 });
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                       content: Text(
                                           'Failed to delete reminder. Please try again.')),
                                 );
@@ -405,7 +405,7 @@ class _NotifsWidgetState extends State<NotifsWidget> {
                                                           .start, // Align row items
                                                   children: [
                                                     Text(
-                                                      '${timeLeft} ',
+                                                      '$timeLeft ',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodySmall
@@ -529,8 +529,9 @@ class _NotifsWidgetState extends State<NotifsWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .primary,
                                           onChanged: (bool? value) async {
-                                            if (!mounted)
+                                            if (!mounted) {
                                               return; // Check if mounted
+                                            }
 
                                             final bool newValue =
                                                 value ?? false;
@@ -582,7 +583,7 @@ class _NotifsWidgetState extends State<NotifsWidget> {
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(
-                                                      SnackBar(
+                                                      const SnackBar(
                                                           content: Text(
                                                               'Failed to update reminder status. Please try again.')),
                                                     );

@@ -20,7 +20,6 @@ import 'package:paw_r_app/views/log_food_add/log_food_add_widget.dart';
 import 'package:paw_r_app/view_models/request_view_model.dart';
 import 'package:paw_r_app/models/food.dart';
 
-
 import '/components/chart_chip_widget.dart';
 
 import '/components/transaction_card_widget.dart';
@@ -34,13 +33,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class TransactionsLogOtherWidget extends StatefulWidget {
   final String? status;
-  const TransactionsLogOtherWidget({Key? key, required this.status}) : super(key: key);
+  const TransactionsLogOtherWidget({super.key, required this.status});
 
   static String routeName = 'LogFood';
   static String routePath = '/logFood';
 
   @override
-  State<TransactionsLogOtherWidget> createState() => _TransactionsLogOtherWidgetState();
+  State<TransactionsLogOtherWidget> createState() =>
+      _TransactionsLogOtherWidgetState();
 }
 
 class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
@@ -65,12 +65,12 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
     _model.searchFieldFocusNode ??= FocusNode();
 
     final requestVM = Provider.of<RequestViewModel>(context, listen: false);
-    final user_id = supabase.auth.currentUser?.id ?? -1;
+    final userId = supabase.auth.currentUser?.id ?? -1;
 
     if (widget.status == 'pending') {
       requestVM.fetchOtherRequests(widget.status ?? 'pending');
     } else {
-      requestVM.fetchOtherAcceptedRequests(user_id as String);
+      requestVM.fetchOtherAcceptedRequests(userId as String);
     }
 
     animationsMap.addAll({
@@ -82,8 +82,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -102,8 +102,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -122,8 +122,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -142,8 +142,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -162,8 +162,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -182,8 +182,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -202,8 +202,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -246,8 +246,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 20.0, 30.0, 10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -290,12 +290,9 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
                   ),
                 ),
 
-
-
-
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 15.0, 30.0, 15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -381,7 +378,7 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
         //         });
 
         //         Navigator.pushReplacementNamed(context, '/homeNav');
-                
+
         //       },
         //       label: Row(
         //         mainAxisSize: MainAxisSize.max,

@@ -17,7 +17,8 @@ import 'package:paw_r_app/view_models/request_view_model.dart';
 
 import 'package:paw_r_app/views/transactions_log_other/transactions_log_other_widget.dart';
 
-class PetTransactModelDetails extends FlutterFlowModel<PetTransactWidgetDetails> {
+class PetTransactModelDetails
+    extends FlutterFlowModel<PetTransactWidgetDetails> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for Checkbox widget.
@@ -54,12 +55,12 @@ class PetTransactModelDetails extends FlutterFlowModel<PetTransactWidgetDetails>
   DateTime? initialDate;
   String? initialDateText = 'Select date';
   String? initialTimeText = 'Select time';
-  String? initialDateTimeText = null;
+  String? initialDateTimeText;
 
   DateTime? finalDate;
   String? finalDateText = 'Select date';
   String? finalTimeText = 'Select time';
-  String? finalDateTimeText = null;
+  String? finalDateTimeText;
 
   Duration? difference;
   String? differenceText = '0 hours and 0 minutes';
@@ -132,31 +133,30 @@ class PetTransactModelDetails extends FlutterFlowModel<PetTransactWidgetDetails>
     return '$hoursStr H :$minutesStr m';
   }
 
-
-  Future<void> acceptRequest(BuildContext context, Request request, String caretakerId) async {
+  Future<void> acceptRequest(
+      BuildContext context, Request request, String caretakerId) async {
     try {
-        await Provider.of<RequestViewModel>(context, listen: false)
-            .acceptRequest(request, caretakerId);
+      await Provider.of<RequestViewModel>(context, listen: false)
+          .acceptRequest(request, caretakerId);
 
-        // Navigator.pushReplacement(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => TransactionsLogOtherWidget()),
-        //   );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => TransactionsLogOtherWidget()),
+      //   );
 
-        Navigator.pop(context);
-
-      } catch (error) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Error accepting request: $error")),
-        );
-      } finally {
-        // do something
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Request Accepted!')),
-        );
-      }
-      
-      print('request accepted: $request.id');
+      Navigator.pop(context);
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error accepting request: $error")),
+      );
+    } finally {
+      // do something
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Request Accepted!')),
+      );
     }
+
+    print('request accepted: $request.id');
+  }
 }

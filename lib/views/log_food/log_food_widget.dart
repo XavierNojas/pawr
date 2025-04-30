@@ -21,7 +21,7 @@ import '../log_food_list/log_food_list_widget.dart';
 
 class LogFoodWidget extends StatefulWidget {
   final Pet pet;
-  const LogFoodWidget({Key? key, required this.pet}) : super(key: key);
+  const LogFoodWidget({super.key, required this.pet});
 
   static String routeName = 'LogFood';
   static String routePath = '/logFood';
@@ -64,8 +64,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -84,8 +84,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -104,8 +104,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -124,8 +124,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -144,8 +144,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -164,8 +164,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -184,8 +184,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -228,8 +228,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 30.0, 30.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -246,8 +246,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 20.0, 30.0, 10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -290,14 +290,14 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 30.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 0.0, 30.0, 30.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               final selectedIndexes = _foodCardModels
@@ -341,8 +341,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50.0,
-                              padding: EdgeInsets.all(8.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsets.all(8.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -355,7 +355,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -366,11 +366,11 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                       ),
 
                       // 👇 Space between the two buttons
-                      SizedBox(width: 16.0),
+                      const SizedBox(width: 16.0),
 
                       Expanded(
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               final selectedIndexes = _foodCardModels
@@ -411,8 +411,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50.0,
-                              padding: EdgeInsets.all(8.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsets.all(8.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               color: Colors.redAccent,
                               textStyle: FlutterFlowTheme.of(context)
@@ -425,7 +425,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -438,8 +438,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 15.0, 30.0, 15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -479,10 +479,10 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                       builder: (context) => LogFoodListWidget(pet: widget.pet)),
                 );
               },
-              child: Icon(Icons.list),
               backgroundColor: FlutterFlowTheme.of(context).accent3,
+              child: Icon(Icons.list),
             ),
-            SizedBox(height: 16), // space between buttons
+            const SizedBox(height: 16), // space between buttons
             FloatingActionButton(
               heroTag: 'fab2',
               onPressed: () async {
@@ -493,8 +493,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                       builder: (context) => LogFoodAddWidget(pet: widget.pet),
                     ));
               },
-              child: Icon(Icons.add),
               backgroundColor: Colors.greenAccent[200],
+              child: Icon(Icons.add),
             ),
           ],
         ),
@@ -558,7 +558,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             model: model,
             updateCallback: () => safeSetState(() {}),
             child: FoodCardWidget(
-              title: '${snack.foodName}',
+              title: snack.foodName,
               portion: double.tryParse(
                   petViewModel.doubleToInteger(snack.amount) ?? '-1'),
               calories: double.tryParse(

@@ -13,7 +13,6 @@ export 'food_card_model.dart';
 
 import 'package:paw_r_app/view_models/pet_view_model.dart';
 
-
 class FoodCardWidget extends StatefulWidget {
   const FoodCardWidget({
     super.key,
@@ -33,7 +32,6 @@ class FoodCardWidget extends StatefulWidget {
   final int? cardId;
 
   get amount => null;
-
 
   @override
   State<FoodCardWidget> createState() => _FoodCardWidgetState();
@@ -65,8 +63,8 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 100.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(0.95, 0.95),
+            begin: const Offset(1.0, 1.0),
+            end: const Offset(0.95, 0.95),
           ),
         ],
       ),
@@ -132,7 +130,8 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16.0),
                 child: Container(
@@ -153,7 +152,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,7 +165,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                       children: [
                         Expanded(
                           child: Text(
-                            widget!.title!,
+                            widget.title!,
                             maxLines: 2,
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
@@ -197,7 +196,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                           child: Visibility(
                             visible: _model.selected ?? true,
                             child: Align(
-                              alignment: AlignmentDirectional(1.0, -1.0),
+                              alignment: const AlignmentDirectional(1.0, -1.0),
                               child: Icon(
                                 Icons.check_circle,
                                 color: FlutterFlowTheme.of(context).primary,
@@ -216,7 +215,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 8.0, 0.0),
                               child: Text(
                                 'Amount: ${widget.portion!}',
@@ -250,12 +249,12 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               child: Text(
-                                (widget!.label!).toString(),
+                                (widget.label!).toString(),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

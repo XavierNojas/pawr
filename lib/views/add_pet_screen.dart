@@ -6,7 +6,7 @@ import '../view_models/contact_view_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AddPetScreen extends StatefulWidget {
-  const AddPetScreen({Key? key}) : super(key: key);
+  const AddPetScreen({super.key});
 
   @override
   State<AddPetScreen> createState() => _AddPetScreenState();
@@ -36,17 +36,17 @@ class _AddPetScreenState extends State<AddPetScreen> {
         loading = true;
       });
 
-      String _weightString = _weightController.text.trim();
+      String weightString = _weightController.text.trim();
 
       // verify if weight has decimal
       if (isDecimal(double.tryParse(_weightController.text.trim()))) {
-        _weightString = _weightString + '.0009';
+        weightString = weightString + '.0009';
       } else {
-        _weightString = _weightString;
+        weightString = weightString;
       }
 
       double? age = double.tryParse(_ageController.text.trim());
-      double? weight = double.tryParse(_weightString);
+      double? weight = double.tryParse(weightString);
 
       // fill user_id with user.id
       // age converts from double to int

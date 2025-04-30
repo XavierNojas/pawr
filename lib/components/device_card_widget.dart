@@ -56,7 +56,7 @@ class _DeviceCardWidgetState extends State<DeviceCardWidget> {
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
           color: valueOrDefault<Color>(
-            widget!.selected!
+            widget.selected!
                 ? FlutterFlowTheme.of(context).primary
                 : FlutterFlowTheme.of(context).secondaryBackground,
             FlutterFlowTheme.of(context).secondaryBackground,
@@ -65,16 +65,17 @@ class _DeviceCardWidgetState extends State<DeviceCardWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 20.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 20.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Image.network(
-                  widget!.image!,
+                  widget.image!,
                   width: 125.0,
                   fit: BoxFit.cover,
                 ),
@@ -84,7 +85,7 @@ class _DeviceCardWidgetState extends State<DeviceCardWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  widget!.title!,
+                  widget.title!,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Manrope',
                         letterSpacing: 0.0,
@@ -92,7 +93,7 @@ class _DeviceCardWidgetState extends State<DeviceCardWidget> {
                       ),
                 ),
                 Text(
-                  widget!.subtitle!,
+                  widget.subtitle!,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Manrope',
                         color: FlutterFlowTheme.of(context).secondaryText,

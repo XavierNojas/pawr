@@ -50,13 +50,13 @@ class _ChartCardWidgetState extends State<ChartCardWidget> {
           color: FlutterFlowTheme.of(context).primary,
           borderRadius: BorderRadius.circular(24.0),
         ),
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.sizeOf(context).width * 1.0,
           height: 250.0,
           child: Stack(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: 150.0,
                 child: FlutterFlowLineChart(
@@ -68,7 +68,7 @@ class _ChartCardWidgetState extends State<ChartCardWidget> {
                         color: FlutterFlowTheme.of(context).white,
                         barWidth: 4.0,
                         isCurved: true,
-                        dotData: FlDotData(show: false),
+                        dotData: const FlDotData(show: false),
                       ),
                     )
                   ],
@@ -76,15 +76,15 @@ class _ChartCardWidgetState extends State<ChartCardWidget> {
                     backgroundColor: FlutterFlowTheme.of(context).primary,
                     showBorder: false,
                   ),
-                  axisBounds: AxisBounds(),
-                  xAxisLabelInfo: AxisLabelInfo(),
-                  yAxisLabelInfo: AxisLabelInfo(),
+                  axisBounds: const AxisBounds(),
+                  xAxisLabelInfo: const AxisLabelInfo(),
+                  yAxisLabelInfo: const AxisLabelInfo(),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -95,7 +95,7 @@ class _ChartCardWidgetState extends State<ChartCardWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Pet Health\n',
@@ -114,17 +114,17 @@ class _ChartCardWidgetState extends State<ChartCardWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(1.0, 1.0),
+                alignment: const AlignmentDirectional(1.0, 1.0),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      20.0, 20.0, 20.0, 10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 0.0, 10.0, 13.0),
                         child: Text(
                           'PAST 7 DAYS',

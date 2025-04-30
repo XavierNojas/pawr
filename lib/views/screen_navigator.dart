@@ -15,8 +15,10 @@ class ScreenNavigator extends StatelessWidget {
     const HomeWidget(),
     const NotifsWidget(),
     const PetManageWidget(),
-    TransactionsNavigator(),
+    const TransactionsNavigator(),
   ];
+
+  ScreenNavigator({super.key});
 
   @override
   Widget build(BuildContext context) {

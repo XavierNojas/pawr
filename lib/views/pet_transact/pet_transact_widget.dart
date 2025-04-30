@@ -17,11 +17,10 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-
 class PetTransactWidget extends StatefulWidget {
   final Pet pet;
 
-  const PetTransactWidget({Key? key, required this.pet}) : super(key: key);
+  const PetTransactWidget({super.key, required this.pet});
 
   static String routeName = 'PetTransact';
   static String routePath = '/petTransact';
@@ -35,7 +34,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-    final animationsMap = <String, AnimationInfo>{};
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -55,8 +54,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
     _model.checkBoxCollect = [];
 
-
-          animationsMap.addAll({
+    animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -65,8 +63,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -85,8 +83,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -105,8 +103,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -117,7 +115,6 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
           ),
         ],
       ),
-
       'foodCardOnPageLoadAnimation0': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -126,8 +123,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 50.0.ms, // Shorter delay
             duration: 200.0.ms, // Faster movement
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -138,7 +135,6 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
           ),
         ],
       ),
-
       'foodCardOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -147,8 +143,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -167,8 +163,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -187,8 +183,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -207,8 +203,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -341,8 +337,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
   Future<void> _verifyEmptyTasks() async {
     setState(() {
-
-       _model.checkBoxCollect = [
+      _model.checkBoxCollect = [
         _model.checkboxValue1,
         _model.checkboxValue2,
         _model.checkboxValue3,
@@ -355,7 +350,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
         _model.checkboxValue10,
         _model.checkboxValue11,
       ];
-      
+
       if (_model.checkBoxCollect.any((value) => value == true) == false) {
         _model.hasEmptyAssignTasks = true;
       } else {
@@ -366,7 +361,9 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
   Future<void> _verifyDateTimeValidity() async {
     setState(() {
-      if (_model.initialDateTimeText == null || _model.finalDateTimeText == null || _model.differenceText == '0 H : 0 m') {
+      if (_model.initialDateTimeText == null ||
+          _model.finalDateTimeText == null ||
+          _model.differenceText == '0 H : 0 m') {
         _model.isDateTimeInvalid = true;
       } else {
         _model.isDateTimeInvalid = false;
@@ -409,26 +406,27 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
+            padding:
+                const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 5.0,
                             color: Color(0x10000000),
@@ -441,7 +439,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -578,14 +576,14 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                 ],
                               ),
                             ),
-                          ].divide(SizedBox(width: 16.0)),
+                          ].divide(const SizedBox(width: 16.0)),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 12.0),
                     child: Text(
                       'Select Date',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -596,12 +594,12 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 5.0,
                             color: Color(0x10000000),
@@ -614,7 +612,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -637,7 +635,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: GestureDetector(
                                         onTap: () async {
                                           await _selectDateTime(context);
@@ -645,12 +643,12 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                         child: Container(
                                           width: 300.0,
                                           decoration: BoxDecoration(
-                                            color: Color(0x10000000),
+                                            color: const Color(0x10000000),
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -662,7 +660,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                                   size: 20.0,
                                                 ),
                                                 Text(
-                                                  _model?.initialDateTimeText ??
+                                                  _model.initialDateTimeText ??
                                                       'Select Date',
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -672,7 +670,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 8.0)),
+                                              ].divide(
+                                                  const SizedBox(width: 8.0)),
                                             ),
                                           ),
                                         ),
@@ -701,7 +700,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: GestureDetector(
                                         onTap: () async {
                                           await _selectDateTimeB(context);
@@ -709,12 +708,12 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                         child: Container(
                                           width: 300.0,
                                           decoration: BoxDecoration(
-                                            color: Color(0x10000000),
+                                            color: const Color(0x10000000),
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -726,7 +725,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                                   size: 20.0,
                                                 ),
                                                 Text(
-                                                  _model?.finalDateTimeText ??
+                                                  _model.finalDateTimeText ??
                                                       'Select Date',
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -736,7 +735,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 8.0)),
+                                              ].divide(
+                                                  const SizedBox(width: 8.0)),
                                             ),
                                           ),
                                         ),
@@ -768,7 +768,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                       ),
                                 ),
                                 Text(
-                                  _model!.differenceText ?? '0 hours',
+                                  _model.differenceText ?? '0 hours',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -800,18 +800,18 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                   ),
                                 ],
                               ),
-                          ].divide(SizedBox(height: 16.0)),
+                          ].divide(const SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 5.0,
                             color: Color(0x10000000),
@@ -824,7 +824,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -907,7 +907,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                         ),
                                       ],
                                     ),
-                                  ].divide(SizedBox(width: 12.0)),
+                                  ].divide(const SizedBox(width: 12.0)),
                                 ),
                                 Text(
                                   '₱${_model.hourlyRateTotal}',
@@ -1001,7 +1001,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                         ),
                                       ],
                                     ),
-                                  ].divide(SizedBox(width: 12.0)),
+                                  ].divide(const SizedBox(width: 12.0)),
                                 ),
                                 Text(
                                   '₱800.00',
@@ -1018,14 +1018,14 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                 ),
                               ],
                             ),
-                          ].divide(SizedBox(height: 16.0)),
+                          ].divide(const SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 12.0),
                     child: Text(
                       'Assign Tasks',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -1036,12 +1036,12 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 5.0,
                             color: Color(0x10000000),
@@ -1054,7 +1054,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -1065,7 +1065,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.medical_services,
                                       color: Colors.green,
                                       size: 24.0,
@@ -1080,7 +1080,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
-                                  ].divide(SizedBox(width: 12.0)),
+                                  ].divide(const SizedBox(width: 12.0)),
                                 ),
                                 Theme(
                                   data: ThemeData(
@@ -1120,15 +1120,15 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0x10000000),
+                                  color: const Color(0x10000000),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -1264,7 +1264,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                           ),
                                         ],
                                       ),
-                                    ].divide(SizedBox(height: 8.0)),
+                                    ].divide(const SizedBox(height: 8.0)),
                                   ),
                                 ),
                               ),
@@ -1276,7 +1276,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    FaIcon(
+                                    const FaIcon(
                                       FontAwesomeIcons.bone,
                                       color: Colors.orange,
                                       size: 24.0,
@@ -1291,7 +1291,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
-                                  ].divide(SizedBox(width: 12.0)),
+                                  ].divide(const SizedBox(width: 12.0)),
                                 ),
                                 Theme(
                                   data: ThemeData(
@@ -1332,15 +1332,15 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0x10000000),
+                                  color: const Color(0x10000000),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -1544,7 +1544,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                           ),
                                         ],
                                       ),
-                                    ].divide(SizedBox(height: 8.0)),
+                                    ].divide(const SizedBox(height: 8.0)),
                                   ),
                                 ),
                               ),
@@ -1556,7 +1556,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.mood,
                                       color: Colors.blue,
                                       size: 24.0,
@@ -1571,7 +1571,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
-                                  ].divide(SizedBox(width: 12.0)),
+                                  ].divide(const SizedBox(width: 12.0)),
                                 ),
                                 Theme(
                                   data: ThemeData(
@@ -1612,15 +1612,15 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0x10000000),
+                                  color: const Color(0x10000000),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -1824,7 +1824,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                           ),
                                         ],
                                       ),
-                                    ].divide(SizedBox(height: 8.0)),
+                                    ].divide(const SizedBox(height: 8.0)),
                                   ),
                                 ),
                               ),
@@ -1848,14 +1848,14 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                   ),
                                 ],
                               ),
-                          ].divide(SizedBox(height: 16.0)),
+                          ].divide(const SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 12.0),
                     child: Text(
                       'Special Instructions',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -1866,12 +1866,12 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 5.0,
                             color: Color(0x10000000),
@@ -1929,7 +1929,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           filled: true,
-                          fillColor: Color(0x05000000),
+                          fillColor: const Color(0x05000000),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Manrope',
@@ -1944,16 +1944,16 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           16.0, 16.0, 16.0, 16.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 5.0,
                               color: Color(0x10000000),
@@ -1966,7 +1966,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2000,19 +2000,18 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-
                                   await _verifyDateTimeValidity();
                                   await _verifyEmptyTasks();
                                   await _model.sendRequest(context, widget.pet);
-                                  
                                 },
                                 text: 'Send Request',
                                 options: FFButtonOptions(
                                   height: 50.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
@@ -2023,7 +2022,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                   elevation: 2.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),

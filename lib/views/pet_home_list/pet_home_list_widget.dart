@@ -15,8 +15,6 @@ import 'package:provider/provider.dart';
 import 'pet_home_list_model.dart';
 export 'pet_home_list_model.dart';
 
-
-
 class PetHomeListWidget extends StatefulWidget {
   const PetHomeListWidget({super.key});
 
@@ -36,7 +34,6 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
   final animationsMap = <String, AnimationInfo>{};
 
   final formKey = GlobalKey<FormState>();
-  
 
   @override
   void initState() {
@@ -52,8 +49,8 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -72,8 +69,8 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -92,8 +89,8 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -112,8 +109,8 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -142,12 +139,12 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          title: Text('Pet Sit'),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            title: const Text('Pet Sit'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: Form(
@@ -157,7 +154,7 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(3.82, 0.89),
+                    alignment: const AlignmentDirectional(3.82, 0.89),
                     child: Image.asset(
                       'assets/images/blurred-drop.png',
                       width: 300.0,
@@ -166,27 +163,30 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30.0, 16.0, 30.0, 10.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 16.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.petListModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: PetListHomeWidget().animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation3']!),
+                            child: const PetListHomeWidget().animateOnPageLoad(
+                                animationsMap['foodCardOnPageLoadAnimation3']!),
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30.0, 16.0, 30.0, 10.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 16.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                           ),

@@ -6,6 +6,8 @@ import '../views/transactions_log/transactions_log_widget.dart';
 import '../views/transactions_log_other/transactions_log_other_widget.dart';
 
 class TransactionsOtherNavigator extends StatefulWidget {
+  const TransactionsOtherNavigator({super.key});
+
   @override
   _TransactionsOtherNavigatorState createState() =>
       _TransactionsOtherNavigatorState();
@@ -44,9 +46,9 @@ class _TransactionsOtherNavigatorState extends State<TransactionsOtherNavigator>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-      backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context); // 👈 Go back when pressed
           },

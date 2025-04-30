@@ -145,16 +145,16 @@ class PetProfileEditModel extends FlutterFlowModel<PetProfileEditWidget> {
   }
 
   Future<void> addNewPet(
-      BuildContext context, GlobalKey<FormState> _formKey, Pet pet) async {
+      BuildContext context, GlobalKey<FormState> formKey, Pet pet) async {
     final petName = petNameTextController.text.trim();
     final petBreed = nameFieldTextController1.text.trim();
     final age = nameFieldTextController5.text.trim();
     var weightString = nameFieldTextController6.text.trim();
 
-    if (_formKey.currentState?.validate() ?? false) {
+    if (formKey.currentState?.validate() ?? false) {
       // verify if weight has decimal
       if (isDecimal(double.tryParse(nameFieldTextController6.text.trim()))) {
-        weightString = weightString + '.0009';
+        weightString = '$weightString.0009';
       } else {
         weightString = weightString;
       }
@@ -177,9 +177,9 @@ class PetProfileEditModel extends FlutterFlowModel<PetProfileEditWidget> {
             .updatePet(updatePet);
         // Navigator.popUntil(context, ModalRoute.withName('/homeNav'));
         Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => PetProfileWidget(pet: updatePet)));
+            context,
+            MaterialPageRoute(
+                builder: (context) => PetProfileWidget(pet: updatePet)));
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Error updating contact: $error")),

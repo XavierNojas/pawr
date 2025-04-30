@@ -52,12 +52,12 @@ class PetTransactModel extends FlutterFlowModel<PetTransactWidget> {
   DateTime? initialDate;
   String? initialDateText = 'Select date';
   String? initialTimeText = 'Select time';
-  String? initialDateTimeText = null;
+  String? initialDateTimeText;
 
   DateTime? finalDate;
   String? finalDateText = 'Select date';
   String? finalTimeText = 'Select time';
-  String? finalDateTimeText = null;
+  String? finalDateTimeText;
 
   Duration? difference;
   String? differenceText = '0 hours and 0 minutes';
@@ -131,7 +131,6 @@ class PetTransactModel extends FlutterFlowModel<PetTransactWidget> {
     print(trueIndexes);
     print(result);
 
-
     final startDate = DateTime(
       initialDateA.year,
       initialDateA.month,
@@ -153,7 +152,9 @@ class PetTransactModel extends FlutterFlowModel<PetTransactWidget> {
       finish_date: endDate.toIso8601String(),
       status: 'pending',
       rate_type: (isHourlySelected) ? 'hourly' : 'onetime',
-      total: (isHourlySelected) ? hourlyRateTotal.toString() : oneTimeValue.toString(),
+      total: (isHourlySelected)
+          ? hourlyRateTotal.toString()
+          : oneTimeValue.toString(),
       instructions: textController.text.trim(),
       duration: difference?.inSeconds,
       tasks: result,

@@ -1,4 +1,3 @@
-
 import '/components/food_card_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -39,7 +38,7 @@ import 'package:paw_r_app/views/transactions_tab_other.dart';
 class TransactionsLogWidget extends StatefulWidget {
   final String? status;
 
-  const TransactionsLogWidget({Key? key, required this.status}) : super(key: key);
+  const TransactionsLogWidget({super.key, required this.status});
 
   static String routeName = 'LogFood';
   static String routePath = '/logFood';
@@ -80,8 +79,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -100,8 +99,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -120,8 +119,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -140,8 +139,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -160,8 +159,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -180,8 +179,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -200,8 +199,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -244,8 +243,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 20.0, 30.0, 10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -288,10 +287,9 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                   ),
                 ),
 
-
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 15.0, 30.0, 15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -357,8 +355,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                     .toList();
 
                 final selectedIds = selectedIndexes
-                    .map((index) =>
-                        _transactionCardModels[index].widget?.cardId)
+                    .map(
+                        (index) => _transactionCardModels[index].widget?.cardId)
                     .whereType<int>() // filters out nulls
                     .toList();
 
@@ -377,12 +375,11 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                 });
 
                 Navigator.pushReplacementNamed(context, '/homeNav');
-                
               },
               label: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.delete_rounded,
                     color: Colors.white,
                     size: 24.0,
@@ -396,13 +393,13 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                           fontWeight: FontWeight.w600,
                         ),
                   ),
-                ].divide(SizedBox(width: 8.0)),
+                ].divide(const SizedBox(width: 8.0)),
               ),
             ),
 
             // 👇 Space between the two buttons
-            
-            SizedBox(height: 16.0),
+
+            const SizedBox(height: 16.0),
 
             FloatingActionButton.extended(
               heroTag: 'fab1',
@@ -413,13 +410,13 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TransactionsOtherNavigator()),
+                      builder: (context) => TransactionsOtherNavigator()),
                 );
               },
               label: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.attach_money_rounded,
                     color: Colors.white,
                   ),
@@ -432,7 +429,7 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                           fontWeight: FontWeight.w600,
                         ),
                   ),
-                ].divide(SizedBox(width: 8.0)),
+                ].divide(const SizedBox(width: 8.0)),
               ),
             ),
           ],

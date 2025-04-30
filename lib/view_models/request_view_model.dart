@@ -193,16 +193,16 @@ class RequestViewModel extends ChangeNotifier {
   // }
 
   Future<void> fetchRequests(String state) async {
-    final user_id = supabase.auth.currentUser?.id ?? -1;
+    final userId = supabase.auth.currentUser?.id ?? -1;
 
     isLoading = true;
 
     // fetch requests that are pending
     try {
-      final data =
-          await supabase.from('requests')
+      final data = await supabase
+          .from('requests')
           .select()
-          .eq('user_id', user_id)
+          .eq('user_id', userId)
           .eq('status', state)
           .order('created_at', ascending: false);
       requests = (data as List)
@@ -233,12 +233,8 @@ class RequestViewModel extends ChangeNotifier {
           .single(); // Fetch a single pet based on ID
 
       print(data);
-      
-      if (data != null) {
-        return Pet.fromMap(data);
-      } else {
-        return null; // No pet found with that ID
-      }
+
+      return Pet.fromMap(data);
     } catch (error) {
       print('Error fetching pet details: $error');
       return null;
@@ -259,19 +255,17 @@ class RequestViewModel extends ChangeNotifier {
     print(requestIds);
   }
 
-
-
   Future<void> fetchOtherRequests(String state) async {
-    final user_id = supabase.auth.currentUser?.id ?? -1;
+    final userId = supabase.auth.currentUser?.id ?? -1;
 
     isLoading = true;
 
     // fetch requests that are pending
     try {
-      final data =
-          await supabase.from('requests')
+      final data = await supabase
+          .from('requests')
           .select()
-          .neq('user_id', user_id)
+          .neq('user_id', userId)
           .eq('status', state)
           .order('modified_date', ascending: false);
       otherRequests = (data as List)
@@ -285,14 +279,14 @@ class RequestViewModel extends ChangeNotifier {
   }
 
   Future<void> fetchOtherAcceptedRequests(String userId) async {
-    final user_id = supabase.auth.currentUser?.id ?? -1;
+    final userId = supabase.auth.currentUser?.id ?? -1;
 
     isLoading = true;
 
     // fetch requests that are pending
     try {
-      final data =
-          await supabase.from('requests')
+      final data = await supabase
+          .from('requests')
           .select()
           .eq('caretaker_id', userId)
           .eq('status', 'accepted')
@@ -307,7 +301,6 @@ class RequestViewModel extends ChangeNotifier {
     }
   }
 
-
   Future<UserDetails?> fetchOwnerDetails(String? ownerId) async {
     try {
       final data = await supabase
@@ -317,19 +310,14 @@ class RequestViewModel extends ChangeNotifier {
           .single(); // Fetch a single pet based on ID
 
       print(data);
-      
-      if (data != null) {
-        return UserDetails.fromMap(data);
-      } else {
-        return null; // No pet found with that ID
-      }
+
+      return UserDetails.fromMap(data);
     } catch (error) {
       print('Error fetching pet details: $error');
       return null;
     }
   }
 
-  
   // Future<void> updatePet(Pet pet) async {
   //   try {
   //     await supabase.from('pets').update(pet.toMap()).eq('id', pet.id!);
@@ -340,20 +328,19 @@ class RequestViewModel extends ChangeNotifier {
   // }
 
   Future<void> acceptRequest(Request request, String caretakerId) async {
-     final formattedDate = DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now().toUtc()) + '+00';
+    final formattedDate =
+        '${DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now().toUtc())}+00';
 
     try {
-      await supabase.from('requests')
-      .update({
-        'status': 'accepted', 
-        'caretaker_id': caretakerId, 
+      await supabase.from('requests').update({
+        'status': 'accepted',
+        'caretaker_id': caretakerId,
         'modified_date': formattedDate
-        }) // Only update the status
-      .eq('id', request.id!);
+      }) // Only update the status
+          .eq('id', request.id!);
       await fetchOtherRequests('pending');
     } catch (error) {
       print('Error updating contact: $error');
     }
   }
-
 }

@@ -71,7 +71,7 @@ class NotifsModel {
       } else {
         debugPrint('NotifsModel: Processed reminders list is empty.');
       }
-    } catch (e, stackTrace) {
+    } catch (e) {
       // Catch error and stack trace
       debugPrint('Error fetching reminders: $e');
       // Optionally log the stack trace for detailed debugging

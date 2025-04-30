@@ -52,7 +52,7 @@ class _ChipWidgetState extends State<ChipWidget> {
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
           color: valueOrDefault<Color>(
-            widget!.selected!
+            widget.selected!
                 ? FlutterFlowTheme.of(context).primary
                 : FlutterFlowTheme.of(context).secondaryBackground,
             FlutterFlowTheme.of(context).secondaryBackground,
@@ -61,18 +61,19 @@ class _ChipWidgetState extends State<ChipWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
               child: Text(
-                widget!.text!,
+                widget.text!,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Manrope',
-                      color: widget!.selected!
+                      color: widget.selected!
                           ? FlutterFlowTheme.of(context).primary
                           : FlutterFlowTheme.of(context).secondaryText,
                       fontSize: 20.0,

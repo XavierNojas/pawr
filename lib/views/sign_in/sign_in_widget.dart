@@ -35,7 +35,7 @@ class _SignInWidgetState extends State<SignInWidget>
 
   final animationsMap = <String, AnimationInfo>{};
 
-  AuthMode _authMode = AuthMode.signIn;
+  final AuthMode _authMode = AuthMode.signIn;
 
   final formKey = GlobalKey<FormState>();
 
@@ -109,8 +109,8 @@ class _SignInWidgetState extends State<SignInWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -152,8 +152,8 @@ class _SignInWidgetState extends State<SignInWidget>
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Column(children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        30.0, 15.0, 30.0, 15.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -198,7 +198,7 @@ class _SignInWidgetState extends State<SignInWidget>
               gradient: LinearGradient(
                 colors: [
                   FlutterFlowTheme.of(context).primary,
-                  Color(0xFF3A7BD5)
+                  const Color(0xFF3A7BD5)
                 ],
                 stops: const [0.0, 1.0],
                 begin: const AlignmentDirectional(1.0, 1.0),
@@ -223,7 +223,8 @@ class _SignInWidgetState extends State<SignInWidget>
           ),
           Column(children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -261,7 +262,7 @@ class _SignInWidgetState extends State<SignInWidget>
               gradient: LinearGradient(
                 colors: [
                   FlutterFlowTheme.of(context).primary,
-                  Color(0xFF3A7BD5)
+                  const Color(0xFF3A7BD5)
                 ],
                 stops: const [0.0, 1.0],
                 begin: const AlignmentDirectional(1.0, 1.0),
@@ -337,7 +338,7 @@ class _SignInWidgetState extends State<SignInWidget>
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(
                         0.0, 0.0, 0.0, 16.0),
-                    child: Container(
+                    child: SizedBox(
                       width: double.infinity,
                       child: TextFormField(
                         controller: _model.emailAddressTextController,
@@ -399,7 +400,7 @@ class _SignInWidgetState extends State<SignInWidget>
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(
                         0.0, 0.0, 0.0, 16.0),
-                    child: Container(
+                    child: SizedBox(
                       width: double.infinity,
                       child: TextFormField(
                         controller: _model.passwordTextController,

@@ -26,7 +26,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LogFoodListWidget extends StatefulWidget {
   final Pet pet;
-  const LogFoodListWidget({Key? key, required this.pet}) : super(key: key);
+  const LogFoodListWidget({super.key, required this.pet});
 
   static String routeName = 'LogFood';
   static String routePath = '/logFood';
@@ -65,8 +65,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -85,8 +85,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -105,8 +105,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -125,8 +125,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -145,8 +145,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -165,8 +165,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -185,8 +185,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -229,8 +229,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 20.0, 30.0, 10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -273,8 +273,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 15.0, 30.0, 15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -366,8 +366,8 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
     });
   }
 
-  Widget cardTemplate(
-      BuildContext context, FoodLog snack, FoodCardModel model, int index, PetViewModel petViewModel) {
+  Widget cardTemplate(BuildContext context, FoodLog snack, FoodCardModel model,
+      int index, PetViewModel petViewModel) {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 10.0),
       child: wrapWithModel(
@@ -400,18 +400,20 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Amount: ${double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1')}',
+                      Text(
+                          'Amount: ${double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1')}',
                           style: Theme.of(context).textTheme.bodySmall),
-                      Text('Calories: ${double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1')}',
+                      Text(
+                          'Calories: ${double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1')}',
                           style: Theme.of(context).textTheme.bodySmall),
                       Text('Glycemic: ${snack.gLoad}',
                           style: Theme.of(context).textTheme.bodySmall),
                     ],
                   ),
                   Text(
-                    'Created at: ${snack.created_at}' ,
+                    'Created at: ${snack.created_at}',
                     style: Theme.of(context).textTheme.bodySmall,
-                    ),
+                  ),
                 ],
               ),
             ),

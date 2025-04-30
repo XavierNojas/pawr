@@ -16,7 +16,6 @@ import 'package:paw_r_app/models/user.dart';
 
 import 'package:paw_r_app/view_models/request_view_model.dart';
 
-
 import '/flutter_flow/flutter_flow_animations.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -29,7 +28,13 @@ class PetTransactWidgetDetails extends StatefulWidget {
   final UserDetails ownerDetails;
   final UserDetails careTakerDetails;
 
-  const PetTransactWidgetDetails({Key? key, required this.request, required this.petId, required this.pet, required this.ownerDetails, required this.careTakerDetails})
+  const PetTransactWidgetDetails(
+      {Key? key,
+      required this.request,
+      required this.petId,
+      required this.pet,
+      required this.ownerDetails,
+      required this.careTakerDetails})
       : super(key: key);
 
   static String routeName = 'PetTransact';
@@ -85,7 +90,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
 
     isOwner = widget.ownerDetails.userId == supabase.auth.currentUser?.id;
 
-      animationsMap.addAll({
+    animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -146,7 +151,6 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
           ),
         ],
       ),
-
       'foodCardOnPageLoadAnimation0': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -167,7 +171,6 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
           ),
         ],
       ),
-
       'foodCardOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -305,7 +308,6 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
@@ -590,10 +592,8 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                           ),
                     ),
                   ),
-                  
-                  
-                  
-                                   Padding(
+
+                  Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Container(
                       width: double.infinity,
@@ -787,217 +787,213 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                     ),
                   ),
 
-
-
                   if (!isOwner && widget.request.status == 'accepted')
-
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
-                    child: Text(
-                      'Owner Contact Info',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Manrope',
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 24.0, 16.0, 12.0),
+                      child: Text(
+                        'Owner Contact Info',
+                        style:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  fontFamily: 'Manrope',
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                      ),
                     ),
-                  ),
 
                   if (isOwner && widget.request.status == 'accepted')
-
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
-                    child: Text(
-                      'Caretaker Contact Info',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Manrope',
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 24.0, 16.0, 12.0),
+                      child: Text(
+                        'Caretaker Contact Info',
+                        style:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  fontFamily: 'Manrope',
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                      ),
                     ),
-                  ),
 
                   // if not owner and status is accepted then display owner details
                   if (!isOwner && widget.request.status == 'accepted')
-
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 5.0,
-                            color: Color(0x10000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: 80.0,
-                              height: 80.0,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/user.png',
-                                  ).image,
-                                ),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 2.0,
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5.0,
+                              color: Color(0x10000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: 80.0,
+                                height: 80.0,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: Image.asset(
+                                      'assets/images/user.png',
+                                    ).image,
+                                  ),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    widget.ownerDetails.username,
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                  Text(
-                                    '${widget.ownerDetails.email}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Text(
-                                    '${widget.ownerDetails.phone}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ],
+                              Expanded(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      widget.ownerDetails.username,
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    Text(
+                                      '${widget.ownerDetails.email}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      '${widget.ownerDetails.phone}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ].divide(SizedBox(width: 16.0)),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
                         ),
                       ),
                     ),
-                  ),
 
                   // if owner and status is accepted then display careTaker
                   if (isOwner && widget.request.status == 'accepted')
-
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 5.0,
-                            color: Color(0x10000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: 80.0,
-                              height: 80.0,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/user.png',
-                                  ).image,
-                                ),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 2.0,
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5.0,
+                              color: Color(0x10000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: 80.0,
+                                height: 80.0,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: Image.asset(
+                                      'assets/images/user.png',
+                                    ).image,
+                                  ),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    widget.careTakerDetails.username,
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                  Text(
-                                    widget.careTakerDetails.email,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Text(
-                                    widget.careTakerDetails.phone,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ],
+                              Expanded(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      widget.careTakerDetails.username,
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    Text(
+                                      widget.careTakerDetails.email,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      widget.careTakerDetails.phone,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ].divide(SizedBox(width: 16.0)),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-
-
 
                   Padding(
                     padding:
@@ -1011,7 +1007,6 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                           ),
                     ),
                   ),
-
 
                   Padding(
                     padding: EdgeInsets.all(16.0),
@@ -1087,8 +1082,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                       ),
                     ),
                   ),
-                  
-                  
+
                   // Padding(
                   //   padding:
                   //       EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
@@ -1102,7 +1096,6 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                   //   ),
                   // ),
 
-                  
                   Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Container(
@@ -1178,7 +1171,6 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                     ),
                   ),
 
-
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
@@ -1191,8 +1183,6 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                           ),
                     ),
                   ),
-
- 
 
                   Padding(
                     padding: EdgeInsets.all(16.0),
@@ -1223,9 +1213,9 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                     (widget.request.instructions == null) 
-                                     ? '${widget.request.instructions}' 
-                                     : 'No instructions',
+                                    (widget.request.instructions == null)
+                                        ? '${widget.request.instructions}'
+                                        : 'No instructions',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -1246,43 +1236,42 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                   ),
 
                   if (!isOwner && widget.request.status == 'pending')
-
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          _model.acceptRequest(context, widget.request, supabase.auth.currentUser!.id);
-                        },
-                        text: 'Accept Request',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 50.0,
-                          padding: EdgeInsets.all(8.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Manrope',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    fontSize: 17.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            _model.acceptRequest(context, widget.request,
+                                supabase.auth.currentUser!.id);
+                          },
+                          text: 'Accept Request',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 50.0,
+                            padding: EdgeInsets.all(8.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 20.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Manrope',
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  fontSize: 17.0,
+                                  letterSpacing: 0.0,
+                                ),
+                            elevation: 0.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(12.0),
                           ),
-                          borderRadius: BorderRadius.circular(12.0),
                         ),
                       ),
                     ),
-                  ),
-
-
                 ],
               ),
             ),
@@ -1297,42 +1286,44 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
 
     return Column(
       children: taskList.map((task) {
-        return (['Health','Food', 'Mood'].contains(task)) 
-        ? Padding(
-          padding: const EdgeInsets.only(bottom: 8.0), // Add space between rows
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                task,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Manrope',
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                      color: FlutterFlowTheme.of(context).primary,
+        return (['Health', 'Food', 'Mood'].contains(task))
+            ? Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 8.0), // Add space between rows
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      task,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Manrope',
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w600,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
                     ),
-              ),
-            ],
-          ),
-        ) 
-        : Padding(
-          padding: const EdgeInsets.only(bottom: 8.0), // Add space between rows
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '  ${task}',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Manrope',
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
+                  ],
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 8.0), // Add space between rows
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '  ${task}',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Manrope',
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
-              ),
-            ],
-          ),
-        );
+                  ],
+                ),
+              );
       }).toList(),
     );
   }

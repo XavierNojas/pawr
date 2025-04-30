@@ -10,7 +10,7 @@ class HealthRecordsTable extends SupabaseTable<HealthRecordsRow> {
 }
 
 class HealthRecordsRow extends SupabaseDataRow {
-  HealthRecordsRow(Map<String, dynamic> data) : super(data);
+  HealthRecordsRow(super.data);
 
   @override
   SupabaseTable get table => HealthRecordsTable();

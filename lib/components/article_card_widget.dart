@@ -49,7 +49,7 @@ class _ArticleCardWidgetState extends State<ArticleCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.0),
         child: Container(
@@ -64,20 +64,21 @@ class _ArticleCardWidgetState extends State<ArticleCardWidget> {
             children: [
               Expanded(
                 child: Image.asset(
-                  widget!.image!,
+                  widget.image!,
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 100.0,
                   fit: BoxFit.cover,
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(14.0, 14.0, 14.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(14.0, 14.0, 14.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
                       child: Text(
-                        widget!.title!,
+                        widget.title!,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Manrope',
                               letterSpacing: 0.0,
@@ -89,14 +90,15 @@ class _ArticleCardWidgetState extends State<ArticleCardWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(14.0, 8.0, 14.0, 14.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(14.0, 8.0, 14.0, 14.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 5.0, 0.0),
                       child: FaIcon(
                         FontAwesomeIcons.clock,
                         color: FlutterFlowTheme.of(context).accent2,
@@ -104,7 +106,7 @@ class _ArticleCardWidgetState extends State<ArticleCardWidget> {
                       ),
                     ),
                     Text(
-                      widget!.readingTime!,
+                      widget.readingTime!,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Manrope',
                             color: FlutterFlowTheme.of(context).accent2,

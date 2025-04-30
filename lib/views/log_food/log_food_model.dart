@@ -80,7 +80,7 @@ class LogFoodModel extends FlutterFlowModel<LogFoodWidget> {
     } finally {
       // Optionally show a SnackBar or success message
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Selected foods saved successfully!')),
+        const SnackBar(content: Text('Selected foods saved successfully!')),
       );
     }
   }

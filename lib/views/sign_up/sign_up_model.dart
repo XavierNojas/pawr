@@ -52,17 +52,16 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   FocusNode? passwordConfirmFocusNode;
   TextEditingController? passwordConfirmTextController;
   late bool passwordConfirmVisibility;
-  String? Function(BuildContext, String?)?passwordConfirmTextControllerValidator;
+  String? Function(BuildContext, String?)?
+      passwordConfirmTextControllerValidator;
   // State field(s) for UserType widget.
   String? userTypeValue;
   FormFieldController<String>? userTypeValueController;
 
-
   FocusNode? phoneFocusNode;
   TextEditingController? phoneTextController;
   late bool phoneVisibility;
-  String? Function(BuildContext, String?)?phoneTextControllerValidator;
-
+  String? Function(BuildContext, String?)? phoneTextControllerValidator;
 
   String? Function(String?)? setPassword;
   String? Function(String?)? fetchPassword;
@@ -129,7 +128,6 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
       }
       return null;
     };
-
   }
 
   @override
@@ -162,8 +160,7 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   }
 
   Future<void> registerUser(
-    BuildContext context, GlobalKey<FormState> formKey) async {
-
+      BuildContext context, GlobalKey<FormState> formKey) async {
     final password = passwordTextController.text.trim();
     final email = emailAddressTextController.text.trim();
     final confirmPassword = passwordTextController.text.trim();
@@ -171,7 +168,6 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
     final phone = phoneTextController.text.trim();
 
     userTypeValue = 'Pet Owner';
-    
 
     if (!formKey.currentState!.validate()) return;
 
@@ -196,16 +192,16 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
       if (response.user != null) {
         // add username and usertype to a new table
 
-        final user_id = (response.user!.id).toString();
+        final userId = (response.user!.id).toString();
 
         final newUser = UserDetails(
           username: username,
           userType: userTypeValue ?? 'null',
-          userId: user_id,
+          userId: userId,
           email: email,
           phone: phone,
         );
-        
+
         try {
           await Provider.of<PetViewModel>(context, listen: false)
               .addUser(newUser);
@@ -226,7 +222,6 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
         }
 
         return;
-
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Registration failed.")),

@@ -22,14 +22,11 @@ import '../views/pet_transact/pet_transact_widget.dart';
 import '../views/pet_home_list/pet_home_list_widget.dart';
 import '../views/transactions_log/transactions_log_widget.dart';
 
-
-
 class AppRouter extends StatelessWidget {
-  const AppRouter({Key? key}) : super(key: key);
+  const AppRouter({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Pawr!',
       debugShowCheckedModeBanner: false,
@@ -38,11 +35,11 @@ class AppRouter extends StatelessWidget {
       routes: {
         '/': (context) => const AuthChecker(),
         '/signIn': (context) => const SignInWidget(),
-        '/signUp' : (context) => const SignUpWidget(),
-        '/home' : (context) => const HomeWidget(),
-        '/petManage' : (context) => const PetManageWidget(),
-        '/homeNav' : (context) => ScreenNavigator(),
-        '/petHomeList' : (context) => const PetHomeListWidget(),
+        '/signUp': (context) => const SignUpWidget(),
+        '/home': (context) => const HomeWidget(),
+        '/petManage': (context) => const PetManageWidget(),
+        '/homeNav': (context) => ScreenNavigator(),
+        '/petHomeList': (context) => const PetHomeListWidget(),
         '/phonebook': (context) => const ContactListScreen(),
         '/petList': (context) => const PetListScreen(),
         '/addPet': (context) => const AddPetScreen(),
@@ -57,7 +54,7 @@ class AppRouter extends StatelessWidget {
 }
 
 class AuthChecker extends StatelessWidget {
-  const AuthChecker({Key? key}) : super(key: key);
+  const AuthChecker({super.key});
 
   @override
   Widget build(BuildContext context) {

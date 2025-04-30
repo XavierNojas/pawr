@@ -22,7 +22,7 @@ import 'package:paw_r_app/views/pet_profile/pet_profile_widget.dart';
 class PetProfileEditWidget extends StatefulWidget {
   final Pet pet;
 
-  const PetProfileEditWidget({Key? key, required this.pet}) : super(key: key);
+  const PetProfileEditWidget({super.key, required this.pet});
 
   static String routeName = 'PetProfileEdit';
   static String routePath = '/petProfileEdit';
@@ -40,7 +40,6 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
   final animationsMap = <String, AnimationInfo>{};
 
   final formKey = GlobalKey<FormState>();
-  
 
   @override
   void initState() {
@@ -72,15 +71,13 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
     _model.nameFieldTextController1.text = widget.pet.breed;
     _model.nameFieldTextController5.text = (widget.pet.age).toString();
     // _model.nameFieldTextController6.text = _model.isFirstDecimalDigitZero(widget.pet.weight);
-   
-   double? weight = widget.pet.weight;
-    // Check if the decimal part is close to 0
-      if (_model.isFirstDecimalDigitZero(weight)) {
-        weight = weight?.toInt().toDouble(); // Remove decimal if it's .0
-      }
-    _model.nameFieldTextController6.text = weight.toString();
 
-      
+    double? weight = widget.pet.weight;
+    // Check if the decimal part is close to 0
+    if (_model.isFirstDecimalDigitZero(weight)) {
+      weight = weight?.toInt().toDouble(); // Remove decimal if it's .0
+    }
+    _model.nameFieldTextController6.text = weight.toString();
 
     animationsMap.addAll({
       'textFieldOnPageLoadAnimation1': AnimationInfo(
@@ -91,8 +88,8 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -111,8 +108,8 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -131,8 +128,8 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -151,8 +148,8 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -171,8 +168,8 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -191,8 +188,8 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -223,21 +220,22 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
       child: Scaffold(
           extendBodyBehindAppBar: true,
           appBar: AppBar(
-  title: const Text('Pet Profile'),
-  backgroundColor: Colors.transparent,
-  elevation: 0,
-  leading: IconButton(
-    icon: const Icon(Icons.arrow_back, color: Colors.black),
-    onPressed: () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => PetProfileWidget(pet: widget.pet), // replace with your widget
-        ),
-      );
-    },
-  ),
-),
+            title: const Text('Pet Profile'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PetProfileWidget(
+                        pet: widget.pet), // replace with your widget
+                  ),
+                );
+              },
+            ),
+          ),
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).accent1,
           body: Form(
@@ -247,7 +245,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(3.82, 0.89),
+                    alignment: const AlignmentDirectional(3.82, 0.89),
                     child: Image.asset(
                       'assets/images/blurred-drop.png',
                       width: 300.0,
@@ -256,13 +254,13 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 30.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -280,7 +278,8 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30.0, 16.0, 30.0, 10.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 16.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                           ),
@@ -294,13 +293,14 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                         //   ),
                         // ),
                         const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30.0, 16.0, 30.0, 10.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 16.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 0.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -323,7 +323,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -338,14 +338,14 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -374,7 +374,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 10.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -397,7 +397,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -412,14 +412,14 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 3.0,
                                       ),
@@ -448,14 +448,14 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 10.0, 30.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.nameFieldTextController5,
@@ -474,7 +474,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                             letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -491,7 +491,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -499,7 +499,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -528,7 +528,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.nameFieldTextController6,
@@ -547,7 +547,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                             letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -564,7 +564,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -572,7 +572,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                             BorderRadius.circular(16.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 3.0,
                                         ),
@@ -606,10 +606,10 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           await _model.addNewPet(context, formKey, widget.pet);
@@ -628,9 +628,9 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 70.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -640,7 +640,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                   ),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 0.0,
                           ),

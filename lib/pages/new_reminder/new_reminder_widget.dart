@@ -1,20 +1,14 @@
-import 'package:paw_r_app/views/home/home_widget.dart';
 import '../../view_models/navigation_view_model.dart';
-import '../../views/screen_navigator.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:intl/intl.dart';
 import 'new_reminder_model.dart';
-import 'package:collection/collection.dart'; // Import collection package
+// Import collection package
 export 'new_reminder_model.dart';
 
 /// A StatefulWidget for creating new reminders.

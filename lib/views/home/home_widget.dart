@@ -154,21 +154,22 @@ class _HomeWidgetState extends State<HomeWidget> {
           top: true,
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 60.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 60.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildHeaderSection(),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   _buildHealthOverviewSection(), // Pet Sit is now only here
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   _buildPetDetailsSection(),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   _buildTodaysActivitiesSection(),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   _buildUpcomingSection(),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   _buildQuickActionsSection(),
                 ],
               ),
@@ -188,15 +189,15 @@ class _HomeWidgetState extends State<HomeWidget> {
         gradient: LinearGradient(
           colors: [
             FlutterFlowTheme.of(context).primary,
-            Color(0xFF3A7BD5),
+            const Color(0xFF3A7BD5),
           ],
-          stops: [0.0, 1.0],
-          begin: AlignmentDirectional(1.0, 1.0),
-          end: AlignmentDirectional(-1.0, -1.0),
+          stops: const [0.0, 1.0],
+          begin: const AlignmentDirectional(1.0, 1.0),
+          end: const AlignmentDirectional(-1.0, -1.0),
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,8 +221,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                     FlutterFlowIconButton(
                       borderRadius: 20.0,
                       buttonSize: 40.0,
-                      fillColor: Color(0x33FFFFFF),
-                      icon: Icon(
+                      fillColor: const Color(0x33FFFFFF),
+                      icon: const Icon(
                         Icons.logout,
                         color: Colors.white,
                         size: 20.0,
@@ -230,12 +231,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                         await _model.logout(context);
                       },
                     ),
-                  ].divide(SizedBox(width: 12.0)),
+                  ].divide(const SizedBox(width: 12.0)),
                 ),
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -255,8 +257,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Your pet is looking healthy today.',
                           style:
@@ -275,7 +277,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         width: 80.0,
                         height: 80.0,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
                               'assets/images/no_bg_Xavier_2x2.png',
@@ -289,7 +291,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(1.0, 1.0),
+                        alignment: const AlignmentDirectional(1.0, 1.0),
                         child: Container(
                           width: 24.0,
                           height: 24.0,
@@ -301,7 +303,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               width: 2.0,
                             ),
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.check,
                             color: Colors.white,
                             size: 14.0,
@@ -321,7 +323,7 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   Widget _buildPetDetailsSection() {
     if (isLoading) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     }
@@ -338,73 +340,85 @@ class _HomeWidgetState extends State<HomeWidget> {
       );
     }
 
-    final pet = pets.first; // Assuming you want to display the first pet
-    final String name = pet['name'] ?? 'Unknown';
-    final String breed = pet['breed'] ?? 'Unknown';
-    final int age = pet['age'] ?? 0;
-    final double weight = pet['weight'] ?? 0.0;
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: pets.length,
+      itemBuilder: (context, index) {
+        final pet = pets[index];
+        final String name = pet['name'] ?? 'Unknown';
+        final String breed = pet['breed'] ?? 'Unknown';
+        final int age = pet['age'] ?? 0;
+        final double weight = pet['weight'] ?? 0.0;
 
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 10.0,
-            color: Color(0x1A000000),
-            offset: Offset(0.0, 2.0),
-          ),
-        ],
-        borderRadius: BorderRadius.circular(24.0),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              width: 80.0,
-              height: 80.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('assets/images/Urie.jpg'),
-                ),
-              ),
-            ),
-            SizedBox(width: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: FlutterFlowTheme.of(context).titleMedium.override(
-                        fontFamily: 'Manrope',
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                SizedBox(height: 4.0),
-                Text(
-                  '$breed • $age years old',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Manrope',
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                      ),
-                ),
-                SizedBox(height: 4.0),
-                Text(
-                  'Weight: ${weight.toStringAsFixed(1)} kg',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Manrope',
-                        color: FlutterFlowTheme.of(context).secondary,
-                      ),
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+              boxShadow: const [
+                BoxShadow(
+                  blurRadius: 10.0,
+                  color: Color(0x1A000000),
+                  offset: Offset(0.0, 2.0),
                 ),
               ],
+              borderRadius: BorderRadius.circular(24.0),
             ),
-          ],
-        ),
-      ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                            'assets/images/Urie.jpg'), // Replace with dynamic image if available
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16.0),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  fontFamily: 'Manrope',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                      ),
+                      const SizedBox(height: 4.0),
+                      Text(
+                        '$breed • $age years old',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Manrope',
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                            ),
+                      ),
+                      const SizedBox(height: 4.0),
+                      Text(
+                        'Weight: ${weight.toStringAsFixed(1)} kg',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Manrope',
+                              color: FlutterFlowTheme.of(context).secondary,
+                            ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -428,7 +442,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        NotifsWidget(), // Navigate to the Notifs page
+                        const NotifsWidget(), // Navigate to the Notifs page
                   ),
                 );
               },
@@ -443,9 +457,9 @@ class _HomeWidgetState extends State<HomeWidget> {
             ),
           ],
         ),
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
         isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : reminders.isEmpty
                 ? Center(
                     child: Text(
@@ -458,7 +472,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   )
                 : ListView.builder(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: reminders.length,
                     itemBuilder: (context, index) {
                       final reminder = reminders[index];
@@ -480,15 +494,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                           getStatusColor(timeRemaining, isCompleted, context);
 
                       return Padding(
-                        padding: EdgeInsets.only(bottom: 12.0),
+                        padding: const EdgeInsets.only(bottom: 12.0),
                         child: Dismissible(
                           key: Key(reminder['id'].toString()),
                           direction: DismissDirection.endToStart,
                           background: Container(
                             color: Colors.red,
                             alignment: AlignmentDirectional.centerEnd,
-                            padding: EdgeInsetsDirectional.only(end: 20.0),
-                            child: Icon(
+                            padding:
+                                const EdgeInsetsDirectional.only(end: 20.0),
+                            child: const Icon(
                               Icons.delete,
                               color: Colors.white,
                             ),
@@ -504,14 +519,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 reminders.removeAt(index);
                               });
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content:
                                       Text('Reminder deleted successfully.'),
                                 ),
                               );
                             } catch (error) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text('Failed to delete reminder.'),
                                 ),
                               );
@@ -525,7 +540,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ? FlutterFlowTheme.of(context).alternate
                                     : FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x1A000000),
@@ -539,7 +554,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -565,7 +580,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             size: 24.0,
                                           ),
                                         ),
-                                        SizedBox(width: 12.0),
+                                        const SizedBox(width: 12.0),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -585,7 +600,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         : TextDecoration.none,
                                                   ),
                                             ),
-                                            SizedBox(height: 4.0),
+                                            const SizedBox(height: 4.0),
                                             // Time Left and Type
                                             Text(
                                               '$timeRemaining [${type.toUpperCase()}]',
@@ -602,7 +617,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                             ),
-                                            SizedBox(height: 4.0),
+                                            const SizedBox(height: 4.0),
                                             // Description
                                             Text(
                                               description,
@@ -650,7 +665,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           });
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            SnackBar(
+                                            const SnackBar(
                                               content: Text(
                                                   'Failed to update reminder status.'),
                                             ),
@@ -732,12 +747,12 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   Widget _buildHealthOverviewSection() {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 10.0,
               color: Color(0x1A000000),
@@ -747,7 +762,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -771,7 +786,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         // Navigate to the Pet Sit page
                         Navigator.pushNamed(context, '/petHomeList');
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text('Pet Sit card tapped'),
                           ),
                         );
@@ -780,8 +795,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                         width: 100.0,
                         height: 150.0,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF8F8F8),
-                          boxShadow: [
+                          color: const Color(0xFFF8F8F8),
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 4.0,
                               color: Color(0x0A000000),
@@ -791,7 +806,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -800,18 +815,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                               Container(
                                 width: 50.0,
                                 height: 50.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x15F44336),
                                   shape: BoxShape.circle,
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.pets,
                                   color: Colors.red,
                                   size: 24.0,
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Pet Sit',
@@ -835,8 +850,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                       width: 100.0,
                       height: 150.0,
                       decoration: BoxDecoration(
-                        color: Color(0xFFF8F8F8),
-                        boxShadow: [
+                        color: const Color(0xFFF8F8F8),
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x0A000000),
@@ -846,7 +861,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -855,11 +870,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                             Container(
                               width: 50.0,
                               height: 50.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0x154CAF50),
                                 shape: BoxShape.circle,
                               ),
-                              child: Align(
+                              child: const Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: FaIcon(
                                   FontAwesomeIcons.bone,
@@ -869,7 +884,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 'Food',
@@ -882,7 +897,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 '30mins left for Urie',

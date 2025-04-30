@@ -28,7 +28,7 @@ import 'package:flutter_animate/src/extensions/num_duration_extensions.dart';
 class PetProfileWidget extends StatefulWidget {
   final Pet pet;
 
-  const PetProfileWidget({Key? key, required this.pet}) : super(key: key);
+  const PetProfileWidget({super.key, required this.pet});
 
   static String routeName = 'PetProfile';
   static String routePath = '/petProfile';
@@ -66,8 +66,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -86,8 +86,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -106,8 +106,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -126,8 +126,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -146,8 +146,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -166,8 +166,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -186,8 +186,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 500.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -271,18 +271,18 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
         backgroundColor: FlutterFlowTheme.of(context).accent1,
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 140.0,
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Container(
                               width: 100.0,
@@ -293,7 +293,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                 shape: BoxShape.circle,
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(2.0),
+                                padding: const EdgeInsets.all(2.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(50.0),
                                   child: Image.asset(
@@ -311,14 +311,14 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        20.0, 20.0, 20.0, 20.0),
                     child: Container(
                       width: double.infinity,
                       height: 80.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x33000000),
@@ -334,18 +334,20 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 0.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      '$petName',
+                                      petName,
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -359,12 +361,14 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 0.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      '$petBreed',
+                                      petBreed,
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -381,9 +385,9 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(1.0, 0.0),
+                            alignment: const AlignmentDirectional(1.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 15.0, 8.0),
                               child: Icon(
                                 Icons.pets,
@@ -395,15 +399,16 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         ],
                       ),
                     ),
-                  ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
+                  ).animateOnPageLoad(
+                      animationsMap['foodCardOnPageLoadAnimation1']!),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        20.0, 0.0, 20.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -416,14 +421,14 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         borderRadius: BorderRadius.circular(15.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 15.0, 16.0, 15.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -439,12 +444,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                     child: Stack(
                                       children: [
                                         Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                          alignment: const AlignmentDirectional(
+                                              0.0, -1.0),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               'Age',
                                               textAlign: TextAlign.center,
@@ -461,8 +465,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                           ),
                                         ),
                                         Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                          alignment: const AlignmentDirectional(
+                                              0.0, 1.0),
                                           child: Text(
                                             '$petAge years old',
                                             style: FlutterFlowTheme.of(context)
@@ -486,12 +490,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                     child: Stack(
                                       children: [
                                         Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                          alignment: const AlignmentDirectional(
+                                              0.0, -1.0),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               'Weight',
                                               textAlign: TextAlign.center,
@@ -508,8 +511,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                           ),
                                         ),
                                         Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                          alignment: const AlignmentDirectional(
+                                              0.0, 1.0),
                                           child: Text(
                                             '$petWeight kg',
                                             style: FlutterFlowTheme.of(context)
@@ -577,10 +580,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         ),
                       ),
                     ),
-                  ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
+                  ).animateOnPageLoad(
+                      animationsMap['foodCardOnPageLoadAnimation1']!),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 32.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -590,7 +594,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: Container(
                                   width: 44.0,
@@ -600,9 +604,10 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         .secondaryBackground,
                                     shape: BoxShape.circle,
                                   ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(0.0, 0.0),
                                   child: IconButton(
-                                      icon: Icon(Icons.work_outline),
+                                      icon: const Icon(Icons.work_outline),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       iconSize: 24.0,
@@ -626,13 +631,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         ),
                         Flexible(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 4.0, 0.0, 4.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: Container(
                                     width: 44.0,
@@ -642,9 +647,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                           .secondaryBackground,
                                       shape: BoxShape.circle,
                                     ),
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment:
+                                        const AlignmentDirectional(0.0, 0.0),
                                     child: IconButton(
-                                      icon: Icon(Icons.notifications_outlined),
+                                      icon: const Icon(
+                                          Icons.notifications_outlined),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       iconSize: 24.0,
@@ -673,7 +680,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: Container(
                                   width: 44.0,
@@ -683,7 +690,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         .secondaryBackground,
                                     shape: BoxShape.circle,
                                   ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(0.0, 0.0),
                                   child: IconButton(
                                     icon: const Icon(Icons.edit_note),
                                     color: FlutterFlowTheme.of(context)
@@ -718,13 +726,14 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        5.0, 0.0, 5.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 330.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -741,14 +750,14 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: Text(
                                     'Status',
@@ -761,13 +770,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 16.0, 8.0),
                                         child: FaIcon(
@@ -778,9 +787,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Health',
                                             textAlign: TextAlign.start,
@@ -795,9 +803,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Last vaccinated (2 mon. ago)',
                                             textAlign: TextAlign.start,
@@ -819,12 +826,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         text: 'Log Health',
                                         options: FFButtonOptions(
                                           height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(16.0, 0.0, 16.0, 0.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                              const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle:
@@ -844,13 +850,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Align(
+                                      const Align(
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
@@ -866,9 +872,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Activity',
                                             textAlign: TextAlign.start,
@@ -883,9 +888,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Last walked (2d ago)',
                                             textAlign: TextAlign.start,
@@ -907,12 +911,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         text: 'Log Activity',
                                         options: FFButtonOptions(
                                           height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(16.0, 0.0, 16.0, 0.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                              const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle:
@@ -932,13 +935,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 16.0, 8.0),
                                         child: FaIcon(
@@ -949,9 +952,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Food',
                                             textAlign: TextAlign.start,
@@ -966,9 +968,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Last fed (4h ago)',
                                             textAlign: TextAlign.start,
@@ -997,12 +998,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         text: 'Log Food',
                                         options: FFButtonOptions(
                                           height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(16.0, 0.0, 16.0, 0.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                              const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle:
@@ -1022,13 +1022,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 16.0, 8.0),
                                         child: FaIcon(
@@ -1039,9 +1039,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Mood',
                                             textAlign: TextAlign.start,
@@ -1056,9 +1055,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       ),
                                       Flexible(
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 12.0, 0.0),
                                           child: Text(
                                             'Felt sad (2d ago)',
                                             textAlign: TextAlign.start,
@@ -1080,12 +1078,11 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         text: 'Log Mood',
                                         options: FFButtonOptions(
                                           height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(16.0, 0.0, 16.0, 0.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                              const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle:

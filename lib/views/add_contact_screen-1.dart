@@ -5,7 +5,7 @@ import '../models/contact.dart';
 import '../view_models/contact_view_model.dart';
 
 class AddContactScreen extends StatefulWidget {
-  const AddContactScreen({Key? key}) : super(key: key);
+  const AddContactScreen({super.key});
 
   @override
   _AddContactScreenState createState() => _AddContactScreenState();
@@ -95,7 +95,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                 },
               ),
               const SizedBox(height: 16),
-               TextFormField(
+              TextFormField(
                 controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: "Email",

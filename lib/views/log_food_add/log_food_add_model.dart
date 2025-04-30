@@ -111,16 +111,15 @@ class LogFoodAddModel extends FlutterFlowModel<LogFoodAddWidget> {
   // amount and calories should have decimal point to be accepted as type double?
   double? modifyNum(String val) {
     if (!isDecimal(double.tryParse(val))) {
-      return double.tryParse('${val}.0009');
+      return double.tryParse('$val.0009');
     }
     return double.tryParse(val);
   }
 
-
   Future<void> addFood(
       BuildContext context, GlobalKey<FormState> formKey, Pet pet) async {
     final foodName = nameFieldTextController.text.trim();
-    final pet_id = pet.id;
+    final petId = pet.id;
 
     double? amount = modifyNum(amountFieldTextController.text.trim());
     double? calories = modifyNum(caloriesFieldTextController.text.trim());
@@ -132,7 +131,7 @@ class LogFoodAddModel extends FlutterFlowModel<LogFoodAddWidget> {
       foodName: foodName,
       amount: amount,
       calories: calories,
-      pet_id: pet_id,
+      pet_id: petId,
       gLoad: gLoad,
     );
 

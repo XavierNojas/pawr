@@ -46,8 +46,8 @@ class _FieldBoxWidgetState extends State<FieldBoxWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -84,7 +84,7 @@ class _FieldBoxWidgetState extends State<FieldBoxWidget>
               letterSpacing: 0.0,
             ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color(0x00000000),
             width: 3.0,
           ),
@@ -98,14 +98,14 @@ class _FieldBoxWidgetState extends State<FieldBoxWidget>
           borderRadius: BorderRadius.circular(16.0),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color(0x00000000),
             width: 3.0,
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color(0x00000000),
             width: 3.0,
           ),

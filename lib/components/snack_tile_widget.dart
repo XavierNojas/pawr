@@ -51,11 +51,11 @@ class _SnackTileWidgetState extends State<SnackTileWidget> {
           shape: BoxShape.circle,
         ),
         child: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Image.network(
-              widget!.image!,
+              widget.image!,
               width: 100.0,
               height: 100.0,
               fit: BoxFit.cover,

@@ -45,7 +45,7 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
       height: 380.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             blurRadius: 5.0,
             color: Color(0x3B1D2429),
@@ -55,7 +55,7 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
             ),
           )
         ],
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(24.0),
@@ -63,18 +63,18 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: 200.0,
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.72, 1.55),
+                    alignment: const AlignmentDirectional(0.72, 1.55),
                     child: Container(
                       width: 150.0,
                       height: 150.0,
@@ -87,13 +87,13 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
                   Container(
                     width: MediaQuery.sizeOf(context).width * 0.597,
                     height: 200.0,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Text(
                             'healthy snack\nsuggestion',
@@ -108,7 +108,7 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Text(
                             'Feeling hungry? Try eating an apple for a nutritious and fiber-rich option to help stabilize your glucose levels.',
@@ -124,7 +124,7 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(1.06, 1.05),
+                    alignment: const AlignmentDirectional(1.06, 1.05),
                     child: Image.asset(
                       'assets/images/apple-alpha.png',
                       width: 100.0,
@@ -147,16 +147,17 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
                   options: FFButtonOptions(
                     width: 140.0,
                     height: 70.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 0.0, 0.0, 0.0),
+                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Manrope',
                           color: FlutterFlowTheme.of(context).secondaryText,
                           letterSpacing: 0.0,
                         ),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 0.0,
                     ),
@@ -171,16 +172,17 @@ class _HealthySnackSheetWidgetState extends State<HealthySnackSheetWidget> {
                   options: FFButtonOptions(
                     width: 140.0,
                     height: 70.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 0.0, 0.0, 0.0),
+                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Manrope',
                           color: FlutterFlowTheme.of(context).white,
                           letterSpacing: 0.0,
                         ),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 0.0,
                     ),

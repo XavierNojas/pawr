@@ -9,7 +9,7 @@ class ActivityLogsTable extends SupabaseTable<ActivityLogsRow> {
 }
 
 class ActivityLogsRow extends SupabaseDataRow {
-  ActivityLogsRow(Map<String, dynamic> data) : super(data);
+  ActivityLogsRow(super.data);
 
   @override
   SupabaseTable get table => ActivityLogsTable();

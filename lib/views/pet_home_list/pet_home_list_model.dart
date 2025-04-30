@@ -1,22 +1,8 @@
 import '/components/field_box_widget.dart';
 import '/components/pet_list_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'dart:ui';
-import '/index.dart';
 import 'pet_home_list_widget.dart' show PetHomeListWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-
-import 'package:paw_r_app/view_models/pet_view_model.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:paw_r_app/models/pet.dart';
 
 class PetHomeListModel extends FlutterFlowModel<PetHomeListWidget> {
   ///  State fields for stateful widgets in this page.
@@ -69,6 +55,5 @@ class PetHomeListModel extends FlutterFlowModel<PetHomeListWidget> {
     // Breed Name
     nameFieldFocusNode1?.dispose();
     nameFieldTextController1?.dispose();
-
   }
 }

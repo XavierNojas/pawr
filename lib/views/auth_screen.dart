@@ -4,7 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 enum AuthMode { signIn, register }
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+  const AuthScreen({super.key});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -200,8 +200,3 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 }
-
-
-
-
-

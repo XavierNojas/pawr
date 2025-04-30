@@ -9,7 +9,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class ViewPetScreen extends StatefulWidget {
   final Pet pet;
 
-  const ViewPetScreen({Key? key, required this.pet}) : super(key: key);
+  const ViewPetScreen({super.key, required this.pet});
 
   @override
   _ViewPetScreenState createState() => _ViewPetScreenState();
@@ -37,12 +37,13 @@ class _ViewPetScreenState extends State<ViewPetScreen> {
       final updatedPet = Pet(
         id: widget.pet.id,
         name: _nameController.text.trim(),
-        user_id: Supabase.instance.client.auth.currentUser?.id ?? 'failed_user_authentication',
+        user_id: Supabase.instance.client.auth.currentUser?.id ??
+            'failed_user_authentication',
         breed: _breedController.text.trim(),
         age: widget.pet.age,
         weight: widget.pet.weight,
       );
-      
+
       try {
         await Provider.of<PetViewModel>(context, listen: false)
             .updatePet(updatedPet);
@@ -59,12 +60,12 @@ class _ViewPetScreenState extends State<ViewPetScreen> {
     }
   }
 
-@override
-void dispose() {
-  _nameController.dispose();
-  _breedController.dispose();
-  super.dispose();
-}
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _breedController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

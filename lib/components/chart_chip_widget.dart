@@ -69,12 +69,12 @@ class _ChartChipWidgetState extends State<ChartChipWidget>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        if (widget!.selected ?? true)
+        if (widget.selected ?? true)
           Container(
             width: 100.0,
             height: 35.0,
             decoration: BoxDecoration(
-              color: Color(0x33FFFFFF),
+              color: const Color(0x33FFFFFF),
               borderRadius: BorderRadius.circular(30.0),
             ),
           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
@@ -85,9 +85,9 @@ class _ChartChipWidgetState extends State<ChartChipWidget>
             borderRadius: BorderRadius.circular(30.0),
           ),
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Text(
-              widget!.title!,
+              widget.title!,
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Manrope',
                     color: FlutterFlowTheme.of(context).white,
