@@ -60,7 +60,7 @@ class PetTransactModel extends FlutterFlowModel<PetTransactWidget> {
   String? finalDateTimeText = null;
 
   Duration? difference;
-  String? differenceText = '0 hours and 0 minutes';
+  String? differenceText = '0H 0m';
 
   bool isHourlySelected = true;
   bool isOneTimeSelected = false;

@@ -17,7 +17,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-
 class PetTransactWidget extends StatefulWidget {
   final Pet pet;
 
@@ -35,7 +34,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-    final animationsMap = <String, AnimationInfo>{};
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -55,8 +54,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
     _model.checkBoxCollect = [];
 
-
-          animationsMap.addAll({
+    animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -117,7 +115,6 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
           ),
         ],
       ),
-
       'foodCardOnPageLoadAnimation0': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -138,7 +135,6 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
           ),
         ],
       ),
-
       'foodCardOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -255,6 +251,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
         _model.initialDate = combinedDateTime;
         _model.initialDateTimeText = DateFormat('hh:mm:ss a / dd MMM yyyy')
             .format(_model.initialDate ?? combinedDateTime);
+        _calculateDifference();
       });
     }
 
@@ -341,8 +338,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
   Future<void> _verifyEmptyTasks() async {
     setState(() {
-
-       _model.checkBoxCollect = [
+      _model.checkBoxCollect = [
         _model.checkboxValue1,
         _model.checkboxValue2,
         _model.checkboxValue3,
@@ -355,7 +351,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
         _model.checkboxValue10,
         _model.checkboxValue11,
       ];
-      
+
       if (_model.checkBoxCollect.any((value) => value == true) == false) {
         _model.hasEmptyAssignTasks = true;
       } else {
@@ -366,7 +362,9 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
   Future<void> _verifyDateTimeValidity() async {
     setState(() {
-      if (_model.initialDateTimeText == null || _model.finalDateTimeText == null || _model.differenceText == '0 H : 0 m') {
+      if (_model.initialDateTimeText == null ||
+          _model.finalDateTimeText == null ||
+          _model.differenceText == '0 H : 0 m') {
         _model.isDateTimeInvalid = true;
       } else {
         _model.isDateTimeInvalid = false;
@@ -925,6 +923,17 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                 ),
                               ],
                             ),
+
+
+                            Container(
+                              width: double.infinity,
+                              height: 1.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).alternate,
+                              ),
+                            ),
+
+
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1865,81 +1874,51 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                           ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 5.0,
-                            color: Color(0x10000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: TextFormField(
-                        controller: _model.textController,
-                        readOnly: true,
-                        focusNode: _model.textFieldFocusNode,
-                        textCapitalization: TextCapitalization.sentences,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText:
-                              'Add any special instructions for the pet sitter...',
-                          hintStyle: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Manrope',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                letterSpacing: 0.0,
-                              ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          filled: true,
-                          fillColor: Color(0x05000000),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 16.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5.0,
+                              color: Color(0x10000000),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(16.0),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Manrope',
-                              letterSpacing: 0.0,
-                            ),
-                        maxLines: 4,
-                        minLines: 1,
-                        keyboardType: TextInputType.multiline,
-                        validator:
-                            _model.textControllerValidator.asValidator(context),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Column(
+                            // Changed from Row to Column for vertical layout
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 12.0),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Add a note (optional)',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  filled: true,
+                                ),
+                                onChanged: (value) {
+                                  _model.textController.text =
+                                      value; // Save to model if needed
+                                },
+                                maxLines: 2,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -2000,11 +1979,9 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-
                                   await _verifyDateTimeValidity();
                                   await _verifyEmptyTasks();
                                   await _model.sendRequest(context, widget.pet);
-                                  
                                 },
                                 text: 'Send Request',
                                 options: FFButtonOptions(
@@ -2040,8 +2017,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
               ),
             ),
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!),
       ),
-    ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!);
+    );
   }
 }

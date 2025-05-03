@@ -455,7 +455,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                                 fontWeight:
                                                     (_model.isHourlySelected)
                                                         ? FontWeight.w800
-                                                        : FontWeight.w600,
+                                                        : FontWeight.w100,
                                               ),
                                         ),
                                         Text(
@@ -489,6 +489,15 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                 ),
                               ],
                             ),
+
+                            Container(
+                              width: double.infinity,
+                              height: 1.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).alternate,
+                              ),
+                            ),
+
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -542,7 +551,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                                 fontWeight:
                                                     (!_model.isOneTimeSelected)
                                                         ? FontWeight.w800
-                                                        : FontWeight.w500,
+                                                        : FontWeight.w100,
                                               ),
                                         ),
                                         Text(
@@ -1223,9 +1232,9 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                     (widget.request.instructions == null) 
-                                     ? '${widget.request.instructions}' 
-                                     : 'No instructions',
+                                     ((widget.request.instructions)?.isEmpty == true) 
+                                     ? 'No instructions' 
+                                     : '${widget.request.instructions}',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -1287,9 +1296,9 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
               ),
             ),
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!),
       ),
-    ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!);
+    );
   }
 
   Widget taskRowBuilder(BuildContext context, List<String?> tasks) {

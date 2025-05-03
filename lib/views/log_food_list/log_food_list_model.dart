@@ -54,6 +54,17 @@ class LogFoodListModel extends FlutterFlowModel<LogFoodListWidget> {
     // foodCardModel4.dispose();
   }
 
+  String formatDateTime(String rawDateTime) {
+    // Step 1: Parse the String to DateTime
+    DateTime parsedDateTime = DateTime.parse(rawDateTime);
+
+    // Step 2: Format it however you want
+    // Example format: Apr 26, 2025 - 11:10 PM
+    String formatted = DateFormat('d MMM yyyy - h:mm a').format(parsedDateTime.toLocal());
+
+    return formatted;
+  }
+
   Future<void> addFoodLog(
       BuildContext context, FoodCardModel modelCard, int? petId) async {
         

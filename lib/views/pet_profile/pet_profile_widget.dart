@@ -25,6 +25,10 @@ import 'package:flutter_animate/src/effects/fade_effect.dart';
 
 import 'package:flutter_animate/src/extensions/num_duration_extensions.dart';
 
+import 'package:paw_r_app/views/log_mood/log_mood_widget.dart';
+
+import 'package:paw_r_app/views/log_activity/log_activity_widget.dart';
+
 class PetProfileWidget extends StatefulWidget {
   final Pet pet;
 
@@ -73,6 +77,26 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+        'foodCardOnPageLoadAnimation0': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 100.ms), // Faster visibility
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms, // Shorter delay
+            duration: 200.0.ms, // Faster movement
+            begin: Offset(10.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms, // Shorter delay
+            duration: 150.0.ms, // Faster fade
             begin: 0.0,
             end: 1.0,
           ),
@@ -395,7 +419,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         ],
                       ),
                     ),
-                  ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -577,7 +601,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         ),
                       ),
                     ),
-                  ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 32.0),
@@ -903,6 +927,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       FFButtonWidget(
                                         onPressed: () {
                                           print('CheckHealth pressed ...');
+                                           Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LogActivityWidget(
+                                                        pet: widget.pet),
+                                              ));
                                         },
                                         text: 'Log Activity',
                                         options: FFButtonOptions(
@@ -1076,6 +1107,13 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                       FFButtonWidget(
                                         onPressed: () {
                                           print('CheckFood pressed ...');
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LogMoodWidget(
+                                                        pet: widget.pet),
+                                              ));
                                         },
                                         text: 'Log Mood',
                                         options: FFButtonOptions(
@@ -1222,7 +1260,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                   ),
                 ]),
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!),
       ),
     );
   }

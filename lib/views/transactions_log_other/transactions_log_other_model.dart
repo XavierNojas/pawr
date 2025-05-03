@@ -60,7 +60,7 @@ class TransactionsLogOtherModel extends FlutterFlowModel<TransactionsLogOtherWid
 
     // Step 2: Format it however you want
     // Example format: Apr 26, 2025 - 11:10 PM
-    String formatted = DateFormat('d MMM yyyy - h:mm a').format(parsedDateTime);
+    String formatted = DateFormat('d MMM yyyy - h:mm a').format(parsedDateTime.toLocal());
 
     return formatted;
   }

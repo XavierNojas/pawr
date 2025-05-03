@@ -1,6 +1,6 @@
 import 'package:paw_r_app/models/foodLog.dart';
 
-import '/components/food_card_widget.dart';
+import '../../components/food_log_card_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -20,7 +20,7 @@ import 'package:paw_r_app/models/pet.dart';
 import 'package:paw_r_app/views/log_food_add/log_food_add_widget.dart';
 
 import 'package:paw_r_app/view_models/pet_view_model.dart';
-import 'package:paw_r_app/models/food.dart';
+import 'package:paw_r_app/models/mood.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -43,7 +43,7 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
 
   final animationsMap = <String, AnimationInfo>{};
 
-  List<FoodCardModel> _foodCardModels = [];
+  List<FoodLogCardModel> _logFoodCardModels = [];
 
   @override
   void initState() {
@@ -204,7 +204,7 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
   void dispose() {
     _model.dispose();
 
-    for (var model in _foodCardModels) {
+    for (var model in _logFoodCardModels) {
       model.dispose();
     }
 
@@ -330,15 +330,15 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
       }
 
       /// Dynamically create models only when snackLogs load or change
-      if (_foodCardModels.length != snackLogVM.snackLogs.length) {
+      if (_logFoodCardModels.length != snackLogVM.snackLogs.length) {
         // Dispose old models
-        for (var model in _foodCardModels) {
+        for (var model in _logFoodCardModels) {
           model.dispose();
         }
         // Create new models
-        _foodCardModels = snackLogVM.snackLogs
+        _logFoodCardModels = snackLogVM.snackLogs
             .map((_) =>
-                createModel<FoodCardModel>(context, () => FoodCardModel()))
+                createModel<FoodLogCardModel>(context, () => FoodLogCardModel()))
             .toList();
       }
 
@@ -360,64 +360,89 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
               itemCount: snackLogVM.snackLogs.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, snackLogVM.snackLogs[index],
-                    _foodCardModels[index], index, snackLogVM);
+                    _logFoodCardModels[index], index, snackLogVM);
               },
             );
     });
   }
 
-  Widget cardTemplate(
-      BuildContext context, FoodLog snack, FoodCardModel model, int index, PetViewModel petViewModel) {
+  // Widget cardTemplate(
+  //     BuildContext context, FoodLog snack, FoodLogCardModel model, int index, PetViewModel petViewModel) {
+  //   return Padding(
+  //     padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 10.0),
+  //     child: wrapWithModel(
+  //       model: model,
+  //       updateCallback: () => safeSetState(() {}),
+  //       child: GestureDetector(
+  //         // onTap: () {
+  //         //   model.isSelected = !model.isSelected;
+  //         //   safeSetState(() {});
+  //         // },
+  //         child: Card(
+  //           elevation: 0,
+  //           color: model.isSelected
+  //               ? Colors.blue.withOpacity(0.1)
+  //               : Colors.green[200],
+  //           shape: RoundedRectangleBorder(
+  //             borderRadius: BorderRadius.circular(12.0),
+  //           ),
+  //           child: Padding(
+  //             padding:
+  //                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
+  //             child: Column(
+  //               crossAxisAlignment: CrossAxisAlignment.start,
+  //               children: [
+  //                 Text(
+  //                   snack.foodName ?? 'No name',
+  //                   style: Theme.of(context).textTheme.titleMedium,
+  //                 ),
+  //                 const SizedBox(height: 6),
+  //                 Row(
+  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                   children: [
+  //                     Text('Amount: ${double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1')}',
+  //                         style: Theme.of(context).textTheme.bodySmall),
+  //                     Text('Calories: ${double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1')}',
+  //                         style: Theme.of(context).textTheme.bodySmall),
+  //                     Text('Glycemic: ${snack.gLoad}',
+  //                         style: Theme.of(context).textTheme.bodySmall),
+  //                   ],
+  //                 ),
+  //                 Text(
+  //                   'Created at: ${snack.created_at}' ,
+  //                   style: Theme.of(context).textTheme.bodySmall,
+  //                   ),
+  //               ],
+  //             ),
+  //           ),
+  //         ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
+  //       ),
+  //     ),
+  //   );
+  // }
+
+
+
+    Widget cardTemplate(BuildContext context, FoodLog snack, FoodLogCardModel model, int index, PetViewModel petViewModel) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 10.0),
-      child: wrapWithModel(
-        model: model,
-        updateCallback: () => safeSetState(() {}),
-        child: GestureDetector(
-          // onTap: () {
-          //   model.isSelected = !model.isSelected;
-          //   safeSetState(() {});
-          // },
-          child: Card(
-            elevation: 0,
-            color: model.isSelected
-                ? Colors.blue.withOpacity(0.1)
-                : Colors.green[200],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+      child: Stack(
+        children: [
+          wrapWithModel(
+            model: model,
+            updateCallback: () => safeSetState(() {}),
+            child: FoodLogCardWidget(
+              foodName: snack.foodName,
+              amount: '${double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1')}',
+              calories: '${double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1')}',
+              glycemic: '${snack.gLoad}',
+              createdDate: '${_model.formatDateTime(snack.created_at ?? '2015-01-01 03:33:33.405336+00')}',
+              cardId: snack.id,
             ),
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    snack.foodName ?? 'No name',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 6),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Amount: ${double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1')}',
-                          style: Theme.of(context).textTheme.bodySmall),
-                      Text('Calories: ${double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1')}',
-                          style: Theme.of(context).textTheme.bodySmall),
-                      Text('Glycemic: ${snack.gLoad}',
-                          style: Theme.of(context).textTheme.bodySmall),
-                    ],
-                  ),
-                  Text(
-                    'Created at: ${snack.created_at}' ,
-                    style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                ],
-              ),
-            ),
-          ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation1']!),
-        ),
+          ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation2']!),
+        ],
       ),
     );
   }
+
 }

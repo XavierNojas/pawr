@@ -63,7 +63,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
 
   late bool isLoading;
 
-  late Pet petDetails;
+  late Pet petDetails = Pet(name: 'pet name', user_id: '-1', breed: 'pet breed', age: -1, weight: -1);
 
   late UserDetails ownerDetails;
 
@@ -102,16 +102,20 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
       this,
     );
 
-    isLoading = true;
-    fetchPetDetailsAndPrint(widget.petId);
-    print('user Id:  ${widget.userId}');
-    fetchUserDetailsAndPrint(widget.userId, true);
+    safeSetState(() {
+      isLoading = true;
 
-    if (widget.requestObject.status == 'accepted') {
-      fetchUserDetailsAndPrint(widget.requestObject.caretaker_id, false);
-    }
+      fetchPetDetailsAndPrint(widget.petId);
+      print('user Id:  ${widget.userId}');
+      fetchUserDetailsAndPrint(widget.userId, true);
 
-    isLoading = false;
+      if (widget.requestObject.status == 'accepted') {
+        fetchUserDetailsAndPrint(widget.requestObject.caretaker_id, false);
+      }
+
+    });
+
+
   }
 
   @override
@@ -135,10 +139,10 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                 animationsMap['containerOnActionTriggerAnimation']!
                     .controller
                     .forward(from: 0.0)
-                    .whenComplete(
-                        animationsMap['containerOnActionTriggerAnimation']!
-                            .controller
-                            .reverse);
+                    .whenComplete(animationsMap['containerOnActionTriggerAnimation']!
+                    .controller
+                    .reverse);
+
               }
               if (_model.selected!) {
                 _model.selected = false;
@@ -361,6 +365,8 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
     final fetchedPetDetails = await requestVM.fetchPetDetails(petId ?? -1);
 
     setState(() {
+      print('details');
+      print(fetchedPetDetails);
       petDetails = fetchedPetDetails!;
     });
   }
@@ -383,6 +389,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
         careTakerDetails = fetchedUserDetails!;
       }
 
+      isLoading = false;
     });
   }
 }

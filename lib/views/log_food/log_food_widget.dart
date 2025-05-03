@@ -304,44 +304,14 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              final selectedIndexes = _foodCardModels
-                                  .asMap()
-                                  .entries
-                                  .where((entry) => entry.value.isSelected)
-                                  .map((entry) => entry.key)
-                                  .toList();
-
-                              final petId = widget.pet.id;
-
-                              if (selectedIndexes.isEmpty) return;
-
-                              for (var index in selectedIndexes) {
-                                final model = _foodCardModels[index];
-                                await _model.addFoodLog(context, model, petId);
-                              }
-
-                              // Optional: visually unselect them afterward
-                              setState(() {
-                                for (var index in selectedIndexes) {
-                                  _foodCardModels[index].isSelected = false;
-                                }
-                              });
-
-                              // Optionally show a SnackBar or success message
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Snacks Added to Log!')),
-                              );
-
-                              // Navigate or refresh
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
                                     builder: (context) =>
-                                        LogFoodWidget(pet: widget.pet)),
-                              );
+                                        LogFoodAddWidget(pet: widget.pet),
+                                  ));
                             },
-                            text: 'Log snack',
+                            text: 'Add Snack',
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50.0,
@@ -384,6 +354,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                                   .map((entry) => entry.key)
                                   .toList();
 
+                              if (selectedIndexes.isEmpty) return;
+
                               final selectedIds = selectedIndexes
                                   .map((index) =>
                                       _foodCardModels[index].widget?.cardId)
@@ -423,8 +395,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Manrope',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                    color: Colors.white,
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -441,8 +412,6 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
                     ],
                   ),
                 ),
-
-                
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
@@ -475,31 +444,100 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
         floatingActionButton: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            FloatingActionButton(
+            FloatingActionButton.extended(
               heroTag: 'fab1',
+              backgroundColor: Colors.greenAccent,
+              elevation: 3.0,
               onPressed: () async {
-                print('First FAB');
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LogFoodListWidget(pet: widget.pet)),
+                      builder: (context) => LogFoodListWidget(pet: widget.pet)),
                 );
               },
-              child: Icon(Icons.list),
-              backgroundColor: FlutterFlowTheme.of(context).accent3,
+              label: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(
+                    Icons.history,
+                    color: Colors.white,
+                    size: 24.0,
+                  ),
+                  Text(
+                    'History',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Manrope',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ].divide(SizedBox(width: 8.0)),
+              ),
             ),
-            SizedBox(height: 16), // space between buttons
-            FloatingActionButton(
+
+            // 👇 Space between the two buttons
+
+            SizedBox(height: 16.0),
+
+            FloatingActionButton.extended(
               heroTag: 'fab2',
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+              elevation: 3.0,
               onPressed: () async {
-                print('Second FAB');
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => LogFoodAddWidget(pet: widget.pet),
-                  ));
+                final selectedIndexes = _foodCardModels
+                    .asMap()
+                    .entries
+                    .where((entry) => entry.value.isSelected)
+                    .map((entry) => entry.key)
+                    .toList();
+
+                final petId = widget.pet.id;
+
+                if (selectedIndexes.isEmpty) return;
+
+                for (var index in selectedIndexes) {
+                  final model = _foodCardModels[index];
+                  await _model.addFoodLog(context, model, petId);
+                }
+
+                // Optional: visually unselect them afterward
+                setState(() {
+                  for (var index in selectedIndexes) {
+                    _foodCardModels[index].isSelected = false;
+                  }
+                });
+
+                // Optionally show a SnackBar or success message
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Snacks Added to Log!')),
+                );
+
+                // Navigate or refresh
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LogFoodWidget(pet: widget.pet)),
+                );
               },
-              child: Icon(Icons.add),
-              backgroundColor: Colors.greenAccent[200],
+              label: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    'Log Snack',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Manrope',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ].divide(SizedBox(width: 8.0)),
+              ),
             ),
           ],
         ),
@@ -553,7 +591,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
     });
   }
 
-  Widget cardTemplate(BuildContext context, Food snack, FoodCardModel model, int index, PetViewModel petViewModel) { 
+  Widget cardTemplate(BuildContext context, Food snack, FoodCardModel model,
+      int index, PetViewModel petViewModel) {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
       child: Stack(
@@ -563,8 +602,10 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             updateCallback: () => safeSetState(() {}),
             child: FoodCardWidget(
               title: '${snack.foodName}',
-              portion: double.tryParse(petViewModel.doubleToInteger(snack.amount) ?? '-1'),
-              calories: double.tryParse(petViewModel.doubleToInteger(snack.calories) ?? '-1'),
+              portion: double.tryParse(
+                  petViewModel.doubleToInteger(snack.amount) ?? '-1'),
+              calories: double.tryParse(
+                  petViewModel.doubleToInteger(snack.calories) ?? '-1'),
               label: snack.gLoad,
               image: 'https://picsum.photos/200',
               cardId: snack.id,

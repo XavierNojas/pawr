@@ -6,10 +6,26 @@ import '../models/food.dart';
 
 import '../models/foodLog.dart';
 
+import '../models/moodLog.dart';
+
+import '../models/mood.dart';
+
+import '/components/mood_card_widget.dart';
+
+import '../models/activity.dart';
+
+import '../models/activityLog.dart';
+
+import 'package:paw_r_app/components/activity_card_model.dart';
+
 class PetViewModel extends ChangeNotifier {
+
   List<Pet> pets = [];
   List<Food> snacks = [];
   List<FoodLog> snackLogs = [];
+  List<MoodLog> moodLogs = [];
+  List<ActivityLog> activityLogs = [];
+  List<Activity> activities = [];
   final supabase = Supabase.instance.client;
   bool isLoading = false;
 
@@ -62,6 +78,7 @@ class PetViewModel extends ChangeNotifier {
     try {
       await supabase.from('pets').delete().eq('id', id);
       await fetchPets();
+      await deleteRequestAfterPet(id);
     } catch (error) {
       print('Error deleting pets: $error');
     }
@@ -82,6 +99,20 @@ class PetViewModel extends ChangeNotifier {
     try {
       final data =
           await supabase.from('foods').select().eq('pet_id', fetchRecentPet());
+      snacks = (data as List).map((foodMap) => Food.fromMap(foodMap)).toList();
+      notifyListeners();
+      isLoading = false;
+    } catch (error) {
+      print('Error fetching snacks: $error');
+    }
+  }
+
+  Future<void> fetchMood(int? petId) async {
+    setRecentPet(petId);
+    isLoading = true;
+
+    try {
+      final data = await supabase.from('moods').select();
       snacks = (data as List).map((foodMap) => Food.fromMap(foodMap)).toList();
       notifyListeners();
       isLoading = false;
@@ -199,22 +230,172 @@ class PetViewModel extends ChangeNotifier {
   }
 
   Future<Pet?> fetchPetDetails(int petId) async {
-  try {
-    final data = await supabase
-        .from('pets')
-        .select()
-        .eq('id', petId)
-        .single(); // Fetch a single pet based on ID
+    try {
+      final data = await supabase
+          .from('pets')
+          .select()
+          .eq('id', petId)
+          .single(); // Fetch a single pet based on ID
 
-    if (data != null) {
-      return Pet.fromMap(data);
-    } else {
-      return null; // No pet found with that ID
+      if (data != null) {
+        return Pet.fromMap(data);
+      } else {
+        return null; // No pet found with that ID
+      }
+    } catch (error) {
+      print('Error fetching pet details: $error');
+      return null;
     }
-  } catch (error) {
-    print('Error fetching pet details: $error');
-    return null;
   }
-}
+
+  Future<void> logMood(List<MoodCardModel> moodCollection, String? observationNote, int? petId) async {
+
+    List<String> moodTitleCollection = [];
+
+    for (var mood in moodCollection) {
+      moodTitleCollection.add(mood.widget!.title ?? 'empty');
+    }
+
+    MoodLog moodLog = MoodLog(
+      mood: moodTitleCollection,
+      petId: petId,
+      observation: observationNote,
+    );
+
+    try {
+      await supabase.from('moods').insert(moodLog.toMap());
+    } catch (error) {
+      print('Error adding contact: $error');
+    }
+    
+  }
+
+
+  Future<void> fetchMoodLogs(int? petId) async {
+    setRecentPet(petId);
+    isLoading = true;
+
+    try {
+      final data = await supabase
+          .from('moods')
+          .select()
+          .eq('petId', fetchRecentPet())
+          .order('id', ascending: false)
+          .limit(20);
+
+      moodLogs = (data as List)
+          .map((moodLogMap) => MoodLog.fromMap(moodLogMap))
+          .toList();
+
+      notifyListeners();
+      isLoading = false;
+    } catch (error) {
+      print('Error fetching foodLogs: $error');
+    }
+  }
+
+  
+  Future<void> deleteRequestAfterPet(petId) async {
+    try {
+      await supabase.from('requests').delete().eq('pet_id', petId);
+    } catch (error) {
+      print('Error deleting pets: $error');
+    }
+  }
+
+
+
+
+  Future<void> addActivity(Activity activity) async {
+    try {
+      await supabase.from('activities').insert(activity.toMap());
+      fetchActivities(fetchRecentPet());
+    } catch (error) {
+      print('Error adding activity: $error');
+    }
+  }
+
+
+
+  Future<void> fetchActivities(int? petId) async {
+    setRecentPet(petId);
+    isLoading = true;
+
+    try {
+      final data = await supabase.from('activities').select().eq('pet_id', fetchRecentPet());
+      activities = (data as List).map((activityMap) => Activity.fromMap(activityMap)).toList();
+      notifyListeners();
+      isLoading = false;
+    } catch (error) {
+      print('Error fetching activities: $error');
+    }
+  }
+
+
+
+  Future<void> logActivity(List<ActivityCardModel> activityCollection, String? observationNote, int? petId) async {
+
+    List<String> activityTitleCollection = [];
+
+    for (var mood in activityCollection) {
+      activityTitleCollection.add(mood.widget!.title ?? 'empty');
+    }
+
+    ActivityLog activityLog = ActivityLog(
+      activityLogs: activityTitleCollection,
+      petId: petId,
+      observation: observationNote,
+    );
+
+    try {
+      await supabase.from('activityLog').insert(activityLog.toMap());
+    } catch (error) {
+      print('Error adding activity: $error');
+    }
+    
+  }
+
+
+  Future<void> deleteMultipleActivity(List<int> activityIds) async {
+    if (activityIds.isEmpty) {
+      print('No snackIds to delete.');
+      return;
+    }
+    try {
+      await supabase.from('activities').delete().inFilter('id', activityIds);
+      print('Deleted multiple food entries: $activityIds');
+    } catch (error) {
+      print('Error deleting multiple foods: $error');
+    }
+  }
+
+
+  Future<void> fetchActivityLogs(int? petId) async {
+    setRecentPet(petId);
+    print('recent pet id: {$petId}');
+    isLoading = true;
+
+    try {
+      final data = await supabase
+          .from('activityLog')
+          .select()
+          .eq('petId', fetchRecentPet())
+          .order('created_at', ascending: false)
+          .limit(20);
+
+      activityLogs = (data as List)
+          .map((activityLogMap) => ActivityLog.fromMap(activityLogMap))
+          .toList();
+
+      notifyListeners();
+      isLoading = false;
+    } catch (error) {
+      print('Error fetching activityLog: $error');
+    }
+  }
+
+
+
+
 
 }

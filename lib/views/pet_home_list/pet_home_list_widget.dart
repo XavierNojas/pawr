@@ -182,9 +182,9 @@ class _PetHomeListWidgetState extends State<PetHomeListWidget>
                           child: wrapWithModel(
                             model: _model.petListModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: PetListHomeWidget().animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation3']!),
+                            child: PetListHomeWidget(),
                           ),
-                        ),
+                        ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation2']!),
                         const Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(30.0, 16.0, 30.0, 10.0),
                           child: Row(
