@@ -1,220 +1,31 @@
-<<<<<<< Updated upstream
-=======
-import 'package:paw_r_app/backend/supabase/database/database.dart';
-import 'package:paw_r_app/pages/new_reminder/new_reminder_widget.dart';
-import 'package:paw_r_app/pages/notifs/notifs_widget.dart';
-import 'package:paw_r_app/views/user_profile/user_profile_widget.dart';
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            print('FloatingActionButton pressed ...');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NewReminderWidget()));
 
->>>>>>> Stashed changes
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'home_model.dart';
-export 'home_model.dart';
-
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({super.key});
-
-  static String routeName = 'Home';
-  static String routePath = '/home';
-
-  @override
-  State<HomeWidget> createState() => _HomeWidgetState();
-}
-
-class _HomeWidgetState extends State<HomeWidget> {
-  late HomeModel _model;
-
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  List<Map<String, dynamic>> reminders = [];
-  List<Map<String, dynamic>> pets = [];
-  bool isLoading = true;
-
-  late String username; // Default value
-
-
-  @override
-  void initState() {
-    super.initState();
-    _model = createModel(context, () => HomeModel());
-
-    _model.updateGreeting();
-
-    _fetchReminders();
-    _fetchPets(); // Fetch pet details
-    _fetchUsername(); // Fetch username
-    username = '';
-
-    _model.isLoading = true;
-  }
-
-  Future<void> _fetchReminders() async {
-    setState(() {
-      isLoading = true;
-    });
-
-    try {
-      final user = Supabase.instance.client.auth.currentUser;
-      if (user == null) {
-        throw Exception('User not logged in');
-      }
-
-      final response = await Supabase.instance.client
-          .from('reminders')
-          .select('*')
-          .eq('user_id', user.id)
-          .order('time', ascending: true);
-
-      setState(() {
-        reminders = List<Map<String, dynamic>>.from(response);
-      });
-    } catch (error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error fetching reminders: $error')),
-      );
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
-
-  Future<void> _fetchPets() async {
-    setState(() {
-      isLoading = true;
-    });
-
-    try {
-      final user = Supabase.instance.client.auth.currentUser;
-      if (user == null) {
-        throw Exception('User not logged in');
-      }
-
-      final response = await Supabase.instance.client
-          .from('pets')
-          .select('*')
-          .eq('user_id', user.id);
-
-      debugPrint(
-          'Fetched pets: $response'); // Debug statement to verify response
-
-      setState(() {
-        pets = List<Map<String, dynamic>>.from(response);
-      });
-    } catch (error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error fetching pet details: $error')),
-      );
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
-
-  Future<void> _fetchUsername() async {
-
-  
-    try {
-      final user = Supabase.instance.client.auth.currentUser;
-      if (user == null) {
-        throw Exception('User not logged in');
-      }
-
-      debugPrint('Logged-in user ID: ${user.id}'); // Debug user ID
-
-      final response = await Supabase.instance.client
-          .from('userDetails')
-          .select('username')
-          .eq('userId', user.id) // Ensure this matches your table structure
-          .single();
-
-      debugPrint('Fetched username response: $response'); // Debug response
-
-      setState(() {
-        username = response['username'] ?? 'User'; // Fallback to 'User' if null
-        _model.isLoading = false;
-      });
-    } catch (error) {
-      debugPrint('Error fetching username: $error');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error fetching username: $error')),
-      );
-    }
-  }
-
-  @override
-  void dispose() {
-    _model.dispose();
-
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return (isLoading == true) ? 
-    onLoading(context)
-    : GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          title: const Text('Pawr Home'),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          actions: [
-            IconButton(
-              color: Colors.red,
-              icon: const Icon(Icons.logout),
-              onPressed: () async {
-                await _model.logout(context);
-              },
-            ),
-          ],
-        ),
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-
-body: SafeArea(
-  top: true,
-  child: SingleChildScrollView(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // No padding for header — full width
-        _buildHeaderSection(),
-        const SizedBox(height: 20.0),
-        _buildHealthOverviewSection(),
-        const SizedBox(height: 20.0),
-
-        // Padding for the rest of the content
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 60.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          },
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          elevation: 3.0,
+          label: Row(
+            mainAxisSize: MainAxisSize.max,
             children: [
-
-              _buildPetDetailsSection(),
-              const SizedBox(height: 20.0),
-              _buildTodaysActivitiesSection(),
-              const SizedBox(height: 20.0),
-              _buildUpcomingSection(),
-              const SizedBox(height: 20.0),
-              _buildQuickActionsSection(),
-            ],
+              Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              Text(
+                'New Reminder',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Manrope',
+                      color: Colors.white,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+            ].divide(SizedBox(width: 8.0)),
           ),
         ),
-      ],
-    ),
-  ),
-),

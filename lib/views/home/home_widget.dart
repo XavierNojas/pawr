@@ -216,6 +216,39 @@ body: SafeArea(
     ),
   ),
 ),
+
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            print('FloatingActionButton pressed ...');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NewReminderWidget()));
+
+          },
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          elevation: 3.0,
+          label: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              Text(
+                'New Reminder',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Manrope',
+                      color: Colors.white,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+            ].divide(SizedBox(width: 8.0)),
+          ),
+        ),
+        
       ),
 );
 
