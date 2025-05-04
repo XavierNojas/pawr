@@ -33,6 +33,7 @@ import 'package:paw_r_app/models/pet.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class TransactionsLogOtherWidget extends StatefulWidget {
+
   final String? status;
   const TransactionsLogOtherWidget({Key? key, required this.status}) : super(key: key);
 
@@ -67,11 +68,8 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
     final requestVM = Provider.of<RequestViewModel>(context, listen: false);
     final user_id = supabase.auth.currentUser?.id ?? -1;
 
-    if (widget.status == 'pending') {
-      requestVM.fetchOtherRequests(widget.status ?? 'pending');
-    } else {
-      requestVM.fetchOtherAcceptedRequests(user_id as String);
-    }
+
+    requestVM.fetchOtherRequests('pending');
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -293,6 +291,60 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
 
 
 
+                                 Container(
+        width: MediaQuery.sizeOf(context).width * 1.3,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Flexible(
+                          // 👈 Wrap the Text in Flexible to prevent overflow
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 8.0, 0.0),
+                            child: Text(
+                              "Pet requests made by other users.",
+                              softWrap: true, // 👈 Allows text to wrap
+                              overflow: TextOverflow
+                                  .ellipsis, // 👈 Optional: use fade/ellipsis/clip
+                              maxLines:
+                                  3, // 👈 Set how many lines you want to show (adjust as needed)
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Manrope',
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
+
+            
+          ],
+        ),
+      ).animateOnPageLoad(
+                              animationsMap['textOnPageLoadAnimation1']!),
+
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
@@ -452,7 +504,7 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
       return requestVM.otherRequests.isEmpty
           ? Center(
               child: Text(
-                'No ${widget.status} requests',
+                'No pending requests',
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Manrope',
                       color: FlutterFlowTheme.of(context).secondary,

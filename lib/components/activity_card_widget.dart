@@ -211,7 +211,7 @@ class _ActivityCardWidgetState extends State<ActivityCardWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 8.0, 0.0),
                             child: Text(
-                              'the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog ',
+                              widget.description ?? 'no description',
                               softWrap: true, // 👈 Allows text to wrap
                               overflow: TextOverflow
                                   .ellipsis, // 👈 Optional: use fade/ellipsis/clip
@@ -235,8 +235,6 @@ class _ActivityCardWidgetState extends State<ActivityCardWidget>
                 ),
               ),
             ),
-
-            
           ],
         ),
       ),

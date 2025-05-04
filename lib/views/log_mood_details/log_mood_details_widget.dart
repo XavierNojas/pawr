@@ -219,9 +219,10 @@ class _LogMoodDetailsWidgetState extends State<LogMoodDetailsWidget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
+
                       Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.of(context).size.height * 1.0,
+                        // width: MediaQuery.sizeOf(context).width * 1.0,
+                        // height: MediaQuery.of(context).size.height * 1.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
@@ -254,8 +255,8 @@ class _LogMoodDetailsWidgetState extends State<LogMoodDetailsWidget>
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            widget.description ??
-                                                'no description',
+                                            (widget.description?.isEmpty ?? true) ? 'no description' :
+                                              widget.description ?? 'description',
                                             overflow: TextOverflow.fade, // 👈 Optional: use fade/ellipsis/clip
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

@@ -49,6 +49,9 @@ class TransactionCardWidget extends StatefulWidget {
   final String? userId;
   final Request requestObject;
 
+ 
+
+
   get amount => null;
 
   @override
@@ -68,6 +71,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
   late UserDetails ownerDetails;
 
   late UserDetails careTakerDetails;
+
 
   @override
   void setState(VoidCallback callback) {
@@ -101,8 +105,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
           !anim.applyInitialState),
       this,
     );
-
-    safeSetState(() {
+    setState(() {
       isLoading = true;
 
       fetchPetDetailsAndPrint(widget.petId);
@@ -114,7 +117,6 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
       }
 
     });
-
 
   }
 
@@ -175,7 +177,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -241,36 +243,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'From: ${widget.startDate!}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                    Text(
-                                      'To: ${widget.finishDate!}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ]),
-                              Row(mainAxisSize: MainAxisSize.max, children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${widget.duration}',
+                                      (widget.startDate!.split('- '))[0],
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -278,25 +251,46 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
+                                            fontWeight: FontWeight.normal
                                           ),
                                     ),
                                     Text(
-                                      (widget.rateType == 'hourly')
-                                          ? '₱ 120 per hour'
-                                          : 'one time',
+                                      (widget.startDate!.split('- '))[1],
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Manrope',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .primary,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold
                                           ),
                                     ),
                                   ],
                                 ),
                               ]),
+
+
+                              Row(
+                                mainAxisSize: MainAxisSize.max, 
+                                children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+
+                                     Text(
+                                      'Duration',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .ebony,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal
+                                          ),
+                                    ),
+
                               Container(
                                 height: 28.0,
                                 decoration: BoxDecoration(
@@ -324,6 +318,48 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                                   ),
                                 ),
                               ),
+
+                                   ]
+                                  ),
+                                ]
+                              ),
+
+
+                          
+
+                              Row(
+                                mainAxisSize: MainAxisSize.max, 
+                                children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      (widget.finishDate!.split('- '))[0],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                    ),
+                                    Text(
+                                      (widget.finishDate!.split('- '))[1],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ]),
                             ],
                           ),
                         ],

@@ -113,8 +113,6 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
         }
       },
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 1.0,
-        height: 119.5,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(24.0),
@@ -153,7 +151,7 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -208,69 +206,124 @@ class _FoodCardWidgetState extends State<FoodCardWidget>
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 8.0, 0.0),
-                              child: Text(
-                                'Amount: ${widget.portion!}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Manrope',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      letterSpacing: 0.0,
+
+                                                  Row(
+                                mainAxisSize: MainAxisSize.max, 
+                                children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+                                     Text(
+                                      'Amount: ${widget.portion}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .ebony,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal
+                                          ),
                                     ),
-                              ),
-                            ),
-                            Text(
-                              'Calories: ${widget.calories!}',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Manrope',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    letterSpacing: 0.0,
+
+                                    Text(
+                                      'Calories: ${widget.calories}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .ebony,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal
+                                          ),
+                                    ),
+
+
+                                  Text(
+                                      'GL: ${widget.label}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            color: FlutterFlowTheme.of(context)
+                                                .ebony,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal
+                                          ),
+                                    ),
+
+                                   ]
                                   ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 28.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              child: Text(
-                                (widget!.label!).toString(),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Manrope',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontSize: 13.0,
-                                      letterSpacing: 0.0,
-                                    ),
+                                ]
                               ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+
+
+                    
+                    // Row(
+                    //   mainAxisSize: MainAxisSize.max,
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Row(
+                    //       mainAxisSize: MainAxisSize.max,
+                    //       children: [
+                    //         Padding(
+                    //           padding: const EdgeInsetsDirectional.fromSTEB(
+                    //               0.0, 0.0, 8.0, 0.0),
+                    //           child: Text(
+                    //             'Amount: ${widget.portion!}',
+                    //             style: FlutterFlowTheme.of(context)
+                    //                 .bodyMedium
+                    //                 .override(
+                    //                   fontFamily: 'Manrope',
+                    //                   color: FlutterFlowTheme.of(context)
+                    //                       .secondaryText,
+                    //                   letterSpacing: 0.0,
+                    //                 ),
+                    //           ),
+                    //         ),
+                    //         Text(
+                    //           'Calories: ${widget.calories!}',
+                    //           style: FlutterFlowTheme.of(context)
+                    //               .bodyMedium
+                    //               .override(
+                    //                 fontFamily: 'Manrope',
+                    //                 color: FlutterFlowTheme.of(context)
+                    //                     .secondaryText,
+                    //                 letterSpacing: 0.0,
+                    //               ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     Container(
+                    //       height: 28.0,
+                    //       decoration: BoxDecoration(
+                    //         color: FlutterFlowTheme.of(context).secondaryText,
+                    //         borderRadius: BorderRadius.circular(8.0),
+                    //       ),
+                    //       child: Align(
+                    //         alignment: const AlignmentDirectional(0.0, 0.0),
+                    //         child: Padding(
+                    //           padding: const EdgeInsetsDirectional.fromSTEB(
+                    //               8.0, 0.0, 8.0, 0.0),
+                    //           child: Text(
+                    //             (widget.label!).toString(),
+                    //             style: FlutterFlowTheme.of(context)
+                    //                 .bodyMedium
+                    //                 .override(
+                    //                   fontFamily: 'Manrope',
+                    //                   color: FlutterFlowTheme.of(context)
+                    //                       .secondaryBackground,
+                    //                   fontSize: 13.0,
+                    //                   letterSpacing: 0.0,
+                    //                 ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),

@@ -53,8 +53,8 @@ class _TransactionsNavigatorState extends State<TransactionsNavigator>
       body: TabBarView(
         controller: _tabController,
         children: const [
-          TransactionsLogWidget(status: 'pending'),
-          TransactionsLogWidget(status: 'accepted'),
+          TransactionsLogWidget(status: 'pending', isFromProfile: false),
+          TransactionsLogWidget(status: 'accepted', isFromProfile: false),
         ],
       ),
     );

@@ -12,8 +12,26 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeModel extends FlutterFlowModel<HomeWidget> {
+  bool isLoading = true;
+  final supabase = Supabase.instance.client;
+  late String greetingMessage;
+
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    supabase.auth.currentUser?.id ?? -1;
+  }
+
+void updateGreeting() {
+  final hour = DateTime.now().hour;
+
+  if (hour >= 5 && hour < 12) {
+    greetingMessage = 'Good morning';
+  } else if (hour >= 17 || hour < 5) {
+    greetingMessage = 'Good evening';
+  } else {
+    greetingMessage = 'Good afternoon';
+  }
+}
 
   @override
   void dispose() {}

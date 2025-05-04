@@ -695,7 +695,7 @@ class _LogActivityWidgetState extends State<LogActivityWidget>
             child: ActivityCardWidget(
               title: activity.activityName,
               description: activity.notes,
-              color: Colors.yellow[300] ?? Colors.yellow,
+              color: FlutterFlowTheme.of(context).azureWeb,
               cardId: activity.id,
             ),
           ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation2']!),

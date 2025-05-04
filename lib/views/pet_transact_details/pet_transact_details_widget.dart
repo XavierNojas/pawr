@@ -648,7 +648,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                       child: GestureDetector(
                                         onTap: () async {},
                                         child: Container(
-                                          width: 300.0,
+                                          width: MediaQuery.sizeOf(context).width * 0.6,
                                           decoration: BoxDecoration(
                                             color: Color(0x10000000),
                                             borderRadius:
@@ -712,7 +712,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                       child: GestureDetector(
                                         onTap: () async {},
                                         child: Container(
-                                          width: 300.0,
+                                          width: MediaQuery.sizeOf(context).width * 0.6,
                                           decoration: BoxDecoration(
                                             color: Color(0x10000000),
                                             borderRadius:
@@ -1293,7 +1293,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
 
 
                 ],
-              ),
+              ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!),
             ),
           ),
         ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!),

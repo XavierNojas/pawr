@@ -38,8 +38,9 @@ import 'package:paw_r_app/views/transactions_tab_other.dart';
 
 class TransactionsLogWidget extends StatefulWidget {
   final String? status;
+  final bool isFromProfile;
 
-  const TransactionsLogWidget({Key? key, required this.status}) : super(key: key);
+  const TransactionsLogWidget({Key? key, required this.status, required this.isFromProfile}) : super(key: key);
 
   static String routeName = 'LogFood';
   static String routePath = '/logFood';
@@ -252,24 +253,26 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Padding(
-                          //   padding: const EdgeInsetsDirectional.fromSTEB(
-                          //       0.0, 0.0, 10.0, 0.0),
-                          //   child: FlutterFlowIconButton(
-                          //     borderColor: Colors.transparent,
-                          //     borderRadius: 30.0,
-                          //     borderWidth: 1.0,
-                          //     buttonSize: 40.0,
-                          //     icon: Icon(
-                          //       Icons.arrow_back_rounded,
-                          //       color: FlutterFlowTheme.of(context).secondary,
-                          //       size: 25.0,
-                          //     ),
-                          //     onPressed: () {
-                          //       Navigator.pop(context);
-                          //     },
-                          //   ),
-                          // ),
+
+                          if (widget.isFromProfile ?? false)
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 10.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 40.0,
+                              icon: Icon(
+                                Icons.arrow_back_rounded,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 25.0,
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
                           Text(
                             'My Requests',
                             style: FlutterFlowTheme.of(context)
@@ -289,6 +292,63 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                 ),
 
 
+                 Container(
+        width: MediaQuery.sizeOf(context).width * 1.3,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Flexible(
+                          // 👈 Wrap the Text in Flexible to prevent overflow
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 8.0, 0.0),
+                            child: Text(
+                              (widget.status == 'pending') 
+                              ? 'Pet requests awaiting for approval' : 'Your pet requests that have been accepted by other users',
+                              softWrap: true, // 👈 Allows text to wrap
+                              overflow: TextOverflow
+                                  .ellipsis, // 👈 Optional: use fade/ellipsis/clip
+                              maxLines:
+                                  3, // 👈 Set how many lines you want to show (adjust as needed)
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Manrope',
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
+
+            
+          ],
+        ),
+      ).animateOnPageLoad(
+                              animationsMap['textOnPageLoadAnimation1']!),
+
+
+
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
@@ -296,7 +356,7 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'Pending',
+                        (widget.status =='pending') ? 'Pending' : 'Accepted',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Manrope',
                               color: FlutterFlowTheme.of(context).secondary,
@@ -304,7 +364,7 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                               letterSpacing: 0.0,
                             ),
                       ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation2']!),
+                          animationsMap['textOnPageLoadAnimation1']!),
                     ],
                   ),
                 ),
@@ -339,6 +399,7 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             ),
           ),
         ),
+
         floatingActionButton: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -376,7 +437,16 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                   }
                 });
 
+
                 Navigator.pushReplacementNamed(context, '/homeNav');
+                if (widget.isFromProfile) {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TransactionsLogWidget(status: 'accepted', isFromProfile: true)));
+                } else {
+                  Navigator.pushReplacementNamed(context, '/homeNav');
+                }
                 
               },
               label: Row(
@@ -403,6 +473,10 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
             // 👇 Space between the two buttons
             
             SizedBox(height: 16.0),
+
+
+            if (!widget.isFromProfile)
+
 
             FloatingActionButton.extended(
               heroTag: 'fab1',

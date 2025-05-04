@@ -9,6 +9,8 @@ import '../view_models/navigation_view_model.dart';
 
 import '../view_models/request_view_model.dart';
 
+import '../view_models/reminders_view_model.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -25,6 +27,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => PetViewModel()),
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
         ChangeNotifierProvider(create: (_) => RequestViewModel()),
+        ChangeNotifierProvider(create: (_) => RemindersViewModel()),
         // You can add additional providers (e.g., for auth) here
       ],
       child: const MyApp(),

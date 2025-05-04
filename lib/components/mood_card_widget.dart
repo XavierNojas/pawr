@@ -126,26 +126,26 @@ class _MoodCardWidgetState extends State<MoodCardWidget>
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16.0),
-                child: Container(
-                  width: 80.0,
-                  height: 80.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).warning,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: Image.asset(
-                        'assets/images/food.png',
-                      ).image,
-                    ),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+            //   child: ClipRRect(
+            //     borderRadius: BorderRadius.circular(16.0),
+            //     child: Container(
+            //       width: 80.0,
+            //       height: 80.0,
+            //       decoration: BoxDecoration(
+            //         color: FlutterFlowTheme.of(context).warning,
+            //         image: DecorationImage(
+            //           fit: BoxFit.cover,
+            //           image: Image.asset(
+            //             'assets/images/food.png',
+            //           ).image,
+            //         ),
+            //         borderRadius: BorderRadius.circular(16.0),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.all(16.0),

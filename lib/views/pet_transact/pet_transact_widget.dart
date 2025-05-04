@@ -640,8 +640,8 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                         onTap: () async {
                                           await _selectDateTime(context);
                                         },
-                                        child: Container(
-                                          width: 300.0,
+                                        child: Container(        
+                                          width: MediaQuery.sizeOf(context).width * 0.6,
                                           decoration: BoxDecoration(
                                             color: Color(0x10000000),
                                             borderRadius:
@@ -705,7 +705,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                           await _selectDateTimeB(context);
                                         },
                                         child: Container(
-                                          width: 300.0,
+                                          width: MediaQuery.sizeOf(context).width * 0.6,
                                           decoration: BoxDecoration(
                                             color: Color(0x10000000),
                                             borderRadius:

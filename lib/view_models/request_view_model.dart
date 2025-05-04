@@ -13,6 +13,7 @@ import 'package:intl/intl.dart';
 class RequestViewModel extends ChangeNotifier {
   List<Request> requests = [];
   List<Request> otherRequests = [];
+  List<Request> otherAcceptedRequests = [];
   final supabase = Supabase.instance.client;
   bool isLoading = false;
 
@@ -284,8 +285,33 @@ class RequestViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> fetchOtherAcceptedRequests(String userId) async {
-    final user_id = supabase.auth.currentUser?.id ?? -1;
+  // Future<void> fetchOtherAcceptedRequests(String userId) async {
+  //   final user_id = supabase.auth.currentUser?.id ?? -1;
+
+  //   isLoading = true;
+
+  //   // fetch requests that are pending
+  //   try {
+  //     final data =
+  //         await supabase.from('requests')
+  //         .select()
+  //         .eq('caretaker_id', userId)
+  //         .eq('status', 'accepted')
+
+  //         .order('created_at', ascending: false);
+  //     otherRequests = (data as List)
+  //         .map((requestMap) => Request.fromMap(requestMap))
+  //         .toList();
+  //     notifyListeners();
+  //     isLoading = false;
+  //   } catch (error) {
+  //     print('Error fetching requests: $error');
+  //   }
+  // }
+
+
+  Future<void> fetchOtherAcceptedRequests() async {
+    final userId = supabase.auth.currentUser?.id ?? -1;
 
     isLoading = true;
 
@@ -297,7 +323,7 @@ class RequestViewModel extends ChangeNotifier {
           .eq('caretaker_id', userId)
           .eq('status', 'accepted')
           .order('created_at', ascending: false);
-      otherRequests = (data as List)
+      otherAcceptedRequests = (data as List)
           .map((requestMap) => Request.fromMap(requestMap))
           .toList();
       notifyListeners();
@@ -306,6 +332,7 @@ class RequestViewModel extends ChangeNotifier {
       print('Error fetching requests: $error');
     }
   }
+
 
 
   Future<UserDetails?> fetchOwnerDetails(String? ownerId) async {
@@ -355,6 +382,41 @@ class RequestViewModel extends ChangeNotifier {
       print('Error updating contact: $error');
     }
   }
+
+
+
+
+double totalEarnings = 0.0;
+
+Future<String?> fetchEarnings(String position) async {
+  final userId = supabase.auth.currentUser?.id;
+
+  if (userId == null) return '';
+
+  try {
+
+      final data = await supabase
+        .from('requests')
+        .select('total')
+        .eq(position, userId);
+
+    final totals = (data as List)
+        .map((item) => double.tryParse(item['total'].toString()) ?? 0.0)
+        .toList();
+
+    totalEarnings = totals.fold(0.0, (sum, value) => sum + value);
+
+    if (data != null) {
+        return totalEarnings.toString();
+      } else {
+        return null;
+      } // No pet found with that ID
+
+  } catch (error) {
+    print('Error fetching earnings: $error');
+  }
+}
+
 
 
 }

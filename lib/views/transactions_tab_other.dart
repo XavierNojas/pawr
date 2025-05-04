@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paw_r_app/view_models/navigation_view_model.dart';
+import 'package:paw_r_app/views/transactions_log_other_accepted/transactions_log_other_accepted_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../views/transactions_log/transactions_log_widget.dart';
@@ -64,7 +65,7 @@ class _TransactionsOtherNavigatorState extends State<TransactionsOtherNavigator>
         controller: _tabController,
         children: const [
           TransactionsLogOtherWidget(status: 'pending'),
-          TransactionsLogOtherWidget(status: 'accepted'),
+          TransactionsLogOtherAcceptedWidget(isFromProfile: false),
         ],
       ),
     );
