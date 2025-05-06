@@ -237,7 +237,6 @@ class _LogMoodWidgetState extends State<LogMoodWidget>
 
 
 Future<void> inputObservation(BuildContext context, List<MoodCardModel> moodCardCollection) async {
-    print('input observation');
     final TextEditingController _noteController = TextEditingController();
 
     showModalBottomSheet<String>(
@@ -654,6 +653,7 @@ Widget cardCreator(BuildContext context, List<Mood> moodList) {
       : ListView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(), // disables inner scrolling
           itemCount: moodList.length,
           itemBuilder: (context, index) {
             final mood = moodList[index]; // now just use mood directly

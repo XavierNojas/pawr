@@ -115,7 +115,7 @@ class _FoodLogCardWidgetState extends State<FoodLogCardWidget>
       },
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
-        height: MediaQuery.of(context).size.height * 0.18,
+        height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(24.0),

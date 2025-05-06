@@ -1,3 +1,4 @@
+import 'package:paw_r_app/models/friends.dart';
 import 'package:paw_r_app/models/user.dart';
 
 import '/auth/supabase_auth/auth_util.dart';
@@ -19,6 +20,13 @@ import 'package:provider/provider.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:paw_r_app/view_models/pet_view_model.dart';
+
+
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
+import 'dart:math';
+
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   ///  State fields for stateful widgets in this page.
@@ -99,6 +107,9 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
       if (value == null || value.trim().isEmpty) {
         return 'Please enter a username';
       }
+      if (value.trim().length > 18) {
+        return 'username is long';
+      }
       return null;
     };
 
@@ -161,19 +172,46 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
     phoneTextController?.dispose();
   }
 
+
+  String generateFriendlyRefCode({
+  required String user_id,
+  required String mobile,
+  required String email,
+}) {
+  // Clean and extract parts
+  final shortUserId = user_id.replaceAll('-', '').substring(0, 8);
+  final shortMobile = mobile.replaceAll(RegExp(r'\D'), '').substring(mobile.length - 4);
+  final shortEmail = email.split('@').first.substring(0, 3);
+
+  final rawString = '$shortUserId$shortMobile$shortEmail'.toLowerCase();
+
+  // Generate hash
+  final hash = sha1.convert(utf8.encode(rawString)).bytes;
+
+  // Convert part of hash into words
+  final wordList = ['apple', 'berry', 'cloud', 'delta', 'eagle', 'frost', 'grape', 'hazel', 'iris', 'jade', 'kiwi', 'lemon', 'maple', 'nova', 'oak', 'peach', 'quill', 'raven', 'sage', 'tiger', 'ultra', 'vivid', 'willow', 'xenon', 'yarrow', 'zebra'];
+
+  final index1 = hash[0] % wordList.length;
+  final index2 = hash[1] % wordList.length;
+  final number = (hash[2] + hash[3]) % 1000;
+
+  return 'REF-${wordList[index1].toUpperCase()}-${wordList[index2].toUpperCase()}-$number';
+}
+
+
   Future<void> registerUser(
     BuildContext context, GlobalKey<FormState> formKey) async {
+
 
     final password = passwordTextController.text.trim();
     final email = emailAddressTextController.text.trim();
     final confirmPassword = passwordTextController.text.trim();
     final username = firstNameTextController.text.trim();
     final phone = phoneTextController.text.trim();
+    final supabase = Supabase.instance.client;
+    userTypeValue = 'Pet Owner';    
 
-    userTypeValue = 'Pet Owner';
-    
-
-    if (!formKey.currentState!.validate()) return;
+    if (!formKey.currentState!.validate()) return;      
 
     // Registration mode: ensure passwords match.
     if (password != confirmPassword) {
@@ -182,21 +220,18 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
       );
       return;
     }
-    if (userTypeValue == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Undefined user type.")),
-      );
-      return;
-    }
+
     try {
       final response = await Supabase.instance.client.auth.signUp(
         email: email,
         password: password,
       );
       if (response.user != null) {
-        // add username and usertype to a new table
+        // add userDetails to a new table
 
         final user_id = (response.user!.id).toString();
+        
+        final referenceCode = generateFriendlyRefCode(user_id: user_id, mobile: phone, email: email);
 
         final newUser = UserDetails(
           username: username,
@@ -204,11 +239,23 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
           userId: user_id,
           email: email,
           phone: phone,
+          referenceCode: referenceCode,
         );
+
+        List<String> emptyList = [];
+
+        final newFriendRow = Friends(
+          owner_Id: user_id,
+          referredFriends: [],
+          referredPets: [],
+        );
+
         
         try {
-          await Provider.of<PetViewModel>(context, listen: false)
-              .addUser(newUser);
+          await Provider.of<PetViewModel>(context, listen: false).addUser(newUser);
+
+          await supabase.from('friends').insert(newFriendRow.toMap());
+
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paw_r_app/models/friends.dart';
 import 'package:paw_r_app/models/user.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/pet.dart';
@@ -18,18 +19,28 @@ import '../models/activityLog.dart';
 
 import 'package:paw_r_app/components/activity_card_model.dart';
 
+import 'dart:convert';
+
+
 class PetViewModel extends ChangeNotifier {
 
+  List<Friends> friends = [];
+  List<UserDetails> myFriendsDetails = [];
+  
   List<Pet> pets = [];
   List<Food> snacks = [];
   List<FoodLog> snackLogs = [];
   List<MoodLog> moodLogs = [];
   List<ActivityLog> activityLogs = [];
   List<Activity> activities = [];
-  final supabase = Supabase.instance.client;
-  bool isLoading = false;
 
+  final supabase = Supabase.instance.client;
+
+  bool isLoading = false;
   int? recentPet = -1;
+  bool hasAddedUser = false;
+
+  bool isMultipleFriendsLoading = false;
 
   // Fetch all pets from the "pets" table
   Future<void> fetchPets() async {
@@ -38,7 +49,7 @@ class PetViewModel extends ChangeNotifier {
     isLoading = true;
 
     try {
-      final data = await supabase.from('pets').select().eq('user_id', user_id);
+      final data = await supabase.from('pets').select().eq('user_id', user_id).order('created_at', ascending: false);
       pets = (data as List).map((petMap) => Pet.fromMap(petMap)).toList();
       notifyListeners();
       isLoading = false;
@@ -397,5 +408,26 @@ class PetViewModel extends ChangeNotifier {
 
 
 
+  Future<String?> fetchFriend(String referralCode) async {
+    try {
+      final data = await supabase
+        .from('userDetails')
+        .select('userId')
+        .eq('referenceCode', referralCode)
+        .single(); // Fetch a single pet based on ID
 
+      final ownerId = data['userId'];
+
+      if (data != null) {
+        return ownerId;
+      } else {
+        return null; // No pet found with that ID
+      }
+    } catch (error) {
+      print('Error fetching friend: $error');
+      return null;
+    }
+  }
+
+  
 }

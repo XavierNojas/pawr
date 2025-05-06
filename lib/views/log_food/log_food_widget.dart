@@ -30,10 +30,6 @@ class LogFoodWidget extends StatefulWidget {
   static String routeName = 'LogFood';
   static String routePath = '/logFood';
 
-  Object? get amount => null;
-
-  Object? get calories => null;
-
   @override
   State<LogFoodWidget> createState() => _LogFoodWidgetState();
 }
@@ -582,6 +578,7 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
           : ListView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: snackVM.snacks.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, snackVM.snacks[index],
@@ -602,10 +599,8 @@ class _LogFoodWidgetState extends State<LogFoodWidget>
             updateCallback: () => safeSetState(() {}),
             child: FoodCardWidget(
               title: '${snack.foodName}',
-              portion: double.tryParse(
-                  petViewModel.doubleToInteger(snack.amount) ?? '-1'),
-              calories: double.tryParse(
-                  petViewModel.doubleToInteger(snack.calories) ?? '-1'),
+              portion: snack.amount,
+              calories: snack.calories,
               label: snack.gLoad,
               image: 'https://picsum.photos/200',
               cardId: snack.id,

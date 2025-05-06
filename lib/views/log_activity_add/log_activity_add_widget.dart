@@ -385,6 +385,7 @@ class _LogActivityAddWidgetState extends State<LogActivityAddWidget>
                                   focusNode: _model.amountFieldFocusNode,
                                   autofocus: true,
                                   obscureText: false,
+                                  maxLines: 3,
                                   decoration: InputDecoration(
                                     labelText: 'Note',
                                     hintText: 'Enter notes',

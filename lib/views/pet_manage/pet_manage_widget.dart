@@ -1,3 +1,5 @@
+import 'package:paw_r_app/views/pet_add/pet_add_widget.dart';
+
 import '/components/field_box_widget.dart';
 import '/components/pet_list_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -74,8 +76,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -94,8 +96,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -114,8 +116,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -134,8 +136,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -154,8 +156,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -174,8 +176,8 @@ class _PetManageWidgetState extends State<PetManageWidget>
             curve: Curves.easeInOut,
             delay: 75.0.ms,
             duration: 400.0.ms,
-            begin: Offset(10.0, 0.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(10.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -213,7 +215,7 @@ class _PetManageWidgetState extends State<PetManageWidget>
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(3.82, 0.89),
+                    alignment: const AlignmentDirectional(3.82, 0.89),
                     child: Image.asset(
                       'assets/images/blurred-drop.png',
                       width: 300.0,
@@ -222,13 +224,13 @@ class _PetManageWidgetState extends State<PetManageWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 30.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -252,11 +254,11 @@ class _PetManageWidgetState extends State<PetManageWidget>
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.petListModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: PetListWidget(),
+                            child: const PetListWidget(),
                           ),
                         ),
                         const Padding(
@@ -282,360 +284,366 @@ class _PetManageWidgetState extends State<PetManageWidget>
                         //     ],
                         //   ),
                         // ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 0.0, 30.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: TextFormField(
-                                  controller: _model.petNameTextController,
-                                  focusNode: _model.petNameFocusNode,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Pet Name',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 14.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    filled: true,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .petNameTextControllerValidator
-                                      .asValidator(context),
-                                ).animateOnPageLoad(animationsMap[
-                                    'textFieldOnPageLoadAnimation1']!),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 10.0, 30.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: TextFormField(
-                                  controller: _model.nameFieldTextController1,
-                                  focusNode: _model.nameFieldFocusNode1,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Breed Name',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 14.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 3.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    filled: true,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .nameFieldTextController1Validator
-                                      .asValidator(context),
-                                ).animateOnPageLoad(animationsMap[
-                                    'textFieldOnPageLoadAnimation1']!),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 10.0, 30.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 0.0, 5.0, 0.0),
-                                  child: TextFormField(
-                                    controller: _model.nameFieldTextController5,
-                                    focusNode: _model.nameFieldFocusNode5,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Age',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 14.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    validator: _model
-                                        .nameFieldTextController5Validator
-                                        .asValidator(context),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'textFieldOnPageLoadAnimation5']!),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 0.0, 5.0, 0.0),
-                                  child: TextFormField(
-                                    controller: _model.nameFieldTextController6,
-                                    focusNode: _model.nameFieldFocusNode6,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Weight',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 3.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 14.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    validator: _model
-                                        .nameFieldTextController6Validator
-                                        .asValidator(context),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'textFieldOnPageLoadAnimation6']!),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsetsDirectional.fromSTEB(
+                        //       30.0, 0.0, 30.0, 0.0),
+                        //   child: Row(
+                        //     mainAxisSize: MainAxisSize.max,
+                        //     children: [
+                        //       Expanded(
+                        //         child: TextFormField(
+                        //           controller: _model.petNameTextController,
+                        //           focusNode: _model.petNameFocusNode,
+                        //           autofocus: true,
+                        //           obscureText: false,
+                        //           decoration: InputDecoration(
+                        //             hintText: 'Pet Name',
+                        //             hintStyle: FlutterFlowTheme.of(context)
+                        //                 .bodyMedium
+                        //                 .override(
+                        //                   fontFamily: 'Manrope',
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .secondaryText,
+                        //                   fontSize: 14.0,
+                        //                   letterSpacing: 0.0,
+                        //                 ),
+                        //             enabledBorder: OutlineInputBorder(
+                        //               borderSide: const BorderSide(
+                        //                 color: Color(0x00000000),
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             focusedBorder: OutlineInputBorder(
+                        //               borderSide: BorderSide(
+                        //                 color: FlutterFlowTheme.of(context)
+                        //                     .primary,
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             errorBorder: OutlineInputBorder(
+                        //               borderSide: const BorderSide(
+                        //                 color: Color(0x00000000),
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             focusedErrorBorder: OutlineInputBorder(
+                        //               borderSide: const BorderSide(
+                        //                 color: Color(0x00000000),
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             filled: true,
+                        //             fillColor: FlutterFlowTheme.of(context)
+                        //                 .secondaryBackground,
+                        //           ),
+                        //           style: FlutterFlowTheme.of(context)
+                        //               .bodyMedium
+                        //               .override(
+                        //                 fontFamily: 'Manrope',
+                        //                 color: FlutterFlowTheme.of(context)
+                        //                     .primary,
+                        //                 fontSize: 14.0,
+                        //                 letterSpacing: 0.0,
+                        //               ),
+                        //           validator: _model
+                        //               .petNameTextControllerValidator
+                        //               .asValidator(context),
+                        //         ).animateOnPageLoad(animationsMap[
+                        //             'textFieldOnPageLoadAnimation1']!),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        // Padding(
+                        //   padding: const EdgeInsetsDirectional.fromSTEB(
+                        //       30.0, 10.0, 30.0, 0.0),
+                        //   child: Row(
+                        //     mainAxisSize: MainAxisSize.max,
+                        //     children: [
+                        //       Expanded(
+                        //         child: TextFormField(
+                        //           controller: _model.nameFieldTextController1,
+                        //           focusNode: _model.nameFieldFocusNode1,
+                        //           autofocus: true,
+                        //           obscureText: false,
+                        //           decoration: InputDecoration(
+                        //             hintText: 'Breed Name',
+                        //             hintStyle: FlutterFlowTheme.of(context)
+                        //                 .bodyMedium
+                        //                 .override(
+                        //                   fontFamily: 'Manrope',
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .secondaryText,
+                        //                   fontSize: 14.0,
+                        //                   letterSpacing: 0.0,
+                        //                 ),
+                        //             enabledBorder: OutlineInputBorder(
+                        //               borderSide: const BorderSide(
+                        //                 color: Color(0x00000000),
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             focusedBorder: OutlineInputBorder(
+                        //               borderSide: BorderSide(
+                        //                 color: FlutterFlowTheme.of(context)
+                        //                     .primary,
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             errorBorder: OutlineInputBorder(
+                        //               borderSide: const BorderSide(
+                        //                 color: Color(0x00000000),
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             focusedErrorBorder: OutlineInputBorder(
+                        //               borderSide: const BorderSide(
+                        //                 color: Color(0x00000000),
+                        //                 width: 3.0,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(16.0),
+                        //             ),
+                        //             filled: true,
+                        //             fillColor: FlutterFlowTheme.of(context)
+                        //                 .secondaryBackground,
+                        //           ),
+                        //           style: FlutterFlowTheme.of(context)
+                        //               .bodyMedium
+                        //               .override(
+                        //                 fontFamily: 'Manrope',
+                        //                 color: FlutterFlowTheme.of(context)
+                        //                     .primary,
+                        //                 fontSize: 14.0,
+                        //                 letterSpacing: 0.0,
+                        //               ),
+                        //           validator: _model
+                        //               .nameFieldTextController1Validator
+                        //               .asValidator(context),
+                        //         ).animateOnPageLoad(animationsMap[
+                        //             'textFieldOnPageLoadAnimation1']!),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        // Padding(
+                        //   padding: const EdgeInsetsDirectional.fromSTEB(
+                        //       30.0, 10.0, 30.0, 10.0),
+                        //   child: Row(
+                        //     mainAxisSize: MainAxisSize.max,
+                        //     children: [
+                        //       Expanded(
+                        //         child: Padding(
+                        //           padding: const EdgeInsetsDirectional.fromSTEB(
+                        //               5.0, 0.0, 5.0, 0.0),
+                        //           child: TextFormField(
+                        //             controller: _model.nameFieldTextController5,
+                        //             focusNode: _model.nameFieldFocusNode5,
+                        //             autofocus: true,
+                        //             obscureText: false,
+                        //             decoration: InputDecoration(
+                        //               hintText: 'Age',
+                        //               hintStyle: FlutterFlowTheme.of(context)
+                        //                   .bodyMedium
+                        //                   .override(
+                        //                     fontFamily: 'Manrope',
+                        //                     color: FlutterFlowTheme.of(context)
+                        //                         .secondaryText,
+                        //                     fontSize: 14.0,
+                        //                     letterSpacing: 0.0,
+                        //                   ),
+                        //               enabledBorder: OutlineInputBorder(
+                        //                 borderSide: const BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               focusedBorder: OutlineInputBorder(
+                        //                 borderSide: BorderSide(
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .primary,
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               errorBorder: OutlineInputBorder(
+                        //                 borderSide: const BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               focusedErrorBorder: OutlineInputBorder(
+                        //                 borderSide: const BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               filled: true,
+                        //               fillColor: FlutterFlowTheme.of(context)
+                        //                   .secondaryBackground,
+                        //             ),
+                        //             style: FlutterFlowTheme.of(context)
+                        //                 .bodyMedium
+                        //                 .override(
+                        //                   fontFamily: 'Manrope',
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .primary,
+                        //                   fontSize: 14.0,
+                        //                   letterSpacing: 0.0,
+                        //                 ),
+                        //             validator: _model
+                        //                 .nameFieldTextController5Validator
+                        //                 .asValidator(context),
+                        //           ).animateOnPageLoad(animationsMap[
+                        //               'textFieldOnPageLoadAnimation5']!),
+                        //         ),
+                        //       ),
+                        //       Expanded(
+                        //         child: Padding(
+                        //           padding: const EdgeInsetsDirectional.fromSTEB(
+                        //               5.0, 0.0, 5.0, 0.0),
+                        //           child: TextFormField(
+                        //             controller: _model.nameFieldTextController6,
+                        //             focusNode: _model.nameFieldFocusNode6,
+                        //             autofocus: true,
+                        //             obscureText: false,
+                        //             decoration: InputDecoration(
+                        //               hintText: 'Weight',
+                        //               hintStyle: FlutterFlowTheme.of(context)
+                        //                   .bodyMedium
+                        //                   .override(
+                        //                     fontFamily: 'Manrope',
+                        //                     color: FlutterFlowTheme.of(context)
+                        //                         .secondaryText,
+                        //                     fontSize: 14.0,
+                        //                     letterSpacing: 0.0,
+                        //                   ),
+                        //               enabledBorder: OutlineInputBorder(
+                        //                 borderSide: const BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               focusedBorder: OutlineInputBorder(
+                        //                 borderSide: BorderSide(
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .primary,
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               errorBorder: OutlineInputBorder(
+                        //                 borderSide: const BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               focusedErrorBorder: OutlineInputBorder(
+                        //                 borderSide: const BorderSide(
+                        //                   color: Color(0x00000000),
+                        //                   width: 3.0,
+                        //                 ),
+                        //                 borderRadius:
+                        //                     BorderRadius.circular(16.0),
+                        //               ),
+                        //               filled: true,
+                        //               fillColor: FlutterFlowTheme.of(context)
+                        //                   .secondaryBackground,
+                        //             ),
+                        //             style: FlutterFlowTheme.of(context)
+                        //                 .bodyMedium
+                        //                 .override(
+                        //                   fontFamily: 'Manrope',
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .primary,
+                        //                   fontSize: 14.0,
+                        //                   letterSpacing: 0.0,
+                        //                 ),
+                        //             validator: _model
+                        //                 .nameFieldTextController6Validator
+                        //                 .asValidator(context),
+                        //           ).animateOnPageLoad(animationsMap[
+                        //               'textFieldOnPageLoadAnimation6']!),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                       ],
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          await _model.addNewPet(context, formKey);
-                          // context.goNamed(
-                          //   PetProfileWidget.routeName,
-                          //   extra: <String, dynamic>{
-                          //     kTransitionInfoKey: TransitionInfo(
-                          //       hasTransition: true,
-                          //       transitionType: PageTransitionType.fade,
-                          //       duration: Duration(milliseconds: 400),
-                          //     ),
-                          //   },
-                          // );
-                        },
-                        text: 'Add Pet',
-                        options: FFButtonOptions(
-                          width: 150.0,
-                          height: 70.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Manrope',
-                                    color: FlutterFlowTheme.of(context).white,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 0.0,
-                          ),
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
-                      ),
                     ),
                   ),
                 ],
               ),
             ),
-          )),
+          ),
+                  floatingActionButton: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FloatingActionButton.extended(
+              heroTag: 'fab1',
+              backgroundColor: Colors.greenAccent[100],
+              onPressed: () async {
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PetProfileAddWidget()));
+                  
+              },
+              label: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  const Icon(
+                    Icons.add_rounded,
+                    color: Colors.black,
+                    size: 24.0,
+                  ),
+                  Text(
+                    'Add pet',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Manrope',
+                          color: Colors.black,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ].divide(const SizedBox(width: 8.0)),
+              ),
+            ),
+            // SizedBox(height: 16), // space between buttons
+            // FloatingActionButton(
+            //   heroTag: 'fab2',
+            //   onPressed: () async {
+            //     print('Second FAB');
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => LogMoodAddWidget(pet: widget.pet),
+            //       ));
+            //   },
+            //   child: Icon(Icons.add),
+            //   backgroundColor: Colors.greenAccent[200],
+            // ),
+          ],
+        ),
+        ),
     );
   }
 }

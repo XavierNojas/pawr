@@ -357,6 +357,7 @@ class _LogFoodListWidgetState extends State<LogFoodListWidget>
           : ListView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: snackLogVM.snackLogs.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, snackLogVM.snackLogs[index],

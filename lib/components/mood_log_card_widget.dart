@@ -111,7 +111,7 @@ class _MoodLogCardWidgetState extends State<MoodLogCardWidget>
       },
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
-        height: MediaQuery.of(context).size.height * 0.18,
+        height: MediaQuery.of(context).size.height * 0.15,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(24.0),
@@ -147,7 +147,7 @@ class _MoodLogCardWidgetState extends State<MoodLogCardWidget>
             // ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

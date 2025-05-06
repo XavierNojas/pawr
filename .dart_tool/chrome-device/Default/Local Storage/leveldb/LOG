@@ -1,45 +1,25 @@
-2025/05/05-00:29:34.310 64a0 Reusing MANIFEST C:\Users\ACER\AppData\Local\Temp\flutter_tools.6d320641\flutter_tools_chrome_device.f5005842\Default\Local Storage\leveldb/MANIFEST-000001
-2025/05/05-00:29:34.317 64a0 Recovering log #3
-2025/05/05-00:29:34.318 64a0 Level-0 table #3: started
-2025/05/05-00:29:34.324 64a0 Level-0 table #3: 31378 bytes OK
-2025/05/05-00:29:34.325 64a0 Recovering log #4
-2025/05/05-00:29:34.325 64a0 Level-0 table #4: started
-2025/05/05-00:29:34.330 64a0 Level-0 table #4: 30919 bytes OK
-2025/05/05-00:29:34.332 64a0 Recovering log #7
-2025/05/05-00:29:34.333 64a0 Level-0 table #5: started
-2025/05/05-00:29:34.341 64a0 Level-0 table #5: 15473 bytes OK
-2025/05/05-00:29:34.354 64a0 Recovering log #9
-2025/05/05-00:29:34.355 64a0 Level-0 table #8: started
-2025/05/05-00:29:34.373 64a0 Level-0 table #8: 27049 bytes OK
-2025/05/05-00:29:34.373 64a0 Recovering log #12
-2025/05/05-00:29:34.373 64a0 Level-0 table #10: started
-2025/05/05-00:29:34.381 64a0 Level-0 table #10: 35090 bytes OK
-2025/05/05-00:29:34.382 64a0 Recovering log #17
-2025/05/05-00:29:34.382 64a0 Level-0 table #13: started
-2025/05/05-00:29:34.388 64a0 Level-0 table #13: 27543 bytes OK
-2025/05/05-00:29:34.389 64a0 Recovering log #20
-2025/05/05-00:29:34.396 64a0 Level-0 table #18: started
-2025/05/05-00:29:34.408 64a0 Level-0 table #18: 32740 bytes OK
-2025/05/05-00:29:34.408 64a0 Recovering log #24
-2025/05/05-00:29:34.413 64a0 Reusing old log C:\Users\ACER\AppData\Local\Temp\flutter_tools.6d320641\flutter_tools_chrome_device.f5005842\Default\Local Storage\leveldb/000024.log 
-2025/05/05-00:29:34.415 64a0 Delete type=0 #3
-2025/05/05-00:29:34.415 64a0 Delete type=0 #4
-2025/05/05-00:29:34.415 64a0 Delete type=0 #7
-2025/05/05-00:29:34.415 64a0 Delete type=0 #9
-2025/05/05-00:29:34.416 64a0 Delete type=0 #12
-2025/05/05-00:29:34.416 64a0 Delete type=2 #15
-2025/05/05-00:29:34.416 64a0 Delete type=0 #17
-2025/05/05-00:29:34.416 64a0 Delete type=0 #20
-2025/05/05-00:29:34.416 64a0 Delete type=2 #21
-2025/05/05-00:29:34.416 64a0 Delete type=2 #23
-2025/05/05-00:29:34.423 4cec Compacting 7@0 + 0@1 files
-2025/05/05-00:29:34.434 4cec Generated table #25@0: 174 keys, 74847 bytes
-2025/05/05-00:29:34.435 4cec Compacted 7@0 + 0@1 files => 74847 bytes
-2025/05/05-00:29:34.435 4cec compacted to: files[ 0 1 0 0 0 0 0 ]
-2025/05/05-00:29:34.438 4cec Delete type=2 #3
-2025/05/05-00:29:34.439 4cec Delete type=2 #4
-2025/05/05-00:29:34.439 4cec Delete type=2 #5
-2025/05/05-00:29:34.439 4cec Delete type=2 #8
-2025/05/05-00:29:34.440 4cec Delete type=2 #10
-2025/05/05-00:29:34.440 4cec Delete type=2 #13
-2025/05/05-00:29:34.440 4cec Delete type=2 #18
+2025/05/06-19:45:07.924 4ecc Reusing MANIFEST C:\Users\ACER\AppData\Local\Temp\flutter_tools.3bd2b711\flutter_tools_chrome_device.4244eba\Default\Local Storage\leveldb/MANIFEST-000001
+2025/05/06-19:45:07.934 4ecc Recovering log #30
+2025/05/06-19:45:07.939 4ecc Reusing old log C:\Users\ACER\AppData\Local\Temp\flutter_tools.3bd2b711\flutter_tools_chrome_device.4244eba\Default\Local Storage\leveldb/000030.log 
+2025/05/06-19:45:07.940 4ecc Delete type=2 #3
+2025/05/06-19:45:07.940 4ecc Delete type=0 #3
+2025/05/06-19:45:07.940 4ecc Delete type=2 #4
+2025/05/06-19:45:07.940 4ecc Delete type=0 #4
+2025/05/06-19:45:07.940 4ecc Delete type=2 #5
+2025/05/06-19:45:07.941 4ecc Delete type=0 #7
+2025/05/06-19:45:07.941 4ecc Delete type=2 #8
+2025/05/06-19:45:07.941 4ecc Delete type=0 #9
+2025/05/06-19:45:07.941 4ecc Delete type=2 #10
+2025/05/06-19:45:07.941 4ecc Delete type=0 #12
+2025/05/06-19:45:07.941 4ecc Delete type=2 #13
+2025/05/06-19:45:07.941 4ecc Delete type=2 #15
+2025/05/06-19:45:07.941 4ecc Delete type=0 #17
+2025/05/06-19:45:07.941 4ecc Delete type=2 #18
+2025/05/06-19:45:07.941 4ecc Delete type=0 #20
+2025/05/06-19:45:07.941 4ecc Delete type=2 #21
+2025/05/06-19:45:07.941 4ecc Delete type=2 #23
+2025/05/06-19:45:07.941 4ecc Delete type=0 #24
+2025/05/06-19:45:07.941 4ecc Delete type=0 #27
+2025/05/06-20:21:48.756 1054 Level-0 table #34: started
+2025/05/06-20:21:48.762 1054 Level-0 table #34: 37281 bytes OK
+2025/05/06-20:21:48.764 1054 Delete type=0 #30

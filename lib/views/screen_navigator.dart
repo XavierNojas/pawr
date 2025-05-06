@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:paw_r_app/views/pet_manage_b/pet_manage_b_widget.dart';
+import 'package:paw_r_app/views/user_earnings/user_earnings_widget.dart';
+import 'package:paw_r_app/views/user_group_manage/user_group_manage_widget.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
 import '../pages/notifs/notifs_widget.dart';
@@ -12,39 +15,39 @@ import '../view_models/navigation_view_model.dart';
 
 class ScreenNavigator extends StatelessWidget {
   final List<Widget> _pages = [
+    // const UserEarningsWidget(userId: 'fe09a1b3-8d65-4a0d-bd67-b695eb4ee165'),
     const HomeWidget(),
     const NotifsWidget(),
-    const PetManageWidget(),
+    const PetManageBWidget(isFromProfile: false),
+    const UserGroupManageWidget(),
     TransactionsNavigator(),
   ];
 
   ScreenNavigator({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final navProvider = Provider.of<NavigationProvider>(context);
+@override
+Widget build(BuildContext context) {
+  final navProvider = Provider.of<NavigationProvider>(context);
 
-    return Scaffold(
-      body: _pages[navProvider.selectedIndex], // Show page based on index
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white, // Optional: Set a background color
-        selectedItemColor:
-            const Color(0xFF009C8B), // Set selected item color to #009C8B
-        unselectedItemColor: const Color(
-            0xFF5F5F5F), // Keep unselected item color as greyected item color to green
-        currentIndex: navProvider.selectedIndex,
-        onTap: (index) {
-          navProvider.updateIndex(index); // Update index in provider
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), label: 'Reminders'),
-          BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Pets'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.chat), label: 'Care Requests'),
-        ],
-      ),
-    );
-  }
+  return Scaffold(
+    body: IndexedStack(
+      index: navProvider.selectedIndex,
+      children: _pages,
+    ),
+    bottomNavigationBar: BottomNavigationBar(
+      backgroundColor: Colors.white,
+      selectedItemColor: const Color(0xFF009C8B),
+      unselectedItemColor: const Color(0xFF5F5F5F),
+      currentIndex: navProvider.selectedIndex,
+      onTap: (index) => navProvider.updateIndex(index),
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Reminders'),
+        BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Pets'),
+        BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Group'),
+        BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Care Requests'),
+      ],
+    ),
+  );
+}
 }

@@ -1,10 +1,10 @@
 class Food {
   final int? id;
   final String foodName;
-  final double? amount;
-  final double? calories;
+  final String? amount;
+  final String? calories;
   final int? pet_id;
-  final int? gLoad;
+  final String? gLoad;
 
   Food({
     this.id,

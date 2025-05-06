@@ -1,3 +1,4 @@
+import 'package:paw_r_app/view_models/friends_view_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -25,6 +26,7 @@ class UserProfileModel extends FlutterFlowModel<UserProfileWidget> {
     Future<void> logout(BuildContext context) async {
     try {
       await Supabase.instance.client.auth.signOut();
+
       Navigator.pushReplacementNamed(context, '/signIn');
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(

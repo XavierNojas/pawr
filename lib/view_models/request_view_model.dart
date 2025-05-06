@@ -9,9 +9,13 @@ import '../models/request.dart';
 import '../models/user.dart';
 
 import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
+
+enum TimeFilter { day, week, month, year }
 
 class RequestViewModel extends ChangeNotifier {
   List<Request> requests = [];
+  List<Request> requestsAccepted = [];
   List<Request> otherRequests = [];
   List<Request> otherAcceptedRequests = [];
   final supabase = Supabase.instance.client;
@@ -200,16 +204,26 @@ class RequestViewModel extends ChangeNotifier {
 
     // fetch requests that are pending
     try {
-      final data =
-          await supabase.from('requests')
+      final data = await supabase
+          .from('requests')
           .select()
           .eq('user_id', user_id)
           .eq('status', state)
           .order('created_at', ascending: false);
+          
       requests = (data as List)
           .map((requestMap) => Request.fromMap(requestMap))
           .toList();
       notifyListeners();
+
+      if (state == 'accepted') {
+        requestsAccepted = (data as List)
+          .map((requestMap) => Request.fromMap(requestMap))
+          .toList();
+      notifyListeners();
+      }
+
+
       isLoading = false;
     } catch (error) {
       print('Error fetching requests: $error');
@@ -234,7 +248,7 @@ class RequestViewModel extends ChangeNotifier {
           .single(); // Fetch a single pet based on ID
 
       print(data);
-      
+
       if (data != null) {
         return Pet.fromMap(data);
       } else {
@@ -260,8 +274,6 @@ class RequestViewModel extends ChangeNotifier {
     print(requestIds);
   }
 
-
-
   Future<void> fetchOtherRequests(String state) async {
     final user_id = supabase.auth.currentUser?.id ?? -1;
 
@@ -269,12 +281,12 @@ class RequestViewModel extends ChangeNotifier {
 
     // fetch requests that are pending
     try {
-      final data =
-          await supabase.from('requests')
+      final data = await supabase
+          .from('requests')
           .select()
           .neq('user_id', user_id)
           .eq('status', state)
-          .order('modified_date', ascending: false);
+          .order('created_at', ascending: false);
       otherRequests = (data as List)
           .map((requestMap) => Request.fromMap(requestMap))
           .toList();
@@ -309,7 +321,6 @@ class RequestViewModel extends ChangeNotifier {
   //   }
   // }
 
-
   Future<void> fetchOtherAcceptedRequests() async {
     final userId = supabase.auth.currentUser?.id ?? -1;
 
@@ -317,8 +328,8 @@ class RequestViewModel extends ChangeNotifier {
 
     // fetch requests that are pending
     try {
-      final data =
-          await supabase.from('requests')
+      final data = await supabase
+          .from('requests')
           .select()
           .eq('caretaker_id', userId)
           .eq('status', 'accepted')
@@ -333,8 +344,6 @@ class RequestViewModel extends ChangeNotifier {
     }
   }
 
-
-
   Future<UserDetails?> fetchOwnerDetails(String? ownerId) async {
     try {
       final data = await supabase
@@ -344,7 +353,7 @@ class RequestViewModel extends ChangeNotifier {
           .single(); // Fetch a single pet based on ID
 
       print(data);
-      
+
       if (data != null) {
         return UserDetails.fromMap(data);
       } else {
@@ -356,7 +365,6 @@ class RequestViewModel extends ChangeNotifier {
     }
   }
 
-  
   // Future<void> updatePet(Pet pet) async {
   //   try {
   //     await supabase.from('pets').update(pet.toMap()).eq('id', pet.id!);
@@ -367,56 +375,71 @@ class RequestViewModel extends ChangeNotifier {
   // }
 
   Future<void> acceptRequest(Request request, String caretakerId) async {
-     final formattedDate = DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now().toUtc()) + '+00';
+    final formattedDate =
+        DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now().toUtc()) +
+            '+00';
 
     try {
-      await supabase.from('requests')
-      .update({
-        'status': 'accepted', 
-        'caretaker_id': caretakerId, 
+      await supabase.from('requests').update({
+        'status': 'accepted',
+        'caretaker_id': caretakerId,
         'modified_date': formattedDate
-        }) // Only update the status
-      .eq('id', request.id!);
+      }) // Only update the status
+          .eq('id', request.id!);
       await fetchOtherRequests('pending');
     } catch (error) {
       print('Error updating contact: $error');
     }
   }
 
+  double totalEarnings = 0.0;
 
+  Future<String?> fetchEarnings(String position, TimeFilter filter) async {
+    final userId = supabase.auth.currentUser?.id;
+    if (userId == null) return '';
 
+    final now = DateTime.now();
+    late DateTime start;
+    late DateTime end;
 
-double totalEarnings = 0.0;
+    switch (filter) {
+      case TimeFilter.day:
+        start = DateTime(now.year, now.month, now.day);
+        end = start.add(Duration(days: 1));
+        break;
+      case TimeFilter.week:
+        start = now.subtract(Duration(days: now.weekday - 1)); // Monday
+        end = start.add(Duration(days: 7));
+        break;
+      case TimeFilter.month:
+        start = DateTime(now.year, now.month, 1);
+        end = DateTime(now.year, now.month + 1, 1);
+        break;
+      case TimeFilter.year:
+        start = DateTime(now.year, 1, 1);
+        end = DateTime(now.year + 1, 1, 1);
+        break;
+    }
 
-Future<String?> fetchEarnings(String position) async {
-  final userId = supabase.auth.currentUser?.id;
-
-  if (userId == null) return '';
-
-  try {
-
+    try {
       final data = await supabase
-        .from('requests')
-        .select('total')
-        .eq(position, userId);
+          .from('requests')
+          .select('total')
+          .eq(position, userId)
+          .gte('created_at', start.toIso8601String())
+          .lt('created_at', end.toIso8601String());
 
-    final totals = (data as List)
-        .map((item) => double.tryParse(item['total'].toString()) ?? 0.0)
-        .toList();
+      final totals = (data as List)
+          .map((item) => double.tryParse(item['total'].toString()) ?? 0.0)
+          .toList();
 
-    totalEarnings = totals.fold(0.0, (sum, value) => sum + value);
+      totalEarnings = totals.fold(0.0, (sum, value) => sum + value);
 
-    if (data != null) {
-        return totalEarnings.toString();
-      } else {
-        return null;
-      } // No pet found with that ID
-
-  } catch (error) {
-    print('Error fetching earnings: $error');
+      return totalEarnings.toString();
+    } catch (error) {
+      print('Error fetching earnings: $error');
+      return null;
+    }
   }
-}
-
-
-
+  
 }

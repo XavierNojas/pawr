@@ -357,6 +357,7 @@ class _LogMoodListWidgetState extends State<LogMoodListWidget>
           : ListView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: moodLogVM.moodLogs.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, moodLogVM.moodLogs[index],

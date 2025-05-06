@@ -26,9 +26,9 @@ class FoodCardWidget extends StatefulWidget {
   });
 
   final String? title;
-  final double? portion;
-  final double? calories;
-  final int? label;
+  final String? portion;
+  final String? calories;
+  final String? label;
   final String? image;
   final int? cardId;
 

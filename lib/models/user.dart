@@ -5,6 +5,7 @@ class UserDetails {
   final String userId;
   final String email;
   final String phone;
+  final String referenceCode;
 
   UserDetails({
     this.id,
@@ -13,6 +14,7 @@ class UserDetails {
     required this.userId,
     required this.email,
     required this.phone,
+    required this.referenceCode,
   });
 
   // Convert a map from Supabase to a User object
@@ -24,6 +26,7 @@ class UserDetails {
       userId: map['userId'],
       email: map['email'],
       phone: map['phone'],
+      referenceCode: map['referenceCode'],
     );
   }
 
@@ -35,6 +38,7 @@ class UserDetails {
       'userId': userId,
       'email': email,
       'phone': phone,
+      'referenceCode': referenceCode,
     };
   }
 }

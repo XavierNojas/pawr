@@ -86,6 +86,8 @@ class UserEarningsModel extends FlutterFlowModel<UserEarningsWidget> {
 
   double? oneTimeValue = 880;
 
+  bool isLoading = true;
+
   @override
   void initState(BuildContext context) {
     checkBoxText = [

@@ -57,6 +57,9 @@ class LogFoodAddModel extends FlutterFlowModel<LogFoodAddWidget> {
       if (double.tryParse(value.trim()) == null) {
         return 'Amount must be a number';
       }
+      if ((double.tryParse(value.trim()) ?? -1) < 0) {
+        return 'Value must be greater than one';
+      }
       return null;
     };
 
@@ -66,6 +69,9 @@ class LogFoodAddModel extends FlutterFlowModel<LogFoodAddWidget> {
       }
       if (double.tryParse(value.trim()) == null) {
         return 'Calories must be a number';
+      }
+      if ((double.tryParse(value.trim()) ?? -1) < 0) {
+        return 'Value must be greater than one';
       }
       return null;
     };
@@ -81,9 +87,16 @@ class LogFoodAddModel extends FlutterFlowModel<LogFoodAddWidget> {
       if (isDecimal(double.tryParse(value.trim()))) {
         return 'Glycemic load must be a whole number';
       }
+      if ((double.tryParse(value.trim()) ?? -1) <= 0) {
+        return 'Value must be greater than one';
+      }
+
 
       return null;
     };
+
+
+
   }
 
   @override
@@ -122,9 +135,9 @@ class LogFoodAddModel extends FlutterFlowModel<LogFoodAddWidget> {
     final foodName = nameFieldTextController.text.trim();
     final pet_id = pet.id;
 
-    double? amount = modifyNum(amountFieldTextController.text.trim());
-    double? calories = modifyNum(caloriesFieldTextController.text.trim());
-    int? gLoad = int.tryParse(gLoadFieldTextController.text.trim());
+    final amount = amountFieldTextController.text.trim();
+    final calories = caloriesFieldTextController.text.trim();
+    final gLoad = gLoadFieldTextController.text.trim();
 
     if (!formKey.currentState!.validate()) return;
 
@@ -144,10 +157,7 @@ class LogFoodAddModel extends FlutterFlowModel<LogFoodAddWidget> {
         SnackBar(content: Text("Error adding contact: $error")),
       );
     } finally {
-      // do something
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Food added!')),
-      );
+
     }
   }
 }

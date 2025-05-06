@@ -188,29 +188,46 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                child: Text(
-                                  widget!.title!,
-                                  maxLines: 2,
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleLarge
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        color: valueOrDefault<Color>(
-                                          _model.completed!
-                                              ? FlutterFlowTheme.of(context)
-                                                  .primary
-                                              : FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                        fontSize: 18.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget!.title!,
+                style: FlutterFlowTheme.of(context).titleLarge.override(
+                      color: Color(0xFF14181B),
+                      fontFamily: 'Manrope',
+                      fontSize: 18,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w500,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+              ),
+            ],
+          ),
+
+
+
+          // Column(
+          //   mainAxisSize: MainAxisSize.min,
+          //   crossAxisAlignment: CrossAxisAlignment.end,
+          //   children: [
+          //     Text(
+          //       '${widget.requestObject.tasks.length.toString()} Tasks',
+          //       style: FlutterFlowTheme.of(context).titleLarge.override(
+          //             color: Color(0xFF14181B),
+          //             fontFamily: 'Manrope',
+          //             fontSize: 14,
+          //             letterSpacing: 0.0,
+          //             fontWeight: FontWeight.w500,
+          //             fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+          //           ),
+          //     ),
+          //   ],
+          // ),
+
+          if (widget.requestObject.status == 'pending')
                               Container(
                                 width: 35.0,
                                 height: 35.0,
@@ -243,7 +260,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      (widget.startDate!.split('- '))[0],
+                                      (widget.startDate!.split(' - '))[0],
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -255,7 +272,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                                           ),
                                     ),
                                     Text(
-                                      (widget.startDate!.split('- '))[1],
+                                      (widget.startDate!.split(' - '))[1],
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -291,33 +308,47 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                                           ),
                                     ),
 
-                              Container(
-                                height: 28.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 8.0, 0.0),
-                                    child: Text(
+
+                                    Text(
                                       (widget!.total!).toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Manrope',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            fontSize: 13.0,
+                                                .ebony,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal
                                           ),
                                     ),
-                                  ),
-                                ),
-                              ),
+
+                              // Container(
+                              //   height: 16.0,
+                              //   decoration: BoxDecoration(
+                              //     color: FlutterFlowTheme.of(context)
+                              //         .secondaryText,
+                              //     borderRadius: BorderRadius.circular(8.0),
+                              //   ),
+                              //   child: Align(
+                              //     alignment: AlignmentDirectional(0.0, 0.0),
+                              //     child: Padding(
+                              //       padding: EdgeInsetsDirectional.fromSTEB(
+                              //           8.0, 0.0, 8.0, 0.0),
+                              //       child: Text(
+                              //         (widget!.total!).toString(),
+                              //         style: FlutterFlowTheme.of(context)
+                              //             .bodyMedium
+                              //             .override(
+                              //               fontFamily: 'Manrope',
+                              //               color: FlutterFlowTheme.of(context)
+                              //                   .secondaryBackground,
+                              //               fontSize: 13.0,
+                              //               letterSpacing: 0.0,
+                              //             ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
 
                                    ]
                                   ),
@@ -331,7 +362,7 @@ class _TransactionCardWidgetState extends State<TransactionCardWidget>
                                 mainAxisSize: MainAxisSize.max, 
                                 children: [
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       (widget.finishDate!.split('- '))[0],

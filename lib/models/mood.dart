@@ -88,6 +88,11 @@ class MoodList {
       color: Color(0xFFCFEAD9),
     ),
     Mood(
+      moodName: 'Sad',
+      description: 'Characterized by a reduction in activity, loss of interest in enjoyable activities and changes in appetite or sleep',
+      color: Color(0xFFD5D9EA),
+    ),
+    Mood(
       moodName: 'Vulnerable',
       description: 'State of emotional or physical exposure where the pet may seek protection or comfort',
       color: Color(0xFFE9D3EC),

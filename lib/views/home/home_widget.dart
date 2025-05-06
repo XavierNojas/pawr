@@ -345,21 +345,30 @@ body: SafeArea(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+ 
+
                       Text(
-                        '${_model.greetingMessage}, $username!', // Use the dynamic username
-                        style:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  fontFamily: 'Manrope',
+                             '${_model.greetingMessage}, $username!', // Use the dynamic username
+                              softWrap: true, // 👈 Allows text to wrap
+                              overflow: TextOverflow
+                                  .ellipsis, // 👈 Optional: use fade/ellipsis/clip
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Manrope',
                                   color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                      ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+
+
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 4.0, 0.0, 0.0),
                         child: Text(
-                          'Your pet is looking healthy today.',
+                          // 'Your pet is looking healthy today.',
+                          '',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Manrope',

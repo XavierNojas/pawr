@@ -1,3 +1,4 @@
+import 'package:paw_r_app/view_models/pet_view_model.dart';
 import 'package:paw_r_app/views/log_food/log_food_widget.dart';
 import 'package:paw_r_app/views/screen_navigator.dart';
 
@@ -336,10 +337,9 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                     child: Container(
                       width: double.infinity,
-                      height: 80.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         boxShadow: [
@@ -369,17 +369,19 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      '$petName',
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            fontSize: 24.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    ),
+                          '$petName',
+                          textAlign: TextAlign.start,
+                          style: FlutterFlowTheme.of(context).bodyMedium
+                              .override(
+                                fontFamily: 'Manrope',
+                                fontSize: 24.0,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                                   ),
                                 ),
                                 Align(
@@ -394,58 +396,31 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Manrope',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
+                                            color: FlutterFlowTheme.of(context).primary,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(1.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 15.0, 8.0),
-                              child: Icon(
-                                Icons.pets,
-                                color: Colors.green[700],
-                                size: 24.0,
+
+
+
+                            const SizedBox(height: 10.0),
+
+                            Container(
+                              width: double.infinity,
+                              height: 1.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).alternate,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 3.0,
-                            color: Color(0x33000000),
-                            offset: Offset(
-                              0.0,
-                              -1.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 15.0, 16.0, 15.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+
+                            const SizedBox(height: 10.0),
+
+
+
+
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
@@ -597,14 +572,211 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                 ],
                               ),
                             ),
-                          ],
-                        ),
+                            
+                              ],
+                            ),
+                          ),
+                          // Align(
+                          //   alignment: AlignmentDirectional(1.0, 0.0),
+                          //   child: Padding(
+                          //     padding: EdgeInsetsDirectional.fromSTEB(
+                          //         0.0, 8.0, 15.0, 8.0),
+                          //     child: Icon(
+                          //       Icons.pets,
+                          //       color: Colors.green[700],
+                          //       size: 24.0,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
                       ),
                     ),
                   ),
+                  // Padding(
+                  //   padding:
+                  //       EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     decoration: BoxDecoration(
+                  //       color: FlutterFlowTheme.of(context).secondaryBackground,
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //           blurRadius: 3.0,
+                  //           color: Color(0x33000000),
+                  //           offset: Offset(
+                  //             0.0,
+                  //             -1.0,
+                  //           ),
+                  //         )
+                  //       ],
+                  //       borderRadius: BorderRadius.circular(15.0),
+                  //     ),
+                  //     child: Padding(
+                  //       padding: EdgeInsetsDirectional.fromSTEB(
+                  //           16.0, 15.0, 16.0, 15.0),
+                  //       child: Column(
+                  //         mainAxisSize: MainAxisSize.max,
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           Padding(
+                  //             padding: EdgeInsetsDirectional.fromSTEB(
+                  //                 0.0, 0.0, 0.0, 8.0),
+                  //             child: Row(
+                  //               mainAxisSize: MainAxisSize.max,
+                  //               mainAxisAlignment: MainAxisAlignment.center,
+                  //               children: [
+                  //                 Container(
+                  //                   width: 90.0,
+                  //                   height: 40.0,
+                  //                   decoration: BoxDecoration(
+                  //                     color: FlutterFlowTheme.of(context)
+                  //                         .secondaryBackground,
+                  //                   ),
+                  //                   child: Stack(
+                  //                     children: [
+                  //                       Align(
+                  //                         alignment:
+                  //                             AlignmentDirectional(0.0, -1.0),
+                  //                         child: Padding(
+                  //                           padding:
+                  //                               EdgeInsetsDirectional.fromSTEB(
+                  //                                   5.0, 0.0, 5.0, 0.0),
+                  //                           child: Text(
+                  //                             'Age',
+                  //                             textAlign: TextAlign.center,
+                  //                             style:
+                  //                                 FlutterFlowTheme.of(context)
+                  //                                     .bodyMedium
+                  //                                     .override(
+                  //                                       fontFamily: 'Manrope',
+                  //                                       letterSpacing: 0.0,
+                  //                                       fontWeight:
+                  //                                           FontWeight.w600,
+                  //                                     ),
+                  //                           ),
+                  //                         ),
+                  //                       ),
+                  //                       Align(
+                  //                         alignment:
+                  //                             AlignmentDirectional(0.0, 1.0),
+                  //                         child: Text(
+                  //                           '$petAge years old',
+                  //                           style: FlutterFlowTheme.of(context)
+                  //                               .bodyMedium
+                  //                               .override(
+                  //                                 fontFamily: 'Manrope',
+                  //                                 letterSpacing: 0.0,
+                  //                               ),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //                 Container(
+                  //                   width: 100.0,
+                  //                   height: 40.0,
+                  //                   decoration: BoxDecoration(
+                  //                     color: FlutterFlowTheme.of(context)
+                  //                         .secondaryBackground,
+                  //                   ),
+                  //                   child: Stack(
+                  //                     children: [
+                  //                       Align(
+                  //                         alignment:
+                  //                             AlignmentDirectional(0.0, -1.0),
+                  //                         child: Padding(
+                  //                           padding:
+                  //                               EdgeInsetsDirectional.fromSTEB(
+                  //                                   5.0, 0.0, 5.0, 0.0),
+                  //                           child: Text(
+                  //                             'Weight',
+                  //                             textAlign: TextAlign.center,
+                  //                             style:
+                  //                                 FlutterFlowTheme.of(context)
+                  //                                     .bodyMedium
+                  //                                     .override(
+                  //                                       fontFamily: 'Manrope',
+                  //                                       letterSpacing: 0.0,
+                  //                                       fontWeight:
+                  //                                           FontWeight.w600,
+                  //                                     ),
+                  //                           ),
+                  //                         ),
+                  //                       ),
+                  //                       Align(
+                  //                         alignment:
+                  //                             AlignmentDirectional(0.0, 1.0),
+                  //                         child: Text(
+                  //                           '$petWeight kg',
+                  //                           style: FlutterFlowTheme.of(context)
+                  //                               .bodyMedium
+                  //                               .override(
+                  //                                 fontFamily: 'Manrope',
+                  //                                 letterSpacing: 0.0,
+                  //                               ),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //                 // Container(
+                  //                 //   width: 100.0,
+                  //                 //   height: 40.0,
+                  //                 //   decoration: BoxDecoration(
+                  //                 //     color: FlutterFlowTheme.of(context)
+                  //                 //         .secondaryBackground,
+                  //                 //   ),
+                  //                 //   child: Stack(
+                  //                 //     children: [
+                  //                 //       Align(
+                  //                 //         alignment:
+                  //                 //             AlignmentDirectional(0.0, -1.0),
+                  //                 //         child: Padding(
+                  //                 //           padding:
+                  //                 //               EdgeInsetsDirectional.fromSTEB(
+                  //                 //                   5.0, 0.0, 5.0, 0.0),
+                  //                 //           child: Text(
+                  //                 //             'Height',
+                  //                 //             textAlign: TextAlign.center,
+                  //                 //             style:
+                  //                 //                 FlutterFlowTheme.of(context)
+                  //                 //                     .bodyMedium
+                  //                 //                     .override(
+                  //                 //                       fontFamily: 'Manrope',
+                  //                 //                       letterSpacing: 0.0,
+                  //                 //                       fontWeight:
+                  //                 //                           FontWeight.w600,
+                  //                 //                     ),
+                  //                 //           ),
+                  //                 //         ),
+                  //                 //       ),
+                  //                 //       Align(
+                  //                 //         alignment:
+                  //                 //             AlignmentDirectional(0.0, 1.0),
+                  //                 //         child: Text(
+                  //                 //           '54 cm',
+                  //                 //           style: FlutterFlowTheme.of(context)
+                  //                 //               .bodyMedium
+                  //                 //               .override(
+                  //                 //                 fontFamily: 'Manrope',
+                  //                 //                 letterSpacing: 0.0,
+                  //                 //               ),
+                  //                 //         ),
+                  //                 //       ),
+                  //                 //     ],
+                  //                 //   ),
+                  //                 // ),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 32.0),
+                        const EdgeInsets.all(16.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -614,8 +786,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
+                                padding: EdgeInsets.all(16.0),
                                 child: Container(
                                   width: 44.0,
                                   height: 44.0,
@@ -626,17 +797,29 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                   ),
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: IconButton(
-                                      icon: Icon(Icons.work_outline),
+                                      icon: Icon(Icons.delete),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       iconSize: 24.0,
-                                      onPressed: () {
+                                      onPressed: () async {
                                         print('icon pressed ...');
+
+
+                                          final vmPet = Provider.of<PetViewModel>(context, listen: false);
+                                          await vmPet.deletePet(widget.pet.id!);
+
+                                          Navigator.pushReplacement(context, MaterialPageRoute(
+                                            builder: (context) =>
+                                            ScreenNavigator(), // replace with your widget
+                                            ),
+                                          );
+
+
                                       }),
                                 ),
                               ),
                               Text(
-                                'Records',
+                                'Delete',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .titleSmall
@@ -648,57 +831,56 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                             ],
                           ),
                         ),
-                        Flexible(
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                4.0, 0.0, 4.0, 0.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: Container(
-                                    width: 44.0,
-                                    height: 44.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: IconButton(
-                                      icon: Icon(Icons.notifications_outlined),
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      iconSize: 24.0,
-                                      onPressed: () {
-                                        print('icon pressed ...');
-                                      },
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  'Notifications',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        // Flexible(
+                        //   child: Padding(
+                        //     padding: EdgeInsetsDirectional.fromSTEB(
+                        //         4.0, 0.0, 4.0, 0.0),
+                        //     child: Column(
+                        //       mainAxisSize: MainAxisSize.max,
+                        //       children: [
+                        //         Padding(
+                        //           padding: EdgeInsetsDirectional.fromSTEB(
+                        //               0.0, 0.0, 0.0, 12.0),
+                        //           child: Container(
+                        //             width: 44.0,
+                        //             height: 44.0,
+                        //             decoration: BoxDecoration(
+                        //               color: FlutterFlowTheme.of(context)
+                        //                   .secondaryBackground,
+                        //               shape: BoxShape.circle,
+                        //             ),
+                        //             alignment: AlignmentDirectional(0.0, 0.0),
+                        //             child: IconButton(
+                        //               icon: Icon(Icons.notifications_outlined),
+                        //               color: FlutterFlowTheme.of(context)
+                        //                   .primaryText,
+                        //               iconSize: 24.0,
+                        //               onPressed: () {
+                        //                 print('icon pressed ...');
+                        //               },
+                        //             ),
+                        //           ),
+                        //         ),
+                        //         Text(
+                        //           'Notifications',
+                        //           textAlign: TextAlign.center,
+                        //           style: FlutterFlowTheme.of(context)
+                        //               .titleSmall
+                        //               .override(
+                        //                 fontFamily: 'Manrope',
+                        //                 letterSpacing: 0.0,
+                        //               ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
                         Flexible(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
+                                padding: EdgeInsets.all(16.0),
                                 child: Container(
                                   width: 44.0,
                                   height: 44.0,
@@ -726,7 +908,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                 ),
                               ),
                               Text(
-                                'Edit Profile',
+                                'Profile',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .titleSmall
@@ -745,7 +927,6 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                     child: Container(
                       width: double.infinity,
-                      height: 330.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         boxShadow: [
@@ -784,89 +965,89 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                         ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 8.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 16.0, 8.0),
-                                        child: FaIcon(
-                                          FontAwesomeIcons.solidHeart,
-                                          color: Color(0xFFFF6BC3),
-                                          size: 24.0,
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
-                                          child: Text(
-                                            'Health',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
-                                          child: Text(
-                                            'Last vaccinated (2 mon. ago)',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  fontSize: 10.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w800,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                      FFButtonWidget(
-                                        onPressed: () {
-                                          print('CheckHealth pressed ...');
-                                        },
-                                        text: 'Log Health',
-                                        options: FFButtonOptions(
-                                          height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Manrope',
-                                                    color: Colors.white,
-                                                    letterSpacing: 0.0,
-                                                  ),
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                // Padding(
+                                //   padding: EdgeInsetsDirectional.fromSTEB(
+                                //       0.0, 0.0, 0.0, 8.0),
+                                //   child: Row(
+                                //     mainAxisSize: MainAxisSize.max,
+                                //     mainAxisAlignment: MainAxisAlignment.start,
+                                //     children: [
+                                //       Padding(
+                                //         padding: EdgeInsetsDirectional.fromSTEB(
+                                //             0.0, 8.0, 16.0, 8.0),
+                                //         child: FaIcon(
+                                //           FontAwesomeIcons.solidHeart,
+                                //           color: Color(0xFFFF6BC3),
+                                //           size: 24.0,
+                                //         ),
+                                //       ),
+                                //       Flexible(
+                                //         child: Padding(
+                                //           padding:
+                                //               EdgeInsetsDirectional.fromSTEB(
+                                //                   0.0, 0.0, 12.0, 0.0),
+                                //           child: Text(
+                                //             'Health',
+                                //             textAlign: TextAlign.start,
+                                //             style: FlutterFlowTheme.of(context)
+                                //                 .bodyMedium
+                                //                 .override(
+                                //                   fontFamily: 'Manrope',
+                                //                   letterSpacing: 0.0,
+                                //                 ),
+                                //           ),
+                                //         ),
+                                //       ),
+                                //       Flexible(
+                                //         child: Padding(
+                                //           padding:
+                                //               EdgeInsetsDirectional.fromSTEB(
+                                //                   0.0, 0.0, 12.0, 0.0),
+                                //           child: Text(
+                                //             'Last vaccinated (2 mon. ago)',
+                                //             textAlign: TextAlign.start,
+                                //             style: FlutterFlowTheme.of(context)
+                                //                 .bodyMedium
+                                //                 .override(
+                                //                   fontFamily: 'Manrope',
+                                //                   fontSize: 10.0,
+                                //                   letterSpacing: 0.0,
+                                //                   fontWeight: FontWeight.w800,
+                                //                 ),
+                                //           ),
+                                //         ),
+                                //       ),
+                                //       FFButtonWidget(
+                                //         onPressed: () {
+                                //           print('CheckHealth pressed ...');
+                                //         },
+                                //         text: 'Log Health',
+                                //         options: FFButtonOptions(
+                                //           height: 40.0,
+                                //           padding:
+                                //               EdgeInsetsDirectional.fromSTEB(
+                                //                   16.0, 0.0, 16.0, 0.0),
+                                //           iconPadding:
+                                //               EdgeInsetsDirectional.fromSTEB(
+                                //                   0.0, 0.0, 0.0, 0.0),
+                                //           color: FlutterFlowTheme.of(context)
+                                //               .primary,
+                                //           textStyle:
+                                //               FlutterFlowTheme.of(context)
+                                //                   .titleSmall
+                                //                   .override(
+                                //                     fontFamily: 'Manrope',
+                                //                     color: Colors.white,
+                                //                     letterSpacing: 0.0,
+                                //                   ),
+                                //           elevation: 0.0,
+                                //           borderRadius:
+                                //               BorderRadius.circular(8.0),
+                                //         ),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 8.0),

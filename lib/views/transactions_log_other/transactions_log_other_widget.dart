@@ -37,6 +37,7 @@ class TransactionsLogOtherWidget extends StatefulWidget {
   final String? status;
   const TransactionsLogOtherWidget({Key? key, required this.status}) : super(key: key);
 
+
   static String routeName = 'LogFood';
   static String routePath = '/logFood';
 
@@ -304,35 +305,32 @@ class _TransactionsLogOtherWidgetState extends State<TransactionsLogOtherWidget>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
+
+
+
                     
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Flexible(
-                          // 👈 Wrap the Text in Flexible to prevent overflow
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 8.0, 0.0),
-                            child: Text(
-                              "Pet requests made by other users.",
-                              softWrap: true, // 👈 Allows text to wrap
-                              overflow: TextOverflow
-                                  .ellipsis, // 👈 Optional: use fade/ellipsis/clip
-                              maxLines:
-                                  3, // 👈 Set how many lines you want to show (adjust as needed)
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Manrope',
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    letterSpacing: 0.0,
-                                  ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Pet requests made by other users.',
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Manrope',
+                              color: FlutterFlowTheme.of(context).secondary,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation2']!),
+                    ],
+                  ),
+                ),
+
+                  
 
                   ],
                 ),

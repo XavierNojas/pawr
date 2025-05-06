@@ -42,8 +42,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 
 class UserProfileWidget extends StatefulWidget {
-  final String? userId;
-  const UserProfileWidget({Key? key, this.userId}) : super(key: key);
+  final String userId;
+  const UserProfileWidget({Key? key, required this.userId}) : super(key: key);
 
   static String routeName = 'UserProfile';
   static String routePath = '/petProfile';
@@ -64,6 +64,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
   late String username;
   late String email;
   late String phone;
+  late String referenceCode;
   
   late String totalEarnings;
   late String totalDeficit;
@@ -392,21 +393,32 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
+                                  Text(
+                                    referenceCode,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          color: FlutterFlowTheme.of(context)
+                                              .info,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
                                 ],
                               ),
                             ),
-                            Align(
-                            alignment: AlignmentDirectional(1.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 15.0, 8.0),
-                              child: Icon(
-                                Icons.verified_user_sharp,
-                                color: Colors.green[700],
-                                size: 24.0,
-                              ),
-                            ),
-                          ),
+                          //   Align(
+                          //   alignment: AlignmentDirectional(1.0, 0.0),
+                          //   child: Padding(
+                          //     padding: EdgeInsetsDirectional.fromSTEB(
+                          //         0.0, 8.0, 15.0, 8.0),
+                          //     child: Icon(
+                          //       Icons.verified_user_sharp,
+                          //       color: Colors.green[700],
+                          //       size: 24.0,
+                          //     ),
+                          //   ),
+                          // ),
                           ].divide(SizedBox(width: 16.0)),
                         ),
                       ),
@@ -498,7 +510,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => UserEarningsWidget(totalEarnings: totalEarnings, totalDeficit: totalDeficit))
+                                                builder: (context) => UserEarningsWidget(userId: widget.userId))
                                             );
                                           },
                                         ),
@@ -711,15 +723,11 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
     final userVM = Provider.of<RequestViewModel>(context, listen: false);
     final fetchUser = await userVM.fetchOwnerDetails(userId as String);
 
-    final fetchTotalEarnings = await userVM.fetchEarnings('caretaker_id');
-    final fetchTotalDeficit = await userVM.fetchEarnings('user_id');
-
     setState(() {
-      totalEarnings = fetchTotalEarnings ?? '0';
-      totalDeficit = fetchTotalDeficit ?? '0';
       username = fetchUser!.username;
       email = fetchUser!.email;
       phone = fetchUser!.phone;
+      referenceCode = fetchUser!.referenceCode;
       _model.isLoading = false;
     });
   }

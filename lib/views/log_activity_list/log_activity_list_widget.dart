@@ -357,6 +357,7 @@ class _LogActivityListWidgetState extends State<LogActivityListWidget>
           : ListView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: activityLogVM.activityLogs.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, activityLogVM.activityLogs[index],

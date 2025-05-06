@@ -22,10 +22,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 class UserEarningsWidget extends StatefulWidget {
-  final totalEarnings;
-  final totalDeficit;
-  const UserEarningsWidget({Key? key, required this.totalEarnings, required this.totalDeficit}) : super(key: key);
+  final String userId;
+  const UserEarningsWidget({Key? key, required this.userId}) : super(key: key);
 
   static String routeName = 'PetTransact';
   static String routePath = '/petTransact';
@@ -46,25 +47,34 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
 
   late bool isOwner;
 
+  int selectedIndex = 0; // Default to first button
+
+  final List<String> options = ['Day', 'Week', 'Month', 'Year'];
+
+  late String totalEarnings;
+  late String monthEarnings;
+  late String weekEarnings;
+  late String dayEarnings;
+
+  late String totalCosts;
+  late String monthCosts;
+  late String weekCosts;
+  late String dayCosts;
+
+  late String showEarnings;
+
+  late String showCosts;
+
+
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => UserEarningsModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    fetchUserDetails();
 
-    _model.dateTimeController = TextEditingController();
-
-    _model.initialDateA = DateTime.now();
-    _model.initialDateB = DateTime.now();
-
-    _model.initialTimeA = TimeOfDay.now();
-    _model.initialTimeB = TimeOfDay.now();
-
-    _model.checkBoxCollect = [];
-
-    _model.isHourlySelected = true;
+    showEarnings = '0';
+    showCosts = '0';
 
       animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -240,7 +250,8 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return (_model.isLoading == true) ? onLoading(context) : 
+    GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
@@ -343,7 +354,71 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                                         ),
                                   ),
                                   Text(
-                                    '₱ ${widget.totalEarnings}',
+                                    '₱ ${showEarnings}',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 16.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5.0,
+                              color: Color(0x10000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Total Costs',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    '₱ ${showCosts}',
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
@@ -360,6 +435,56 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                       ),
                     ),
                   ),
+                  
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Container(
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: List.generate(options.length, (index) {
+                          final isSelected = index == selectedIndex;
+                          return ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                selectedIndex = index;
+
+                                switch(selectedIndex) {
+                                  case 0:
+                                    showEarnings = dayEarnings;
+                                    showCosts = dayCosts;
+                                    break;
+                                  case 1:
+                                    showEarnings = weekEarnings;
+                                    showCosts = weekCosts;
+                                    break;
+                                  case 2:
+                                    showEarnings = monthEarnings;
+                                    showCosts = monthCosts;
+                                    break;
+                                  default:
+                                    showEarnings = totalEarnings;
+                                    showCosts = totalCosts;
+                                    break;
+                                } 
+
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: isSelected
+                                  ? FlutterFlowTheme.of(context).persianGreen
+                                  : FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                              foregroundColor:
+                                  isSelected ? Colors.white : Colors.black,
+                            ),
+                            child: Text(options[index]),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+
                   Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Container(
@@ -412,7 +537,7 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                                   ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Text(
-                                  widget.totalEarnings,
+                                  totalEarnings,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -563,7 +688,7 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                                   ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Text(
-                                  widget.totalDeficit,
+                                  totalCosts,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -649,6 +774,13 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                       ),
                     ),
                   ),
+
+
+
+
+
+
+
                 ],
               ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation0']!),
             ),
@@ -656,6 +788,82 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
         ),
       ),
     );
+  }
+
+
+    Widget onLoading(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Cash Report',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Manrope',
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back,
+              color: FlutterFlowTheme.of(context).primaryText),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: const SafeArea(
+          child: Center(
+            child: CircularProgressIndicator(),
+          )
+        ),
+    );
+  }
+
+
+  Future<void> fetchUserDetails() async {
+
+    final userVM = Provider.of<RequestViewModel>(context, listen: false);
+
+    // fetch everything in pne gp
+    final fetchTotalEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.year);
+    final fetchMonthEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.month);
+    final fetchWeekEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.week);
+    final fetchDayEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.day);
+
+
+    final fetchTotalCosts = await userVM.fetchEarnings('user_id', TimeFilter.year);
+    final fetchMonthCosts = await userVM.fetchEarnings('user_id', TimeFilter.month);
+    final fetchWeekCosts = await userVM.fetchEarnings('user_id', TimeFilter.week);
+    final fetchDayCosts = await userVM.fetchEarnings('user_id', TimeFilter.day);
+
+
+    setState(() {
+
+      totalEarnings = fetchTotalEarnings!;
+      monthEarnings = fetchMonthEarnings!;
+      weekEarnings = fetchWeekEarnings!;
+      dayEarnings = fetchDayEarnings!;
+
+      totalCosts = fetchTotalCosts!;
+      monthCosts = fetchMonthCosts!;
+      weekCosts = fetchWeekCosts!;
+      dayCosts = fetchDayCosts!;
+
+      _model.isLoading = false;
+
+      // if totalEarnings is null, then everything is
+      if (totalEarnings == null) {
+        _model.isLoading = true;
+      }
+
+      print(' Year ' + totalCosts + ' Month ' + monthCosts + ' Week ' + weekCosts + ' day ' + dayCosts);
+
+    });
   }
 
 }

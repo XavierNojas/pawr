@@ -234,7 +234,7 @@ class _TransactionsLogOtherAcceptedWidgetState extends State<TransactionsLogOthe
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).accent1,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -304,34 +304,26 @@ class _TransactionsLogOtherAcceptedWidgetState extends State<TransactionsLogOthe
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Flexible(
-                          // 👈 Wrap the Text in Flexible to prevent overflow
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 8.0, 0.0),
-                            child: Text(
-                              "Pet requests you have approved.",
-                              softWrap: true, // 👈 Allows text to wrap
-                              overflow: TextOverflow
-                                  .ellipsis, // 👈 Optional: use fade/ellipsis/clip
-                              maxLines:
-                                  3, // 👈 Set how many lines you want to show (adjust as needed)
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Manrope',
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    letterSpacing: 0.0,
-                                  ),
+
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Pet requests you have approved.',
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Manrope',
+                              color: FlutterFlowTheme.of(context).secondary,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation2']!),
+                    ],
+                  ),
+                ),
 
                   ],
                 ),
@@ -517,6 +509,7 @@ class _TransactionsLogOtherAcceptedWidgetState extends State<TransactionsLogOthe
           : ListView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: requestVM.otherAcceptedRequests.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, requestVM.otherAcceptedRequests[index],

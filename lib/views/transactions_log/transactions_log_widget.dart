@@ -70,7 +70,7 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
 
     final requestVM = Provider.of<RequestViewModel>(context, listen: false);
 
-    requestVM.fetchRequests(widget.status ?? 'pending');
+    requestVM.fetchRequests('pending');
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -236,7 +236,8 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: (widget.status == 'pending') ? FlutterFlowTheme.of(context).primaryBackground 
+        : FlutterFlowTheme.of(context).accent1,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -306,35 +307,27 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Flexible(
-                          // 👈 Wrap the Text in Flexible to prevent overflow
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 8.0, 0.0),
-                            child: Text(
-                              (widget.status == 'pending') 
-                              ? 'Pet requests awaiting for approval' : 'Your pet requests that have been accepted by other users',
-                              softWrap: true, // 👈 Allows text to wrap
-                              overflow: TextOverflow
-                                  .ellipsis, // 👈 Optional: use fade/ellipsis/clip
-                              maxLines:
-                                  3, // 👈 Set how many lines you want to show (adjust as needed)
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Manrope',
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    letterSpacing: 0.0,
-                                  ),
+
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                          (widget.status == 'pending') ? 'Pet requests awaiting for approval' 
+                          : 'Pet requests that have been accepted by other users',
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Manrope',
+                              color: FlutterFlowTheme.of(context).secondary,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation2']!),
+                    ],
+                  ),
+                ),
 
                   ],
                 ),
@@ -552,6 +545,7 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
           : ListView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: requestVM.requests.length,
               itemBuilder: (context, index) {
                 return cardTemplate(context, requestVM.requests[index],
