@@ -3,6 +3,7 @@ import 'package:paw_r_app/components/pet_card_widget.dart';
 import 'package:paw_r_app/flutter_flow/flutter_flow_icon_button.dart';
 import 'package:paw_r_app/models/pet.dart';
 import 'package:paw_r_app/views/pet_add/pet_add_widget.dart';
+import 'package:paw_r_app/views/user_b_group_manage/user_b_group_manage_widget.dart';
 
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -305,6 +306,77 @@ class _PetManageWidgetState extends State<PetManageBWidget>
                     ],
                   ),
                 ),
+
+
+                if (widget.isFromProfile == false) 
+
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 20.0, 30.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+Text(
+                        'Assigned Pets',
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Manrope',
+                              color: FlutterFlowTheme.of(context).secondary,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation2']!),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            30.0, 0.0, 10.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          icon: Icon(
+                                            Icons.arrow_back_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            size: 25.0,
+                                          ),
+                                          onPressed: () {
+                                            // Your logic here
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => UserGroupBManageWidget())
+                                            );
+                                          },
+                                        ),
+                                        const SizedBox(width: 8.0),
+                                        Text(
+                                          'View pets shared with me',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Manrope',
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.w300,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+
                 Padding(
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
@@ -312,7 +384,7 @@ class _PetManageWidgetState extends State<PetManageBWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        (widget.isFromProfile) ? 'Click on a pet to get started' : 'Share a pet',
+                        (!widget.isFromProfile) ? 'Click on a pet to get started' : 'Share a pet',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Manrope',
                               color: FlutterFlowTheme.of(context).secondary,

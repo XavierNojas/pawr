@@ -8,6 +8,7 @@ import 'package:paw_r_app/views/screen_navigator.dart';
 import 'package:paw_r_app/views/transactions_log/transactions_log_widget.dart';
 import 'package:paw_r_app/views/transactions_log_other/transactions_log_other_widget.dart';
 import 'package:paw_r_app/views/transactions_log_other_accepted/transactions_log_other_accepted_widget.dart';
+import 'package:paw_r_app/views/user_b_group_manage/user_b_group_manage_widget.dart';
 import 'package:paw_r_app/views/user_earnings/user_earnings_widget.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -445,6 +446,80 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
                       ),
                     ),
                   ),
+
+
+
+                        // Padding(
+                        //   padding: EdgeInsetsDirectional.fromSTEB(
+                        //       0.0, 20.0, 30.0, 10.0),
+                        //   child: Row(
+                        //     mainAxisSize: MainAxisSize.max,
+                        //     children: [
+                        //       Column(
+                        //         crossAxisAlignment: CrossAxisAlignment.start,
+                        //         children: [
+                        //           Text(
+                        //             '${username}\'s Pets',
+                        //             style: FlutterFlowTheme.of(context)
+                        //                 .headlineSmall
+                        //                 .override(
+                        //                   fontFamily: 'Manrope',
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .secondary,
+                        //                   letterSpacing: 0.0,
+                        //                   fontWeight: FontWeight.bold,
+                        //                 ),
+                        //           ).animateOnPageLoad(animationsMap[
+                        //               'textOnPageLoadAnimation1']!),
+                        //           Padding(
+                        //             padding:
+                        //                 const EdgeInsetsDirectional.fromSTEB(
+                        //                     0.0, 0.0, 10.0, 0.0),
+                        //             child: Row(
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               children: [
+                        //                 FlutterFlowIconButton(
+                        //                   borderColor: Colors.transparent,
+                        //                   borderRadius: 30.0,
+                        //                   borderWidth: 1.0,
+                        //                   buttonSize: 40.0,
+                        //                   icon: Icon(
+                        //                     Icons.arrow_back_rounded,
+                        //                     color: FlutterFlowTheme.of(context)
+                        //                         .secondary,
+                        //                     size: 25.0,
+                        //                   ),
+                        //                   onPressed: () {
+                        //                     // Your logic here
+                        //                     Navigator.push(
+                        //                       context,
+                        //                       MaterialPageRoute(
+                        //                         builder: (context) => UserGroupBManageWidget(friendId: widget.userId, username: username))
+                        //                     );
+                        //                   },
+                        //                 ),
+                        //                 const SizedBox(width: 8.0),
+                        //                 Text(
+                        //                   'View details',
+                        //                   style: FlutterFlowTheme.of(context)
+                        //                       .bodyMedium
+                        //                       .override(
+                        //                         fontFamily: 'Manrope',
+                        //                         fontSize: 14.0,
+                        //                         fontWeight: FontWeight.w300,
+                        //                         letterSpacing: 0.0,
+                        //                       ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+
+
 
 
                         Padding(

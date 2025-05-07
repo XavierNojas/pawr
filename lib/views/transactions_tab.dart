@@ -14,12 +14,6 @@ class TransactionsNavigator extends StatefulWidget {
 class _TransactionsNavigatorState extends State<TransactionsNavigator>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int _currentIndex = 0;
-
-  final List<Widget> _tabViews = const [
-    TransactionsLogWidget(status: 'pending', isFromProfile: false),
-    TransactionsLogAcceptedWidget(status: 'accepted', isFromProfile: false),
-  ];
 
   @override
   void initState() {
@@ -27,21 +21,16 @@ class _TransactionsNavigatorState extends State<TransactionsNavigator>
     final navProvider = Provider.of<NavigationProvider>(context, listen: false);
 
     _tabController = TabController(
-      length: _tabViews.length,
+      length: 2,
       vsync: this,
       initialIndex: navProvider.topTabIndex,
     );
 
     _tabController.addListener(() {
-      if (!_tabController.indexIsChanging) {
-        setState(() {
-          _currentIndex = _tabController.index;
-        });
+      if (_tabController.indexIsChanging == false) {
         navProvider.updateTopTabIndex(_tabController.index);
       }
     });
-
-    _currentIndex = _tabController.index;
   }
 
   @override
@@ -56,15 +45,18 @@ class _TransactionsNavigatorState extends State<TransactionsNavigator>
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
       appBar: TabBar(
+          controller: _tabController,
+          tabs: const [
+            Tab(text: 'Pending'),
+            Tab(text: 'Accepted'),
+          ],
+        ),
+      body: TabBarView(
         controller: _tabController,
-        tabs: const [
-          Tab(text: 'Pending'),
-          Tab(text: 'Accepted'),
+        children: const [
+          TransactionsLogWidget(status: 'pending', isFromProfile: false),
+          TransactionsLogAcceptedWidget(status: 'accepted', isFromProfile: false),
         ],
-      ),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _tabViews,
       ),
     );
   }

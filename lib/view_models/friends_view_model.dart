@@ -27,6 +27,8 @@ class FriendsViewModel extends ChangeNotifier {
   List<Friends> friends = [];
   List<UserDetails> myFriendsDetails = [];
   List<Pet> myPetsDetails = [];
+
+  List<Pet> friendsPetsDetails = [];
   
   final supabase = Supabase.instance.client;
 
@@ -218,7 +220,54 @@ class FriendsViewModel extends ChangeNotifier {
       isLoading = false;
 
     } catch (error) {
-      print('Error fetching friends: $error');
+      print('Error fetching pets: $error');
+    } finally {
+    }
+  }
+
+
+  Future<void> fetchFriendsPets() async {
+
+        final user_id = supabase.auth.currentUser?.id ?? -1;
+
+
+    if (user_id == null) return;
+
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      final data = await supabase
+        .from('friends')
+        .select('referredPets')
+        .eq('owner_Id', user_id)
+        .single();
+
+      if (data != null && data['referredPets'] != null) {
+
+        friendsPetsDetails.clear();
+        if (friendsPetsDetails.isEmpty) {
+
+          List<String> petCollection = List<String>.from(data['referredPets']);
+          print(petCollection);
+
+          for (String pet in petCollection) {
+            final fetchPetDetails = await supabase
+              .from('pets')
+              .select()
+              .eq('id', pet)
+              .single();
+              
+            friendsPetsDetails.add(Pet.fromMap(fetchPetDetails));
+          }
+        }
+
+      }
+      notifyListeners();
+      isLoading = false;
+
+    } catch (error) {
+      print('Error fetching pets: $error');
     } finally {
     }
   }

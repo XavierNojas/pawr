@@ -15,12 +15,6 @@ class TransactionsOtherNavigator extends StatefulWidget {
 class _TransactionsOtherNavigatorState extends State<TransactionsOtherNavigator>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int _currentIndex = 0;
-
-  final List<Widget> _tabViews = const [
-    TransactionsLogOtherWidget(status: 'pending'),
-    TransactionsLogOtherAcceptedWidget(isFromProfile: false),
-  ];
 
   @override
   void initState() {
@@ -28,21 +22,16 @@ class _TransactionsOtherNavigatorState extends State<TransactionsOtherNavigator>
     final navProvider = Provider.of<NavigationProvider>(context, listen: false);
 
     _tabController = TabController(
-      length: _tabViews.length,
+      length: 2,
       vsync: this,
       initialIndex: navProvider.topTabIndex,
     );
 
     _tabController.addListener(() {
-      if (!_tabController.indexIsChanging) {
-        setState(() {
-          _currentIndex = _tabController.index;
-        });
+      if (_tabController.indexIsChanging == false) {
         navProvider.updateTopTabIndex(_tabController.index);
       }
     });
-
-    _currentIndex = _tabController.index;
   }
 
   @override
@@ -56,13 +45,14 @@ class _TransactionsOtherNavigatorState extends State<TransactionsOtherNavigator>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context); // 👈 Go back when pressed
           },
         ),
+        // title: Text('Other Requests'), // optional: title in center
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
@@ -71,9 +61,12 @@ class _TransactionsOtherNavigatorState extends State<TransactionsOtherNavigator>
           ],
         ),
       ),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _tabViews,
+      body: TabBarView(
+        controller: _tabController,
+        children: const [
+          TransactionsLogOtherWidget(status: 'pending'),
+          TransactionsLogOtherAcceptedWidget(isFromProfile: false),
+        ],
       ),
     );
   }

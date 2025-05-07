@@ -1,5 +1,6 @@
 import 'package:paw_r_app/components/transaction_card_model.dart';
 import 'package:paw_r_app/components/transaction_card_widget.dart';
+import 'package:paw_r_app/components/transaction_log_card_widget.dart';
 
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -77,14 +78,16 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
     super.initState();
     _model = createModel(context, () => UserEarningsModel());
 
-    fetchUserDetails();
+    fetchUserDetails(widget.userId);
 
     showEarnings = '0';
     showCosts = '0';
 
+    final user_id = Supabase.instance.client.auth.currentUser;
+
 
     final requestVM = Provider.of<RequestViewModel>(context, listen: false);
-    requestVM.fetchRequests('pending');
+    requestVM.fetchAllRequests(widget.userId);
 
       animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -262,6 +265,7 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
 
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -825,19 +829,19 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
       }
 
       /// Dynamically create models only when snackLogs load or change
-      if (_transactionCardModels.length != requestVM.requests.length) {
+      if (_transactionCardModels.length != requestVM.transactionHistory.length) {
         // Dispose old models
         for (var model in _transactionCardModels) {
           model.dispose();
         }
         // Create new models
-        _transactionCardModels = requestVM.requests
+        _transactionCardModels = requestVM.transactionHistory
             .map((_) => createModel<TransactionCardModel>(
                 context, () => TransactionCardModel()))
             .toList();
       }
 
-      return requestVM.requests.isEmpty
+      return requestVM.transactionHistory.isEmpty
           ? Center(
               child: Text(
                 'No transactions made',
@@ -853,9 +857,9 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: requestVM.requests.length,
+              itemCount: requestVM.transactionHistory.length,
               itemBuilder: (context, index) {
-                return cardTemplate(context, requestVM.requests[index],
+                return cardTemplate(context, requestVM.transactionHistory[index],
                     _transactionCardModels[index], index, requestVM);
               },
             );
@@ -875,17 +879,13 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
           wrapWithModel(
                   model: model,
                   updateCallback: () => safeSetState(() {}),
-                  child: TransactionCardWidget(
+                  child: TransactionCardLogWidget(
                     title: '₱ ${requestLog.total}',
-                    startDate: _model.formatDateTime(requestLog.start_date),
-                    finishDate: _model.formatDateTime(requestLog.finish_date),
                     total: _model
                         .formatDurationFromSeconds(requestLog.duration ?? 888),
                     cardId: requestLog.id,
-                    rateType: requestLog.rate_type,
-                    duration: requestLog.status,
-                    petId: requestLog.pet_id,
                     userId: requestLog.user_id ?? '-1',
+                    realUserId: widget.userId,
                     requestObject: requestLog,
                   ))
               .animateOnPageLoad(
@@ -931,21 +931,21 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
   }
 
 
-  Future<void> fetchUserDetails() async {
+  Future<void> fetchUserDetails(String userId) async {
 
     final userVM = Provider.of<RequestViewModel>(context, listen: false);
 
     // fetch everything in pne gp
-    final fetchTotalEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.year);
-    final fetchMonthEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.month);
-    final fetchWeekEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.week);
-    final fetchDayEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.day);
+    final fetchTotalEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.year, userId);
+    final fetchMonthEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.month, userId);
+    final fetchWeekEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.week, userId);
+    final fetchDayEarnings = await userVM.fetchEarnings('caretaker_id', TimeFilter.day, userId);
 
 
-    final fetchTotalCosts = await userVM.fetchEarnings('user_id', TimeFilter.year);
-    final fetchMonthCosts = await userVM.fetchEarnings('user_id', TimeFilter.month);
-    final fetchWeekCosts = await userVM.fetchEarnings('user_id', TimeFilter.week);
-    final fetchDayCosts = await userVM.fetchEarnings('user_id', TimeFilter.day);
+    final fetchTotalCosts = await userVM.fetchEarnings('user_id', TimeFilter.year, userId);
+    final fetchMonthCosts = await userVM.fetchEarnings('user_id', TimeFilter.month, userId);
+    final fetchWeekCosts = await userVM.fetchEarnings('user_id', TimeFilter.week, userId);
+    final fetchDayCosts = await userVM.fetchEarnings('user_id', TimeFilter.day, userId);
 
 
     setState(() {
@@ -959,6 +959,9 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
       monthCosts = fetchMonthCosts!;
       weekCosts = fetchWeekCosts!;
       dayCosts = fetchDayCosts!;
+
+      showEarnings = dayEarnings;
+      showCosts = dayCosts;
 
       _model.isLoading = false;
 

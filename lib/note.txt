@@ -1,261 +1,45 @@
-Column(
-  mainAxisSize: MainAxisSize.max,
-  children: [
-    Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                child: Text(
-                  'Departure',
-                  style: FlutterFlowTheme.of(context).labelLarge.override(
-                        font: GoogleFonts.plusJakartaSans(
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .labelLarge
-                              .fontStyle,
-                        ),
-                        color: Color(0xFF57636C),
-                        fontSize: 16,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.normal,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).labelLarge.fontStyle,
-                      ),
-                ),
-              ),
-              Text(
-                'New York',
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                      font: GoogleFonts.outfit(
-                        fontWeight: FontWeight.w500,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                      ),
-                      color: Color(0xFF14181B),
-                      fontSize: 22,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                    ),
-              ),
-            ],
-          ),
-          Icon(
-            Icons.flight,
-            color: Color(0xFF57636C),
-            size: 44,
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                child: Text(
-                  'Arrival',
-                  style: FlutterFlowTheme.of(context).labelLarge.override(
-                        font: GoogleFonts.plusJakartaSans(
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .labelLarge
-                              .fontStyle,
-                        ),
-                        color: Color(0xFF57636C),
-                        fontSize: 16,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.normal,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).labelLarge.fontStyle,
-                      ),
-                ),
-              ),
-              Text(
-                'Los Angeles',
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                      font: GoogleFonts.outfit(
-                        fontWeight: FontWeight.w500,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                      ),
-                      color: Color(0xFF14181B),
-                      fontSize: 22,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                    ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-    Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Color(0xFFF1F4F8),
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(8),
-          bottomRight: Radius.circular(8),
-          topLeft: Radius.circular(0),
-          topRight: Radius.circular(0),
-        ),
-        border: Border.all(
-          color: Color(0xFFF1F4F8),
-          width: 1,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
-                  child: Text(
-                    '08 Dec',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.plusJakartaSans(
-                            fontWeight: FontWeight.normal,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                          color: Color(0xFF14181B),
-                          fontSize: 14,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .fontStyle,
-                        ),
-                  ),
-                ),
-                Text(
-                  '9:40am',
-                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                        font: GoogleFonts.plusJakartaSans(
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .fontStyle,
-                        ),
-                        color: Color(0xFF4B39EF),
-                        fontSize: 12,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.bold,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodySmall.fontStyle,
-                      ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
-                  child: Text(
-                    '08 Dec',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.plusJakartaSans(
-                            fontWeight: FontWeight.normal,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                          color: Color(0xFF14181B),
-                          fontSize: 14,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .fontStyle,
-                        ),
-                  ),
-                ),
-                Text(
-                  '11:58am',
-                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                        font: GoogleFonts.plusJakartaSans(
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .fontStyle,
-                        ),
-                        color: Color(0xFF4B39EF),
-                        fontSize: 12,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.bold,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodySmall.fontStyle,
-                      ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
-  ],
-):Co
 
 
 
+final supabase = Supabase.instance.client;
+final user_id = supabase.auth.currentUser?.id ?? -1;
 
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Manrope',
-                      color: FlutterFlowTheme.of(context).primary,
-                      fontWeight: FontWeight.bold,
-                    ),
+  fetchFriend(String referralCode)
+  insertNewFriend(String insertFriend)
+  insertNewPet(String friendId, String petId)
+  fetchMultipleFriends()
+  fetchMultiplePets(String friendId)
 
+  fetchPets()
+  addPet(Pet pet)
+  addUser(UserDetails user)
+  updatePet(Pet pet)
+  deletePet(int id)
+  deletePetFromFriends(int petId)
+  fetchSnacks(int? petId)
+  addFood(Food food)
+  deleteFood(int? snackId)
+  deleteMultipleFoods(List<int> snackIds)
+  addFoodLog(FoodLog snack)
+  fetchFoodLogs(int? petId)
+  addRequest(Pet pet)
+  logMood(List<MoodCardModel> moodCollection, String? observationNote, int? petId)
+  fetchMoodLogs(int? petId)
+  deleteRequestAfterPet(petId)
+  addActivity(Activity activity)
+  fetchActivities(int? petId)
+  logActivity(List<ActivityCardModel> activityCollection, String? observationNote, int? petId)
+  deleteMultipleActivity(List<int> activityIds)
+  fetchActivityLogs(int? petId)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Click on a pet to get started',
-                        style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily: 'Manrope',
-                              color: FlutterFlowTheme.of(context).secondary,
-                              fontSize: 16.0,
-                              letterSpacing: 0.0,
-                            ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation2']!),
-                    ],
-                  ),
-                ),
+  fetchFriend(String referralCode)
+  _fetchReminders(BuildContext context)
+  fetchRequests(String state)
+  addRequest(Request request)
+  fetchPetDetails(int petId)
+  deleteMultipleRequests(List<int> requestIds)
+  fetchOtherRequests(String state)
+  fetchOtherAcceptedRequests()
+  fetchOwnerDetails(String? ownerId)
+  acceptRequest(Request request, String caretakerId)
+  fetchEarnings(String position, TimeFilter filter)
