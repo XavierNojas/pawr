@@ -1,0 +1,2 @@
+C:/Users/ACER/Documents/GitHub/pawr/android/app/.cxx/RelWithDebInfo/1h3z1t6k/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/ACER/Documents/GitHub/pawr/android/app/.cxx/RelWithDebInfo/1h3z1t6k/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -315,12 +315,13 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                     children: [
                       Text(
                           (widget.status == 'pending') ? 'Pet requests awaiting for approval' 
-                          : 'Pet requests that have been accepted by other users',
+                          : 'Pet requests accepted by other users',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Manrope',
                               color: FlutterFlowTheme.of(context).secondary,
                               fontSize: 16.0,
                               letterSpacing: 0.0,
+                              
                             ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation2']!),

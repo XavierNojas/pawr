@@ -70,7 +70,7 @@ class _TransactionsLogAcceptedWidgetState extends State<TransactionsLogAcceptedW
 
     final requestVM = Provider.of<RequestViewModel>(context, listen: false);
 
-    requestVM.fetchRequests('accepted');
+    requestVM.fetchAcceptedRequests('accepted');
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -317,7 +317,7 @@ class _TransactionsLogAcceptedWidgetState extends State<TransactionsLogAcceptedW
                     children: [
                       Text(
                         (widget.status == 'pending') 
-                              ? 'Pet requests awaiting for approval' : 'Pet requests that have been accepted by other users',
+                              ? 'Pet requests awaiting for approval' : 'Pet requests accepted by other users',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Manrope',
                               color: FlutterFlowTheme.of(context).secondary,

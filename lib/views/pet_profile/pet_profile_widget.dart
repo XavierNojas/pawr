@@ -1119,7 +1119,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 12.0, 0.0),
                                           child: Text(
-                                            'Last walked (2d ago)',
+                                            'Log an activity for your Pet',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1209,7 +1209,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 12.0, 0.0),
                                           child: Text(
-                                            'Last fed (4h ago)',
+                                            'Log a snack for your pet',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1299,7 +1299,7 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 12.0, 0.0),
                                           child: Text(
-                                            'Felt sad (2d ago)',
+                                            'Log moods and enter your observation',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

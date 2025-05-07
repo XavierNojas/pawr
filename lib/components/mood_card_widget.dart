@@ -110,7 +110,7 @@ class _MoodCardWidgetState extends State<MoodCardWidget>
       },
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
-        height: MediaQuery.of(context).size.height * 0.15,
+        height: MediaQuery.of(context).size.height * 0.18,
         decoration: BoxDecoration(
           color: widget.color,
           borderRadius: BorderRadius.circular(24.0),

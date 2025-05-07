@@ -43,12 +43,31 @@ class RequestViewModel extends ChangeNotifier {
           .toList();
       notifyListeners();
 
-      if (state == 'accepted') {
+      isLoading = false;
+    } catch (error) {
+      print('Error fetching requests: $error');
+    }
+  }
+
+  Future<void> fetchAcceptedRequests(String state) async {
+    final user_id = supabase.auth.currentUser?.id ?? -1;
+
+    isLoading = true;
+
+    // fetch requests that are pending
+    try {
+      final data = await supabase
+          .from('requests')
+          .select()
+          .eq('user_id', user_id)
+          .eq('status', state)
+          .order('created_at', ascending: false);
+          
+
         requestsAccepted = (data as List)
           .map((requestMap) => Request.fromMap(requestMap))
           .toList();
       notifyListeners();
-      }
 
 
       isLoading = false;
@@ -56,6 +75,7 @@ class RequestViewModel extends ChangeNotifier {
       print('Error fetching requests: $error');
     }
   }
+
 
   Future<void> addRequest(Request request) async {
     try {

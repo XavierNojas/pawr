@@ -1,0 +1,2 @@
+C:/Users/ACER/Documents/GitHub/pawr/android/app/.cxx/RelWithDebInfo/1h3z1t6k/x86/CMakeFiles/edit_cache.dir
+C:/Users/ACER/Documents/GitHub/pawr/android/app/.cxx/RelWithDebInfo/1h3z1t6k/x86/CMakeFiles/rebuild_cache.dir

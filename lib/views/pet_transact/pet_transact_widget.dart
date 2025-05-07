@@ -1025,7 +1025,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                   ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Text(
-                                  '₱800.00',
+                                  '₱880.00',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

@@ -154,8 +154,8 @@ class _PetCardWidgetState extends State<PetCardWidget>
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16.0),
                 child: Container(
-                  width: 80.0,
-                  height: 80.0,
+                  width: 60.0,
+                  height: 60.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).warning,
                     image: DecorationImage(
@@ -259,10 +259,9 @@ class _PetCardWidgetState extends State<PetCardWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Owner: $ownerName',
+                              'owner: $ownerName',
                               softWrap: true, 
-                              overflow: TextOverflow.ellipsis, 
-                              maxLines: 1, 
+                              overflow: TextOverflow.ellipsis,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

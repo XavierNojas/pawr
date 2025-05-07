@@ -201,8 +201,9 @@ body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              
 
-              _buildPetDetailsSection(),
+              // _buildPetDetailsSection(),
               const SizedBox(height: 20.0),
               _buildTodaysActivitiesSection(),
               const SizedBox(height: 20.0),
@@ -479,6 +480,9 @@ floatingActionButton: Column(
         ),
       );
     }
+
+
+
 
     return ListView.builder(
       shrinkWrap: true,

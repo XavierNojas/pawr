@@ -458,7 +458,7 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Container(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(0.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: List.generate(options.length, (index) {
@@ -501,6 +501,19 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                           );
                         }),
                       ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
+                    child: Text(
+                      'Recent Transactions',
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                            fontFamily: 'Manrope',
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w600,
+                          ),
                     ),
                   ),
 

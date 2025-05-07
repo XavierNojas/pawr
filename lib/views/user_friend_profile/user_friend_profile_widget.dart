@@ -321,7 +321,7 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
         backgroundColor: FlutterFlowTheme.of(context).accent1,
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(10.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -522,79 +522,79 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
 
 
 
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 30.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Earnings',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'textOnPageLoadAnimation1']!),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
-                                          borderRadius: 30.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 40.0,
-                                          icon: Icon(
-                                            Icons.arrow_back_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            size: 25.0,
-                                          ),
-                                          onPressed: () {
-                                            // Your logic here
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => UserEarningsWidget(userId: friendId))
-                                            );
-                                          },
-                                        ),
-                                        const SizedBox(width: 8.0),
-                                        Text(
-                                          'View details',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w300,
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsetsDirectional.fromSTEB(
+                        //       0.0, 20.0, 30.0, 10.0),
+                        //   child: Row(
+                        //     mainAxisSize: MainAxisSize.max,
+                        //     children: [
+                        //       Column(
+                        //         crossAxisAlignment: CrossAxisAlignment.start,
+                        //         children: [
+                        //           Text(
+                        //             'Earnings',
+                        //             style: FlutterFlowTheme.of(context)
+                        //                 .headlineSmall
+                        //                 .override(
+                        //                   fontFamily: 'Manrope',
+                        //                   color: FlutterFlowTheme.of(context)
+                        //                       .secondary,
+                        //                   letterSpacing: 0.0,
+                        //                   fontWeight: FontWeight.bold,
+                        //                 ),
+                        //           ).animateOnPageLoad(animationsMap[
+                        //               'textOnPageLoadAnimation1']!),
+                        //           Padding(
+                        //             padding:
+                        //                 const EdgeInsetsDirectional.fromSTEB(
+                        //                     0.0, 0.0, 10.0, 0.0),
+                        //             child: Row(
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               children: [
+                        //                 FlutterFlowIconButton(
+                        //                   borderColor: Colors.transparent,
+                        //                   borderRadius: 30.0,
+                        //                   borderWidth: 1.0,
+                        //                   buttonSize: 40.0,
+                        //                   icon: Icon(
+                        //                     Icons.arrow_back_rounded,
+                        //                     color: FlutterFlowTheme.of(context)
+                        //                         .secondary,
+                        //                     size: 25.0,
+                        //                   ),
+                        //                   onPressed: () {
+                        //                     // Your logic here
+                        //                     Navigator.push(
+                        //                       context,
+                        //                       MaterialPageRoute(
+                        //                         builder: (context) => UserEarningsWidget(userId: friendId))
+                        //                     );
+                        //                   },
+                        //                 ),
+                        //                 const SizedBox(width: 8.0),
+                        //                 Text(
+                        //                   'View details',
+                        //                   style: FlutterFlowTheme.of(context)
+                        //                       .bodyMedium
+                        //                       .override(
+                        //                         fontFamily: 'Manrope',
+                        //                         fontSize: 14.0,
+                        //                         fontWeight: FontWeight.w300,
+                        //                         letterSpacing: 0.0,
+                        //                       ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
 
                 Padding(
                   padding:
-                      const EdgeInsets.all(10.0),
+                      const EdgeInsets.all(16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -622,7 +622,7 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 30.0, 15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
