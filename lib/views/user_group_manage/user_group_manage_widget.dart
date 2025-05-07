@@ -288,7 +288,7 @@ class _UserGroupManageWidgetState extends State<UserGroupManageWidget>
                           //   ),
                           // ),
                           Text(
-                            'My Group',
+                            'My Friends',
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(

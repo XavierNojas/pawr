@@ -25,6 +25,7 @@ class PetCardWidget extends StatefulWidget {
     this.image,
     this.cardId,
     required this.petObject,
+    required this.isFromFriend,
   });
 
   final String? title;
@@ -32,8 +33,7 @@ class PetCardWidget extends StatefulWidget {
   final String? image;
   final int? cardId;
   final Pet petObject;
-
-  get amount => null;
+  final bool isFromFriend;
 
   @override
   State<PetCardWidget> createState() => _PetCardWidgetState();
@@ -241,7 +241,7 @@ class _PetCardWidgetState extends State<PetCardWidget>
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            PetProfileWidget(pet: widget.petObject)));
+                            PetProfileWidget(pet: widget.petObject, isFromFriend: widget.isFromFriend)));
               },
             ),
           ],

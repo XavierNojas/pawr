@@ -32,8 +32,9 @@ import 'package:paw_r_app/views/log_activity/log_activity_widget.dart';
 
 class PetProfileWidget extends StatefulWidget {
   final Pet pet;
+  final bool isFromFriend;
 
-  const PetProfileWidget({Key? key, required this.pet}) : super(key: key);
+  const PetProfileWidget({Key? key, required this.pet, required this.isFromFriend}) : super(key: key);
 
   static String routeName = 'PetProfile';
   static String routePath = '/petProfile';
@@ -282,13 +283,19 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      ScreenNavigator(), // replace with your widget
-                ),
-              );
+
+              if (widget.isFromFriend) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ScreenNavigator(), // replace with your widget
+                  ),
+                );
+              }
+
             },
           ),
         ),
@@ -774,6 +781,9 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                   //     ),
                   //   ),
                   // ),
+
+
+
                   Padding(
                     padding:
                         const EdgeInsets.all(16.0),
@@ -781,6 +791,10 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+
+
+                      if (!widget.isFromFriend)
+
                         Flexible(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -807,12 +821,21 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
 
                                           final vmPet = Provider.of<PetViewModel>(context, listen: false);
                                           await vmPet.deletePet(widget.pet.id!);
+                                          await vmPet.fetchPets;
+
+                                          if (widget.isFromFriend) {
+
+                                            Navigator.pop(context);
+
+                                          } else {
 
                                           Navigator.pushReplacement(context, MaterialPageRoute(
                                             builder: (context) =>
                                             ScreenNavigator(), // replace with your widget
                                             ),
                                           );
+
+                                          }
 
 
                                       }),
@@ -875,6 +898,9 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                         //     ),
                         //   ),
                         // ),
+
+                    if (!widget.isFromFriend)
+                    
                         Flexible(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -901,7 +927,8 @@ class _PetProfileWidgetState extends State<PetProfileWidget> {
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 PetProfileEditWidget(
-                                                    pet: widget.pet),
+                                                    pet: widget.pet,
+                                                    isFromFriend: widget.isFromFriend),
                                           ));
                                     },
                                   ),

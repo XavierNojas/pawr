@@ -2,6 +2,7 @@ import 'package:paw_r_app/flutter_flow/flutter_flow_icon_button.dart';
 import 'package:paw_r_app/views/log_food/log_food_widget.dart';
 import 'package:paw_r_app/views/screen_navigator.dart';
 import 'package:paw_r_app/views/transactions_log/transactions_log_widget.dart';
+import 'package:paw_r_app/views/transactions_log_accepted/transactions_log_accepted_widget.dart';
 import 'package:paw_r_app/views/transactions_log_other/transactions_log_other_widget.dart';
 import 'package:paw_r_app/views/transactions_log_other_accepted/transactions_log_other_accepted_widget.dart';
 import 'package:paw_r_app/views/user_earnings/user_earnings_widget.dart';
@@ -400,8 +401,9 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                                         .override(
                                           fontFamily: 'Manrope',
                                           color: FlutterFlowTheme.of(context)
-                                              .info,
+                                              .persianGreen,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w800,
                                         ),
                                   ),
                                 ],
@@ -582,9 +584,10 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => const TransactionsLogWidget(status: 'accepted', isFromProfile: true)
+                                                builder: (context) => const TransactionsLogAcceptedWidget(status: 'accepted', isFromProfile: true)
                                                 )
                                               );
+
                                           },
                                         ),
                                         const SizedBox(width: 8.0),

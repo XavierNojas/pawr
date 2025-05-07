@@ -1,3 +1,6 @@
+import 'package:paw_r_app/components/transaction_card_model.dart';
+import 'package:paw_r_app/components/transaction_card_widget.dart';
+
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -50,6 +53,9 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
   int selectedIndex = 0; // Default to first button
 
   final List<String> options = ['Day', 'Week', 'Month', 'Year'];
+  
+  List<TransactionCardModel> _transactionCardModels = [];
+
 
   late String totalEarnings;
   late String monthEarnings;
@@ -75,6 +81,10 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
 
     showEarnings = '0';
     showCosts = '0';
+
+
+    final requestVM = Provider.of<RequestViewModel>(context, listen: false);
+    requestVM.fetchRequests('pending');
 
       animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -245,6 +255,11 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
   @override
   void dispose() {
     _model.dispose();
+
+        for (var model in _transactionCardModels) {
+      model.dispose();
+    }
+
     super.dispose();
   }
 
@@ -485,296 +500,303 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
                     ),
                   ),
 
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 5.0,
-                            color: Color(0x10000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
+                  // Padding(
+                  //   padding: EdgeInsets.all(16.0),
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     decoration: BoxDecoration(
+                  //       color: FlutterFlowTheme.of(context).secondaryBackground,
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //           blurRadius: 5.0,
+                  //           color: Color(0x10000000),
+                  //           offset: Offset(
+                  //             0.0,
+                  //             2.0,
+                  //           ),
+                  //         )
+                  //       ],
+                  //       borderRadius: BorderRadius.circular(16.0),
+                  //     ),
+                  //     child: Padding(
+                  //       padding: EdgeInsets.all(16.0),
+                  //       child: Column(
+                  //         mainAxisSize: MainAxisSize.max,
+                  //         children: [
                             
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Total Earnings for this year',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w800,
-                                                color: FlutterFlowTheme.of(context).primary,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ].divide(SizedBox(width: 12.0)),
-                                ),
-                                Text(
-                                  totalEarnings,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                      ),
-                                ),
-                              ],
-                            ),
+                  //           Row(
+                  //             mainAxisSize: MainAxisSize.max,
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               Row(
+                  //                 mainAxisSize: MainAxisSize.max,
+                  //                 children: [
+                  //                   Column(
+                  //                     mainAxisSize: MainAxisSize.max,
+                  //                     crossAxisAlignment:
+                  //                         CrossAxisAlignment.start,
+                  //                     children: [
+                  //                       Text(
+                  //                         'Total Earnings for this year',
+                  //                         style: FlutterFlowTheme.of(context)
+                  //                             .bodyMedium
+                  //                             .override(
+                  //                               fontFamily: 'Manrope',
+                  //                               letterSpacing: 0.0,
+                  //                               fontWeight: FontWeight.w800,
+                  //                               color: FlutterFlowTheme.of(context).primary,
+                  //                             ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ].divide(SizedBox(width: 12.0)),
+                  //               ),
+                  //               Text(
+                  //                 totalEarnings,
+                  //                 style: FlutterFlowTheme.of(context)
+                  //                     .bodyMedium
+                  //                     .override(
+                  //                       fontFamily: 'Manrope',
+                  //                       letterSpacing: 0.0,
+                  //                       fontWeight: FontWeight.w600,
+                  //                       color: FlutterFlowTheme.of(context)
+                  //                               .secondaryText,
+                  //                     ),
+                  //               ),
+                  //             ],
+                  //           ),
 
 
 
-                            Container(
-                              width: double.infinity,
-                              height: 1.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).alternate,
-                              ),
-                            ),
+                  //           Container(
+                  //             width: double.infinity,
+                  //             height: 1.0,
+                  //             decoration: BoxDecoration(
+                  //               color: FlutterFlowTheme.of(context).alternate,
+                  //             ),
+                  //           ),
 
 
 
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Total Earnings for this month',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                                fontWeight:FontWeight.w800,
-                                                color: FlutterFlowTheme.of(context).primary,
-                                              ),
-                                        ),
-                                        // Text(
-                                        //   'One-time payment',
-                                        //   style: FlutterFlowTheme.of(context)
-                                        //       .bodySmall
-                                        //       .override(
-                                        //         fontFamily: 'Manrope',
-                                        //         letterSpacing: 0.0,
-                                        //       ),
-                                        // ),
-                                      ],
-                                    ),
-                                  ].divide(SizedBox(width: 12.0)),
-                                ),
-                                Text(
-                                  '₱800.00',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        color: (!_model.isOneTimeSelected)
-                                            ? null
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ],
-                            ),
+                  //           Row(
+                  //             mainAxisSize: MainAxisSize.max,
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               Row(
+                  //                 mainAxisSize: MainAxisSize.max,
+                  //                 children: [
+                  //                   Column(
+                  //                     mainAxisSize: MainAxisSize.max,
+                  //                     crossAxisAlignment:
+                  //                         CrossAxisAlignment.start,
+                  //                     children: [
+                  //                       Text(
+                  //                         'Total Earnings for this month',
+                  //                         style: FlutterFlowTheme.of(context)
+                  //                             .bodyMedium
+                  //                             .override(
+                  //                               fontFamily: 'Manrope',
+                  //                               letterSpacing: 0.0,
+                  //                               fontWeight:FontWeight.w800,
+                  //                               color: FlutterFlowTheme.of(context).primary,
+                  //                             ),
+                  //                       ),
+                  //                       // Text(
+                  //                       //   'One-time payment',
+                  //                       //   style: FlutterFlowTheme.of(context)
+                  //                       //       .bodySmall
+                  //                       //       .override(
+                  //                       //         fontFamily: 'Manrope',
+                  //                       //         letterSpacing: 0.0,
+                  //                       //       ),
+                  //                       // ),
+                  //                     ],
+                  //                   ),
+                  //                 ].divide(SizedBox(width: 12.0)),
+                  //               ),
+                  //               Text(
+                  //                 '₱800.00',
+                  //                 style: FlutterFlowTheme.of(context)
+                  //                     .bodyMedium
+                  //                     .override(
+                  //                       fontFamily: 'Manrope',
+                  //                       color: (!_model.isOneTimeSelected)
+                  //                           ? null
+                  //                           : FlutterFlowTheme.of(context)
+                  //                               .secondaryText,
+                  //                       letterSpacing: 0.0,
+                  //                     ),
+                  //               ),
+                  //             ],
+                  //           ),
 
 
                   
 
-                          ].divide(SizedBox(height: 16.0)),
-                        ),
-                      ),
-                    ),
-                  ),
+                  //         ].divide(SizedBox(height: 16.0)),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
 
 
 
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 5.0,
-                            color: Color(0x10000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
+                  // Padding(
+                  //   padding: EdgeInsets.all(16.0),
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     decoration: BoxDecoration(
+                  //       color: FlutterFlowTheme.of(context).secondaryBackground,
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //           blurRadius: 5.0,
+                  //           color: Color(0x10000000),
+                  //           offset: Offset(
+                  //             0.0,
+                  //             2.0,
+                  //           ),
+                  //         )
+                  //       ],
+                  //       borderRadius: BorderRadius.circular(16.0),
+                  //     ),
+                  //     child: Padding(
+                  //       padding: EdgeInsets.all(16.0),
+                  //       child: Column(
+                  //         mainAxisSize: MainAxisSize.max,
+                  //         children: [
                     
 
-                          Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Total Defecit for this year',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                                fontWeight:FontWeight.w800,
-                                                color: FlutterFlowTheme.of(context).primary,
-                                              ),
-                                        ),
-                                        // Text(
-                                        //   'One-time payment',
-                                        //   style: FlutterFlowTheme.of(context)
-                                        //       .bodySmall
-                                        //       .override(
-                                        //         fontFamily: 'Manrope',
-                                        //         letterSpacing: 0.0,
-                                        //       ),
-                                        // ),
-                                      ],
-                                    ),
-                                  ].divide(SizedBox(width: 12.0)),
-                                ),
-                                Text(
-                                  totalCosts,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        color: (!_model.isOneTimeSelected)
-                                            ? null
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ],
-                            ),
+                  //         Row(
+                  //             mainAxisSize: MainAxisSize.max,
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               Row(
+                  //                 mainAxisSize: MainAxisSize.max,
+                  //                 children: [
+                  //                   Column(
+                  //                     mainAxisSize: MainAxisSize.max,
+                  //                     crossAxisAlignment:
+                  //                         CrossAxisAlignment.start,
+                  //                     children: [
+                  //                       Text(
+                  //                         'Total Defecit for this year',
+                  //                         style: FlutterFlowTheme.of(context)
+                  //                             .bodyMedium
+                  //                             .override(
+                  //                               fontFamily: 'Manrope',
+                  //                               letterSpacing: 0.0,
+                  //                               fontWeight:FontWeight.w800,
+                  //                               color: FlutterFlowTheme.of(context).primary,
+                  //                             ),
+                  //                       ),
+                  //                       // Text(
+                  //                       //   'One-time payment',
+                  //                       //   style: FlutterFlowTheme.of(context)
+                  //                       //       .bodySmall
+                  //                       //       .override(
+                  //                       //         fontFamily: 'Manrope',
+                  //                       //         letterSpacing: 0.0,
+                  //                       //       ),
+                  //                       // ),
+                  //                     ],
+                  //                   ),
+                  //                 ].divide(SizedBox(width: 12.0)),
+                  //               ),
+                  //               Text(
+                  //                 totalCosts,
+                  //                 style: FlutterFlowTheme.of(context)
+                  //                     .bodyMedium
+                  //                     .override(
+                  //                       fontFamily: 'Manrope',
+                  //                       color: (!_model.isOneTimeSelected)
+                  //                           ? null
+                  //                           : FlutterFlowTheme.of(context)
+                  //                               .secondaryText,
+                  //                       letterSpacing: 0.0,
+                  //                     ),
+                  //               ),
+                  //             ],
+                  //           ),
 
 
-                                                        Container(
-                              width: double.infinity,
-                              height: 1.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).alternate,
-                              ),
-                            ),
-
-
-
-
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Total Defecit for this month',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                                fontWeight:FontWeight.w800,
-                                                color: FlutterFlowTheme.of(context).primary,
-                                              ),
-                                        ),
-                                        // Text(
-                                        //   'One-time payment',
-                                        //   style: FlutterFlowTheme.of(context)
-                                        //       .bodySmall
-                                        //       .override(
-                                        //         fontFamily: 'Manrope',
-                                        //         letterSpacing: 0.0,
-                                        //       ),
-                                        // ),
-                                      ],
-                                    ),
-                                  ].divide(SizedBox(width: 12.0)),
-                                ),
-                                Text(
-                                  '₱800.00',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        color: (!_model.isOneTimeSelected)
-                                            ? null
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ],
-                            ),
+                  //                                       Container(
+                  //             width: double.infinity,
+                  //             height: 1.0,
+                  //             decoration: BoxDecoration(
+                  //               color: FlutterFlowTheme.of(context).alternate,
+                  //             ),
+                  //           ),
 
 
 
-                          ].divide(SizedBox(height: 16.0)),
-                        ),
-                      ),
-                    ),
-                  ),
 
+                  //           Row(
+                  //             mainAxisSize: MainAxisSize.max,
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               Row(
+                  //                 mainAxisSize: MainAxisSize.max,
+                  //                 children: [
+                  //                   Column(
+                  //                     mainAxisSize: MainAxisSize.max,
+                  //                     crossAxisAlignment:
+                  //                         CrossAxisAlignment.start,
+                  //                     children: [
+                  //                       Text(
+                  //                         'Total Defecit for this month',
+                  //                         style: FlutterFlowTheme.of(context)
+                  //                             .bodyMedium
+                  //                             .override(
+                  //                               fontFamily: 'Manrope',
+                  //                               letterSpacing: 0.0,
+                  //                               fontWeight:FontWeight.w800,
+                  //                               color: FlutterFlowTheme.of(context).primary,
+                  //                             ),
+                  //                       ),
+                  //                       // Text(
+                  //                       //   'One-time payment',
+                  //                       //   style: FlutterFlowTheme.of(context)
+                  //                       //       .bodySmall
+                  //                       //       .override(
+                  //                       //         fontFamily: 'Manrope',
+                  //                       //         letterSpacing: 0.0,
+                  //                       //       ),
+                  //                       // ),
+                  //                     ],
+                  //                   ),
+                  //                 ].divide(SizedBox(width: 12.0)),
+                  //               ),
+                  //               Text(
+                  //                 '₱800.00',
+                  //                 style: FlutterFlowTheme.of(context)
+                  //                     .bodyMedium
+                  //                     .override(
+                  //                       fontFamily: 'Manrope',
+                  //                       color: (!_model.isOneTimeSelected)
+                  //                           ? null
+                  //                           : FlutterFlowTheme.of(context)
+                  //                               .secondaryText,
+                  //                       letterSpacing: 0.0,
+                  //                     ),
+                  //               ),
+                  //             ],
+                  //           ),
+
+
+
+                  //         ].divide(SizedBox(height: 16.0)),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+
+
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    cardCreator(context),
+                  ],
+                ),
 
 
 
@@ -789,6 +811,90 @@ class _UserEarningsWidgetState extends State<UserEarningsWidget> {
       ),
     );
   }
+
+
+
+
+    Widget cardCreator(BuildContext context) {
+    return Consumer<RequestViewModel>(builder: (context, requestVM, child) {
+      if (requestVM.isLoading) {
+        return const Center(
+          heightFactor: 10.0,
+          child: LinearProgressIndicator(),
+        );
+      }
+
+      /// Dynamically create models only when snackLogs load or change
+      if (_transactionCardModels.length != requestVM.requests.length) {
+        // Dispose old models
+        for (var model in _transactionCardModels) {
+          model.dispose();
+        }
+        // Create new models
+        _transactionCardModels = requestVM.requests
+            .map((_) => createModel<TransactionCardModel>(
+                context, () => TransactionCardModel()))
+            .toList();
+      }
+
+      return requestVM.requests.isEmpty
+          ? Center(
+              child: Text(
+                'No transactions made',
+                style: FlutterFlowTheme.of(context).titleSmall.override(
+                      fontFamily: 'Manrope',
+                      color: FlutterFlowTheme.of(context).secondary,
+                      fontSize: 16.0,
+                      letterSpacing: 0.0,
+                    ),
+              ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation2']!),
+            )
+          : ListView.builder(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: requestVM.requests.length,
+              itemBuilder: (context, index) {
+                return cardTemplate(context, requestVM.requests[index],
+                    _transactionCardModels[index], index, requestVM);
+              },
+            );
+    });
+  }
+
+  Widget cardTemplate(
+      BuildContext context,
+      Request requestLog,
+      TransactionCardModel model,
+      int index,
+      RequestViewModel requestViewModel) {
+    return Padding(
+      padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+      child: Stack(
+        children: [
+          wrapWithModel(
+                  model: model,
+                  updateCallback: () => safeSetState(() {}),
+                  child: TransactionCardWidget(
+                    title: '₱ ${requestLog.total}',
+                    startDate: _model.formatDateTime(requestLog.start_date),
+                    finishDate: _model.formatDateTime(requestLog.finish_date),
+                    total: _model
+                        .formatDurationFromSeconds(requestLog.duration ?? 888),
+                    cardId: requestLog.id,
+                    rateType: requestLog.rate_type,
+                    duration: requestLog.status,
+                    petId: requestLog.pet_id,
+                    userId: requestLog.user_id ?? '-1',
+                    requestObject: requestLog,
+                  ))
+              .animateOnPageLoad(
+                  animationsMap['foodCardOnPageLoadAnimation2']!),
+        ],
+      ),
+    );
+  }
+  
 
 
     Widget onLoading(BuildContext context) {

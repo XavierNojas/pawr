@@ -69,7 +69,6 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
     _model.searchFieldFocusNode ??= FocusNode();
 
     final requestVM = Provider.of<RequestViewModel>(context, listen: false);
-
     requestVM.fetchRequests('pending');
 
     animationsMap.addAll({
@@ -293,7 +292,7 @@ class _TransactionsLogWidgetState extends State<TransactionsLogWidget>
                 ),
 
 
-                 Container(
+      Container(
         width: MediaQuery.sizeOf(context).width * 1.3,
         child: Row(
           mainAxisSize: MainAxisSize.max,

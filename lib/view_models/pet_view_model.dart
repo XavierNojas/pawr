@@ -90,8 +90,58 @@ class PetViewModel extends ChangeNotifier {
       await supabase.from('pets').delete().eq('id', id);
       await fetchPets();
       await deleteRequestAfterPet(id);
+      await deletePetFromFriends(id);
     } catch (error) {
       print('Error deleting pets: $error');
+    }
+  }
+
+
+  Future<void> deletePetFromFriends(int petId) async {
+    final user_id = supabase.auth.currentUser?.id ?? -1;
+
+    try {
+      final data = await supabase
+          .from('friends')
+          .select('referredFriends')
+          .eq('owner_Id', user_id)
+          .single();
+
+      if (data != null && data['referredFriends'] != null) {
+        List<String> friendCollection =
+            List<String>.from(data['referredFriends']);
+
+        for (String friend in friendCollection) {
+          final record = await supabase
+              .from('friends')
+              .select('referredPets')
+              .eq('owner_Id', friend)
+              .single();
+
+          List<String> existing = record['referredPets'] != null
+              ? List<String>.from(record['referredPets'])
+              : [];
+
+              print('does pet id exist in friend ?');
+              print(existing.contains(petId.toString()));
+
+          if (existing.contains(petId.toString())) {
+            existing.remove(petId.toString());
+
+            print('contents of existing');
+            print(existing);
+
+            await supabase.from('friends').update({
+              'referredPets': existing,
+            }).eq('owner_Id', friend);
+          }
+
+
+        }
+      } 
+      else {}
+    } catch (error) {
+      print('Error while deleting pet from friends: $error');
     }
   }
 

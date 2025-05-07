@@ -81,15 +81,10 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
     super.initState();
     _model = createModel(context, () => UserFriendProfileModel());
 
-    setState(() {
-      _model.isLoading = true;
+
+    _model.isLoading = true;
       
      fetchUserDetails(widget.userId);
-
-    final petVM = Provider.of<FriendsViewModel>(context, listen: false);
-    petVM.fetchMultiplePets(widget.userId);
-
-    });
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -315,7 +310,7 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
           icon: Icon(Icons.arrow_back,
               color: FlutterFlowTheme.of(context).primaryText),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/homeNav');
           },
         ),
           backgroundColor: FlutterFlowTheme.of(context).accent1,
@@ -497,7 +492,7 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => UserEarningsWidget(userId: widget.userId))
+                                                builder: (context) => UserEarningsWidget(userId: friendId))
                                             );
                                           },
                                         ),
@@ -717,6 +712,7 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
               image: 'https://picsum.photos/200',
               cardId: pet.id,
               petObject: pet,
+              isFromFriend: true,
             ),
           ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation2']!),
         ],
@@ -729,6 +725,9 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
     final userVM = Provider.of<RequestViewModel>(context, listen: false);
     final fetchUser = await userVM.fetchOwnerDetails(userId as String);
 
+    final petVM = Provider.of<FriendsViewModel>(context, listen: false);
+    petVM.fetchMultiplePets(widget.userId);
+
     setState(() {
       username = fetchUser!.username;
       email = fetchUser!.email;
@@ -738,6 +737,7 @@ class _UserFriendProfileWidgetState extends State<UserFriendProfileWidget> {
       _model.isLoading = false;
       print('model is loading ??' + _model.isLoading.toString());
     });
+    
   }
 
 }

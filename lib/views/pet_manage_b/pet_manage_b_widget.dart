@@ -286,6 +286,8 @@ class _PetManageWidgetState extends State<PetManageBWidget>
                             ),
                           ),
 
+                          if (widget.isFromProfile)
+
                           Text(
                             'My pets',
                             style: FlutterFlowTheme.of(context)
@@ -310,7 +312,7 @@ class _PetManageWidgetState extends State<PetManageBWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'Click on a pet to get started',
+                        (widget.isFromProfile) ? 'Click on a pet to get started' : 'Share a pet',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Manrope',
                               color: FlutterFlowTheme.of(context).secondary,
@@ -483,6 +485,7 @@ class _PetManageWidgetState extends State<PetManageBWidget>
               image: 'https://picsum.photos/200',
               cardId: pet.id,
               petObject: pet,
+              isFromFriend: widget.isFromProfile,
             ),
           ).animateOnPageLoad(animationsMap['foodCardOnPageLoadAnimation2']!),
         ],

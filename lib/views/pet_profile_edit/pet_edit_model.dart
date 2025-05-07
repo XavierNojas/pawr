@@ -145,7 +145,7 @@ class PetProfileEditModel extends FlutterFlowModel<PetProfileEditWidget> {
   }
 
   Future<void> addNewPet(
-      BuildContext context, GlobalKey<FormState> _formKey, Pet pet) async {
+      BuildContext context, GlobalKey<FormState> _formKey, Pet pet, bool isFromFriend) async {
     final petName = petNameTextController.text.trim();
     final petBreed = nameFieldTextController1.text.trim();
     final age = nameFieldTextController5.text.trim();
@@ -179,7 +179,7 @@ class PetProfileEditModel extends FlutterFlowModel<PetProfileEditWidget> {
         Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PetProfileWidget(pet: updatePet)));
+                    builder: (context) => PetProfileWidget(pet: updatePet, isFromFriend: isFromFriend)));
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Error updating contact: $error")),

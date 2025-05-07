@@ -227,7 +227,7 @@ class _PetListWidgetState extends State<PetListWidget> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PetProfileWidget(pet: item)));
+                    builder: (context) => PetProfileWidget(pet: item, isFromFriend: false)));
           },
           child: AnimatedContainer(
             duration: Duration(milliseconds: 150),

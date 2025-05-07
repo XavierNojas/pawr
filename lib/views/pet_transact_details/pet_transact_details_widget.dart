@@ -32,7 +32,7 @@ class PetTransactWidgetDetails extends StatefulWidget {
   const PetTransactWidgetDetails({Key? key, required this.request, required this.petId, required this.pet, required this.ownerDetails, required this.careTakerDetails})
       : super(key: key);
 
-  static String routeName = 'PetTransact';
+  static String routeName = 'PetSTransact';
   static String routePath = '/petTransact';
 
   @override
@@ -1088,6 +1088,17 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
+                                                                    Text(
+                                    '${widget.pet.weight} years',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -1162,7 +1173,7 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: EdgeInsets.all(0.0),
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
@@ -1170,12 +1181,46 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(16.0),
+                                  padding: EdgeInsets.all(0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      taskRowBuilder(
-                                          context, widget.request.tasks)
+                                      // taskRowBuilder(
+                                      //     context, widget.request.tasks)
+
+                                      Padding(
+                                        padding: EdgeInsets.all(12.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    ((widget.request.tasks) ?.isEmpty == true) ? 'No tasks specified'
+                                                        : '${widget.request.tasks}',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Manrope',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .persianGreen,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(width: 16.0)),
+                                        ),
+                                      ),
                                     ].divide(SizedBox(height: 8.0)),
                                   ),
                                 ),
@@ -1186,6 +1231,8 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
                       ),
                     ),
                   ),
+
+
 
 
                   Padding(
@@ -1301,48 +1348,48 @@ class _PetTransactWidgetDetailsState extends State<PetTransactWidgetDetails> {
     );
   }
 
-  Widget taskRowBuilder(BuildContext context, List<String?> tasks) {
-    List<String> taskList = List<String>.from(tasks);
+  // Widget taskRowBuilder(BuildContext context, List<String?> tasks) {
+  //   List<String> taskList = List<String>.from(tasks);
 
-    return Column(
-      children: taskList.map((task) {
-        return (['Health','Food', 'Mood'].contains(task)) 
-        ? Padding(
-          padding: const EdgeInsets.only(bottom: 8.0), // Add space between rows
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                task,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Manrope',
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                      color: FlutterFlowTheme.of(context).primary,
-                    ),
-              ),
-            ],
-          ),
-        ) 
-        : Padding(
-          padding: const EdgeInsets.only(bottom: 8.0), // Add space between rows
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '  ${task}',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Manrope',
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
-            ],
-          ),
-        );
-      }).toList(),
-    );
-  }
+  //   return Column(
+  //     children: taskList.map((task) {
+  //       return (['Health','Food', 'Mood'].contains(task)) 
+  //       ? Padding(
+  //         padding: const EdgeInsets.only(bottom: 8.0), // Add space between rows
+  //         child: Row(
+  //           mainAxisSize: MainAxisSize.max,
+  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //           children: [
+  //             Text(
+  //               task,
+  //               style: FlutterFlowTheme.of(context).bodyMedium.override(
+  //                     fontFamily: 'Manrope',
+  //                     letterSpacing: 0.0,
+  //                     fontWeight: FontWeight.w600,
+  //                     color: FlutterFlowTheme.of(context).primary,
+  //                   ),
+  //             ),
+  //           ],
+  //         ),
+  //       ) 
+  //       : Padding(
+  //         padding: const EdgeInsets.only(bottom: 8.0), // Add space between rows
+  //         child: Row(
+  //           mainAxisSize: MainAxisSize.max,
+  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //           children: [
+  //             Text(
+  //               '  ${task}',
+  //               style: FlutterFlowTheme.of(context).bodyMedium.override(
+  //                     fontFamily: 'Manrope',
+  //                     letterSpacing: 0.0,
+  //                     fontWeight: FontWeight.w500,
+  //                   ),
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     }).toList(),
+  //   );
+  // }
 }

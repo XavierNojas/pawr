@@ -7,7 +7,7 @@ class Request {
   final String? total;
   final String? instructions;
   final int? duration;
-  final List<String?> tasks;
+  final String tasks;
   final int? pet_id;
   final String? user_id;
   final String? caretaker_id;
@@ -39,9 +39,7 @@ class Request {
       total: map['total'],
       instructions: map['instructions'],
       duration: map['duration'],
-      tasks: (map['tasks'] as List<dynamic>?)
-        !.map((e) => e.toString())
-        .toList(), // <-- THIS CONVERTS TO List<String>
+      tasks: (map['tasks']), // <-- THIS CONVERTS TO List<String>
       pet_id: map['pet_id'],
       user_id: map['user_id'],
       caretaker_id: map['caretaker_id'],

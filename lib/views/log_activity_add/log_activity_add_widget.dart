@@ -269,7 +269,7 @@ class _LogActivityAddWidgetState extends State<LogActivityAddWidget>
                         ),
                       ),
                       Text(
-                        'create a snack',
+                        'create an activity',
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(

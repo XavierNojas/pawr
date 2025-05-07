@@ -1,0 +1,58 @@
+{
+   "checksum": "232bd734369fac53d359d9d236f9d653",
+   "roots": {
+      "bookmark_bar": {
+         "children": [  ],
+         "date_added": "13391008279382833",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "date_added": "13391015089632716",
+            "date_last_used": "0",
+            "guid": "cf228e07-1b21-4b9b-a58b-63308d3ee49b",
+            "id": "5",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Pawr!",
+            "type": "url",
+            "url": "http://localhost:56176/#/homeNav"
+         }, {
+            "date_added": "13391083701668404",
+            "date_last_used": "0",
+            "guid": "6f952872-e977-4ea8-9759-5ece7ba0766c",
+            "id": "7",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Pawr!",
+            "type": "url",
+            "url": "http://localhost:54438/"
+         } ],
+         "date_added": "13391008279382837",
+         "date_last_used": "0",
+         "date_modified": "13391083701668404",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13391008279382839",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

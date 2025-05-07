@@ -44,6 +44,9 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
+    _model.noteFieldTextController ??= TextEditingController();
+    _model.noteFieldFocusNode ??= FocusNode();
+
     _model.dateTimeController = TextEditingController();
 
     _model.initialDateA = DateTime.now();
@@ -338,25 +341,34 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
 
   Future<void> _verifyEmptyTasks() async {
     setState(() {
-      _model.checkBoxCollect = [
-        _model.checkboxValue1,
-        _model.checkboxValue2,
-        _model.checkboxValue3,
-        _model.checkboxValue4,
-        _model.checkboxValue5,
-        _model.checkboxValue6,
-        _model.checkboxValue7,
-        _model.checkboxValue8,
-        _model.checkboxValue9,
-        _model.checkboxValue10,
-        _model.checkboxValue11,
-      ];
+      // _model.checkBoxCollect = [
+      //   _model.checkboxValue1,
+      //   _model.checkboxValue2,
+      //   _model.checkboxValue3,
+      //   _model.checkboxValue4,
+      //   _model.checkboxValue5,
+      //   _model.checkboxValue6,
+      //   _model.checkboxValue7,
+      //   _model.checkboxValue8,
+      //   _model.checkboxValue9,
+      //   _model.checkboxValue10,
+      //   _model.checkboxValue11,
+      // ];
 
-      if (_model.checkBoxCollect.any((value) => value == true) == false) {
+      // if (_model.checkBoxCollect.any((value) => value == true) == false) {
+      //   _model.hasEmptyAssignTasks = true;
+      // } else {
+      //   _model.hasEmptyAssignTasks = false;
+      // }
+
+      if (_model.noteFieldTextController.text.isEmpty) {
         _model.hasEmptyAssignTasks = true;
       } else {
         _model.hasEmptyAssignTasks = false;
       }
+
+
+
     });
   }
 
@@ -1044,800 +1056,55 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                           ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 5.0,
-                            color: Color(0x10000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Icon(
-                                      Icons.medical_services,
-                                      color: Colors.green,
-                                      size: 24.0,
-                                    ),
-                                    Text(
-                                      'Health',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ].divide(SizedBox(width: 12.0)),
-                                ),
-                                Theme(
-                                  data: ThemeData(
-                                    checkboxTheme: CheckboxThemeData(
-                                      visualDensity: VisualDensity.compact,
-                                      materialTapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  child: Checkbox(
-                                    value: _model.checkboxValue1 ??= false,
-                                    onChanged: (newValue) async {
-                                      safeSetState(() {
-                                        _model.checkboxValue1 = newValue!;
 
-                                        if (_model.checkboxValue1 == false) {
-                                          _model.checkboxValue2 = false;
-                                          _model.checkboxValue3 = false;
-                                        }
-                                      });
-                                    },
-                                    side: BorderSide(
-                                      width: 2,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                    ),
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    checkColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 16.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5.0,
+                              color: Color(0x10000000),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Column(
+                            // Changed from Row to Column for vertical layout
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 12.0),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Add tasks',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
                                   ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  filled: true,
                                 ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Color(0x10000000),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Give medication',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      (_model.checkboxValue1 ??
-                                                              false)
-                                                          ? null
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                ),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue2 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue1 ==
-                                                      false) {
-                                                    return;
-                                                  }
-                                                  _model.checkboxValue2 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Check for allergies',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      (_model.checkboxValue1 ??
-                                                              false)
-                                                          ? null
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                ),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue3 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue1 ==
-                                                      false) {
-                                                    return;
-                                                  }
-                                                  _model.checkboxValue3 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ].divide(SizedBox(height: 8.0)),
-                                  ),
-                                ),
+                                onChanged: (value) {
+
+                                  setState(() {
+                                     _model.noteFieldTextController.text = value; // Save to model if needed
+                                  });
+                                 
+                                },
+                                maxLines: 8,
                               ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    FaIcon(
-                                      FontAwesomeIcons.bone,
-                                      color: Colors.orange,
-                                      size: 24.0,
-                                    ),
-                                    Text(
-                                      'Food',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ].divide(SizedBox(width: 12.0)),
-                                ),
-                                Theme(
-                                  data: ThemeData(
-                                    checkboxTheme: CheckboxThemeData(
-                                      visualDensity: VisualDensity.compact,
-                                      materialTapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  child: Checkbox(
-                                    value: _model.checkboxValue4 ??= false,
-                                    onChanged: (newValue) async {
-                                      safeSetState(() {
-                                        _model.checkboxValue4 = newValue!;
 
-                                        if (_model.checkboxValue4 == false) {
-                                          _model.checkboxValue5 = false;
-                                          _model.checkboxValue6 = false;
-                                          _model.checkboxValue7 = false;
-                                        }
-                                      });
-                                    },
-                                    side: BorderSide(
-                                      width: 2,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                    ),
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    checkColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Color(0x10000000),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Morning meal (9:30 AM)',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      (_model.checkboxValue4 ??
-                                                              false)
-                                                          ? null
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                ),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue5 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue4 ==
-                                                      false) {
-                                                    return;
-                                                  }
 
-                                                  _model.checkboxValue5 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Evening meal (4:30 PM)',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      (_model.checkboxValue4 ??
-                                                              false)
-                                                          ? null
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                ),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue6 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue4 ==
-                                                      false) {
-                                                    return;
-                                                  }
-                                                  _model.checkboxValue6 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Fresh water',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      (_model.checkboxValue4 ??
-                                                              false)
-                                                          ? null
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                ),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue7 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue4 ==
-                                                      false) {
-                                                    return;
-                                                  }
-
-                                                  _model.checkboxValue7 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ].divide(SizedBox(height: 8.0)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Icon(
-                                      Icons.mood,
-                                      color: Colors.blue,
-                                      size: 24.0,
-                                    ),
-                                    Text(
-                                      'Mood',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Manrope',
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ].divide(SizedBox(width: 12.0)),
-                                ),
-                                Theme(
-                                  data: ThemeData(
-                                    checkboxTheme: CheckboxThemeData(
-                                      visualDensity: VisualDensity.compact,
-                                      materialTapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  child: Checkbox(
-                                    value: _model.checkboxValue8 ??= false,
-                                    onChanged: (newValue) async {
-                                      safeSetState(() {
-                                        _model.checkboxValue8 = newValue!;
-
-                                        if (_model.checkboxValue8 == false) {
-                                          _model.checkboxValue9 = false;
-                                          _model.checkboxValue10 = false;
-                                          _model.checkboxValue11 = false;
-                                        }
-                                      });
-                                    },
-                                    side: BorderSide(
-                                      width: 2,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                    ),
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    checkColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Color(0x10000000),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Morning walk (30 min)',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      (_model.checkboxValue8 ??
-                                                              false)
-                                                          ? null
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                ),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue9 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue8 ==
-                                                      false) {
-                                                    return;
-                                                  }
-
-                                                  _model.checkboxValue9 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Afternoon play time',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                    fontFamily: 'Manrope',
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                    color:
-                                                        (_model.checkboxValue8 ??
-                                                                false)
-                                                            ? null
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue10 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue8 ==
-                                                      false) {
-                                                    return;
-                                                  }
-
-                                                  _model.checkboxValue10 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Evening walk (20 min)',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Manrope',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      (_model.checkboxValue8 ??
-                                                              false)
-                                                          ? null
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                ),
-                                          ),
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue11 ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                safeSetState(() {
-                                                  if (_model.checkboxValue8 ==
-                                                      false) {
-                                                    return;
-                                                  }
-
-                                                  _model.checkboxValue11 =
-                                                      newValue!;
-                                                });
-                                              },
-                                              side: BorderSide(
-                                                width: 2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ].divide(SizedBox(height: 8.0)),
-                                  ),
-                                ),
-                              ),
-                            ),
                             if (_model.hasEmptyAssignTasks)
                               Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1847,7 +1114,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                   Text(
                                     (_model.hasEmptyAssignTasks)
                                         ? 'Choose a Task.'
-                                        : '',
+                                        : 'empty',
                                     style: (_model.hasEmptyAssignTasks)
                                         ? const TextStyle(
                                             fontSize: 12,
@@ -1857,11 +1124,16 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                   ),
                                 ],
                               ),
-                          ].divide(SizedBox(height: 16.0)),
+                            ],
+
+
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  
+                  
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 12.0),
@@ -1902,7 +1174,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                               SizedBox(height: 12.0),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText: 'Add a note (optional)',
+                                  labelText: 'Add special instructions (optional)',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
@@ -1966,7 +1238,7 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                                         ),
                                   ),
                                   Text(
-                                    '₱ ${_model.hourlyRateTotal}',
+                                    (_model.isHourlySelected) ?  '₱ ${_model.hourlyRateTotal}' : '₱ ${_model.oneTimeValue}',
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
@@ -1979,6 +1251,10 @@ class _PetTransactWidgetState extends State<PetTransactWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
+
+                                  print(_model.textController.text.trim());
+                                  print(_model.noteFieldTextController.text.trim());
+
                                   await _verifyDateTimeValidity();
                                   await _verifyEmptyTasks();
                                   await _model.sendRequest(context, widget.pet);

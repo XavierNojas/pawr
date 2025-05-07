@@ -20,9 +20,11 @@ import 'package:paw_r_app/models/pet.dart';
 import 'package:paw_r_app/views/pet_profile/pet_profile_widget.dart';
 
 class PetProfileEditWidget extends StatefulWidget {
-  final Pet pet;
 
-  const PetProfileEditWidget({Key? key, required this.pet}) : super(key: key);
+  final Pet pet;
+  final isFromFriend;
+
+  const PetProfileEditWidget({Key? key, required this.pet, required this.isFromFriend}) : super(key: key);
 
   static String routeName = 'PetProfileEdit';
   static String routePath = '/petProfileEdit';
@@ -232,7 +234,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => PetProfileWidget(pet: widget.pet), // replace with your widget
+          builder: (context) => PetProfileWidget(pet: widget.pet, isFromFriend: widget.isFromFriend), // replace with your widget
         ),
       );
     },
@@ -612,7 +614,7 @@ class _PetProfileEditWidgetState extends State<PetProfileEditWidget>
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await _model.addNewPet(context, formKey, widget.pet);
+                          await _model.addNewPet(context, formKey, widget.pet, widget.isFromFriend);
                           // context.goNamed(
                           //   PetProfileWidget.routeName,
                           //   extra: <String, dynamic>{

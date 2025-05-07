@@ -46,6 +46,12 @@ class PetTransactModel extends FlutterFlowModel<PetTransactWidget> {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
 
+  FocusNode? noteFieldFocusNode;
+  TextEditingController? noteFieldTextController;
+  String? Function(BuildContext, String?)? noteFieldTextControllerValidator;
+
+
+
   DateTime? selectedDateTime;
   TextEditingController? dateTimeController;
 
@@ -156,7 +162,7 @@ class PetTransactModel extends FlutterFlowModel<PetTransactWidget> {
       total: (isHourlySelected) ? hourlyRateTotal.toString() : oneTimeValue.toString(),
       instructions: textController.text.trim(),
       duration: difference?.inSeconds,
-      tasks: result,
+      tasks: noteFieldTextController.text.trim(),
       pet_id: pet.id,
       user_id: Supabase.instance.client.auth.currentUser!.id,
     );
