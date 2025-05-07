@@ -39,9 +39,10 @@ com.mycompany.pawrapp-packaged_res-37 C:\Users\ACER\Documents\GitHub\pawr\build\
 com.mycompany.pawrapp-packaged_res-38 C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\packaged_res\debug
 com.mycompany.pawrapp-packaged_res-39 C:\Users\ACER\Documents\GitHub\pawr\build\firebase_core\intermediates\packaged_res\debug
 com.mycompany.pawrapp-packaged_res-40 C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\packaged_res\debug
-com.mycompany.pawrapp-packaged_res-41 C:\Users\ACER\Documents\GitHub\pawr\build\path_provider_android\intermediates\packaged_res\debug
-com.mycompany.pawrapp-packaged_res-42 C:\Users\ACER\Documents\GitHub\pawr\build\shared_preferences_android\intermediates\packaged_res\debug
-com.mycompany.pawrapp-packaged_res-43 C:\Users\ACER\Documents\GitHub\pawr\build\sign_in_with_apple\intermediates\packaged_res\debug
-com.mycompany.pawrapp-packaged_res-44 C:\Users\ACER\Documents\GitHub\pawr\build\sqflite\intermediates\packaged_res\debug
-com.mycompany.pawrapp-packaged_res-45 C:\Users\ACER\Documents\GitHub\pawr\build\url_launcher_android\intermediates\packaged_res\debug
-com.mycompany.pawrapp-packaged_res-46 C:\Users\ACER\Documents\GitHub\pawr\build\webview_flutter_android\intermediates\packaged_res\debug
+com.mycompany.pawrapp-packaged_res-41 C:\Users\ACER\Documents\GitHub\pawr\build\flutter_native_splash\intermediates\packaged_res\debug
+com.mycompany.pawrapp-packaged_res-42 C:\Users\ACER\Documents\GitHub\pawr\build\path_provider_android\intermediates\packaged_res\debug
+com.mycompany.pawrapp-packaged_res-43 C:\Users\ACER\Documents\GitHub\pawr\build\shared_preferences_android\intermediates\packaged_res\debug
+com.mycompany.pawrapp-packaged_res-44 C:\Users\ACER\Documents\GitHub\pawr\build\sign_in_with_apple\intermediates\packaged_res\debug
+com.mycompany.pawrapp-packaged_res-45 C:\Users\ACER\Documents\GitHub\pawr\build\sqflite\intermediates\packaged_res\debug
+com.mycompany.pawrapp-packaged_res-46 C:\Users\ACER\Documents\GitHub\pawr\build\url_launcher_android\intermediates\packaged_res\debug
+com.mycompany.pawrapp-packaged_res-47 C:\Users\ACER\Documents\GitHub\pawr\build\webview_flutter_android\intermediates\packaged_res\debug

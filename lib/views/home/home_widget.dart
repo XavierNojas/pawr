@@ -192,8 +192,8 @@ body: SafeArea(
         // No padding for header — full width
         _buildHeaderSection(),
         const SizedBox(height: 20.0),
-        _buildHealthOverviewSection(),
-        const SizedBox(height: 20.0),
+        // _buildHealthOverviewSection(),
+        // const SizedBox(height: 20.0),
 
         // Padding for the rest of the content
         Padding(
@@ -217,37 +217,69 @@ body: SafeArea(
   ),
 ),
 
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            print('FloatingActionButton pressed ...');
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const NewReminderWidget()));
+floatingActionButton: Column(
+  mainAxisSize: MainAxisSize.min,
+  crossAxisAlignment: CrossAxisAlignment.end,
+  children: [
 
-          },
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          elevation: 3.0,
-          label: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 24.0,
-              ),
-              Text(
-                'New Reminder',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Manrope',
-                      color: Colors.white,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-            ].divide(SizedBox(width: 8.0)),
+    FloatingActionButton.extended(
+      onPressed: () {
+        print('New Reminder pressed ...');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const NewReminderWidget(),
           ),
-        ),
+        );
+      },
+      backgroundColor: FlutterFlowTheme.of(context).primary,
+      elevation: 3.0,
+      label: Row(
+        children: [
+          Icon(Icons.alarm, color: Colors.white, size: 24.0),
+          SizedBox(width: 8.0),
+          Text(
+            'New Reminder',
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Manrope',
+                  color: Colors.white,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        ],
+      ),
+    ),
+
+        SizedBox(height: 16.0), // Space between buttons
+
+        FloatingActionButton.extended(
+      onPressed: () {
+        print('Another Action pressed ...');
+        // Add your second button’s functionality here
+        Navigator.pushNamed(context, '/petHomeList');
+      },
+      backgroundColor: Colors.green,
+      elevation: 3.0,
+      label: Row(
+        children: [
+          Icon(Icons.add, color: Colors.white, size: 24.0),
+          SizedBox(width: 8.0),
+          Text(
+            'Pet Sit',
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Manrope',
+                  color: Colors.white,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        ],
+      ),
+    ),
+    
+  ],
+),
         
       ),
 );

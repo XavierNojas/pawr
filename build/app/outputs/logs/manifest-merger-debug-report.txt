@@ -10,6 +10,7 @@ MERGED from [:cloud_functions] C:\Users\ACER\Documents\GitHub\pawr\build\cloud_f
 MERGED from [:connectivity_plus] C:\Users\ACER\Documents\GitHub\pawr\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-48:12
 MERGED from [:firebase_core] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:flutter_native_splash] C:\Users\ACER\Documents\GitHub\pawr\build\flutter_native_splash\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] C:\Users\ACER\Documents\GitHub\pawr\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences_android] C:\Users\ACER\Documents\GitHub\pawr\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sign_in_with_apple] C:\Users\ACER\Documents\GitHub\pawr\build\sign_in_with_apple\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -258,6 +259,8 @@ MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\fire
 MERGED from [:firebase_messaging] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\ACER\Documents\GitHub\pawr\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] C:\Users\ACER\Documents\GitHub\pawr\build\flutter_native_splash\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] C:\Users\ACER\Documents\GitHub\pawr\build\flutter_native_splash\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\ACER\Documents\GitHub\pawr\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\ACER\Documents\GitHub\pawr\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] C:\Users\ACER\Documents\GitHub\pawr\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44

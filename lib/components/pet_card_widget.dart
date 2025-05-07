@@ -1,4 +1,5 @@
 import 'package:paw_r_app/models/pet.dart';
+import 'package:paw_r_app/view_models/request_view_model.dart';
 import 'package:paw_r_app/views/pet_profile/pet_profile_widget.dart';
 import 'package:paw_r_app/views/pet_profile_edit/pet_edit_widget.dart';
 
@@ -35,6 +36,8 @@ class PetCardWidget extends StatefulWidget {
   final Pet petObject;
   final bool isFromFriend;
 
+
+
   @override
   State<PetCardWidget> createState() => _PetCardWidgetState();
 }
@@ -44,6 +47,11 @@ class _PetCardWidgetState extends State<PetCardWidget>
   late PetCardModel _model;
 
   final animationsMap = <String, AnimationInfo>{};
+
+  bool isLoading = true;
+
+  String ownerName = '888';
+  
 
   @override
   void setState(VoidCallback callback) {
@@ -55,6 +63,17 @@ class _PetCardWidgetState extends State<PetCardWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => PetCardModel());
+
+
+    if (widget.isFromFriend) {
+
+      fetchOwnerDetails(widget.petObject.user_id);
+
+    } else {
+
+      isLoading = false;
+
+    }
 
     animationsMap.addAll({
       'containerOnActionTriggerAnimation': AnimationInfo(
@@ -88,7 +107,8 @@ class _PetCardWidgetState extends State<PetCardWidget>
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return (isLoading == true) ? const Center(child: CircularProgressIndicator()) 
+    : InkWell(
       splashColor: Colors.transparent,
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
@@ -205,7 +225,9 @@ class _PetCardWidgetState extends State<PetCardWidget>
                         ),
                       ],
                     ),
-                    Row(mainAxisSize: MainAxisSize.max, children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                       children: [
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -224,7 +246,37 @@ class _PetCardWidgetState extends State<PetCardWidget>
                             ),
                             
                           ]),
+
                     ]),
+
+                  Row(
+                      mainAxisSize: MainAxisSize.max,
+                       children: [
+
+                        if (widget.isFromFriend)
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Owner: $ownerName',
+                              softWrap: true, 
+                              overflow: TextOverflow.ellipsis, 
+                              maxLines: 1, 
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                      fontFamily: 'Manrope',
+                                      color: FlutterFlowTheme.of(context).ebony,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal),
+                            ),
+                            
+                          ]),
+                    ]),
+
+
+
                   ],
                 ),
               ),
@@ -251,4 +303,18 @@ class _PetCardWidgetState extends State<PetCardWidget>
       animationsMap['containerOnActionTriggerAnimation']!,
     );
   }
+
+  Future<void> fetchOwnerDetails(String user_id) async {
+
+    final friendsVM = Provider.of<RequestViewModel>(context, listen: false);
+    final owner = await friendsVM.fetchOwnerDetails(user_id);
+
+    setState(() {
+      ownerName = owner!.username;
+      isLoading = false;
+    });
+
+    return;
+  }
+
 }

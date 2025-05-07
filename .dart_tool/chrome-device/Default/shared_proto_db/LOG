@@ -1,13 +1,16 @@
-2025/05/07-19:31:49.461 4d70 Reusing MANIFEST C:\Users\ACER\AppData\Local\Temp\flutter_tools.77bccd24\flutter_tools_chrome_device.d51b62c\Default\shared_proto_db/MANIFEST-000001
-2025/05/07-19:31:49.462 4d70 Recovering log #21
-2025/05/07-19:31:49.464 4d70 Reusing old log C:\Users\ACER\AppData\Local\Temp\flutter_tools.77bccd24\flutter_tools_chrome_device.d51b62c\Default\shared_proto_db/000021.log 
-2025/05/07-19:31:49.466 4d70 Delete type=0 #3
-2025/05/07-19:31:49.466 4d70 Delete type=0 #4
-2025/05/07-19:31:49.466 4d70 Delete type=0 #7
-2025/05/07-19:31:49.466 4d70 Delete type=2 #8
-2025/05/07-19:31:49.466 4d70 Delete type=0 #10
-2025/05/07-19:31:49.466 4d70 Delete type=2 #11
-2025/05/07-19:31:49.466 4d70 Delete type=0 #13
-2025/05/07-19:31:49.466 4d70 Delete type=2 #14
-2025/05/07-19:31:49.466 4d70 Delete type=0 #14
-2025/05/07-19:31:49.467 4d70 Delete type=0 #18
+2025/05/08-04:25:22.028 5388 Reusing MANIFEST C:\Users\ACER\AppData\Local\Temp\flutter_tools.d57e7e9f\flutter_tools_chrome_device.3f381087\Default\shared_proto_db/MANIFEST-000001
+2025/05/08-04:25:22.029 5388 Recovering log #21
+2025/05/08-04:25:22.031 5388 Reusing old log C:\Users\ACER\AppData\Local\Temp\flutter_tools.d57e7e9f\flutter_tools_chrome_device.3f381087\Default\shared_proto_db/000021.log 
+2025/05/08-04:25:22.032 5388 Delete type=0 #3
+2025/05/08-04:25:22.032 5388 Delete type=0 #4
+2025/05/08-04:25:22.032 5388 Delete type=0 #7
+2025/05/08-04:25:22.032 5388 Delete type=2 #8
+2025/05/08-04:25:22.032 5388 Delete type=0 #10
+2025/05/08-04:25:22.032 5388 Delete type=2 #11
+2025/05/08-04:25:22.032 5388 Delete type=0 #13
+2025/05/08-04:25:22.032 5388 Delete type=2 #14
+2025/05/08-04:25:22.032 5388 Delete type=0 #14
+2025/05/08-04:25:22.032 5388 Delete type=0 #18
+2025/05/08-04:25:35.528 69f4 Level-0 table #25: started
+2025/05/08-04:25:35.531 69f4 Level-0 table #25: 134219 bytes OK
+2025/05/08-04:25:35.532 69f4 Delete type=0 #21
